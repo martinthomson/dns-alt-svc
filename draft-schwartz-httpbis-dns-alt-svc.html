@@ -279,6 +279,7 @@ address {
 
   <link href="#rfc.toc" rel="Contents">
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Terminology">
 <link href="#rfc.section.2" rel="Chapter" title="2 The ALTSVC record type">
 <link href="#rfc.section.2.1" rel="Chapter" title="2.1 Comparison with alternatives">
 <link href="#rfc.section.2.1.1" rel="Chapter" title="2.1.1 Differences from the SRV RRTYPE">
@@ -303,8 +304,8 @@ address {
   <meta name="dct.creator" content="Schwartz, B. and M. Bishop" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-schwartz-httpbis-dns-alt-svc-latest" />
   <meta name="dct.issued" scheme="ISO8601" content="2018-1-10" />
-  <meta name="dct.abstract" content="The HTTP Alternative Services mechanism allows an HTTP origin to be served from multiple network endpoints, and over multiple protocols.  However, the client must first contact the primary origin server, in order to learn of the Alternative Services.  This draft proposes a straightforward mapping of Alternative Services into DNS, allowing clients to learn of these services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
-  <meta name="description" content="The HTTP Alternative Services mechanism allows an HTTP origin to be served from multiple network endpoints, and over multiple protocols.  However, the client must first contact the primary origin server, in order to learn of the Alternative Services.  This draft proposes a straightforward mapping of Alternative Services into DNS, allowing clients to learn of these services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
+  <meta name="dct.abstract" content="The HTTP Alternative Services (Alt-Svc) mechanism allows an HTTP origin to be served from multiple network endpoints, and over multiple protocols.  However, the client must first contact the origin server, in order to learn of the alternative services.  This draft proposes a straightforward mapping of Alt-Svc into DNS, allowing clients to learn of these services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
+  <meta name="description" content="The HTTP Alternative Services (Alt-Svc) mechanism allows an HTTP origin to be served from multiple network endpoints, and over multiple protocols.  However, the client must first contact the origin server, in order to learn of the alternative services.  This draft proposes a straightforward mapping of Alt-Svc into DNS, allowing clients to learn of these services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
 
 </head>
 
@@ -342,7 +343,7 @@ address {
   <span class="filename">draft-schwartz-httpbis-dns-alt-svc-latest</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>The HTTP Alternative Services mechanism allows an HTTP origin to be served from multiple network endpoints, and over multiple protocols.  However, the client must first contact the primary origin server, in order to learn of the Alternative Services.  This draft proposes a straightforward mapping of Alternative Services into DNS, allowing clients to learn of these services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy.</p>
+<p>The HTTP Alternative Services (Alt-Svc) mechanism allows an HTTP origin to be served from multiple network endpoints, and over multiple protocols.  However, the client must first contact the origin server, in order to learn of the alternative services.  This draft proposes a straightforward mapping of Alt-Svc into DNS, allowing clients to learn of these services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
@@ -359,7 +360,9 @@ address {
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a>
 </li>
-<li>2.   <a href="#rfc.section.2">The ALTSVC record type</a>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Terminology</a>
+</li>
+</ul><li>2.   <a href="#rfc.section.2">The ALTSVC record type</a>
 </li>
 <ul><li>2.1.   <a href="#rfc.section.2.1">Comparison with alternatives</a>
 </li>
@@ -406,13 +409,17 @@ address {
 <li>the &#8220;Alt-Svc Field Value&#8221;, a text format for representing this information</li>
 <li>standards for sending information in this format from a server to a client over HTTP/1.1 and HTTP/2.</li>
 </ul>
-<p id="rfc.section.1.p.3">Together, these components provide a toolkit that has proven useful and effective for informing a client of alternative services for an origin.  However, making use of an alternative service requires contacting the primary origin first.  This creates an obvious performance cost: users wait for a full HTTP connection initiation (multiple roundtrips) before learning of an alternative service and starting all over again.  The first connection also publicly reveals the user&#8217;s intended destination to all entities along the network path.</p>
+<p id="rfc.section.1.p.3">Together, these components provide a toolkit that has proven useful and effective for informing a client of alternative services for an origin.  However, making use of an alternative service requires contacting the origin server first.  This creates an obvious performance cost: users wait for a full HTTP connection initiation (multiple roundtrips) before learning of an alternative service that is preferred by the origin.  The first connection also publicly reveals the user&#8217;s intended destination to all entities along the network path.</p>
 <p id="rfc.section.1.p.4">This draft proposes a straightforward mechanism to distribute the Alt-Svc Field Value, in its standard text format, through the DNS.  If a client receives this information during DNS resolution, it can skip the initial connection and proceed directly to an alternative service.</p>
+<h1 id="rfc.section.1.1">
+<a href="#rfc.section.1.1">1.1.</a> <a href="#terminology" id="terminology">Terminology</a>
+</h1>
+<p id="rfc.section.1.1.p.1">For consistency with <a href="#AltSvc" class="xref">[AltSvc]</a>, we adopt the following definitions * An &#8220;origin&#8221; is an information source as in <a href="#RFC6454" class="xref">[RFC6454]</a>.  * The &#8220;origin server&#8221; is the server that the client would reach when accessing the origin in the absence of Alt-Svc.  * An &#8220;alternative service&#8221; is a different server that can serve the origin.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#the-altsvc-record-type" id="the-altsvc-record-type">The ALTSVC record type</a>
 </h1>
-<p id="rfc.section.2.p.1">The ALTSVC DNS resource record (RR) type (RRTYPE ???) is used to associate an Alternative Service field value with an Origin.  Abstractly, the Origin consists of a Scheme (typically &#8220;https&#8221;), a Host, and a port (typically &#8220;443&#8221;).</p>
-<p id="rfc.section.2.p.2">In the case of the ALTSVC RR, the Origin is represented by prefixing the scheme and port with &#8220;_&#8221;, then concatenating them with the Host, resulting in a domain name like &#8220;_https._443.www.example.com.&#8221;.</p>
+<p id="rfc.section.2.p.1">The ALTSVC DNS resource record (RR) type (RRTYPE ???) is used to associate an Alternative Service Field Value with an origin.  Abstractly, the origin consists of a scheme (typically &#8220;https&#8221;), a host name, and a port (typically &#8220;443&#8221;).</p>
+<p id="rfc.section.2.p.2">In the case of the ALTSVC RR, the origin is represented by prefixing the scheme and port with &#8220;_&#8221;, then concatenating them with the host, resulting in a domain name like &#8220;_https._443.www.example.com.&#8221;.</p>
 <p id="rfc.section.2.p.3">The RDATA portion of an ALTSVC resource record contains an Alt-Svc Field Value, exactly as defined in Section 4 of <a href="#AltSvc" class="xref">[AltSvc]</a>.</p>
 <p id="rfc.section.2.p.4">For example, if the operator of https://www.example.com intends to include an HTTP response header like</p>
 <p id="rfc.section.2.p.5">Alt-Svc: h2=&#8221;:8000&#8221;; ma=60</p>
@@ -424,7 +431,7 @@ address {
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#comparison-with-alternatives" id="comparison-with-alternatives">Comparison with alternatives</a>
 </h1>
-<p id="rfc.section.2.1.p.1">The ALTSVC record type closely resembles several existing record types.</p>
+<p id="rfc.section.2.1.p.1">The ALTSVC record type closely resembles some existing record types.</p>
 <h1 id="rfc.section.2.1.1">
 <a href="#rfc.section.2.1.1">2.1.1.</a> <a href="#differences-from-the-srv-rrtype" id="differences-from-the-srv-rrtype">Differences from the SRV RRTYPE</a>
 </h1>
@@ -478,12 +485,12 @@ address {
 <ol>
 <li>Issue address (AAAA and/or A) queries, immediately followed by the ALTSVC query.</li>
 <li>If an ALTSVC response is received first, proceed with alternative service connection and ignore the address responses if they are no longer relevant.</li>
-<li>Otherwise, initiate connection to the primary origin.</li>
-<li>As soon as an Alt-Svc field value is received, through the DNS or over HTTP, proceed with alternative service connection and do not abort this connection if an Alt-Svc field value is received from the other source later.</li>
+<li>Otherwise, initiate connection to the origin server.</li>
+<li>As soon as an Alt-Svc field value is received, through the DNS or over HTTP, proceed with alternative service connection.  Do not abort this connection if an Alt-Svc field value is received from the other source later.</li>
 </ol>
 <p id="rfc.section.4.2.p.3">If the ALTSVC and address queries return approximately simultaneously, this process typically saves three roundtrips on a fresh connection that uses Alt-Svc: one each for TCP, TLS 1.3, and HTTP.  (On subsequent connections, the Alt-Svc information is expected to be cached, so this procedure does not apply.)</p>
 <p id="rfc.section.4.2.p.4">If a client can cache Alt-Svc entries that were received over both HTTP and DNS, the client MAY prefer entries that were received over HTTP.  These records may be more narrowly targeted for the specific client.</p>
-<p id="rfc.section.4.2.p.5">As an additional optimization, when choosing among multiple Alt-Svc values, clients MAY prefer those that will not require an address query, either because the corresponding address record is already in cache or because the hostname is an IP address.</p>
+<p id="rfc.section.4.2.p.5">As an additional optimization, when choosing among multiple Alt-Svc values, clients MAY prefer those that will not require an address query, either because the corresponding address record is already in cache or because the host is an IP address.</p>
 <p id="rfc.section.4.2.p.6">Note that this procedure does not rely on recursive resolvers handling the ALTSVC record type correctly.  If ALTSVC queries receive spurious NXDOMAIN responses, or even no response at all, connections will proceed as usual without any delay.</p>
 <h1 id="rfc.section.4.3">
 <a href="#rfc.section.4.3">4.3.</a> <a href="#optimizing-for-privacy" id="optimizing-for-privacy">Optimizing for privacy</a>
@@ -501,7 +508,7 @@ address {
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
-<p id="rfc.section.5.p.1">Alt-Svc field values are intended for distribution over untrusted channels, and clients are REQUIRED to verify that the alternative service is authoritative for the origin (Section 2.1 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  Therefore, DNSSEC signing and validation are NOT REQUIRED for publishing and using ALTSVC records.</p>
+<p id="rfc.section.5.p.1">Alt-Svc Field Values are intended for distribution over untrusted channels, and clients are REQUIRED to verify that the alternative service is authoritative for the origin (Section 2.1 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  Therefore, DNSSEC signing and validation are NOT REQUIRED for publishing and using ALTSVC records.</p>
 <h1 id="rfc.section.6">
 <a href="#rfc.section.6">6.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
@@ -548,6 +555,11 @@ address {
 <td class="reference"><b id="RFC6066">[RFC6066]</b></td>
 <td class="top">
 <a>Eastlake 3rd, D.</a>, "<a href="https://tools.ietf.org/html/rfc6066">Transport Layer Security (TLS) Extensions: Extension Definitions</a>", RFC 6066, DOI 10.17487/RFC6066, January 2011.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC6454">[RFC6454]</b></td>
+<td class="top">
+<a>Barth, A.</a>, "<a href="https://tools.ietf.org/html/rfc6454">The Web Origin Concept</a>", RFC 6454, DOI 10.17487/RFC6454, December 2011.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC7858">[RFC7858]</b></td>
