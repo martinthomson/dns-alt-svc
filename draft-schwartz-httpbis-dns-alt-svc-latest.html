@@ -23,19 +23,21 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    right: calc(50vw - 525px);
+    right: calc(50vw - 550px);
     width: 300px;
     z-index: 1;
   }
   #rfc\.toc {
-    top: 15px;
+    top: 55px;
+    overflow: auto;
+    overscroll-behavior: contain;
   }
-  ul.toc, nav#rfc\.toc {
+  ul.toc, #rfc\.toc {
     overflow: auto;
     overscroll-behavior: contain;
   }
   body>ul.toc {
-    top: 80px;
+    top: 140px;
   }
 
   body {
@@ -44,11 +46,11 @@
 }
 
 body {
-  font: 15px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font: 16px "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #333;
   font-size-adjust: 0.5;
-  line-height: 130%;
-  margin: 25px auto;
+  line-height: 24px;
+  margin: 75px auto;
   max-width: 724px;
 }
 
@@ -61,7 +63,7 @@ body {
   margin: 0.8em 0 0.3em;
 }
 .title { font-size: 36px; }
-h1 { font-size: 30px; }
+h1 { font-size: 36px; }
 h2 { font-size: 24px; }
 h3, h4 { font-size: 18px; }
 h1 a[href], h2 a[href], h3 a[href], h4 a[href] {
@@ -124,10 +126,9 @@ table.header td {
   height: auto;
   line-height: 100%;
 }
-#rfc\.abstract+p {
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 130%;
+#rfc\.abstract+p, #rfc\.abstract p {
+  font-size: 18px;
+  line-height: 27px%;
 }
 
 samp, tt, code, pre {
@@ -195,6 +196,9 @@ ul.empty li {
 hr {
   border: 0;
   border-top: 1px solid #eee;
+}
+hr.noprint {
+  display: none;
 }
 
 a {
@@ -294,7 +298,9 @@ address {
 <link href="#rfc.section.4.3" rel="Chapter" title="4.3 Optimizing for privacy">
 <link href="#rfc.section.5" rel="Chapter" title="5 Security Considerations">
 <link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations">
-<link href="#rfc.references" rel="Chapter" title="7 Normative References">
+<link href="#rfc.references" rel="Chapter" title="7 References">
+<link href="#rfc.references.1" rel="Chapter" title="7.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="7.2 Informative References">
 <link href="#rfc.authors" rel="Chapter">
 
 
@@ -303,7 +309,7 @@ address {
 
   <meta name="dct.creator" content="Schwartz, B. and M. Bishop" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-schwartz-httpbis-dns-alt-svc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-1-10" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-1-16" />
   <meta name="dct.abstract" content="The HTTP Alternative Services (Alt-Svc) mechanism allows an HTTP origin to be served from multiple network endpoints, and over multiple protocols.  However, the client must first contact the origin server, in order to learn of the alternative services.  This draft proposes a straightforward mapping of Alt-Svc into DNS, allowing clients to learn of these services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
   <meta name="description" content="The HTTP Alternative Services (Alt-Svc) mechanism allows an HTTP origin to be served from multiple network endpoints, and over multiple protocols.  However, the client must first contact the origin server, in order to learn of the alternative services.  This draft proposes a straightforward mapping of Alt-Svc into DNS, allowing clients to learn of these services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
 
@@ -327,12 +333,12 @@ address {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: July 14, 2018</td>
+<td class="left">Expires: July 20, 2018</td>
 <td class="right">Akamai Technologies</td>
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">January 10, 2018</td>
+<td class="right">January 16, 2018</td>
 </tr>
 
     	
@@ -348,7 +354,7 @@ address {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 14, 2018.</p>
+<p>This Internet-Draft will expire on July 20, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -390,9 +396,13 @@ address {
 </li>
 <li>6.   <a href="#rfc.section.6">IANA Considerations</a>
 </li>
-<li>7.   <a href="#rfc.references">Normative References</a>
+<li>7.   <a href="#rfc.references">References</a>
 </li>
-<li><a href="#rfc.authors">Authors' Addresses</a>
+<ul><li>7.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>7.2.   <a href="#rfc.references.2">Informative References</a>
+</li>
+</ul><li><a href="#rfc.authors">Authors' Addresses</a>
 </li>
 
 
@@ -414,7 +424,15 @@ address {
 <h1 id="rfc.section.1.1">
 <a href="#rfc.section.1.1">1.1.</a> <a href="#terminology" id="terminology">Terminology</a>
 </h1>
-<p id="rfc.section.1.1.p.1">For consistency with <a href="#AltSvc" class="xref">[AltSvc]</a>, we adopt the following definitions * An &#8220;origin&#8221; is an information source as in <a href="#RFC6454" class="xref">[RFC6454]</a>.  * The &#8220;origin server&#8221; is the server that the client would reach when accessing the origin in the absence of Alt-Svc.  * An &#8220;alternative service&#8221; is a different server that can serve the origin.</p>
+<p id="rfc.section.1.1.p.1">For consistency with <a href="#AltSvc" class="xref">[AltSvc]</a>, we adopt the following definitions</p>
+<p></p>
+
+<ul>
+<li>An &#8220;origin&#8221; is an information source as in <a href="#RFC6454" class="xref">[RFC6454]</a>.</li>
+<li>The &#8220;origin server&#8221; is the server that the client would reach when accessing the origin in the absence of Alt-Svc.</li>
+<li>An &#8220;alternative service&#8221; is a different server that can serve the origin.</li>
+</ul>
+<p id="rfc.section.1.1.p.3">The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;NOT RECOMMENDED&#8221;, &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in this document are to be interpreted as described in BCP 14 <a href="#RFC2119" class="xref">[RFC2119]</a> <a href="#RFC8174" class="xref">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#the-altsvc-record-type" id="the-altsvc-record-type">The ALTSVC record type</a>
 </h1>
@@ -427,7 +445,7 @@ address {
 <p id="rfc.section.2.p.7">_https._443.www.example.com. 60S IN ALTSVC &#8220;h2=\&#8220;:8000\&#8221;&#8221;</p>
 <p id="rfc.section.2.p.8">This data type can be represented as an Unknown RR as described in <a href="#RFC3597" class="xref">[RFC3597]</a>:</p>
 <p id="rfc.section.2.p.9">_https._443.www.example.com. 60S IN TYPE??? \# 10 68323D223A3830303022</p>
-<p id="rfc.section.2.p.10">This construction is intended to be extensible in two ways.  First, any extensions that are made to the Alt-Svc format for transmission over HTTPS are also applicable here, unless expressly mentioned otherwise.  Second, including the scheme in the DNS name allows for ALTSVC to serve schemes other than HTTPS, such as HTTP with Opportunistic Security <a href="#RFC8164" class="xref">[RFC8164]</a>) and any future schemes for which Alt-Svc may be defined.</p>
+<p id="rfc.section.2.p.10">This construction is intended to be extensible in two ways.  First, any extensions that are made to the Alt-Svc format for transmission over HTTPS are also applicable here, unless expressly mentioned otherwise.  Second, including the scheme in the DNS name allows for ALTSVC to serve schemes other than HTTPS, such as HTTP with Opportunistic Security <a href="#RFC8164" class="xref">[RFC8164]</a> and any future schemes for which Alt-Svc may be defined.</p>
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#comparison-with-alternatives" id="comparison-with-alternatives">Comparison with alternatives</a>
 </h1>
@@ -508,13 +526,15 @@ address {
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
-<p id="rfc.section.5.p.1">Alt-Svc Field Values are intended for distribution over untrusted channels, and clients are REQUIRED to verify that the alternative service is authoritative for the origin (Section 2.1 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  Therefore, DNSSEC signing and validation are NOT REQUIRED for publishing and using ALTSVC records.</p>
+<p id="rfc.section.5.p.1">Alt-Svc Field Values are intended for distribution over untrusted channels, and clients are REQUIRED to verify that the alternative service is authoritative for the origin (Section 2.1 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  Therefore, DNSSEC signing and validation are OPTIONAL for publishing and using ALTSVC records.</p>
 <h1 id="rfc.section.6">
 <a href="#rfc.section.6">6.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
 <p id="rfc.section.6.p.1">This draft requires assignment of a new DNS RRTYPE value.</p>
 <h1 id="rfc.references">
-<a href="#rfc.references">7.</a> Normative References</h1>
+<a href="#rfc.references">7.</a> References</h1>
+<h1 id="rfc.references.1">
+<a href="#rfc.references.1">7.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="AltSvc">[AltSvc]</b></td>
@@ -537,6 +557,11 @@ address {
 <a>Rescorla, E.</a>, "<a href="https://tools.ietf.org/html/draft-ietf-tls-tls13-22">The Transport Layer Security (TLS) Protocol Version 1.3</a>", Internet-Draft draft-ietf-tls-tls13-22, November 2017.</td>
 </tr>
 <tr>
+<td class="reference"><b id="RFC2119">[RFC2119]</b></td>
+<td class="top">
+<a>Bradner, S.</a>, "<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+</tr>
+<tr>
 <td class="reference"><b id="RFC2181">[RFC2181]</b></td>
 <td class="top">
 <a>Elz, R.</a> and <a>R. Bush</a>, "<a href="https://tools.ietf.org/html/rfc2181">Clarifications to the DNS Specification</a>", RFC 2181, DOI 10.17487/RFC2181, July 1997.</td>
@@ -545,11 +570,6 @@ address {
 <td class="reference"><b id="RFC3597">[RFC3597]</b></td>
 <td class="top">
 <a>Gustafsson, A.</a>, "<a href="https://tools.ietf.org/html/rfc3597">Handling of Unknown DNS Resource Record (RR) Types</a>", RFC 3597, DOI 10.17487/RFC3597, September 2003.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC5507">[RFC5507]</b></td>
-<td class="top">
-<a>IAB</a>, <a>Faltstrom, P.</a>, <a>Austein, R.</a> and <a>P. Koch</a>, "<a href="https://tools.ietf.org/html/rfc5507">Design Choices When Expanding the DNS</a>", RFC 5507, DOI 10.17487/RFC5507, April 2009.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC6066">[RFC6066]</b></td>
@@ -565,6 +585,20 @@ address {
 <td class="reference"><b id="RFC7858">[RFC7858]</b></td>
 <td class="top">
 <a>Hu, Z.</a>, <a>Zhu, L.</a>, <a>Heidemann, J.</a>, <a>Mankin, A.</a>, <a>Wessels, D.</a> and <a>P. Hoffman</a>, "<a href="https://tools.ietf.org/html/rfc7858">Specification for DNS over Transport Layer Security (TLS)</a>", RFC 7858, DOI 10.17487/RFC7858, May 2016.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8174">[RFC8174]</b></td>
+<td class="top">
+<a>Leiba, B.</a>, "<a href="https://tools.ietf.org/html/rfc8174">Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</a>", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017.</td>
+</tr>
+</tbody></table>
+<h1 id="rfc.references.2">
+<a href="#rfc.references.2">7.2.</a> Informative References</h1>
+<table><tbody>
+<tr>
+<td class="reference"><b id="RFC5507">[RFC5507]</b></td>
+<td class="top">
+<a>IAB</a>, <a>Faltstrom, P.</a>, <a>Austein, R.</a> and <a>P. Koch</a>, "<a href="https://tools.ietf.org/html/rfc5507">Design Choices When Expanding the DNS</a>", RFC 5507, DOI 10.17487/RFC5507, April 2009.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC7871">[RFC7871]</b></td>
@@ -622,6 +656,5 @@ address {
   </address>
 </div>
 
-  <div class="github-fork-ribbon-wrapper"><div class="github-fork-ribbon"><a href="https://github.com/MikeBishop/dns-alt-svc">Fork me on GitHub</a></div></div>
 </body>
 </html>

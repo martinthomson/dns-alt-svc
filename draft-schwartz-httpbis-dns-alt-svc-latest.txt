@@ -5,8 +5,8 @@
 HTTP Working Group                                           B. Schwartz
 Internet-Draft                                                    Google
 Intended status: Standards Track                               M. Bishop
-Expires: July 14, 2018                               Akamai Technologies
-                                                        January 10, 2018
+Expires: July 20, 2018                               Akamai Technologies
+                                                        January 16, 2018
 
 
      Finding HTTP Alternative Services via the Domain Name Service
@@ -38,7 +38,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 14, 2018.
+   This Internet-Draft will expire on July 20, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Schwartz & Bishop         Expires July 14, 2018                 [Page 1]
+Schwartz & Bishop         Expires July 20, 2018                 [Page 1]
 
 Internet-Draft               Alt-Svc via DNS                January 2018
 
@@ -71,8 +71,8 @@ Table of Contents
      2.1.  Comparison with alternatives  . . . . . . . . . . . . . .   4
        2.1.1.  Differences from the SRV RRTYPE . . . . . . . . . . .   4
        2.1.2.  Differences from the TXT RRTYPE . . . . . . . . . . .   4
-   3.  Differences from Alt-Svc as transmitted over HTTP . . . . . .   4
-     3.1.  Omitting Max Age  . . . . . . . . . . . . . . . . . . . .   4
+   3.  Differences from Alt-Svc as transmitted over HTTP . . . . . .   5
+     3.1.  Omitting Max Age  . . . . . . . . . . . . . . . . . . . .   5
      3.2.  Interaction with other standards  . . . . . . . . . . . .   5
      3.3.  Granularity and lifetime control  . . . . . . . . . . . .   5
    4.  Client behaviors  . . . . . . . . . . . . . . . . . . . . . .   6
@@ -80,8 +80,10 @@ Table of Contents
      4.2.  Optimizing for performance  . . . . . . . . . . . . . . .   6
      4.3.  Optimizing for privacy  . . . . . . . . . . . . . . . . .   7
    5.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
-   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   7
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   8
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
@@ -104,15 +106,16 @@ Table of Contents
    performance cost: users wait for a full HTTP connection initiation
    (multiple roundtrips) before learning of an alternative service that
    is preferred by the origin.  The first connection also publicly
-   reveals the user's intended destination to all entities along the
-   network path.
 
 
 
-Schwartz & Bishop         Expires July 14, 2018                 [Page 2]
+Schwartz & Bishop         Expires July 20, 2018                 [Page 2]
 
 Internet-Draft               Alt-Svc via DNS                January 2018
 
+
+   reveals the user's intended destination to all entities along the
+   network path.
 
    This draft proposes a straightforward mechanism to distribute the
    Alt-Svc Field Value, in its standard text format, through the DNS.
@@ -122,11 +125,21 @@ Internet-Draft               Alt-Svc via DNS                January 2018
 
 1.1.  Terminology
 
-   For consistency with [AltSvc], we adopt the following definitions *
-   An "origin" is an information source as in [RFC6454].  * The "origin
-   server" is the server that the client would reach when accessing the
-   origin in the absence of Alt-Svc.  * An "alternative service" is a
-   different server that can serve the origin.
+   For consistency with [AltSvc], we adopt the following definitions
+
+   o  An "origin" is an information source as in [RFC6454].
+
+   o  The "origin server" is the server that the client would reach when
+      accessing the origin in the absence of Alt-Svc.
+
+   o  An "alternative service" is a different server that can serve the
+      origin.
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
 2.  The ALTSVC record type
 
@@ -149,6 +162,14 @@ Internet-Draft               Alt-Svc via DNS                January 2018
 
    They would also publish an ALTSVC DNS record like
 
+
+
+
+Schwartz & Bishop         Expires July 20, 2018                 [Page 3]
+
+Internet-Draft               Alt-Svc via DNS                January 2018
+
+
    _https._443.www.example.com. 60S IN ALTSVC "h2=\":8000\""
 
    This data type can be represented as an Unknown RR as described in
@@ -162,15 +183,7 @@ Internet-Draft               Alt-Svc via DNS                January 2018
    over HTTPS are also applicable here, unless expressly mentioned
    otherwise.  Second, including the scheme in the DNS name allows for
    ALTSVC to serve schemes other than HTTPS, such as HTTP with
-
-
-
-Schwartz & Bishop         Expires July 14, 2018                 [Page 3]
-
-Internet-Draft               Alt-Svc via DNS                January 2018
-
-
-   Opportunistic Security [RFC8164]) and any future schemes for which
+   Opportunistic Security [RFC8164] and any future schemes for which
    Alt-Svc may be defined.
 
 2.1.  Comparison with alternatives
@@ -205,6 +218,14 @@ Internet-Draft               Alt-Svc via DNS                January 2018
    clarity, and to respect the use of TXT for human-readable notes as
    recommended in [RFC5507].
 
+
+
+
+Schwartz & Bishop         Expires July 20, 2018                 [Page 4]
+
+Internet-Draft               Alt-Svc via DNS                January 2018
+
+
 3.  Differences from Alt-Svc as transmitted over HTTP
 
    Publishing an ALTSVC record in DNS is intended to be equivalent to
@@ -218,14 +239,6 @@ Internet-Draft               Alt-Svc via DNS                January 2018
    When publishing an ALTSVC record in DNS, server operators MUST omit
    the "ma" parameter, which encodes the "max age" (i.e. expiration
    time) of an Alt-Svc Field Value.  Instead, server operators SHOULD
-
-
-
-Schwartz & Bishop         Expires July 14, 2018                 [Page 4]
-
-Internet-Draft               Alt-Svc via DNS                January 2018
-
-
    encode the expiration time in the DNS TTL, and MUST NOT set a TTL
    longer than the intended "max age".
 
@@ -261,6 +274,14 @@ Internet-Draft               Alt-Svc via DNS                January 2018
    record, groups of clients will necessarily receive the same Alt-Svc
    Field Value.  Therefore, this standard is not suitable for servers
    that require single-client granularity in Alt-Svc.  Server operators
+
+
+
+Schwartz & Bishop         Expires July 20, 2018                 [Page 5]
+
+Internet-Draft               Alt-Svc via DNS                January 2018
+
+
    that want to serve different Alt-Svc Field Values to different
    geographic or network regions SHOULD configure their authoritative
    DNS server to respect the EDNS0 Client Subnet extension [RFC7871].
@@ -269,18 +290,6 @@ Internet-Draft               Alt-Svc via DNS                January 2018
    records beyond the stated TTL.  Server operators MUST NOT rely on
    ALTSVC records expiring on time, and MAY shorten the TTL to
    compensate.
-
-
-
-
-
-
-
-
-Schwartz & Bishop         Expires July 14, 2018                 [Page 5]
-
-Internet-Draft               Alt-Svc via DNS                January 2018
-
 
 4.  Client behaviors
 
@@ -321,6 +330,14 @@ Internet-Draft               Alt-Svc via DNS                January 2018
 
    If a client can cache Alt-Svc entries that were received over both
    HTTP and DNS, the client MAY prefer entries that were received over
+
+
+
+Schwartz & Bishop         Expires July 20, 2018                 [Page 6]
+
+Internet-Draft               Alt-Svc via DNS                January 2018
+
+
    HTTP.  These records may be more narrowly targeted for the specific
    client.
 
@@ -328,15 +345,6 @@ Internet-Draft               Alt-Svc via DNS                January 2018
    values, clients MAY prefer those that will not require an address
    query, either because the corresponding address record is already in
    cache or because the host is an IP address.
-
-
-
-
-
-Schwartz & Bishop         Expires July 14, 2018                 [Page 6]
-
-Internet-Draft               Alt-Svc via DNS                January 2018
-
 
    Note that this procedure does not rely on recursive resolvers
    handling the ALTSVC record type correctly.  If ALTSVC queries receive
@@ -371,28 +379,32 @@ Internet-Draft               Alt-Svc via DNS                January 2018
    Alt-Svc Field Values are intended for distribution over untrusted
    channels, and clients are REQUIRED to verify that the alternative
    service is authoritative for the origin (Section 2.1 of [AltSvc]).
-   Therefore, DNSSEC signing and validation are NOT REQUIRED for
-   publishing and using ALTSVC records.
+   Therefore, DNSSEC signing and validation are OPTIONAL for publishing
+   and using ALTSVC records.
+
+
+
+
+
+
+
+
+Schwartz & Bishop         Expires July 20, 2018                 [Page 7]
+
+Internet-Draft               Alt-Svc via DNS                January 2018
+
 
 6.  IANA Considerations
 
    This draft requires assignment of a new DNS RRTYPE value.
 
-7.  Normative References
+7.  References
+
+7.1.  Normative References
 
    [AltSvc]   Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/info/rfc7838>.
-
-
-
-
-
-
-Schwartz & Bishop         Expires July 14, 2018                 [Page 7]
-
-Internet-Draft               Alt-Svc via DNS                January 2018
-
 
    [AltSvcSNI]
               Bishop, M., "The "SNI" Alt-Svc Parameter", draft-bishop-
@@ -407,6 +419,11 @@ Internet-Draft               Alt-Svc via DNS                January 2018
               Version 1.3", draft-ietf-tls-tls13-22 (work in progress),
               November 2017.
 
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
    [RFC2181]  Elz, R. and R. Bush, "Clarifications to the DNS
               Specification", RFC 2181, DOI 10.17487/RFC2181, July 1997,
               <https://www.rfc-editor.org/info/rfc2181>.
@@ -414,11 +431,6 @@ Internet-Draft               Alt-Svc via DNS                January 2018
    [RFC3597]  Gustafsson, A., "Handling of Unknown DNS Resource Record
               (RR) Types", RFC 3597, DOI 10.17487/RFC3597, September
               2003, <https://www.rfc-editor.org/info/rfc3597>.
-
-   [RFC5507]  IAB, Faltstrom, P., Ed., Austein, R., Ed., and P. Koch,
-              Ed., "Design Choices When Expanding the DNS", RFC 5507,
-              DOI 10.17487/RFC5507, April 2009,
-              <https://www.rfc-editor.org/info/rfc5507>.
 
    [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
               Extensions: Extension Definitions", RFC 6066,
@@ -429,10 +441,30 @@ Internet-Draft               Alt-Svc via DNS                January 2018
               DOI 10.17487/RFC6454, December 2011,
               <https://www.rfc-editor.org/info/rfc6454>.
 
+
+
+
+
+Schwartz & Bishop         Expires July 20, 2018                 [Page 8]
+
+Internet-Draft               Alt-Svc via DNS                January 2018
+
+
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
               Layer Security (TLS)", RFC 7858, DOI 10.17487/RFC7858, May
               2016, <https://www.rfc-editor.org/info/rfc7858>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+7.2.  Informative References
+
+   [RFC5507]  IAB, Faltstrom, P., Ed., Austein, R., Ed., and P. Koch,
+              Ed., "Design Choices When Expanding the DNS", RFC 5507,
+              DOI 10.17487/RFC5507, April 2009,
+              <https://www.rfc-editor.org/info/rfc5507>.
 
    [RFC7871]  Contavalli, C., van der Gaast, W., Lawrence, D., and W.
               Kumari, "Client Subnet in DNS Queries", RFC 7871,
@@ -442,13 +474,6 @@ Internet-Draft               Alt-Svc via DNS                January 2018
    [RFC8164]  Nottingham, M. and M. Thomson, "Opportunistic Security for
               HTTP/2", RFC 8164, DOI 10.17487/RFC8164, May 2017,
               <https://www.rfc-editor.org/info/rfc8164>.
-
-
-
-Schwartz & Bishop         Expires July 14, 2018                 [Page 8]
-
-Internet-Draft               Alt-Svc via DNS                January 2018
-
 
 Authors' Addresses
 
@@ -476,29 +501,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Schwartz & Bishop         Expires July 14, 2018                 [Page 9]
+Schwartz & Bishop         Expires July 20, 2018                 [Page 9]
