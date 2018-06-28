@@ -272,7 +272,7 @@ Internet-Draft               Alt-Svc via DNS                   June 2018
    After shuffling the RRSET, the client SHOULD concatenate all the
    values in the RRSET, separated by commas.  (This is semantically
    equivalent to receiving multiple Alt-Svc HTTP response headers,
-   according to Section 4.2 of [HTTP]).
+   according to Section 3.2.2 of [HTTP]).
 
 
 
@@ -517,11 +517,10 @@ Internet-Draft               Alt-Svc via DNS                   June 2018
 
 7.2.  Informative References
 
-   [HTTP]     Fielding, R., Gettys, J., Mogul, J., Frystyk, H.,
-              Masinter, L., Leach, P., and T. Berners-Lee, "Hypertext
-              Transfer Protocol -- HTTP/1.1", RFC 2616,
-              DOI 10.17487/RFC2616, June 1999,
-              <https://www.rfc-editor.org/info/rfc2616>.
+   [HTTP]     Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
+              Protocol (HTTP/1.1): Message Syntax and Routing",
+              RFC 7230, DOI 10.17487/RFC7230, June 2014,
+              <https://www.rfc-editor.org/info/rfc7230>.
 
    [RFC5507]  IAB, Faltstrom, P., Ed., Austein, R., Ed., and P. Koch,
               Ed., "Design Choices When Expanding the DNS", RFC 5507,
@@ -553,6 +552,7 @@ Authors' Addresses
    Akamai Technologies
 
    Email: mbishop@evequefou.be
+
 
 
 

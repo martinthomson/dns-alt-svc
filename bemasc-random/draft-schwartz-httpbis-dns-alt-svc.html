@@ -478,7 +478,7 @@ ul.toc li {
 </h1>
 <p id="rfc.section.3.2.p.1">Server operators MAY publish multiple ALTSVC records as an RRSET.  When publishing an RRSET with multiple ALTSVC records, the server operator MUST set the overall TTL to the minimum of the &#8220;max age&#8221; values (following Section 5.2 of <a href="#RFC2181" class="xref">[RFC2181]</a>).  Each RR can contain multiple alt-values separated by commas, as described in Section 3 of <a href="#AltSvc" class="xref">[AltSvc]</a>.  As specified there, &#8220;the order of values relects the server&#8217;s preference&#8221;.</p>
 <p id="rfc.section.3.2.p.2">When receiving an RRSET containing multiple ALTSVC records, clients SHOULD apply a random shuffle to the records before using them, to ensure randomized load-balancing.  This is consistent with DNS rules for interpretation of RRSETs, which are regarded as unordered collections.</p>
-<p id="rfc.section.3.2.p.3">After shuffling the RRSET, the client SHOULD concatenate all the values in the RRSET, separated by commas.  (This is semantically equivalent to receiving multiple Alt-Svc HTTP response headers, according to Section 4.2 of <a href="#HTTP" class="xref">[HTTP]</a>).</p>
+<p id="rfc.section.3.2.p.3">After shuffling the RRSET, the client SHOULD concatenate all the values in the RRSET, separated by commas.  (This is semantically equivalent to receiving multiple Alt-Svc HTTP response headers, according to Section 3.2.2 of <a href="#HTTP" class="xref">[HTTP]</a>).</p>
 <h1 id="rfc.section.3.3">
 <a href="#rfc.section.3.3">3.3.</a> <a href="#interaction-with-other-standards" id="interaction-with-other-standards">Interaction with other standards</a>
 </h1>
@@ -646,7 +646,7 @@ ul.toc li {
 <tr>
 <td class="reference"><b id="HTTP">[HTTP]</b></td>
 <td class="top">
-<a>Fielding, R.</a>, <a>Gettys, J.</a>, <a>Mogul, J.</a>, <a>Frystyk, H.</a>, <a>Masinter, L.</a>, <a>Leach, P.</a> and <a>T. Berners-Lee</a>, "<a href="https://tools.ietf.org/html/rfc2616">Hypertext Transfer Protocol -- HTTP/1.1</a>", RFC 2616, DOI 10.17487/RFC2616, June 1999.</td>
+<a>Fielding, R.</a> and <a>J. Reschke</a>, "<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>", RFC 7230, DOI 10.17487/RFC7230, June 2014.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC5507">[RFC5507]</b></td>
