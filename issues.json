@@ -34,17 +34,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": "2018-06-25T21:12:33Z",
-    "updated_at": "2018-06-28T21:22:19Z",
-    "closed_at": null,
+    "updated_at": "2018-06-28T22:14:44Z",
+    "closed_at": "2018-06-28T22:14:41Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/1",
