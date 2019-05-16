@@ -5,8 +5,8 @@
 HTTP Working Group                                           B. Schwartz
 Internet-Draft                                                    Google
 Intended status: Standards Track                               M. Bishop
-Expires: December 30, 2018                           Akamai Technologies
-                                                           June 28, 2018
+Expires: November 17, 2019                           Akamai Technologies
+                                                            May 16, 2019
 
 
      Finding HTTP Alternative Services via the Domain Name Service
@@ -38,11 +38,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 30, 2018.
+   This Internet-Draft will expire on November 17, 2019.
 
 Copyright Notice
 
-   Copyright (c) 2018 IETF Trust and the persons identified as the
+   Copyright (c) 2019 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Schwartz & Bishop       Expires December 30, 2018               [Page 1]
+Schwartz & Bishop       Expires November 17, 2019               [Page 1]
 
-Internet-Draft               Alt-Svc via DNS                   June 2018
+Internet-Draft               Alt-Svc via DNS                    May 2019
 
 
    to this document.  Code Components extracted from this document must
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Schwartz & Bishop       Expires December 30, 2018               [Page 2]
+Schwartz & Bishop       Expires November 17, 2019               [Page 2]
 
-Internet-Draft               Alt-Svc via DNS                   June 2018
+Internet-Draft               Alt-Svc via DNS                    May 2019
 
 
    is preferred by the origin.  The first connection also publicly
@@ -165,9 +165,9 @@ Internet-Draft               Alt-Svc via DNS                   June 2018
 
 
 
-Schwartz & Bishop       Expires December 30, 2018               [Page 3]
+Schwartz & Bishop       Expires November 17, 2019               [Page 3]
 
-Internet-Draft               Alt-Svc via DNS                   June 2018
+Internet-Draft               Alt-Svc via DNS                    May 2019
 
 
    For example, if the operator of https://www.example.com intends to
@@ -221,9 +221,9 @@ Internet-Draft               Alt-Svc via DNS                   June 2018
 
 
 
-Schwartz & Bishop       Expires December 30, 2018               [Page 4]
+Schwartz & Bishop       Expires November 17, 2019               [Page 4]
 
-Internet-Draft               Alt-Svc via DNS                   June 2018
+Internet-Draft               Alt-Svc via DNS                    May 2019
 
 
 2.1.2.  Differences from the TXT RRTYPE
@@ -277,9 +277,9 @@ Internet-Draft               Alt-Svc via DNS                   June 2018
 
 
 
-Schwartz & Bishop       Expires December 30, 2018               [Page 5]
+Schwartz & Bishop       Expires November 17, 2019               [Page 5]
 
-Internet-Draft               Alt-Svc via DNS                   June 2018
+Internet-Draft               Alt-Svc via DNS                    May 2019
 
 
 3.3.  Interaction with other standards
@@ -333,9 +333,9 @@ Internet-Draft               Alt-Svc via DNS                   June 2018
 
 
 
-Schwartz & Bishop       Expires December 30, 2018               [Page 6]
+Schwartz & Bishop       Expires November 17, 2019               [Page 6]
 
-Internet-Draft               Alt-Svc via DNS                   June 2018
+Internet-Draft               Alt-Svc via DNS                    May 2019
 
 
    1.  Issue address (AAAA and/or A) queries, immediately followed by
@@ -389,9 +389,9 @@ Internet-Draft               Alt-Svc via DNS                   June 2018
 
 
 
-Schwartz & Bishop       Expires December 30, 2018               [Page 7]
+Schwartz & Bishop       Expires November 17, 2019               [Page 7]
 
-Internet-Draft               Alt-Svc via DNS                   June 2018
+Internet-Draft               Alt-Svc via DNS                    May 2019
 
 
    3.  If the response is nonempty, proceed with alternative service
@@ -445,28 +445,28 @@ Internet-Draft               Alt-Svc via DNS                   June 2018
 
 
 
-Schwartz & Bishop       Expires December 30, 2018               [Page 8]
+Schwartz & Bishop       Expires November 17, 2019               [Page 8]
 
-Internet-Draft               Alt-Svc via DNS                   June 2018
+Internet-Draft               Alt-Svc via DNS                    May 2019
 
 
    [AltSvcSNI]
               Bishop, M., "The "SNI" Alt-Svc Parameter", draft-bishop-
-              httpbis-sni-altsvc-00 (work in progress), November 2017.
+              httpbis-sni-altsvc-02 (work in progress), May 2018.
 
    [Attrleaf]
-              Crocker, D., "DNS Scoped Data Through '_Underscore' Naming
-              of Attribute Leaves", draft-ietf-dnsop-attrleaf-10 (work
-              in progress), June 2018.
+              Crocker, D., "DNS Scoped Data Through "Underscore" Naming
+              of Attribute Leaves", draft-ietf-dnsop-attrleaf-16 (work
+              in progress), November 2018.
 
-   [DOH]      Hoffman, P. and P. McManus, "DNS Queries over HTTPS",
-              draft-ietf-doh-dns-over-https-02 (work in progress),
-              November 2017.
+   [DOH]      Hoffman, P. and P. McManus, "DNS Queries over HTTPS
+              (DoH)", draft-ietf-doh-dns-over-https-14 (work in
+              progress), August 2018.
 
    [I-D.ietf-tls-tls13]
               Rescorla, E., "The Transport Layer Security (TLS) Protocol
-              Version 1.3", draft-ietf-tls-tls13-22 (work in progress),
-              November 2017.
+              Version 1.3", draft-ietf-tls-tls13-28 (work in progress),
+              March 2018.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -501,9 +501,9 @@ Internet-Draft               Alt-Svc via DNS                   June 2018
 
 
 
-Schwartz & Bishop       Expires December 30, 2018               [Page 9]
+Schwartz & Bishop       Expires November 17, 2019               [Page 9]
 
-Internet-Draft               Alt-Svc via DNS                   June 2018
+Internet-Draft               Alt-Svc via DNS                    May 2019
 
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
@@ -557,4 +557,4 @@ Authors' Addresses
 
 
 
-Schwartz & Bishop       Expires December 30, 2018              [Page 10]
+Schwartz & Bishop       Expires November 17, 2019              [Page 10]
