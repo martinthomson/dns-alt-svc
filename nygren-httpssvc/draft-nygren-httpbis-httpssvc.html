@@ -295,7 +295,7 @@ ul.toc li {
 <link href="#rfc.section.2.4" rel="Chapter" title="2.4 HTTPSSVC records: alias form">
 <link href="#rfc.section.2.5" rel="Chapter" title="2.5 HTTPSSVC records: alternative service form">
 <link href="#rfc.section.3" rel="Chapter" title="3 Differences from Alt-Svc as transmitted over HTTP">
-<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Omitting Max Age">
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Omitting Max Age and Persist">
 <link href="#rfc.section.3.2" rel="Chapter" title="3.2 Multiple records and preference ordering">
 <link href="#rfc.section.3.3" rel="Chapter" title="3.3 Constructing Alt-Svc equivalent headers">
 <link href="#rfc.section.3.4" rel="Chapter" title="3.4 Granularity and lifetime control">
@@ -420,7 +420,7 @@ ul.toc li {
 </li>
 </ul><li>3.   <a href="#rfc.section.3">Differences from Alt-Svc as transmitted over HTTP</a>
 </li>
-<ul><li>3.1.   <a href="#rfc.section.3.1">Omitting Max Age</a>
+<ul><li>3.1.   <a href="#rfc.section.3.1">Omitting Max Age and Persist</a>
 </li>
 <li>3.2.   <a href="#rfc.section.3.2">Multiple records and preference ordering</a>
 </li>
@@ -630,10 +630,11 @@ ul.toc li {
 </h1>
 <p id="rfc.section.3.p.1">Publishing an alternative services form HTTPSSVC record in DNS is intended to be equivalent to transmitting this field value over HTTPS, and receiving an HTTPSSVC record is intended to be equivalent to receiving this field value over HTTPS.  However, there are some small differences in the intended client and server behavior.</p>
 <h1 id="rfc.section.3.1">
-<a href="#rfc.section.3.1">3.1.</a> <a href="#omitting-max-age" id="omitting-max-age">Omitting Max Age</a>
+<a href="#rfc.section.3.1">3.1.</a> <a href="#omitting-max-age-and-persist" id="omitting-max-age-and-persist">Omitting Max Age and Persist</a>
 </h1>
 <p id="rfc.section.3.1.p.1">When publishing an HTTPSSVC record in DNS, server operators MUST omit the &#8220;ma&#8221; parameter, which encodes the &#8220;max age&#8221; (i.e. expiration time) of an Alt-Svc Field Value.  Instead, server operators SHOULD encode the expiration time in the DNS TTL, and MUST NOT set a TTL longer than the intended &#8220;max age&#8221;.</p>
 <p id="rfc.section.3.1.p.2">When receiving an HTTPSSVC record, clients MAY synthesize a new &#8220;ma&#8221; parameter from the DNS TTL, in order to interoperate with Alt-Svc processing subsystems.</p>
+<p id="rfc.section.3.1.p.3">When publishing an HTTPSSVC record, server operators MUST omit the &#8220;persist&#8221; parameter, which indicates whether the client should use this record on other network paths.  When receiving an HTTPSSVC record, clients MUST discard any records that contain a &#8220;persist&#8221; flag.  Disabling persistence is important to prevent an adversary on one network from implanting a forged DNS record that allows them to track users after they leave that network.</p>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#multiple-records-and-preference-ordering" id="multiple-records-and-preference-ordering">Multiple records and preference ordering</a>
 </h1>
