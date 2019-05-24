@@ -549,7 +549,7 @@ ul.toc li {
 <ul>
 <li>pri: The value of this parameter is a numeric priority for ordering alternatives (with lower values preferable).  This is needed as RR set entries are unordered.</li>
 <li>sni: An alternative cleartext SNI value to send when establishing a TLS connection.</li>
-<li>esnikey: The encrypted ESNIKEY structure from <a href="#ESNI" class="xref">[ESNI]</a> for use in encrypting the actual origin hostname in the TLS handshake.</li>
+<li>esnikey: The ESNIKeys structure from Section 4.1 of <a href="#ESNI" class="xref">[ESNI]</a> for use in encrypting the actual origin hostname in the TLS handshake.</li>
 <li>hts: An indicator that the http scheme requests should temporarily be redirected to https for this origin hostname.</li>
 </ul>
 <h1 id="rfc.section.1.5">
@@ -722,7 +722,7 @@ ul.toc li {
 <h1 id="rfc.section.6.2">
 <a href="#rfc.section.6.2">6.2.</a> <a href="#alt-svc-parameter-for-esni-keys" id="alt-svc-parameter-for-esni-keys">Alt-Svc parameter for ESNI keys</a>
 </h1>
-<p id="rfc.section.6.2.p.1">An Alt-Svc &#8220;esnikeys&#8221; parameter is defined for specifying ESNI keys corresponding to an alternative service.  The value of the parameter is an ESNIKEYS record <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a>.</p>
+<p id="rfc.section.6.2.p.1">An Alt-Svc &#8220;esnikeys&#8221; parameter is defined for specifying ESNI keys corresponding to an alternative service.  The value of the parameter is an ESNIKeys structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a>.</p>
 <p id="rfc.section.6.2.p.2">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.</p>
 <h1 id="rfc.section.6.3">
 <a href="#rfc.section.6.3">6.3.</a> <a href="#alt-svc-parameter-for-http-to-https-upgrade" id="alt-svc-parameter-for-http-to-https-upgrade">Alt-Svc parameter for HTTP to HTTPS upgrade</a>

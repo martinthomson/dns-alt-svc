@@ -306,8 +306,8 @@ Internet-Draft             HTTPSSVC RR for DNS                  May 2019
    o  sni: An alternative cleartext SNI value to send when establishing
       a TLS connection.
 
-   o  esnikey: The encrypted ESNIKEY structure from [ESNI] for use in
-      encrypting the actual origin hostname in the TLS handshake.
+   o  esnikey: The ESNIKeys structure from Section 4.1 of [ESNI] for use
+      in encrypting the actual origin hostname in the TLS handshake.
 
    o  hts: An indicator that the http scheme requests should temporarily
       be redirected to https for this origin hostname.
@@ -761,7 +761,7 @@ Internet-Draft             HTTPSSVC RR for DNS                  May 2019
 
    An Alt-Svc "esnikeys" parameter is defined for specifying ESNI keys
    corresponding to an alternative service.  The value of the parameter
-   is an ESNIKEYS record [ESNI] encoded in [base64].
+   is an ESNIKeys structure [ESNI] encoded in [base64].
 
    This parameter MAY also be sent in Alt-Svc HTTP response headers and
    HTTP/2 ALTSVC frames.
