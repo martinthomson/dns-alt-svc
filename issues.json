@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/9",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/9/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/9/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/9/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/9",
+    "id": 450428536,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjgzNzQ5MzE1",
+    "number": 9,
+    "title": "Defend HSTS behavior against certain attackers",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-05-30T17:50:41Z",
+    "updated_at": "2019-05-30T17:50:42Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/9",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/9",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/9.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/9.patch"
+    },
+    "body": "With this change, the behavior might even be worthy of\r\nthe name \"strict\"."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/8",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/8/labels{/name}",
@@ -88,7 +142,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -97,8 +151,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-05-16T16:38:08Z",
-    "updated_at": "2019-05-30T15:57:14Z",
-    "closed_at": null,
+    "updated_at": "2019-05-30T21:16:42Z",
+    "closed_at": "2019-05-30T21:16:42Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/7",
@@ -106,7 +160,7 @@
       "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/7.diff",
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/7.patch"
     },
-    "body": "This is a slight abuse of Alt-Svc syntax, but it should\r\nbe compatible with all plausible server configurations."
+    "body": "EDIT: New approach: This handles nonstandard HTTP ports in the same way as HSTS."
   },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/6",
@@ -367,7 +421,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-05-16T13:33:59Z",
-    "updated_at": "2019-05-24T21:20:25Z",
+    "updated_at": "2019-05-30T21:16:43Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
