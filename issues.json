@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/10",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/10/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/10/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/10/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/10",
+    "id": 450964570,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjg0MTc5NzIy",
+    "number": 10,
+    "title": "Change performance-optimized client behavior",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-05-31T20:15:37Z",
+    "updated_at": "2019-06-04T20:56:37Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/10",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/10",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/10.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/10.patch"
+    },
+    "body": "This gives clients an opt-out in the rare cases where\r\nHTTPSSVC would impair performance, and also gives\r\nserver admins a clear way to avoid these cases."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/9",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/9/labels{/name}",
