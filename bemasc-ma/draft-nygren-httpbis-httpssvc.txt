@@ -525,7 +525,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    flag.  Disabling persistence is important to prevent a local
    adversary in one network from implanting a forged DNS record that
    allows them to track users or hinder their connections after they
-   leave that network
+   leave that network.
 
 3.2.  Multiple records and preference ordering
 
