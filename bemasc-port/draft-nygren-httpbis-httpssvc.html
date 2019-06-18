@@ -302,30 +302,29 @@ ul.toc li {
 <link href="#rfc.section.4" rel="Chapter" title="4 Client behaviors">
 <link href="#rfc.section.4.1" rel="Chapter" title="4.1 HTTP Strict Transport Security">
 <link href="#rfc.section.4.2" rel="Chapter" title="4.2 Cache interaction">
-<link href="#rfc.section.4.3" rel="Chapter" title="4.3 Optimizing for performance">
-<link href="#rfc.section.4.4" rel="Chapter" title="4.4 Optimizing for privacy">
 <link href="#rfc.section.5" rel="Chapter" title="5 DNS Server Behaviors">
-<link href="#rfc.section.6" rel="Chapter" title="6 Extensions to enhance privacy">
-<link href="#rfc.section.6.1" rel="Chapter" title="6.1 Alt-Svc parameter for cleartext SNI value">
-<link href="#rfc.section.6.2" rel="Chapter" title="6.2 Alt-Svc parameter for ESNI keys">
-<link href="#rfc.section.6.3" rel="Chapter" title="6.3 Interaction with other standards">
-<link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations">
-<link href="#rfc.section.8" rel="Chapter" title="8 IANA Considerations">
-<link href="#rfc.section.9" rel="Chapter" title="9 Acknowledgements and Related Proposals">
-<link href="#rfc.section.10" rel="Chapter" title="10 Appendix">
-<link href="#rfc.section.10.1" rel="Chapter" title="10.1 Comparison with alternatives">
-<link href="#rfc.section.10.1.1" rel="Chapter" title="10.1.1 Differences from the SRV RRTYPE">
-<link href="#rfc.section.10.1.2" rel="Chapter" title="10.1.2 Differences from the proposed HTTP record">
-<link href="#rfc.section.10.1.3" rel="Chapter" title="10.1.3 Differences from the proposed ANAME record">
-<link href="#rfc.section.10.1.4" rel="Chapter" title="10.1.4 Differences from the proposed ESNIKEYS record">
-<link href="#rfc.section.10.2" rel="Chapter" title="10.2 Design Considerations and Open Issues">
-<link href="#rfc.section.10.2.1" rel="Chapter" title="10.2.1 Record Name">
-<link href="#rfc.section.10.2.2" rel="Chapter" title="10.2.2 Applicability to other schemes">
-<link href="#rfc.section.10.2.3" rel="Chapter" title="10.2.3 Wire Format">
-<link href="#rfc.section.10.2.4" rel="Chapter" title="10.2.4 Extensibility of SvcRecordType">
-<link href="#rfc.references" rel="Chapter" title="11 References">
-<link href="#rfc.references.1" rel="Chapter" title="11.1 Normative References">
-<link href="#rfc.references.2" rel="Chapter" title="11.2 Informative References">
+<link href="#rfc.section.6" rel="Chapter" title="6 Performance optimizations">
+<link href="#rfc.section.7" rel="Chapter" title="7 Extensions to enhance privacy">
+<link href="#rfc.section.7.1" rel="Chapter" title="7.1 Alt-Svc parameter for cleartext SNI value">
+<link href="#rfc.section.7.2" rel="Chapter" title="7.2 Alt-Svc parameter for ESNI keys">
+<link href="#rfc.section.7.3" rel="Chapter" title="7.3 Interaction with other standards">
+<link href="#rfc.section.8" rel="Chapter" title="8 Security Considerations">
+<link href="#rfc.section.9" rel="Chapter" title="9 IANA Considerations">
+<link href="#rfc.section.10" rel="Chapter" title="10 Acknowledgements and Related Proposals">
+<link href="#rfc.section.11" rel="Chapter" title="11 Appendix">
+<link href="#rfc.section.11.1" rel="Chapter" title="11.1 Comparison with alternatives">
+<link href="#rfc.section.11.1.1" rel="Chapter" title="11.1.1 Differences from the SRV RRTYPE">
+<link href="#rfc.section.11.1.2" rel="Chapter" title="11.1.2 Differences from the proposed HTTP record">
+<link href="#rfc.section.11.1.3" rel="Chapter" title="11.1.3 Differences from the proposed ANAME record">
+<link href="#rfc.section.11.1.4" rel="Chapter" title="11.1.4 Differences from the proposed ESNIKEYS record">
+<link href="#rfc.section.11.2" rel="Chapter" title="11.2 Design Considerations and Open Issues">
+<link href="#rfc.section.11.2.1" rel="Chapter" title="11.2.1 Record Name">
+<link href="#rfc.section.11.2.2" rel="Chapter" title="11.2.2 Applicability to other schemes">
+<link href="#rfc.section.11.2.3" rel="Chapter" title="11.2.3 Wire Format">
+<link href="#rfc.section.11.2.4" rel="Chapter" title="11.2.4 Extensibility of SvcRecordType">
+<link href="#rfc.references" rel="Chapter" title="12 References">
+<link href="#rfc.references.1" rel="Chapter" title="12.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="12.2 Informative References">
 <link href="#rfc.authors" rel="Chapter">
 
 
@@ -334,7 +333,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Schwartz, B., Bishop, M., and E. Nygren" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-nygren-httpbis-httpssvc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-30" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-18" />
   <meta name="dct.abstract" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
   <meta name="description" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
 
@@ -358,7 +357,7 @@ ul.toc li {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: December 1, 2019</td>
+<td class="left">Expires: December 20, 2019</td>
 <td class="right">E. Nygren</td>
 </tr>
 <tr>
@@ -367,7 +366,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">May 30, 2019</td>
+<td class="right">June 18, 2019</td>
 </tr>
 
     	
@@ -384,7 +383,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on December 1, 2019.</p>
+<p>This Internet-Draft will expire on December 20, 2019.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -434,53 +433,51 @@ ul.toc li {
 </li>
 <li>4.2.   <a href="#rfc.section.4.2">Cache interaction</a>
 </li>
-<li>4.3.   <a href="#rfc.section.4.3">Optimizing for performance</a>
-</li>
-<li>4.4.   <a href="#rfc.section.4.4">Optimizing for privacy</a>
-</li>
 </ul><li>5.   <a href="#rfc.section.5">DNS Server Behaviors</a>
 </li>
-<li>6.   <a href="#rfc.section.6">Extensions to enhance privacy</a>
+<li>6.   <a href="#rfc.section.6">Performance optimizations</a>
 </li>
-<ul><li>6.1.   <a href="#rfc.section.6.1">Alt-Svc parameter for cleartext SNI value</a>
+<li>7.   <a href="#rfc.section.7">Extensions to enhance privacy</a>
 </li>
-<li>6.2.   <a href="#rfc.section.6.2">Alt-Svc parameter for ESNI keys</a>
+<ul><li>7.1.   <a href="#rfc.section.7.1">Alt-Svc parameter for cleartext SNI value</a>
 </li>
-<li>6.3.   <a href="#rfc.section.6.3">Interaction with other standards</a>
+<li>7.2.   <a href="#rfc.section.7.2">Alt-Svc parameter for ESNI keys</a>
 </li>
-</ul><li>7.   <a href="#rfc.section.7">Security Considerations</a>
+<li>7.3.   <a href="#rfc.section.7.3">Interaction with other standards</a>
 </li>
-<li>8.   <a href="#rfc.section.8">IANA Considerations</a>
+</ul><li>8.   <a href="#rfc.section.8">Security Considerations</a>
 </li>
-<li>9.   <a href="#rfc.section.9">Acknowledgements and Related Proposals</a>
+<li>9.   <a href="#rfc.section.9">IANA Considerations</a>
 </li>
-<li>10.   <a href="#rfc.section.10">Appendix</a>
+<li>10.   <a href="#rfc.section.10">Acknowledgements and Related Proposals</a>
 </li>
-<ul><li>10.1.   <a href="#rfc.section.10.1">Comparison with alternatives</a>
+<li>11.   <a href="#rfc.section.11">Appendix</a>
 </li>
-<ul><li>10.1.1.   <a href="#rfc.section.10.1.1">Differences from the SRV RRTYPE</a>
+<ul><li>11.1.   <a href="#rfc.section.11.1">Comparison with alternatives</a>
 </li>
-<li>10.1.2.   <a href="#rfc.section.10.1.2">Differences from the proposed HTTP record</a>
+<ul><li>11.1.1.   <a href="#rfc.section.11.1.1">Differences from the SRV RRTYPE</a>
 </li>
-<li>10.1.3.   <a href="#rfc.section.10.1.3">Differences from the proposed ANAME record</a>
+<li>11.1.2.   <a href="#rfc.section.11.1.2">Differences from the proposed HTTP record</a>
 </li>
-<li>10.1.4.   <a href="#rfc.section.10.1.4">Differences from the proposed ESNIKEYS record</a>
+<li>11.1.3.   <a href="#rfc.section.11.1.3">Differences from the proposed ANAME record</a>
 </li>
-</ul><li>10.2.   <a href="#rfc.section.10.2">Design Considerations and Open Issues</a>
+<li>11.1.4.   <a href="#rfc.section.11.1.4">Differences from the proposed ESNIKEYS record</a>
 </li>
-<ul><li>10.2.1.   <a href="#rfc.section.10.2.1">Record Name</a>
+</ul><li>11.2.   <a href="#rfc.section.11.2">Design Considerations and Open Issues</a>
 </li>
-<li>10.2.2.   <a href="#rfc.section.10.2.2">Applicability to other schemes</a>
+<ul><li>11.2.1.   <a href="#rfc.section.11.2.1">Record Name</a>
 </li>
-<li>10.2.3.   <a href="#rfc.section.10.2.3">Wire Format</a>
+<li>11.2.2.   <a href="#rfc.section.11.2.2">Applicability to other schemes</a>
 </li>
-<li>10.2.4.   <a href="#rfc.section.10.2.4">Extensibility of SvcRecordType</a>
+<li>11.2.3.   <a href="#rfc.section.11.2.3">Wire Format</a>
 </li>
-</ul></ul><li>11.   <a href="#rfc.references">References</a>
+<li>11.2.4.   <a href="#rfc.section.11.2.4">Extensibility of SvcRecordType</a>
 </li>
-<ul><li>11.1.   <a href="#rfc.references.1">Normative References</a>
+</ul></ul><li>12.   <a href="#rfc.references">References</a>
 </li>
-<li>11.2.   <a href="#rfc.references.2">Informative References</a>
+<ul><li>12.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>12.2.   <a href="#rfc.references.2">Informative References</a>
 </li>
 </ul><li><a href="#rfc.authors">Authors' Addresses</a>
 </li>
@@ -590,8 +587,7 @@ ul.toc li {
 <p></p>
 
 <ol>
-<li>The origin scheme MUST be &#8220;https&#8221;.  If the port is unspecified or &#8220;443&#8221;, then the RRName is equal to the origin host name.</li>
-<li>If the port is not 443, the RRName is represented by prefixing the port and scheme with &#8220;_&#8221;, then concatenating them with the host, resulting in a domain name like &#8220;_832._https.www.example.com.&#8221;.</li>
+<li>If the scheme is &#8220;https&#8221; and the port is 443, then the RRName is equal to the origin host name.  Otherwise the RRName is represented by prefixing the port and scheme with &#8220;_&#8221;, then concatenating them with the host, resulting in a domain name like &#8220;_832._https.www.example.com.&#8221;.</li>
 <li>When a prior CNAME or HTTPSSVC record has aliased to an HTTPSSVC record, RRName shall be the name of the alias target.</li>
 </ol>
 <p id="rfc.section.2.2.p.3">Note that none of these forms alter the HTTPS origin or authority.  For example, clients MUST continue to validate TLS certificate hostnames based on the origin host.</p>
@@ -606,7 +602,7 @@ ul.toc li {
 </h1>
 <p id="rfc.section.2.4.p.1">When SvcRecordType is &#8220;0&#8221;, the HTTPSSVC record is to be treated similar to a CNAME alias pointing to the domain name specified in SvcDomainName.  HTTPSSVC RRSets MUST only have a single resource record in this form.  If multiple are present, clients or recursive resolvers SHOULD pick one non-determinstically.</p>
 <p id="rfc.section.2.4.p.2">The common use-case for this form of the HTTPSVC record is as an alternative to CNAMEs at the zone apex where they are not allowed.  For example, if an operator of https://example.com wanted to point HTTPS requests to a service operating at svc.example.net, they would publish a record such as:</p>
-<p id="rfc.section.2.4.p.3">example.com. 3600 IN HTTPSSVC 1 svc.example.net.</p>
+<p id="rfc.section.2.4.p.3">example.com. 3600 IN HTTPSSVC 0 svc.example.net.</p>
 <p id="rfc.section.2.4.p.4">The SvcDomainName MUST point to a domain name that contains another HTTPSSVC record and/or address (AAAA and/or A) records.</p>
 <p id="rfc.section.2.4.p.5">Note that the RRName or the SvcDomainName MAY themselves be CNAMEs.  Clients and recursive resolvers MUST follow CNAMEs as normal.</p>
 <p id="rfc.section.2.4.p.6">Due to the risk of loops, clients and recursive resolvers MUST implement loop detection.  Chains of consecutive HTTPSSVC and CNAME records SHOULD be limited to (8?) prior to reaching terminal address records.</p>
@@ -623,7 +619,7 @@ ul.toc li {
 <p id="rfc.section.2.5.p.7">This data type can be represented as an Unknown RR as described in <a href="#RFC3597" class="xref">[RFC3597]</a>:</p>
 <p id="rfc.section.2.5.p.8">www.example.com. 3600 IN TYPE??? \# TBD:WRITEME</p>
 <p id="rfc.section.2.5.p.9">This construction is intended to be extensible in two ways.  First, any extensions that are made to the Alt-Svc format for transmission over HTTPS are also applicable here, unless expressly mentioned otherwise.</p>
-<p id="rfc.section.2.5.p.10">Second, by defining a way to map non-HTTPS schemes and non-default ports we provide a way for the HTTPSSVC to be used for them as needed.  However, by using the origin name for the RRName for scheme https and port 443 we allow HTTPSSVC records to be included at the end of CNAME chains for existing site implementations without requiring changes in the zone containing the origin.</p>
+<p id="rfc.section.2.5.p.10">Second, by defining a way to map non-HTTPS schemes and non-default ports (<a href="#rrnames" class="xref">Section 2.2</a>), we provide a way for the HTTPSSVC to be used for them as needed.  However, by using the origin name for the RRName for scheme https and port 443 we allow HTTPSSVC records to be included at the end of CNAME chains for existing site implementations without requiring changes in the zone containing the origin.</p>
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#differences-from-alt-svc-as-transmitted-over-http" id="differences-from-alt-svc-as-transmitted-over-http">Differences from Alt-Svc as transmitted over HTTP</a>
 </h1>
@@ -656,7 +652,7 @@ ul.toc li {
 <h1 id="rfc.section.3.4">
 <a href="#rfc.section.3.4">3.4.</a> <a href="#granularity-and-lifetime-control" id="granularity-and-lifetime-control">Granularity and lifetime control</a>
 </h1>
-<p id="rfc.section.3.4.p.1">Sending Alt-Svc over HTTP allows the server to tailor the Alt-Svc Field Value specifically to the client.  When using an HTTPSSVC DNS record, groups of clients will necessarily receive the same Alt-Svc Field Value.  Therefore, this standard is not suitable for servers that require single-client granularity in Alt-Svc.  Server operators that want to serve different Alt-Svc Field Values to different geographic or network regions SHOULD configure their authoritative DNS server to respect the EDNS0 Client Subnet extension <a href="#RFC7871" class="xref">[RFC7871]</a>.</p>
+<p id="rfc.section.3.4.p.1">Sending Alt-Svc over HTTP allows the server to tailor the Alt-Svc Field Value specifically to the client.  When using an HTTPSSVC DNS record, groups of clients will necessarily receive the same Alt-Svc Field Value.  Therefore, this standard is not suitable for servers that require single-client granularity in Alt-Svc.</p>
 <p id="rfc.section.3.4.p.2">Some DNS caching systems incorrectly extend the lifetime of DNS records beyond the stated TTL.  Server operators MUST NOT rely on HTTPSSVC records expiring on time, and MAY shorten the TTL to compensate.</p>
 <p id="rfc.section.3.4.p.3">Clients SHOULD (MAY?) prefer alternative service records received over HTTPS to those received via DNS.</p>
 <h1 id="rfc.section.4">
@@ -682,79 +678,58 @@ ul.toc li {
 </h1>
 <p id="rfc.section.4.2.p.1">If the client has an Alt-Svc cache, and a usable Alt-Svc value is present in that cache, then the client SHOULD NOT issue an HTTPSSVC DNS query.  Instead, the client SHOULD proceed with alternative service connection as usual.</p>
 <p id="rfc.section.4.2.p.2">If the client has a cached Alt-Svc entry that is expiring, the client MAY perform an HTTPSSVC query to refresh the entry.</p>
-<h1 id="rfc.section.4.3">
-<a href="#rfc.section.4.3">4.3.</a> <a href="#optimizing-for-performance" id="optimizing-for-performance">Optimizing for performance</a>
-</h1>
-<p id="rfc.section.4.3.p.1">Clients that are optimizing for performance (i.e. minimum connection setup time) SHOULD implement the following connection sequence:</p>
-<p></p>
-
-<ol>
-<li>Issue address (AAAA and/or A) queries, immediately followed by the HTTPSSVC query.</li>
-<li>If an HTTPSSVC response is received first, proceed with alternative service connection and ignore the address responses if they are no longer relevant.</li>
-<li>Otherwise, initiate connection to the origin server.</li>
-<li>As soon as an Alt-Svc field value is received, through the DNS or over HTTP, proceed with alternative service connection.  Do not abort this connection if an Alt-Svc field value is received from the other source later.</li>
-</ol>
-<p id="rfc.section.4.3.p.3">If the HTTPSSVC and address queries return approximately simultaneously, this process typically saves three roundtrips on a fresh connection that uses Alt-Svc: one each for TCP, TLS 1.3, and HTTP.  (On subsequent connections, the Alt-Svc information is expected to be cached, so this procedure does not apply.)</p>
-<p id="rfc.section.4.3.p.4">If a client can cache Alt-Svc entries that were received over both HTTP and DNS, the client MAY prefer entries that were received over HTTP.  These records may be more narrowly targeted for the specific client.</p>
-<p id="rfc.section.4.3.p.5">As an additional optimization, when choosing among multiple Alt-Svc values, clients MAY prefer those that will not require an address query, either because the corresponding address record is already in cache or because the host is an IP address.</p>
-<p id="rfc.section.4.3.p.6">Note that this procedure does not rely on recursive resolvers handling the HTTPSSVC record type correctly.  If HTTPSSVC queries receive spurious NXDOMAIN responses, or even no response at all, connections will proceed as usual without any delay.</p>
-<h1 id="rfc.section.4.4">
-<a href="#rfc.section.4.4">4.4.</a> <a href="#optimizing-for-privacy" id="optimizing-for-privacy">Optimizing for privacy</a>
-</h1>
-<p id="rfc.section.4.4.p.1">Clients that are optimizing for privacy SHOULD implement <a href="#AltSvcSNI" class="xref">[AltSvcSNI]</a> and DNS over a secure transport (e.g. <a href="#RFC7858" class="xref">[RFC7858]</a> or <a href="#DOH" class="xref">[DOH]</a>).  Use of a secure transport is important not only for privacy protection, but also to ensure that queries for the new HTTPSSVC RRTYPE are handled correctly.  Additionally, these clients SHOULD implement the following connection sequence:</p>
-<p></p>
-
-<ol>
-<li>Issue the HTTPSSVC DNS query first, immediately followed by the address queries.</li>
-<li>Wait for the HTTPSSVC record response.</li>
-<li>If the response is nonempty, proceed with alternative service connection and ignore the address query responses.</li>
-<li>Otherwise, wait for the address queries and connect as usual.</li>
-</ol>
-<p id="rfc.section.4.4.p.3">Note that this process is also expected to be faster than Alt-Svc over HTTP in the case of HTTP Opportunistic Upgrade Probing (Section 2 of <a href="#RFC8164" class="xref">[RFC8164]</a>).</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#dns-server-behaviors" id="dns-server-behaviors">DNS Server Behaviors</a>
 </h1>
 <p id="rfc.section.5.p.1">Recursive DNS servers SHOULD resolve SvcDomainName records and include them in the Additional Section (along with any relevant CNAME records).  For SvcRecordType=0, recursive DNS servers should attempt to resolve and include A, AAAA, and HTTPSSVC records.  For SvcRecordType=1, recursive DNS servers should attempt to resolve and include A and AAAA records.</p>
 <p id="rfc.section.5.p.2">Authoritative DNS servers SHOULD return A, AAAA, and HTTPSSVC records (as well as any relevant CNAME records) in the Additional Section for any in-bailiwick SvcDomainNames.</p>
 <h1 id="rfc.section.6">
-<a href="#rfc.section.6">6.</a> <a href="#extensions-to-enhance-privacy" id="extensions-to-enhance-privacy">Extensions to enhance privacy</a>
+<a href="#rfc.section.6">6.</a> <a href="#performance-optimizations" id="performance-optimizations">Performance optimizations</a>
 </h1>
-<h1 id="rfc.section.6.1">
-<a href="#rfc.section.6.1">6.1.</a> <a href="#alt-svc-parameter-for-cleartext-sni-value" id="alt-svc-parameter-for-cleartext-sni-value">Alt-Svc parameter for cleartext SNI value</a>
-</h1>
-<p id="rfc.section.6.1.p.1">An Alt-Svc &#8220;sni&#8221; parameter is defined for specifying the cleartext SNI value to be sent when connecting to this alternative service.  When present, clients SHOULD send this SNI value when connecting to the alternative.</p>
-<p id="rfc.section.6.1.p.2">For example:</p>
-<p id="rfc.section.6.1.p.3">sni=&#8221;_wildcard.example.com&#8221;</p>
-<p id="rfc.section.6.1.p.4">would indicate that &#8220;_wildcard.example.com&#8221; should be sent when connecting to the corresponding alternative service.  For a large set of origin names covered by a wildcard cert, this can help hide which specific origin name is needed.</p>
-<p id="rfc.section.6.1.p.5">Because service operators control the HTTPSSVC record, this allows them to specify what information they need from the SNI value.</p>
-<p id="rfc.section.6.1.p.6">Servers MUST still be prepared for clients to continue to send an SNI value of the origin hostname.</p>
-<p id="rfc.section.6.1.p.7">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.</p>
-<h1 id="rfc.section.6.2">
-<a href="#rfc.section.6.2">6.2.</a> <a href="#alt-svc-parameter-for-esni-keys" id="alt-svc-parameter-for-esni-keys">Alt-Svc parameter for ESNI keys</a>
-</h1>
-<p id="rfc.section.6.2.p.1">An Alt-Svc &#8220;esnikeys&#8221; parameter is defined for specifying ESNI keys corresponding to an alternative service.  The value of the parameter is an ESNIKeys structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a>.</p>
-<p id="rfc.section.6.2.p.2">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.</p>
-<h1 id="rfc.section.6.3">
-<a href="#rfc.section.6.3">6.3.</a> <a href="#interaction-with-other-standards" id="interaction-with-other-standards">Interaction with other standards</a>
-</h1>
-<p id="rfc.section.6.3.p.1">The purpose of this standard is to reduce connection latency and improve user privacy.  Server operators implementing this standard SHOULD also implement TLS 1.3 <a href="#I-D.ietf-tls-tls13" class="xref">[I-D.ietf-tls-tls13]</a> and OCSP Stapling <a href="#RFC6066" class="xref">[RFC6066]</a>, both of which confer substantial performance and privacy benefits when used in combination with HTTPSSVC records.</p>
-<p id="rfc.section.6.3.p.2">To realize the greatest privacy benefits, this proposal is intended for use with a privacy-preserving DNS transport (like DNS over TLS <a href="#RFC7858" class="xref">[RFC7858]</a> or DNS over HTTPS <a href="#DOH" class="xref">[DOH]</a>), and with the &#8220;SNI&#8221; Alt-Svc Parameter <a href="#AltSvcSNI" class="xref">[AltSvcSNI]</a>.  However, performance improvements, and some modest privacy improvements, are possible without the use of those standards.</p>
-<p id="rfc.section.6.3.p.3">This RRType could be extended to support schemes other than &#8220;https&#8221;.  Any such scheme MUST have an entry under the HTTPSSVC RRType in the IANA DNS Underscore Global Scoped Entry Registry <a href="#Attrleaf" class="xref">[Attrleaf]</a> The scheme SHOULD have an entry in the IANA URI Schemes Registry <a href="#RFC7595" class="xref">[RFC7595]</a>.  The scheme SHOULD be one for which Alt-Svc is defined.</p>
+<p id="rfc.section.6.p.1">For optimal performance (i.e. minimum connection setup time), clients SHOULD issue address (AAAA and/or A) and HTTPSSVC queries simultaneously, and SHOULD implement a client-side DNS cache.  With these optimizations in place, and conforming DNS servers, using HTTPSSVC does not add network latency to connection setup.</p>
+<p id="rfc.section.6.p.2">A nonconforming recursive resolver might return an HTTPSSVC response with a nonempty SvcDomainName, without the corresponding address records.  If all the HTTPSSVC RRs in the response have nonempty SvcDomainName values, and the client does not have address records for any of these values in its DNS cache, the client SHOULD perform an additional address query for the selected SvcDomainName.</p>
+<p id="rfc.section.6.p.3">The additional DNS query in this case introduces a delay.  To avoid causing a delay for clients using a nonconforming recursive resolver, domain owners SHOULD choose the SvcDomainName to be a name in the origin hostname&#8217;s CNAME chain if possible.  This will ensure that the required address records are already present in the client&#8217;s DNS cache.</p>
+<p id="rfc.section.6.p.4">Highly performance-sensitive clients MAY implement the following special- case shortcut to avoid increased connection time: if (1) all of the HTTPSSVC records returned have SvcRecordType = 0, (2) none of their SvcDomainNames are in the DNS cache, and (3) the address queries for the origin domain return usable IP addresses, then the client MAY ignore the HTTPSSVC records and connect directly to the origin domain.</p>
+<p id="rfc.section.6.p.5">Server operators can therefore expect that publishing HTTPSSVC records with SvcRecordType = 0 should not cause an additional DNS query for performance-sensitive clients.  Server operators who wish to prevent this optimization should use SvcRecordType = 1.</p>
 <h1 id="rfc.section.7">
-<a href="#rfc.section.7">7.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
+<a href="#rfc.section.7">7.</a> <a href="#extensions-to-enhance-privacy" id="extensions-to-enhance-privacy">Extensions to enhance privacy</a>
 </h1>
-<p id="rfc.section.7.p.1">Alt-Svc Field Values are intended for distribution over untrusted channels, and clients are REQUIRED to verify that the alternative service is authoritative for the origin (Section 2.1 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  Therefore, DNSSEC signing and validation are OPTIONAL for publishing and using HTTPSSVC records.</p>
-<p id="rfc.section.7.p.2">TBD: expand this section in more detail.  In particular:</p>
+<h1 id="rfc.section.7.1">
+<a href="#rfc.section.7.1">7.1.</a> <a href="#alt-svc-parameter-for-cleartext-sni-value" id="alt-svc-parameter-for-cleartext-sni-value">Alt-Svc parameter for cleartext SNI value</a>
+</h1>
+<p id="rfc.section.7.1.p.1">An Alt-Svc &#8220;sni&#8221; parameter is defined for specifying the cleartext SNI value to be sent when connecting to this alternative service.  When present, clients SHOULD send this SNI value when connecting to the alternative.</p>
+<p id="rfc.section.7.1.p.2">For example:</p>
+<p id="rfc.section.7.1.p.3">sni=&#8221;_wildcard.example.com&#8221;</p>
+<p id="rfc.section.7.1.p.4">would indicate that &#8220;_wildcard.example.com&#8221; should be sent when connecting to the corresponding alternative service.  For a large set of origin names covered by a wildcard cert, this can help hide which specific origin name is needed.</p>
+<p id="rfc.section.7.1.p.5">Because service operators control the HTTPSSVC record, this allows them to specify what information they need from the SNI value.</p>
+<p id="rfc.section.7.1.p.6">Servers MUST still be prepared for clients to continue to send an SNI value of the origin hostname.</p>
+<p id="rfc.section.7.1.p.7">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.</p>
+<h1 id="rfc.section.7.2">
+<a href="#rfc.section.7.2">7.2.</a> <a href="#alt-svc-parameter-for-esni-keys" id="alt-svc-parameter-for-esni-keys">Alt-Svc parameter for ESNI keys</a>
+</h1>
+<p id="rfc.section.7.2.p.1">An Alt-Svc &#8220;esnikeys&#8221; parameter is defined for specifying ESNI keys corresponding to an alternative service.  The value of the parameter is an ESNIKeys structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a>.</p>
+<p id="rfc.section.7.2.p.2">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.</p>
+<h1 id="rfc.section.7.3">
+<a href="#rfc.section.7.3">7.3.</a> <a href="#interaction-with-other-standards" id="interaction-with-other-standards">Interaction with other standards</a>
+</h1>
+<p id="rfc.section.7.3.p.1">The purpose of this standard is to reduce connection latency and improve user privacy.  Server operators implementing this standard SHOULD also implement TLS 1.3 <a href="#I-D.ietf-tls-tls13" class="xref">[I-D.ietf-tls-tls13]</a> and OCSP Stapling <a href="#RFC6066" class="xref">[RFC6066]</a>, both of which confer substantial performance and privacy benefits when used in combination with HTTPSSVC records.</p>
+<p id="rfc.section.7.3.p.2">To realize the greatest privacy benefits, this proposal is intended for use with a privacy-preserving DNS transport (like DNS over TLS <a href="#RFC7858" class="xref">[RFC7858]</a> or DNS over HTTPS <a href="#DOH" class="xref">[DOH]</a>), and with the &#8220;SNI&#8221; Alt-Svc Parameter <a href="#AltSvcSNI" class="xref">[AltSvcSNI]</a>.  However, performance improvements, and some modest privacy improvements, are possible without the use of those standards.</p>
+<p id="rfc.section.7.3.p.3">This RRType could be extended to support schemes other than &#8220;https&#8221;.  Any such scheme MUST have an entry under the HTTPSSVC RRType in the IANA DNS Underscore Global Scoped Entry Registry <a href="#Attrleaf" class="xref">[Attrleaf]</a> The scheme SHOULD have an entry in the IANA URI Schemes Registry <a href="#RFC7595" class="xref">[RFC7595]</a>.  The scheme SHOULD be one for which Alt-Svc is defined.</p>
+<h1 id="rfc.section.8">
+<a href="#rfc.section.8">8.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
+</h1>
+<p id="rfc.section.8.p.1">Alt-Svc Field Values are intended for distribution over untrusted channels, and clients are REQUIRED to verify that the alternative service is authoritative for the origin (Section 2.1 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  Therefore, DNSSEC signing and validation are OPTIONAL for publishing and using HTTPSSVC records.</p>
+<p id="rfc.section.8.p.2">TBD: expand this section in more detail.  In particular:</p>
 <p></p>
 
 <ul>
 <li>Any additional tracking risks introduced by the sni= parameter.  (Perhaps incorporating text from <a href="#AltSvcSNI" class="xref">[AltSvcSNI]</a>).</li>
 <li>&#8230;</li>
 </ul>
-<h1 id="rfc.section.8">
-<a href="#rfc.section.8">8.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
+<h1 id="rfc.section.9">
+<a href="#rfc.section.9">9.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
 </h1>
-<p id="rfc.section.8.p.1">Per <a href="#RFC6895" class="xref">[RFC6895]</a>, please add the following entry to the data type range of the Resource Record (RR) TYPEs registry:</p>
+<p id="rfc.section.9.p.1">Per <a href="#RFC6895" class="xref">[RFC6895]</a>, please add the following entry to the data type range of the Resource Record (RR) TYPEs registry:</p>
 <table cellpadding="3" cellspacing="0" class="tt full center">
 <thead><tr>
 <th class="left">TYPE</th>
@@ -767,7 +742,7 @@ ul.toc li {
 <td class="left">(This document)</td>
 </tr></tbody>
 </table>
-<p id="rfc.section.8.p.2">Per <a href="#Attrleaf" class="xref">[Attrleaf]</a>, please add the following entries to the DNS Underscore Global Scoped Entry Registry:</p>
+<p id="rfc.section.9.p.2">Per <a href="#Attrleaf" class="xref">[Attrleaf]</a>, please add the following entries to the DNS Underscore Global Scoped Entry Registry:</p>
 <table cellpadding="3" cellspacing="0" class="tt full center">
 <thead><tr>
 <th class="left">RR TYPE</th>
@@ -775,22 +750,14 @@ ul.toc li {
 <th class="left">Meaning</th>
 <th class="left">Reference</th>
 </tr></thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td class="left">HTTPSSVC</td>
 <td class="left">_https</td>
 <td class="left">Alt-Svc for HTTPS</td>
 <td class="left">(This document)</td>
-</tr>
-<tr>
-<td class="left">HTTPSSVC</td>
-<td class="left">_http</td>
-<td class="left">Alt-Svc for HTTP</td>
-<td class="left">(This document)</td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
-<p id="rfc.section.8.p.3">Per <a href="#AltSvc" class="xref">[AltSvc]</a>, please add the following entries to the HTTP Alt-Svc Parameter Registry:</p>
+<p id="rfc.section.9.p.3">Per <a href="#AltSvc" class="xref">[AltSvc]</a>, please add the following entries to the HTTP Alt-Svc Parameter Registry:</p>
 <table cellpadding="3" cellspacing="0" class="tt full center">
 <thead><tr>
 <th class="left">Alt-Svc Parameter</th>
@@ -820,21 +787,21 @@ ul.toc li {
 </tr>
 </tbody>
 </table>
-<h1 id="rfc.section.9">
-<a href="#rfc.section.9">9.</a> <a href="#acknowledgements-and-related-proposals" id="acknowledgements-and-related-proposals">Acknowledgements and Related Proposals</a>
-</h1>
-<p id="rfc.section.9.p.1">There have been a wide range of proposed solutions over the years to the &#8220;CNAME at the Zone Apex&#8221; challenge proposed.  These include <a href="#I-D.draft-bellis-dnsop-http-record-00" class="xref">[I-D.draft-bellis-dnsop-http-record-00]</a>, <a href="#I-D.draft-ietf-dnsop-aname-03" class="xref">[I-D.draft-ietf-dnsop-aname-03]</a>, and others.</p>
 <h1 id="rfc.section.10">
-<a href="#rfc.section.10">10.</a> <a href="#appendix" id="appendix">Appendix</a>
+<a href="#rfc.section.10">10.</a> <a href="#acknowledgements-and-related-proposals" id="acknowledgements-and-related-proposals">Acknowledgements and Related Proposals</a>
 </h1>
-<h1 id="rfc.section.10.1">
-<a href="#rfc.section.10.1">10.1.</a> <a href="#comparison-with-alternatives" id="comparison-with-alternatives">Comparison with alternatives</a>
+<p id="rfc.section.10.p.1">There have been a wide range of proposed solutions over the years to the &#8220;CNAME at the Zone Apex&#8221; challenge proposed.  These include <a href="#I-D.draft-bellis-dnsop-http-record-00" class="xref">[I-D.draft-bellis-dnsop-http-record-00]</a>, <a href="#I-D.draft-ietf-dnsop-aname-03" class="xref">[I-D.draft-ietf-dnsop-aname-03]</a>, and others.</p>
+<h1 id="rfc.section.11">
+<a href="#rfc.section.11">11.</a> <a href="#appendix" id="appendix">Appendix</a>
 </h1>
-<p id="rfc.section.10.1.p.1">The HTTPSSVC record type closely resembles some existing record types and proposals.  A complaint with all of the alternatives is that web clients have seemed unenthusiastic about implementing them.  The hope here is that by providing an extensible solution that solves multiple problems we will overcome the inertia and have a path to achieve client implementation.</p>
-<h1 id="rfc.section.10.1.1">
-<a href="#rfc.section.10.1.1">10.1.1.</a> <a href="#differences-from-the-srv-rrtype" id="differences-from-the-srv-rrtype">Differences from the SRV RRTYPE</a>
+<h1 id="rfc.section.11.1">
+<a href="#rfc.section.11.1">11.1.</a> <a href="#comparison-with-alternatives" id="comparison-with-alternatives">Comparison with alternatives</a>
 </h1>
-<p id="rfc.section.10.1.1.p.1">An SRV record <a href="#RFC2782" class="xref">[RFC2782]</a> can perform a similar function to the HTTPSSVC record, informing a client to look in a different location for a service.  However, there are several differences:</p>
+<p id="rfc.section.11.1.p.1">The HTTPSSVC record type closely resembles some existing record types and proposals.  A complaint with all of the alternatives is that web clients have seemed unenthusiastic about implementing them.  The hope here is that by providing an extensible solution that solves multiple problems we will overcome the inertia and have a path to achieve client implementation.</p>
+<h1 id="rfc.section.11.1.1">
+<a href="#rfc.section.11.1.1">11.1.1.</a> <a href="#differences-from-the-srv-rrtype" id="differences-from-the-srv-rrtype">Differences from the SRV RRTYPE</a>
+</h1>
+<p id="rfc.section.11.1.1.p.1">An SRV record <a href="#RFC2782" class="xref">[RFC2782]</a> can perform a similar function to the HTTPSSVC record, informing a client to look in a different location for a service.  However, there are several differences:</p>
 <p></p>
 
 <ul>
@@ -843,48 +810,48 @@ ul.toc li {
 <li>SRV records are not extensible, whereas Alt-Svc and thus HTTPSSVC can be extended with new parameters.  For example, this is what allows the privacy improvements related to SNI selection in <a href="#AltSvcSNI" class="xref">[AltSvcSNI]</a> and <a href="#ESNI" class="xref">[ESNI]</a>.</li>
 <li>Using SRV records would not allow a client to skip processing of the Alt-Svc information in a subsequent connection, so it does not confer a performance advantage.</li>
 </ul>
-<h1 id="rfc.section.10.1.2">
-<a href="#rfc.section.10.1.2">10.1.2.</a> <a href="#differences-from-the-proposed-http-record" id="differences-from-the-proposed-http-record">Differences from the proposed HTTP record</a>
+<h1 id="rfc.section.11.1.2">
+<a href="#rfc.section.11.1.2">11.1.2.</a> <a href="#differences-from-the-proposed-http-record" id="differences-from-the-proposed-http-record">Differences from the proposed HTTP record</a>
 </h1>
-<p id="rfc.section.10.1.2.p.1">Unlike <a href="#I-D.draft-bellis-dnsop-http-record-00" class="xref">[I-D.draft-bellis-dnsop-http-record-00]</a>, this approach is extensible to cover Alt-Svc and ESNIKeys use-cases.  Like that proposal, this addresses the zone apex CNAME challenge.</p>
-<p id="rfc.section.10.1.2.p.2">Like that proposal it remains necessary to continue to include address records at the zone apex for legacy clients.</p>
-<h1 id="rfc.section.10.1.3">
-<a href="#rfc.section.10.1.3">10.1.3.</a> <a href="#differences-from-the-proposed-aname-record" id="differences-from-the-proposed-aname-record">Differences from the proposed ANAME record</a>
+<p id="rfc.section.11.1.2.p.1">Unlike <a href="#I-D.draft-bellis-dnsop-http-record-00" class="xref">[I-D.draft-bellis-dnsop-http-record-00]</a>, this approach is extensible to cover Alt-Svc and ESNIKeys use-cases.  Like that proposal, this addresses the zone apex CNAME challenge.</p>
+<p id="rfc.section.11.1.2.p.2">Like that proposal it remains necessary to continue to include address records at the zone apex for legacy clients.</p>
+<h1 id="rfc.section.11.1.3">
+<a href="#rfc.section.11.1.3">11.1.3.</a> <a href="#differences-from-the-proposed-aname-record" id="differences-from-the-proposed-aname-record">Differences from the proposed ANAME record</a>
 </h1>
-<p id="rfc.section.10.1.3.p.1">Unlike <a href="#I-D.draft-ietf-dnsop-aname-03" class="xref">[I-D.draft-ietf-dnsop-aname-03]</a>, this approach is extensible to cover Alt-Svc and ESNIKeys use-cases.  This approach also does not require any changes or special handling on either authoritative or master servers, beyond optionally returning in-bailiwick additional records.</p>
-<p id="rfc.section.10.1.3.p.2">Like that proposal, this addresses the zone apex CNAME challenge for clients that implement this.</p>
-<p id="rfc.section.10.1.3.p.3">However with this HTTPSSVC proposal it remains necessary to continue to include address records at the zone apex for legacy clients.  If deployment of this standard is successful, the number of legacy clients will fall over time.  As the number of legacy clients declines, the operational effort required to serve these users without the benefit of HTTPSSVC indirection should fall.  Server operators can easily observe how much traffic reaches this legacy endpoint, and may remove the apex&#8217;s address records if the observed legacy traffic has fallen to negligible levels.</p>
-<h1 id="rfc.section.10.1.4">
-<a href="#rfc.section.10.1.4">10.1.4.</a> <a href="#differences-from-the-proposed-esnikeys-record" id="differences-from-the-proposed-esnikeys-record">Differences from the proposed ESNIKEYS record</a>
+<p id="rfc.section.11.1.3.p.1">Unlike <a href="#I-D.draft-ietf-dnsop-aname-03" class="xref">[I-D.draft-ietf-dnsop-aname-03]</a>, this approach is extensible to cover Alt-Svc and ESNIKeys use-cases.  This approach also does not require any changes or special handling on either authoritative or master servers, beyond optionally returning in-bailiwick additional records.</p>
+<p id="rfc.section.11.1.3.p.2">Like that proposal, this addresses the zone apex CNAME challenge for clients that implement this.</p>
+<p id="rfc.section.11.1.3.p.3">However with this HTTPSSVC proposal it remains necessary to continue to include address records at the zone apex for legacy clients.  If deployment of this standard is successful, the number of legacy clients will fall over time.  As the number of legacy clients declines, the operational effort required to serve these users without the benefit of HTTPSSVC indirection should fall.  Server operators can easily observe how much traffic reaches this legacy endpoint, and may remove the apex&#8217;s address records if the observed legacy traffic has fallen to negligible levels.</p>
+<h1 id="rfc.section.11.1.4">
+<a href="#rfc.section.11.1.4">11.1.4.</a> <a href="#differences-from-the-proposed-esnikeys-record" id="differences-from-the-proposed-esnikeys-record">Differences from the proposed ESNIKEYS record</a>
 </h1>
-<p id="rfc.section.10.1.4.p.1">Unlike <a href="#ESNI" class="xref">[ESNI]</a>, this approach is extensible and covers the Alt-Svc case as well as addresses the zone apex CNAME challenge.</p>
-<p id="rfc.section.10.1.4.p.2">By using the Alt-Svc model we also provide a way to solve the ESNIKEYS multi-CDN challenges in a general case.</p>
-<p id="rfc.section.10.1.4.p.3">Unlike ESNIKEYS, this is focused on the specific case of HTTPS, although this approach could be extended for other protocols.</p>
-<h1 id="rfc.section.10.2">
-<a href="#rfc.section.10.2">10.2.</a> <a href="#design-considerations-and-open-issues" id="design-considerations-and-open-issues">Design Considerations and Open Issues</a>
+<p id="rfc.section.11.1.4.p.1">Unlike <a href="#ESNI" class="xref">[ESNI]</a>, this approach is extensible and covers the Alt-Svc case as well as addresses the zone apex CNAME challenge.</p>
+<p id="rfc.section.11.1.4.p.2">By using the Alt-Svc model we also provide a way to solve the ESNIKEYS multi-CDN challenges in a general case.</p>
+<p id="rfc.section.11.1.4.p.3">Unlike ESNIKEYS, this is focused on the specific case of HTTPS, although this approach could be extended for other protocols.</p>
+<h1 id="rfc.section.11.2">
+<a href="#rfc.section.11.2">11.2.</a> <a href="#design-considerations-and-open-issues" id="design-considerations-and-open-issues">Design Considerations and Open Issues</a>
 </h1>
-<p id="rfc.section.10.2.p.1">This draft is intended to be a work-in-progress for discussion.  Many details are expected to change with subsequent refinement.  Some known issues or topics for discussion are listed below.</p>
-<h1 id="rfc.section.10.2.1">
-<a href="#rfc.section.10.2.1">10.2.1.</a> <a href="#record-name" id="record-name">Record Name</a>
+<p id="rfc.section.11.2.p.1">This draft is intended to be a work-in-progress for discussion.  Many details are expected to change with subsequent refinement.  Some known issues or topics for discussion are listed below.</p>
+<h1 id="rfc.section.11.2.1">
+<a href="#rfc.section.11.2.1">11.2.1.</a> <a href="#record-name" id="record-name">Record Name</a>
 </h1>
-<p id="rfc.section.10.2.1.p.1">Naming is hard.  The &#8220;HTTPSSVC&#8221; is proposed as a placeholder.  Other names for this record might include ALTSVC, HTTPS, HTTPSSRV, B, or something else.</p>
-<h1 id="rfc.section.10.2.2">
-<a href="#rfc.section.10.2.2">10.2.2.</a> <a href="#applicability-to-other-schemes" id="applicability-to-other-schemes">Applicability to other schemes</a>
+<p id="rfc.section.11.2.1.p.1">Naming is hard.  The &#8220;HTTPSSVC&#8221; is proposed as a placeholder.  Other names for this record might include ALTSVC, HTTPS, HTTPSSRV, B, or something else.</p>
+<h1 id="rfc.section.11.2.2">
+<a href="#rfc.section.11.2.2">11.2.2.</a> <a href="#applicability-to-other-schemes" id="applicability-to-other-schemes">Applicability to other schemes</a>
 </h1>
-<p id="rfc.section.10.2.2.p.1">The focus of this record is on optimizing the common case of the &#8220;https&#8221; scheme.  It is worth discussing whether this is a valid assumption or if a more general solution is applicable.  Past efforts to over-generalize have not met with broad success.</p>
-<h1 id="rfc.section.10.2.3">
-<a href="#rfc.section.10.2.3">10.2.3.</a> <a href="#wire-format" id="wire-format">Wire Format</a>
+<p id="rfc.section.11.2.2.p.1">The focus of this record is on optimizing the common case of the &#8220;https&#8221; scheme.  It is worth discussing whether this is a valid assumption or if a more general solution is applicable.  Past efforts to over-generalize have not met with broad success.</p>
+<h1 id="rfc.section.11.2.3">
+<a href="#rfc.section.11.2.3">11.2.3.</a> <a href="#wire-format" id="wire-format">Wire Format</a>
 </h1>
-<p id="rfc.section.10.2.3.p.1">The length of SvcFieldValue is redundant.  Should we eliminate this?</p>
-<p id="rfc.section.10.2.3.p.2">Advice from experts in DNS wire format best practices would be greatly appreciated to refine the proposed details, overall.</p>
-<h1 id="rfc.section.10.2.4">
-<a href="#rfc.section.10.2.4">10.2.4.</a> <a href="#extensibility-of-svcrecordtype" id="extensibility-of-svcrecordtype">Extensibility of SvcRecordType</a>
+<p id="rfc.section.11.2.3.p.1">The length of SvcFieldValue is redundant.  Should we eliminate this?</p>
+<p id="rfc.section.11.2.3.p.2">Advice from experts in DNS wire format best practices would be greatly appreciated to refine the proposed details, overall.</p>
+<h1 id="rfc.section.11.2.4">
+<a href="#rfc.section.11.2.4">11.2.4.</a> <a href="#extensibility-of-svcrecordtype" id="extensibility-of-svcrecordtype">Extensibility of SvcRecordType</a>
 </h1>
-<p id="rfc.section.10.2.4.p.1">Only values of 0 and 1 are allowed for SvcRecordType.  Should we give more thought to potential future values?  The current version tries to leave this open by indicating that resource records with unknown SvcRecordType values should be ignored (and perhaps should be switched to MUST be ignored)?</p>
+<p id="rfc.section.11.2.4.p.1">Only values of 0 and 1 are allowed for SvcRecordType.  Should we give more thought to potential future values?  The current version tries to leave this open by indicating that resource records with unknown SvcRecordType values should be ignored (and perhaps should be switched to MUST be ignored)?</p>
 <h1 id="rfc.references">
-<a href="#rfc.references">11.</a> References</h1>
+<a href="#rfc.references">12.</a> References</h1>
 <h1 id="rfc.references.1">
-<a href="#rfc.references.1">11.1.</a> Normative References</h1>
+<a href="#rfc.references.1">12.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="AltSvc">[AltSvc]</b></td>
@@ -973,7 +940,7 @@ ul.toc li {
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
-<a href="#rfc.references.2">11.2.</a> Informative References</h1>
+<a href="#rfc.references.2">12.2.</a> Informative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="DNSTerm">[DNSTerm]</b></td>
@@ -1004,16 +971,6 @@ ul.toc li {
 <td class="reference"><b id="RFC6895">[RFC6895]</b></td>
 <td class="top">
 <a>Eastlake 3rd, D.</a>, "<a href="https://tools.ietf.org/html/rfc6895">Domain Name System (DNS) IANA Considerations</a>", BCP 42, RFC 6895, DOI 10.17487/RFC6895, April 2013.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC7871">[RFC7871]</b></td>
-<td class="top">
-<a>Contavalli, C.</a>, <a>van der Gaast, W.</a>, <a>Lawrence, D.</a> and <a>W. Kumari</a>, "<a href="https://tools.ietf.org/html/rfc7871">Client Subnet in DNS Queries</a>", RFC 7871, DOI 10.17487/RFC7871, May 2016.</td>
-</tr>
-<tr>
-<td class="reference"><b id="RFC8164">[RFC8164]</b></td>
-<td class="top">
-<a>Nottingham, M.</a> and <a>M. Thomson</a>, "<a href="https://tools.ietf.org/html/rfc8164">Opportunistic Security for HTTP/2</a>", RFC 8164, DOI 10.17487/RFC8164, May 2017.</td>
 </tr>
 </tbody></table>
 <h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
