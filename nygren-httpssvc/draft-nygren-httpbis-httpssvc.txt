@@ -382,9 +382,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    In the case of the HTTPSSVC RR, an origin is translated into the
    RRName in the following manner:
 
-   1.  The origin scheme MUST be "https".  If the port is unspecified or
-       "443", then the RRName is equal to the origin host name.
-
+   1.  If the scheme is "https" and the port is 443, then the RRName is
+       equal to the origin host name.  Otherwise the RRName is
+       represented by prefixing the port and scheme with "_", then
 
 
 
@@ -394,12 +394,10 @@ Schwartz, et al.        Expires December 21, 2019               [Page 7]
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
-   2.  If the port is not 443, the RRName is represented by prefixing
-       the port and scheme with "_", then concatenating them with the
-       host, resulting in a domain name like
+       concatenating them with the host, resulting in a domain name like
        "_832._https.www.example.com.".
 
-   3.  When a prior CNAME or HTTPSSVC record has aliased to an HTTPSSVC
+   2.  When a prior CNAME or HTTPSSVC record has aliased to an HTTPSSVC
        record, RRName shall be the name of the alias target.
 
    Note that none of these forms alter the HTTPS origin or authority.
@@ -442,6 +440,8 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
    Note that the RRName or the SvcDomainName MAY themselves be CNAMEs.
    Clients and recursive resolvers MUST follow CNAMEs as normal.
+
+
 
 
 
@@ -490,10 +490,10 @@ www.example.com. 3600 IN HTTPSSVC 1 svc.example.net. "hq=\":8003\" pri=0"
    otherwise.
 
    Second, by defining a way to map non-HTTPS schemes and non-default
-   ports we provide a way for the HTTPSSVC to be used for them as
-   needed.  However, by using the origin name for the RRName for scheme
-   https and port 443 we allow HTTPSSVC records to be included at the
-   end of CNAME chains for existing site implementations without
+   ports (Section 2.2), we provide a way for the HTTPSSVC to be used for
+   them as needed.  However, by using the origin name for the RRName for
+   scheme https and port 443 we allow HTTPSSVC records to be included at
+   the end of CNAME chains for existing site implementations without
    requiring changes in the zone containing the origin.
 
 
@@ -819,12 +819,12 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
       | RR TYPE  | _NODE NAME | Meaning           | Reference       |
       +----------+------------+-------------------+-----------------+
       | HTTPSSVC | _https     | Alt-Svc for HTTPS | (This document) |
-      |          |            |                   |                 |
-      | HTTPSSVC | _http      | Alt-Svc for HTTP  | (This document) |
       +----------+------------+-------------------+-----------------+
 
    Per [AltSvc], please add the following entries to the HTTP Alt-Svc
    Parameter Registry:
+
+
 
 
 

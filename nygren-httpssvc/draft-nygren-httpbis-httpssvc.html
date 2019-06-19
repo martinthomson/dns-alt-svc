@@ -595,8 +595,7 @@ svc3.example.net. 300 IN AAAA    2001:db8::3
 <p></p>
 
 <ol>
-<li>The origin scheme MUST be &#8220;https&#8221;.  If the port is unspecified or &#8220;443&#8221;, then the RRName is equal to the origin host name.</li>
-<li>If the port is not 443, the RRName is represented by prefixing the port and scheme with &#8220;_&#8221;, then concatenating them with the host, resulting in a domain name like &#8220;_832._https.www.example.com.&#8221;.</li>
+<li>If the scheme is &#8220;https&#8221; and the port is 443, then the RRName is equal to the origin host name.  Otherwise the RRName is represented by prefixing the port and scheme with &#8220;_&#8221;, then concatenating them with the host, resulting in a domain name like &#8220;_832._https.www.example.com.&#8221;.</li>
 <li>When a prior CNAME or HTTPSSVC record has aliased to an HTTPSSVC record, RRName shall be the name of the alias target.</li>
 </ol>
 <p id="rfc.section.2.2.p.3">Note that none of these forms alter the HTTPS origin or authority.  For example, clients MUST continue to validate TLS certificate hostnames based on the origin host.</p>
@@ -638,7 +637,7 @@ www.example.com. 3600 IN HTTPSSVC 1 svc.example.net. "hq=\":8003\" pri=0"
 www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 </pre>
 <p id="rfc.section.2.5.p.6">This construction is intended to be extensible in two ways.  First, any extensions that are made to the Alt-Svc format for transmission over HTTPS are also applicable here, unless expressly mentioned otherwise.</p>
-<p id="rfc.section.2.5.p.7">Second, by defining a way to map non-HTTPS schemes and non-default ports we provide a way for the HTTPSSVC to be used for them as needed.  However, by using the origin name for the RRName for scheme https and port 443 we allow HTTPSSVC records to be included at the end of CNAME chains for existing site implementations without requiring changes in the zone containing the origin.</p>
+<p id="rfc.section.2.5.p.7">Second, by defining a way to map non-HTTPS schemes and non-default ports (<a href="#rrnames" class="xref">Section 2.2</a>), we provide a way for the HTTPSSVC to be used for them as needed.  However, by using the origin name for the RRName for scheme https and port 443 we allow HTTPSSVC records to be included at the end of CNAME chains for existing site implementations without requiring changes in the zone containing the origin.</p>
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#differences-from-alt-svc-as-transmitted-over-http" id="differences-from-alt-svc-as-transmitted-over-http">Differences from Alt-Svc as transmitted over HTTP</a>
 </h1>
@@ -771,20 +770,12 @@ sni="_wildcard.example.com"
 <th class="left">Meaning</th>
 <th class="left">Reference</th>
 </tr></thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td class="left">HTTPSSVC</td>
 <td class="left">_https</td>
 <td class="left">Alt-Svc for HTTPS</td>
 <td class="left">(This document)</td>
-</tr>
-<tr>
-<td class="left">HTTPSSVC</td>
-<td class="left">_http</td>
-<td class="left">Alt-Svc for HTTP</td>
-<td class="left">(This document)</td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <p id="rfc.section.9.p.3">Per <a href="#AltSvc" class="xref">[AltSvc]</a>, please add the following entries to the HTTP Alt-Svc Parameter Registry:</p>
 <table cellpadding="3" cellspacing="0" class="tt full center">
