@@ -537,10 +537,10 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 3.2.  Multiple records and preference ordering
 
-   Server operators MAY publish multiple HTTPSSVC records as an RRSET.
-   When publishing an RRSET with multiple HTTPSSVC records, the server
-   operator MUST set the overall TTL to the minimum of the "max age"
-   values (following Section 5.2 of [RFC2181]).
+   Server operators MAY publish multiple SvcRecordType "1" HTTPSSVC
+   records as an RRSET.  When publishing an RRSET with multiple HTTPSSVC
+   records, the server operator MUST set the overall TTL to the minimum
+   of the "max age" values (following Section 5.2 of [RFC2181]).
 
    Each RR MUST contain exactly one alt-value, as described in Section 3
    of [AltSvc].

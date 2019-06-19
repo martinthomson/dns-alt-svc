@@ -651,7 +651,7 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#pri" id="pri">Multiple records and preference ordering</a>
 </h1>
-<p id="rfc.section.3.2.p.1">Server operators MAY publish multiple HTTPSSVC records as an RRSET.  When publishing an RRSET with multiple HTTPSSVC records, the server operator MUST set the overall TTL to the minimum of the &#8220;max age&#8221; values (following Section 5.2 of <a href="#RFC2181" class="xref">[RFC2181]</a>).</p>
+<p id="rfc.section.3.2.p.1">Server operators MAY publish multiple SvcRecordType &#8220;1&#8221; HTTPSSVC records as an RRSET.  When publishing an RRSET with multiple HTTPSSVC records, the server operator MUST set the overall TTL to the minimum of the &#8220;max age&#8221; values (following Section 5.2 of <a href="#RFC2181" class="xref">[RFC2181]</a>).</p>
 <p id="rfc.section.3.2.p.2">Each RR MUST contain exactly one alt-value, as described in Section 3 of <a href="#AltSvc" class="xref">[AltSvc]</a>.</p>
 <p id="rfc.section.3.2.p.3">As RRs within an RRSET are explicitly unordered collections, a new &#8220;pri&#8221; alt-svc parameter is introduced to indicate priority.  The value of the &#8220;pri&#8221; parameter is an integer between 1 and 32767.  Clients MUST reject any alt-value with a specified priority outside of this range.  Alt-Svc alt-values with a smaller pri value should be given preference over alt-values with a larger pri value.</p>
 <p id="rfc.section.3.2.p.4">Alt-values received via HTTPS with unspecified priority are considered to have priority 0 (i.e. most preferred).  Alt-values received via DNS with unspecified priority are assigned priority 32767 (i.e. least preferred).</p>
