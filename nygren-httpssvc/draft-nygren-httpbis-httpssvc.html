@@ -333,7 +333,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Schwartz, B., Bishop, M., and E. Nygren" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-nygren-httpbis-httpssvc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-17" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-19" />
   <meta name="dct.abstract" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
   <meta name="description" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
 
@@ -357,7 +357,7 @@ ul.toc li {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: December 19, 2019</td>
+<td class="left">Expires: December 21, 2019</td>
 <td class="right">E. Nygren</td>
 </tr>
 <tr>
@@ -366,7 +366,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">June 17, 2019</td>
+<td class="right">June 19, 2019</td>
 </tr>
 
     	
@@ -383,7 +383,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on December 19, 2019.</p>
+<p>This Internet-Draft will expire on December 21, 2019.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -629,8 +629,8 @@ ul.toc li {
 <a href="#rfc.section.3.1">3.1.</a> <a href="#omitting-max-age-and-persist" id="omitting-max-age-and-persist">Omitting Max Age and Persist</a>
 </h1>
 <p id="rfc.section.3.1.p.1">When publishing an HTTPSSVC record in DNS, server operators MUST omit the &#8220;ma&#8221; parameter, which encodes the &#8220;max age&#8221; (i.e. expiration time) of an Alt-Svc Field Value.  Instead, server operators SHOULD encode the expiration time in the DNS TTL, and MUST NOT set a TTL longer than the intended &#8220;max age&#8221;.</p>
-<p id="rfc.section.3.1.p.2">When receiving an HTTPSSVC record, clients MAY synthesize a new &#8220;ma&#8221; parameter from the DNS TTL, in order to interoperate with Alt-Svc processing subsystems.</p>
-<p id="rfc.section.3.1.p.3">When publishing an HTTPSSVC record, server operators MUST omit the &#8220;persist&#8221; parameter, which indicates whether the client should use this record on other network paths.  When receiving an HTTPSSVC record, clients MUST discard any records that contain a &#8220;persist&#8221; flag.  Disabling persistence is important to prevent an adversary on one network from implanting a forged DNS record that allows them to track users after they leave that network.</p>
+<p id="rfc.section.3.1.p.2">When receiving an HTTPSSVC record, clients SHOULD synthesize a new &#8220;ma&#8221; parameter from the DNS TTL if the resulting alt-value is being passed to a subsystem that might employ caching.</p>
+<p id="rfc.section.3.1.p.3">When publishing an HTTPSSVC record, server operators MUST omit the &#8220;persist&#8221; parameter, which indicates whether the client should use this record on other network paths.  When receiving an HTTPSSVC record, clients MUST discard any records that contain a &#8220;persist&#8221; flag.  Disabling persistence is important to prevent a local adversary in one network from implanting a forged DNS record that allows them to track users or hinder their connections after they leave that network.</p>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#multiple-records-and-preference-ordering" id="multiple-records-and-preference-ordering">Multiple records and preference ordering</a>
 </h1>
