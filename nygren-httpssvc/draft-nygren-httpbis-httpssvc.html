@@ -333,7 +333,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Schwartz, B., Bishop, M., and E. Nygren" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-nygren-httpbis-httpssvc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-19" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-20" />
   <meta name="dct.abstract" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
   <meta name="description" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy." />
 
@@ -357,7 +357,7 @@ ul.toc li {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: December 21, 2019</td>
+<td class="left">Expires: December 22, 2019</td>
 <td class="right">E. Nygren</td>
 </tr>
 <tr>
@@ -366,7 +366,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">June 19, 2019</td>
+<td class="right">June 20, 2019</td>
 </tr>
 
     	
@@ -383,7 +383,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on December 21, 2019.</p>
+<p>This Internet-Draft will expire on December 22, 2019.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -709,8 +709,8 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 </h1>
 <p id="rfc.section.6.p.1">For optimal performance (i.e. minimum connection setup time), clients SHOULD issue address (AAAA and/or A) and HTTPSSVC queries simultaneously, and SHOULD implement a client-side DNS cache.  With these optimizations in place, and conforming DNS servers, using HTTPSSVC does not add network latency to connection setup.</p>
 <p id="rfc.section.6.p.2">A nonconforming recursive resolver might return an HTTPSSVC response with a nonempty SvcDomainName, without the corresponding address records.  If all the HTTPSSVC RRs in the response have nonempty SvcDomainName values, and the client does not have address records for any of these values in its DNS cache, the client SHOULD perform an additional address query for the selected SvcDomainName.</p>
-<p id="rfc.section.6.p.3">The additional DNS query in this case introduces a delay.  To avoid causing a delay for clients using a nonconforming recursive resolver, domain owners SHOULD choose the SvcDomainName to be a name in the origin hostname&#8217;s CNAME chain if possible.  This will ensure that the required address records are already present in the client&#8217;s DNS cache.</p>
-<p id="rfc.section.6.p.4">Highly performance-sensitive clients MAY implement the following special- case shortcut to avoid increased connection time: if (1) one of the HTTPSSVC records returned has SvcRecordType = 0, (2) its SvcDomainName is not in the DNS cache, and (3) the address queries for the origin domain return usable IP addresses, then the client MAY ignore the HTTPSSVC records and connect directly to the origin domain.</p>
+<p id="rfc.section.6.p.3">The additional DNS query in this case introduces a delay.  To avoid causing a delay for clients using a nonconforming recursive resolver, domain owners SHOULD choose the SvcDomainName to be a name in the origin hostname&#8217;s CNAME chain if possible.  This will ensure that the required address records are already present in the client&#8217;s DNS cache as part of the responses to the address queries that were issued in parallel.</p>
+<p id="rfc.section.6.p.4">Highly performance-sensitive clients MAY implement the following special- case shortcut to avoid increased connection time: if (1) one of the HTTPSSVC records returned has SvcRecordType = 0, (2) its SvcDomainName is not in the DNS cache, and (3) the address queries for the origin domain return usable IP addresses, then the client MAY ignore the HTTPSSVC records and connect directly to the origin domain.  When the SvcDomainNames and any needed HTTPSSVC records are available, the client SHOULD make subsequent requests over connections specified by the HTTPSSVC records.</p>
 <p id="rfc.section.6.p.5">Server operators can therefore expect that publishing HTTPSSVC records with SvcRecordType = 0 should not cause an additional DNS query for performance-sensitive clients.  Server operators who wish to prevent this optimization should use SvcRecordType = 1.</p>
 <h1 id="rfc.section.7">
 <a href="#rfc.section.7">7.</a> <a href="#extensions-to-enhance-privacy" id="extensions-to-enhance-privacy">Extensions to enhance privacy</a>
