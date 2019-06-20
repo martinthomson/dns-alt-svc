@@ -1,6 +1,168 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/18",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/18/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/18/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/18/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/18",
+    "id": 458236853,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjg5ODg3NDk1",
+    "number": 18,
+    "title": "Add a note that fallback A/AAAA records are needed for Alias form",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-06-19T21:33:31Z",
+    "updated_at": "2019-06-20T14:57:41Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/18",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/18",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/18.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/18.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/17",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/17/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/17/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/17/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/17",
+    "id": 458230334,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjg5ODgyMTAx",
+    "number": 17,
+    "title": "Remove Alt-Svc sni= parameter",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-06-19T21:15:34Z",
+    "updated_at": "2019-06-19T21:55:32Z",
+    "closed_at": "2019-06-19T21:55:29Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/17",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/17",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/17.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/17.patch"
+    },
+    "body": "Finish removing the Alt-Svc \"sni=\" parameter (other than from the comparisons appendix discussion)."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/16",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/16/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/16/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/16/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/16",
+    "id": 458178919,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjg5ODQwNDMx",
+    "number": 16,
+    "title": "Improve handling of mixed-type RRSets",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-06-19T19:05:26Z",
+    "updated_at": "2019-06-19T20:08:24Z",
+    "closed_at": "2019-06-19T20:07:56Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/16",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/16",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/16.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/16.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/15",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/15/labels{/name}",
@@ -88,7 +250,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -97,8 +259,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-06-18T14:26:27Z",
-    "updated_at": "2019-06-18T14:26:27Z",
-    "closed_at": null,
+    "updated_at": "2019-06-19T20:30:03Z",
+    "closed_at": "2019-06-19T20:29:55Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/14",
@@ -142,7 +304,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -151,8 +313,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-06-18T13:59:28Z",
-    "updated_at": "2019-06-18T13:59:28Z",
-    "closed_at": null,
+    "updated_at": "2019-06-19T20:33:36Z",
+    "closed_at": "2019-06-19T20:33:36Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/13",
@@ -196,7 +358,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -205,8 +367,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-06-17T22:35:03Z",
-    "updated_at": "2019-06-17T22:35:03Z",
-    "closed_at": null,
+    "updated_at": "2019-06-19T20:31:35Z",
+    "closed_at": "2019-06-19T20:31:30Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/12",
@@ -259,7 +421,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-06-13T21:34:01Z",
-    "updated_at": "2019-06-18T21:44:38Z",
+    "updated_at": "2019-06-19T21:39:28Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -365,9 +527,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-05-30T17:50:41Z",
-    "updated_at": "2019-06-18T21:43:21Z",
+    "updated_at": "2019-06-20T15:22:35Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -745,7 +907,7 @@
     "milestone": null,
     "comments": 2,
     "created_at": "2019-05-16T13:33:59Z",
-    "updated_at": "2019-06-19T14:41:47Z",
+    "updated_at": "2019-06-19T21:55:30Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
