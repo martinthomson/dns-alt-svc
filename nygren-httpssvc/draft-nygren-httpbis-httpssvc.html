@@ -748,8 +748,11 @@ sni="_wildcard.example.com"
 <h1 id="rfc.section.7.2">
 <a href="#rfc.section.7.2">7.2.</a> <a href="#esnikeys" id="esnikeys">Alt-Svc parameter for ESNI keys</a>
 </h1>
-<p id="rfc.section.7.2.p.1">An Alt-Svc &#8220;esnikeys&#8221; parameter is defined for specifying ESNI keys corresponding to an alternative service.  The value of the parameter is an ESNIKeys structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a>.</p>
+<p id="rfc.section.7.2.p.1">An Alt-Svc &#8220;esnikeys&#8221; parameter is defined for specifying ESNI keys corresponding to an alternative service.  The value of the parameter is an ESNIKeys structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a> or the empty string.  ESNI-aware clients SHOULD prefer alt-values with nonempty esnikeys.</p>
 <p id="rfc.section.7.2.p.2">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.</p>
+<p id="rfc.section.7.2.p.3">The Alt-Svc specification states that &#8220;the client MAY fall back to using the origin&#8221; in case of connection failure <a href="#AltSvc" class="xref">[AltSvc]</a>.  This behavior is not suitable for ESNI, because fallback would negate the privacy benefits of ESNI.</p>
+<p id="rfc.section.7.2.p.4">Accordingly, any connection attempt that uses ESNI MUST fall back only to another alt-value that also has the esnikeys parameter.  If the parameter&#8217;s value is the empty string, the client SHOULD connect as it would in the absence of any ESNIKeys information.</p>
+<p id="rfc.section.7.2.p.5">For example, suppose a server operator has two alternatives.  Alternative A is reliably accessible but does not support ESNI.  Alternative B supports ESNI but is not reliably accessible.  The server operator could include a full esnikeys value in Alternative B, and mark Alternative A with esnikeys=&#8221;&#8221; to indicate that fallback from B to A is allowed.</p>
 <h1 id="rfc.section.7.3">
 <a href="#rfc.section.7.3">7.3.</a> <a href="#interaction-with-other-standards" id="interaction-with-other-standards">Interaction with other standards</a>
 </h1>
