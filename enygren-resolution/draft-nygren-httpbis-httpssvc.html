@@ -690,13 +690,13 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 <p></p>
 
 <ol>
-<li>Issue parallel AAAA, A, and HTTPSSVC queries for the name HOST.  The answers for these may or may not include CNAME pointers before reaching one or more of these records.</li>
-<li>If an HTTPSSVC record of SvcRecordType &#8220;0&#8221; is returned for HOST, clients should loop back to step 1 replacing HOST with SvcDomainName.</li>
+<li>Issue parallel AAAA/A and HTTPSSVC queries for the name HOST.  The answers for these may or may not include CNAME pointers before reaching one or more of these records.</li>
+<li>If an HTTPSSVC record of SvcRecordType &#8220;0&#8221; is returned for HOST, clients should loop back to step 1 replacing HOST with SvcDomainName, subject to loop detection heuristics.</li>
 <li>If one or more HTTPSSVC record of SvcRecordType &#8220;1&#8221; is returned for HOST, clients should synthesize equivalent Alt-Svc records based on the SvcDomainName and SvcFieldValue.  If one of these Alt-Svc records is selected to be used in a connection, the client will need to resolve AAAA and/or A records for SvcDomainName.</li>
-<li>If only AAAA and/or A records are present for HOST (and no HTTPSSVC), clients should make a connection to one of the IP addresses contained in these records.</li>
+<li>If only AAAA and/or A records are present for HOST (and no HTTPSSVC), clients should make a connection to one of the IP addresses contained in these records and proceed normally.</li>
 </ol>
 <p id="rfc.section.4.1.p.3">When selecting between AAAA and A records to use, clients may use an approach such as <a href="#HappyEyeballsV2" class="xref">[HappyEyeballsV2]</a></p>
-<p id="rfc.section.4.1.p.4">Some possible optimizations are discussed in <a href="#optimizations" class="xref">Section 6</a>.</p>
+<p id="rfc.section.4.1.p.4">Some possible optimizations are discussed in <a href="#optimizations" class="xref">Section 6</a> to reduce latency impact in comparison to ordinary AAAA/A lookups.</p>
 <h1 id="rfc.section.4.2">
 <a href="#rfc.section.4.2">4.2.</a> <a href="#http-strict-transport-security" id="http-strict-transport-security">HTTP Strict Transport Security</a>
 </h1>
