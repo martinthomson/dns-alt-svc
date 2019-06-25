@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/22",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/22/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/22/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/22/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/22",
+    "id": 460656245,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjkxNzQxODQ5",
+    "number": 22,
+    "title": "Added some suggestions from Ian Swett.",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-06-25T21:38:22Z",
+    "updated_at": "2019-06-25T21:38:22Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/22",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/22",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/22.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/22.patch"
+    },
+    "body": "Mention the HTTPS bootstrapping in the intro.\r\nRemind the importance of using the origin name for validating\r\nthe TLS server cert."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/21",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/21/labels{/name}",
@@ -34,7 +88,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -43,8 +97,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-06-21T02:20:07Z",
-    "updated_at": "2019-06-21T02:33:48Z",
-    "closed_at": null,
+    "updated_at": "2019-06-21T21:24:18Z",
+    "closed_at": "2019-06-21T21:24:14Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/21",
@@ -574,7 +628,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -583,8 +637,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-06-13T21:34:01Z",
-    "updated_at": "2019-06-20T16:06:26Z",
-    "closed_at": null,
+    "updated_at": "2019-06-21T21:27:21Z",
+    "closed_at": "2019-06-21T21:27:18Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/11",
@@ -1069,7 +1123,7 @@
     "milestone": null,
     "comments": 2,
     "created_at": "2019-05-16T13:33:59Z",
-    "updated_at": "2019-06-21T21:16:18Z",
+    "updated_at": "2019-06-21T21:27:19Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
