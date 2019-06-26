@@ -5,9 +5,9 @@
 HTTP Working Group                                           B. Schwartz
 Internet-Draft                                                    Google
 Intended status: Standards Track                               M. Bishop
-Expires: December 27, 2019                                     E. Nygren
+Expires: December 28, 2019                                     E. Nygren
                                                      Akamai Technologies
-                                                           June 25, 2019
+                                                           June 26, 2019
 
 
  HTTPSSVC service location and parameter specification via the DNS (DNS
@@ -23,7 +23,7 @@ Abstract
    associated parameters (such as transport protocol and keying material
    for encrypting TLS SNI).  It also provides a solution for the
    inability of the DNS to allow a CNAME to be placed at the apex of a
-   domain name.  It also provides a way to indicate that hostname
+   domain name.  Finally, it provides a way to indicate that the origin
    supports HTTPS without having to resort to redirects, allowing
    clients to remove HTTP from the bootstrapping process.
 
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Schwartz, et al.        Expires December 27, 2019               [Page 1]
+Schwartz, et al.        Expires December 28, 2019               [Page 1]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -68,7 +68,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 27, 2019.
+   This Internet-Draft will expire on December 28, 2019.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Schwartz, et al.        Expires December 27, 2019               [Page 2]
+Schwartz, et al.        Expires December 28, 2019               [Page 2]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -165,7 +165,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019               [Page 3]
+Schwartz, et al.        Expires December 28, 2019               [Page 3]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -221,7 +221,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019               [Page 4]
+Schwartz, et al.        Expires December 28, 2019               [Page 4]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -277,7 +277,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019               [Page 5]
+Schwartz, et al.        Expires December 28, 2019               [Page 5]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -333,7 +333,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019               [Page 6]
+Schwartz, et al.        Expires December 28, 2019               [Page 6]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -389,7 +389,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019               [Page 7]
+Schwartz, et al.        Expires December 28, 2019               [Page 7]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -445,7 +445,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019               [Page 8]
+Schwartz, et al.        Expires December 28, 2019               [Page 8]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -501,7 +501,7 @@ www.example.com. 3600 IN HTTPSSVC 1 svc.example.net. "hq=\":8003\" pri=0"
 
 
 
-Schwartz, et al.        Expires December 27, 2019               [Page 9]
+Schwartz, et al.        Expires December 28, 2019               [Page 9]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -557,7 +557,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 10]
+Schwartz, et al.        Expires December 28, 2019              [Page 10]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -613,7 +613,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 11]
+Schwartz, et al.        Expires December 28, 2019              [Page 11]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -669,7 +669,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 12]
+Schwartz, et al.        Expires December 28, 2019              [Page 12]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -725,7 +725,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 13]
+Schwartz, et al.        Expires December 28, 2019              [Page 13]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -781,7 +781,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 14]
+Schwartz, et al.        Expires December 28, 2019              [Page 14]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -837,7 +837,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 15]
+Schwartz, et al.        Expires December 28, 2019              [Page 15]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -893,7 +893,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 16]
+Schwartz, et al.        Expires December 28, 2019              [Page 16]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -949,7 +949,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 17]
+Schwartz, et al.        Expires December 28, 2019              [Page 17]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -1005,7 +1005,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 18]
+Schwartz, et al.        Expires December 28, 2019              [Page 18]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -1061,7 +1061,7 @@ Appendix A.  Comparison with alternatives
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 19]
+Schwartz, et al.        Expires December 28, 2019              [Page 19]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -1117,7 +1117,7 @@ A.3.  Differences from the proposed ANAME record
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 20]
+Schwartz, et al.        Expires December 28, 2019              [Page 20]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -1173,7 +1173,7 @@ B.2.  Applicability to other schemes
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 21]
+Schwartz, et al.        Expires December 28, 2019              [Page 21]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -1229,4 +1229,4 @@ Authors' Addresses
 
 
 
-Schwartz, et al.        Expires December 27, 2019              [Page 22]
+Schwartz, et al.        Expires December 28, 2019              [Page 22]
