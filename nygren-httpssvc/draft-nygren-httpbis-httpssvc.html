@@ -712,6 +712,8 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 </ol>
 <p id="rfc.section.4.2.p.4">This construction is equivalent to <a href="#HSTS" class="xref">[HSTS]</a> Section 8.3, point 5.</p>
 <p id="rfc.section.4.2.p.5">If an HTTPSSVC record is present for this &#8220;https&#8221; URL, the client should treat this as the equivalent of receiving an HTTP &#8220;302 Found&#8221; redirect to the &#8220;https&#8221; URL.  Because HTTPSSVC is received over an often insecure channel (DNS), clients MUST NOT place any more trust in this signal than if they had received a 302 redirect over cleartext HTTP.</p>
+<p id="rfc.section.4.2.p.6">If the HTTPSSVC query results in a SERVFAIL error, and the connection between the client and the recursive resolver is cryptographically protected (e.g. using TLS <a href="#RFC7858" class="xref">[RFC7858]</a> or HTTPS <a href="#RFC8484" class="xref">[RFC8484]</a>), the client SHOULD abandon the connection attempt and display an error message.  A SERVFAIL error can occur if the domain is DNSSEC-signed, the recursive resolver is DNSSEC-validating, and an active attacker between the recursive resolver and the authoritative DNS server is attempting to prevent the upgrade to HTTPS.</p>
+<p id="rfc.section.4.2.p.7">Similarly, if the client enforces DNSSEC validation on A/AAAA RRs, it SHOULD abandon the connection attempt if the HTTPSSVC RR fails to validate.</p>
 <h1 id="rfc.section.4.3">
 <a href="#rfc.section.4.3">4.3.</a> <a href="#cache-interaction" id="cache-interaction">Cache interaction</a>
 </h1>
@@ -919,6 +921,11 @@ sni="_wildcard.example.com"
 <td class="reference"><b id="RFC8174">[RFC8174]</b></td>
 <td class="top">
 <a>Leiba, B.</a>, "<a href="https://tools.ietf.org/html/rfc8174">Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</a>", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8484">[RFC8484]</b></td>
+<td class="top">
+<a>Hoffman, P.</a> and <a>P. McManus</a>, "<a href="https://tools.ietf.org/html/rfc8484">DNS Queries over HTTPS (DoH)</a>", RFC 8484, DOI 10.17487/RFC8484, October 2018.</td>
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
