@@ -5,9 +5,9 @@
 HTTP Working Group                                           B. Schwartz
 Internet-Draft                                                    Google
 Intended status: Standards Track                               M. Bishop
-Expires: December 28, 2019                                     E. Nygren
+Expires: December 30, 2019                                     E. Nygren
                                                      Akamai Technologies
-                                                           June 26, 2019
+                                                           June 28, 2019
 
 
  HTTPSSVC service location and parameter specification via the DNS (DNS
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Schwartz, et al.        Expires December 28, 2019               [Page 1]
+Schwartz, et al.        Expires December 30, 2019               [Page 1]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -68,7 +68,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on December 28, 2019.
+   This Internet-Draft will expire on December 30, 2019.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Schwartz, et al.        Expires December 28, 2019               [Page 2]
+Schwartz, et al.        Expires December 30, 2019               [Page 2]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -118,8 +118,8 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
      4.3.  Cache interaction . . . . . . . . . . . . . . . . . . . .  13
    5.  DNS Server Behaviors  . . . . . . . . . . . . . . . . . . . .  13
    6.  Performance optimizations . . . . . . . . . . . . . . . . . .  14
-   7.  Extensions to enhance privacy . . . . . . . . . . . . . . . .  15
-     7.1.  Alt-Svc parameter for cleartext SNI value . . . . . . . .  15
+   7.  Extensions to enhance privacy . . . . . . . . . . . . . . . .  14
+     7.1.  Alt-Svc parameter for cleartext SNI value . . . . . . . .  14
      7.2.  Alt-Svc parameter for ESNI keys . . . . . . . . . . . . .  15
      7.3.  Interaction with other standards  . . . . . . . . . . . .  16
    8.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
@@ -130,16 +130,16 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
      11.2.  Informative References . . . . . . . . . . . . . . . . .  19
    Appendix A.  Comparison with alternatives . . . . . . . . . . . .  20
      A.1.  Differences from the SRV RRTYPE . . . . . . . . . . . . .  20
-     A.2.  Differences from the proposed HTTP record . . . . . . . .  21
+     A.2.  Differences from the proposed HTTP record . . . . . . . .  20
      A.3.  Differences from the proposed ANAME record  . . . . . . .  21
      A.4.  Differences from the proposed ESNIKEYS record . . . . . .  21
-     A.5.  SNI Alt-Svc parameter . . . . . . . . . . . . . . . . . .  22
+     A.5.  SNI Alt-Svc parameter . . . . . . . . . . . . . . . . . .  21
    Appendix B.  Design Considerations and Open Issues  . . . . . . .  22
      B.1.  Record Name . . . . . . . . . . . . . . . . . . . . . . .  22
      B.2.  Applicability to other schemes  . . . . . . . . . . . . .  22
      B.3.  Wire Format . . . . . . . . . . . . . . . . . . . . . . .  22
      B.4.  Extensibility of SvcRecordType  . . . . . . . . . . . . .  22
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  22
 
 1.  Introduction
 
@@ -165,7 +165,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 28, 2019               [Page 3]
+Schwartz, et al.        Expires December 30, 2019               [Page 3]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -221,7 +221,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 28, 2019               [Page 4]
+Schwartz, et al.        Expires December 30, 2019               [Page 4]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -277,7 +277,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 28, 2019               [Page 5]
+Schwartz, et al.        Expires December 30, 2019               [Page 5]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -310,10 +310,6 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    This document also defines additional Alt-Svc parameters that can be
    used within SvcFieldValue:
 
-   o  pri (Section 3.2): The value of this parameter is a numeric
-      priority for ordering alternatives (with lower values preferable).
-      This is needed as RR set entries are unordered.
-
    o  sni (Section 7.1): An alternative cleartext SNI value to send when
       establishing a TLS connection.
 
@@ -330,16 +326,17 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    o  The "origin server" is the server that the client would reach when
       accessing the origin in the absence of Alt-Svc.
 
+   o  An "alternative service" is a different server that can serve the
+      origin.
 
 
 
-Schwartz, et al.        Expires December 28, 2019               [Page 6]
+
+
+Schwartz, et al.        Expires December 30, 2019               [Page 6]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
-
-   o  An "alternative service" is a different server that can serve the
-      origin.
 
    Abstractly, the origin consists of a scheme (typically "https"), a
    host name, and a port (typically "443").
@@ -358,11 +355,13 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    locate endpoints that can service an "https" origin.  The
    presentation format of the record is:
 
-   RRName TTL Class HTTPSSVC SvcRecordType SvcDomainName SvcFieldValue
+   RRName TTL Class HTTPSSVC SvcRecordType SvcDomainName \
+   SvcFieldPriority SvcFieldValue
 
    where SvcRecordType is a numeric value of either 0 or 1,
-   SvcDomainName is a domain name, and SvcFieldValue is a string present
-   when SvcRecordType is 1.
+   SvcDomainName is a domain name, SvcFieldPriority is a number in the
+   range 0-65535, and SvcFieldValue is a string present when
+   SvcRecordType is 1.
 
    The algorithm for resolving HTTPSSVC records and associated address
    records is specified in Section 4.1.
@@ -374,6 +373,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    o  a 1 octet flag field for SvcRecordType, interpreted as an unsigned
       numeric value (0 to 255, with only values "0" and "1" defined
       here)
+
+   o  a 2 octet field for SvcFieldPriority as an integer in network byte
+      order.  If SvcRecordType is zero, this MUST be 0.
 
    o  a 1 octet length field for the SvcDomainName
 
@@ -387,9 +389,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-
-
-Schwartz, et al.        Expires December 28, 2019               [Page 7]
+Schwartz, et al.        Expires December 30, 2019               [Page 7]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -445,7 +445,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
 
-Schwartz, et al.        Expires December 28, 2019               [Page 8]
+Schwartz, et al.        Expires December 30, 2019               [Page 8]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -493,15 +493,15 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
    They would also publish an HTTPSSVC DNS RRSet like
 
-www.example.com. 3600 IN HTTPSSVC 1 svc.example.net. "hq=\":8003\" pri=0"
-                         HTTPSSVC 1 svc.example.net. "h2=\":8002\" pri=1"
+   www.example.com. 3600 IN HTTPSSVC 1 svc.example.net. 0 "hq=\":8003\""
+                            HTTPSSVC 1 svc.example.net. 1 "h2=\":8002\""
 
    This data type can be represented as an Unknown RR as described in
    [RFC3597]:
 
 
 
-Schwartz, et al.        Expires December 28, 2019               [Page 9]
+Schwartz, et al.        Expires December 30, 2019               [Page 9]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
@@ -552,38 +552,34 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 3.2.  Multiple records and preference ordering
 
    Server operators MAY publish multiple SvcRecordType "1" HTTPSSVC
-   records as an RRSET.  When publishing an RRSET with multiple HTTPSSVC
+   records as an RRSET.  When converting a collection of alt-values into
+   an HTTPSSVC RRSET, the server operator MUST set the overall TTL to a
 
 
 
-
-Schwartz, et al.        Expires December 28, 2019              [Page 10]
+Schwartz, et al.        Expires December 30, 2019              [Page 10]
 
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
-   records, the server operator MUST set the overall TTL to the minimum
-   of the "max age" values (following Section 5.2 of [RFC2181]).
+   value no larger than the minimum of the "max age" values (following
+   Section 5.2 of [RFC2181]).
 
    Each RR MUST contain exactly one alt-value, as described in Section 3
    of [AltSvc].
 
-   As RRs within an RRSET are explicitly unordered collections, a new
-   "pri" alt-svc parameter is introduced to indicate priority.  The
-   value of the "pri" parameter is an integer between 1 and 32767.
-   Clients MUST reject any alt-value with a specified priority outside
-   of this range.  Alt-Svc alt-values with a smaller pri value should be
-   given preference over alt-values with a larger pri value.
+   As RRs within an RRSET are explicitly unordered collections, the
+   SvcFieldPriority value is introduced to indicate priority.  HTTPSSVC
+   RRs with a smaller SvcFieldPriority value SHOULD be given preference
+   over RRs with a larger SvcFieldPriority value.
 
-   Alt-values received via HTTPS with unspecified priority are
-   considered to have priority 0 (i.e. most preferred).  Alt-values
-   received via DNS with unspecified priority are assigned priority
-   32767 (i.e. least preferred).
+   Alt-values received via HTTPS are preferred over any Alt-value
+   received via DNS.
 
    When receiving an RRSET containing multiple HTTPSSVC records with the
-   same "pri" value, clients SHOULD apply a random shuffle within a
-   priority level to the records before using them, to ensure randomized
-   load-balancing.
+   same SvcFieldPriority value, clients SHOULD apply a random shuffle
+   within a priority level to the records before using them, to ensure
+   randomized load-balancing.
 
 3.3.  Constructing Alt-Svc equivalent headers
 
@@ -592,10 +588,10 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
    1.  For each RR, the SvcDomainName MUST be inserted as the uri-host.
 
-   2.  The RRs SHOULD be ordered by "pri" values, with shuffling for
-       equal "pri" values.  Clients MAY choose to further prioritize
-       records where address records are immediately available for the
-       record's SvcDomainName.
+   2.  The RRs SHOULD be ordered by increasing SvcFieldPriority, with
+       shuffling for equal SvcFieldPriority values.  Clients MAY choose
+       to further prioritize records where address records are
+       immediately available for the record's SvcDomainName.
 
    3.  The client SHOULD concatenate the thus-transformed-and-ordered
        SvcFieldValues in the RRSET, separated by commas.  (This is
@@ -607,24 +603,20 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    Sending Alt-Svc over HTTP allows the server to tailor the Alt-Svc
    Field Value specifically to the client.  When using an HTTPSSVC DNS
    record, groups of clients will necessarily receive the same Alt-Svc
-   Field Value.  Therefore, this standard is not suitable for servers
-   that require single-client granularity in Alt-Svc.
-
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 11]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
+   Field Value.  Therefore, this standard is not suitable for uses that
+   require single-client granularity in Alt-Svc.
 
    Some DNS caching systems incorrectly extend the lifetime of DNS
    records beyond the stated TTL.  Server operators MUST NOT rely on
    HTTPSSVC records expiring on time, and MAY shorten the TTL to
    compensate.
 
-   Clients SHOULD (MAY?) prefer alternative service records received
-   over HTTPS to those received via DNS.
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 11]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
 4.  Client behaviors
 
@@ -666,14 +658,6 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    record is present for an origin, all "http" scheme requests for that
    origin SHOULD logically be redirected to "https".
 
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 12]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
    Prior to making an "http" scheme request, the client SHOULD perform a
    lookup to determine if an HTTPSSVC record is available for that
    origin.  To do so, the client SHOULD construct a corresponding
@@ -682,6 +666,13 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    1.  Replace the "http" scheme with "https".
 
    2.  If the "http" URL explicitly specifies port 80, specify port 443.
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 12]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
    3.  Do not alter any other aspect of the URL.
 
@@ -722,14 +713,6 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    Recursive DNS servers SHOULD resolve SvcDomainName records and
    include them in the Additional Section (along with any relevant CNAME
    records).  For SvcRecordType=0, recursive DNS servers should attempt
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 13]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
    to resolve and include A, AAAA, and HTTPSSVC records.  For
    SvcRecordType=1, recursive DNS servers should attempt to resolve and
    include A and AAAA records.
@@ -737,6 +720,15 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    Authoritative DNS servers SHOULD return A, AAAA, and HTTPSSVC records
    (as well as any relevant CNAME records) in the Additional Section for
    any in-bailiwick SvcDomainNames.
+
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 13]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
 6.  Performance optimizations
 
@@ -776,16 +768,6 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    query for performance-sensitive clients.  Server operators who wish
    to prevent this optimization should use SvcRecordType = 1.
 
-
-
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 14]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
 7.  Extensions to enhance privacy
 
 7.1.  Alt-Svc parameter for cleartext SNI value
@@ -796,6 +778,13 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    the alternative.
 
    For example:
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 14]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
    sni="_wildcard.example.com"
 
@@ -834,20 +823,24 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    the parameter's value is the empty string, the client SHOULD connect
    as it would in the absence of any ESNIKeys information.
 
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 15]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
    For example, suppose a server operator has two alternatives.
    Alternative A is reliably accessible but does not support ESNI.
    Alternative B supports ESNI but is not reliably accessible.  The
    server operator could include a full esnikeys value in Alternative B,
    and mark Alternative A with esnikeys="" to indicate that fallback
    from B to A is allowed.
+
+
+
+
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 15]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
 7.3.  Interaction with other standards
 
@@ -888,16 +881,6 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    Per [RFC6895], please add the following entry to the data type range
    of the Resource Record (RR) TYPEs registry:
 
-
-
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 16]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
           +----------+------------------------+-----------------+
           | TYPE     | Meaning                | Reference       |
           +----------+------------------------+-----------------+
@@ -906,6 +889,14 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
    Per [Attrleaf], please add the following entries to the DNS
    Underscore Global Scoped Entry Registry:
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 16]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
       +----------+------------+-------------------+-----------------+
       | RR TYPE  | _NODE NAME | Meaning           | Reference       |
@@ -944,16 +935,6 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/info/rfc7838>.
 
-
-
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 17]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
    [AltSvcSNI]
               Bishop, M., "The "SNI" Alt-Svc Parameter", draft-bishop-
               httpbis-sni-altsvc-02 (work in progress), May 2018.
@@ -962,6 +943,16 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
               Crocker, D., "DNS Scoped Data Through "Underscore" Naming
               of Attribute Leaves", draft-ietf-dnsop-attrleaf-16 (work
               in progress), November 2018.
+
+
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 17]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
    [base64]   Josefsson, S., "The Base16, Base32, and Base64 Data
               Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
@@ -1000,16 +991,6 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-
-
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 18]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
    [RFC2181]  Elz, R. and R. Bush, "Clarifications to the DNS
               Specification", RFC 2181, DOI 10.17487/RFC2181, July 1997,
               <https://www.rfc-editor.org/info/rfc2181>.
@@ -1017,6 +998,17 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    [RFC3597]  Gustafsson, A., "Handling of Unknown DNS Resource Record
               (RR) Types", RFC 3597, DOI 10.17487/RFC3597, September
               2003, <https://www.rfc-editor.org/info/rfc3597>.
+
+
+
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 18]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
    [RFC6066]  Eastlake 3rd, D., "Transport Layer Security (TLS)
               Extensions: Extension Definitions", RFC 6066,
@@ -1056,16 +1048,6 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <https://www.rfc-editor.org/info/rfc7230>.
 
-
-
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 19]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
    [I-D.draft-bellis-dnsop-http-record-00]
               Bellis, R., "A DNS Resource Record for HTTP", draft-
               bellis-dnsop-http-record-00 (work in progress), November
@@ -1075,6 +1057,14 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
               Finch, T., Hunt, E., Dijk, P., Eden, A., and W. Mekking,
               "Address-specific DNS aliases (ANAME)", draft-ietf-dnsop-
               aname-03 (work in progress), April 2019.
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 19]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
    [RFC2782]  Gulbrandsen, A., Vixie, P., and L. Esibov, "A DNS RR for
               specifying the location of services (DNS SRV)", RFC 2782,
@@ -1113,15 +1103,6 @@ A.1.  Differences from the SRV RRTYPE
       allows the privacy improvements related to SNI selection in
       [AltSvcSNI] and [ESNI].
 
-
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 20]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
    o  Using SRV records would not allow a client to skip processing of
       the Alt-Svc information in a subsequent connection, so it does not
       confer a performance advantage.
@@ -1131,6 +1112,15 @@ A.2.  Differences from the proposed HTTP record
    Unlike [I-D.draft-bellis-dnsop-http-record-00], this approach is
    extensible to cover Alt-Svc and ESNIKeys use-cases.  Like that
    proposal, this addresses the zone apex CNAME challenge.
+
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 20]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
    Like that proposal it remains necessary to continue to include
    address records at the zone apex for legacy clients.
@@ -1167,17 +1157,6 @@ A.4.  Differences from the proposed ESNIKEYS record
    Unlike ESNIKEYS, this is focused on the specific case of HTTPS,
    although this approach could be extended for other protocols.
 
-
-
-
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 21]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
 A.5.  SNI Alt-Svc parameter
 
    Defining an Alt-Svc sni= parameter (such as from [AltSvcSNI]) would
@@ -1187,6 +1166,17 @@ A.5.  SNI Alt-Svc parameter
    precluding HTTPSSVC from being used with an sni= parameter if one
    were to be defined, but it is not included here to reduce scope,
    complexity, and additional potential security and tracking risks.
+
+
+
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 21]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
+
 
 Appendix B.  Design Considerations and Open Issues
 
@@ -1222,18 +1212,6 @@ B.4.  Extensibility of SvcRecordType
    SvcRecordType values should be ignored (and perhaps should be
    switched to MUST be ignored)?
 
-
-
-
-
-
-
-
-Schwartz, et al.        Expires December 28, 2019              [Page 22]
-
-Internet-Draft             HTTPSSVC RR for DNS                 June 2019
-
-
 Authors' Addresses
 
    Ben Schwartz
@@ -1246,6 +1224,14 @@ Authors' Addresses
    Akamai Technologies
 
    Email: mbishop@evequefou.be
+
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 22]
+
+Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
    Erik Nygren
@@ -1285,4 +1271,18 @@ Authors' Addresses
 
 
 
-Schwartz, et al.        Expires December 28, 2019              [Page 23]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Schwartz, et al.        Expires December 30, 2019              [Page 23]

@@ -334,7 +334,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Schwartz, B., Bishop, M., and E. Nygren" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-nygren-httpbis-httpssvc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-26" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-28" />
   <meta name="dct.abstract" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.  Finally, it provides a way to indicate that the origin supports HTTPS without having to resort to redirects, allowing clients to remove HTTP from the bootstrapping process.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).   These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN). Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges." />
   <meta name="description" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.  Finally, it provides a way to indicate that the origin supports HTTPS without having to resort to redirects, allowing clients to remove HTTP from the bootstrapping process.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).   These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN). Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges." />
 
@@ -358,7 +358,7 @@ ul.toc li {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: December 28, 2019</td>
+<td class="left">Expires: December 30, 2019</td>
 <td class="right">E. Nygren</td>
 </tr>
 <tr>
@@ -367,7 +367,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">June 26, 2019</td>
+<td class="right">June 28, 2019</td>
 </tr>
 
     	
@@ -385,7 +385,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on December 28, 2019.</p>
+<p>This Internet-Draft will expire on December 30, 2019.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -556,7 +556,6 @@ svc3.example.net. 300 IN AAAA    2001:db8::3
 <p></p>
 
 <ul>
-<li>pri (<a href="#pri" class="xref">Section 3.2</a>): The value of this parameter is a numeric priority for ordering alternatives (with lower values preferable).  This is needed as RR set entries are unordered.</li>
 <li>sni (<a href="#sni" class="xref">Section 7.1</a>): An alternative cleartext SNI value to send when establishing a TLS connection.</li>
 <li>esnikeys (<a href="#esnikeys" class="xref">Section 7.2</a>): The ESNIKeys structure from Section 4.1 of <a href="#ESNI" class="xref">[ESNI]</a> for use in encrypting the actual origin hostname in the TLS handshake.</li>
 </ul>
@@ -578,8 +577,8 @@ svc3.example.net. 300 IN AAAA    2001:db8::3
 <a href="#rfc.section.2">2.</a> <a href="#the-httpssvc-record-type" id="the-httpssvc-record-type">The HTTPSSVC record type</a>
 </h1>
 <p id="rfc.section.2.p.1">The HTTPSSVC DNS resource record (RR) type (RRTYPE ???) is used to locate endpoints that can service an &#8220;https&#8221; origin.  The presentation format of the record is:</p>
-<p id="rfc.section.2.p.2">RRName TTL Class HTTPSSVC SvcRecordType SvcDomainName SvcFieldValue</p>
-<p id="rfc.section.2.p.3">where SvcRecordType is a numeric value of either 0 or 1, SvcDomainName is a domain name, and SvcFieldValue is a string present when SvcRecordType is 1.</p>
+<p id="rfc.section.2.p.2">RRName TTL Class HTTPSSVC SvcRecordType SvcDomainName \ SvcFieldPriority SvcFieldValue</p>
+<p id="rfc.section.2.p.3">where SvcRecordType is a numeric value of either 0 or 1, SvcDomainName is a domain name, SvcFieldPriority is a number in the range 0-65535, and SvcFieldValue is a string present when SvcRecordType is 1.</p>
 <p id="rfc.section.2.p.4">The algorithm for resolving HTTPSSVC records and associated address records is specified in <a href="#resolution" class="xref">Section 4.1</a>.</p>
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#httpssvc-rdata-wire-format" id="httpssvc-rdata-wire-format">HTTPSSVC RDATA Wire Format</a>
@@ -589,6 +588,7 @@ svc3.example.net. 300 IN AAAA    2001:db8::3
 
 <ul>
 <li>a 1 octet flag field for SvcRecordType, interpreted as an unsigned numeric value (0 to 255, with only values &#8220;0&#8221; and &#8220;1&#8221; defined here)</li>
+<li>a 2 octet field for SvcFieldPriority as an integer in network byte order.  If SvcRecordType is zero, this MUST be 0.</li>
 <li>a 1 octet length field for the SvcDomainName</li>
 <li>a 2 octet length field for the SvcFieldValue</li>
 <li>the uncompressed SvcDomainName byte string of the specified length (up to 253 characters)</li>
@@ -637,8 +637,8 @@ Alt-Svc: hq="svc.example.net:8003"; ma=3600, \
 </pre>
 <p id="rfc.section.2.5.p.4">They would also publish an HTTPSSVC DNS RRSet like</p>
 <pre>
-www.example.com. 3600 IN HTTPSSVC 1 svc.example.net. "hq=\":8003\" pri=0"
-                         HTTPSSVC 1 svc.example.net. "h2=\":8002\" pri=1"
+www.example.com. 3600 IN HTTPSSVC 1 svc.example.net. 0 "hq=\":8003\""
+                         HTTPSSVC 1 svc.example.net. 1 "h2=\":8002\""
 </pre>
 <p id="rfc.section.2.5.p.5">This data type can be represented as an Unknown RR as described in <a href="#RFC3597" class="xref">[RFC3597]</a>:</p>
 <pre>
@@ -659,11 +659,11 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#pri" id="pri">Multiple records and preference ordering</a>
 </h1>
-<p id="rfc.section.3.2.p.1">Server operators MAY publish multiple SvcRecordType &#8220;1&#8221; HTTPSSVC records as an RRSET.  When publishing an RRSET with multiple HTTPSSVC records, the server operator MUST set the overall TTL to the minimum of the &#8220;max age&#8221; values (following Section 5.2 of <a href="#RFC2181" class="xref">[RFC2181]</a>).</p>
+<p id="rfc.section.3.2.p.1">Server operators MAY publish multiple SvcRecordType &#8220;1&#8221; HTTPSSVC records as an RRSET.  When converting a collection of alt-values into an HTTPSSVC RRSET, the server operator MUST set the overall TTL to a value no larger than the minimum of the &#8220;max age&#8221; values (following Section 5.2 of <a href="#RFC2181" class="xref">[RFC2181]</a>).</p>
 <p id="rfc.section.3.2.p.2">Each RR MUST contain exactly one alt-value, as described in Section 3 of <a href="#AltSvc" class="xref">[AltSvc]</a>.</p>
-<p id="rfc.section.3.2.p.3">As RRs within an RRSET are explicitly unordered collections, a new &#8220;pri&#8221; alt-svc parameter is introduced to indicate priority.  The value of the &#8220;pri&#8221; parameter is an integer between 1 and 32767.  Clients MUST reject any alt-value with a specified priority outside of this range.  Alt-Svc alt-values with a smaller pri value should be given preference over alt-values with a larger pri value.</p>
-<p id="rfc.section.3.2.p.4">Alt-values received via HTTPS with unspecified priority are considered to have priority 0 (i.e. most preferred).  Alt-values received via DNS with unspecified priority are assigned priority 32767 (i.e. least preferred).</p>
-<p id="rfc.section.3.2.p.5">When receiving an RRSET containing multiple HTTPSSVC records with the same &#8220;pri&#8221; value, clients SHOULD apply a random shuffle within a priority level to the records before using them, to ensure randomized load-balancing.</p>
+<p id="rfc.section.3.2.p.3">As RRs within an RRSET are explicitly unordered collections, the SvcFieldPriority value is introduced to indicate priority.  HTTPSSVC RRs with a smaller SvcFieldPriority value SHOULD be given preference over RRs with a larger SvcFieldPriority value.</p>
+<p id="rfc.section.3.2.p.4">Alt-values received via HTTPS are preferred over any Alt-value received via DNS.</p>
+<p id="rfc.section.3.2.p.5">When receiving an RRSET containing multiple HTTPSSVC records with the same SvcFieldPriority value, clients SHOULD apply a random shuffle within a priority level to the records before using them, to ensure randomized load-balancing.</p>
 <h1 id="rfc.section.3.3">
 <a href="#rfc.section.3.3">3.3.</a> <a href="#constructing-alt-svc-equivalent-headers" id="constructing-alt-svc-equivalent-headers">Constructing Alt-Svc equivalent headers</a>
 </h1>
@@ -672,15 +672,14 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 
 <ol>
 <li>For each RR, the SvcDomainName MUST be inserted as the uri-host.</li>
-<li>The RRs SHOULD be ordered by &#8220;pri&#8221; values, with shuffling for equal &#8220;pri&#8221; values.  Clients MAY choose to further prioritize records where address records are immediately available for the record&#8217;s SvcDomainName.</li>
+<li>The RRs SHOULD be ordered by increasing SvcFieldPriority, with shuffling for equal SvcFieldPriority values.  Clients MAY choose to further prioritize records where address records are immediately available for the record&#8217;s SvcDomainName.</li>
 <li>The client SHOULD concatenate the thus-transformed-and-ordered SvcFieldValues in the RRSET, separated by commas.  (This is semantically equivalent to receiving multiple Alt-Svc HTTP response headers, according to Section 3.2.2 of <a href="#HTTP" class="xref">[HTTP]</a>).</li>
 </ol>
 <h1 id="rfc.section.3.4">
 <a href="#rfc.section.3.4">3.4.</a> <a href="#granularity-and-lifetime-control" id="granularity-and-lifetime-control">Granularity and lifetime control</a>
 </h1>
-<p id="rfc.section.3.4.p.1">Sending Alt-Svc over HTTP allows the server to tailor the Alt-Svc Field Value specifically to the client.  When using an HTTPSSVC DNS record, groups of clients will necessarily receive the same Alt-Svc Field Value.  Therefore, this standard is not suitable for servers that require single-client granularity in Alt-Svc.</p>
+<p id="rfc.section.3.4.p.1">Sending Alt-Svc over HTTP allows the server to tailor the Alt-Svc Field Value specifically to the client.  When using an HTTPSSVC DNS record, groups of clients will necessarily receive the same Alt-Svc Field Value.  Therefore, this standard is not suitable for uses that require single-client granularity in Alt-Svc.</p>
 <p id="rfc.section.3.4.p.2">Some DNS caching systems incorrectly extend the lifetime of DNS records beyond the stated TTL.  Server operators MUST NOT rely on HTTPSSVC records expiring on time, and MAY shorten the TTL to compensate.</p>
-<p id="rfc.section.3.4.p.3">Clients SHOULD (MAY?) prefer alternative service records received over HTTPS to those received via DNS.</p>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#client-behaviors" id="client-behaviors">Client behaviors</a>
 </h1>
