@@ -588,10 +588,10 @@ svc3.example.net. 300 IN AAAA    2001:db8::3
 
 <ul>
 <li>a 1 octet flag field for SvcRecordType, interpreted as an unsigned numeric value (0 to 255, with only values &#8220;0&#8221; and &#8220;1&#8221; defined here)</li>
+<li>a 1 octet length field for the SvcDomainName.  If SvcRecordType is &#8220;1&#8221;, a length of 0 indicates that uri-host is omitted.  Otherwise, this value MUST NOT be 0.</li>
+<li>the uncompressed SvcDomainName of the specified length, represented as a sequence of length-prefixed labels as in Section 3.1 of <a href="#RFC1035" class="xref">[RFC1035]</a>.</li>
 <li>a 2 octet field for SvcFieldPriority as an integer in network byte order.  If SvcRecordType is zero, this MUST be 0.</li>
-<li>a 1 octet length field for the SvcDomainName</li>
 <li>a 2 octet length field for the SvcFieldValue</li>
-<li>the uncompressed SvcDomainName byte string of the specified length (up to 253 characters)</li>
 <li>the SvcFieldValue byte string of the specified length (up to 65536 characters)</li>
 </ul>
 <p id="rfc.section.2.1.p.3">When SvcRecordType is 0, the length of SvcFieldValue SHOULD be 0 and clients MUST ignore the contents of non-empty SvcFieldValue fields.</p>
@@ -880,6 +880,11 @@ sni="_wildcard.example.com"
 <td class="reference"><b id="I-D.ietf-tls-tls13">[I-D.ietf-tls-tls13]</b></td>
 <td class="top">
 <a>Rescorla, E.</a>, "<a href="https://tools.ietf.org/html/draft-ietf-tls-tls13-28">The Transport Layer Security (TLS) Protocol Version 1.3</a>", Internet-Draft draft-ietf-tls-tls13-28, March 2018.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC1035">[RFC1035]</b></td>
+<td class="top">
+<a>Mockapetris, P.</a>, "<a href="https://tools.ietf.org/html/rfc1035">Domain names - implementation and specification</a>", STD 13, RFC 1035, DOI 10.17487/RFC1035, November 1987.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC2119">[RFC2119]</b></td>
