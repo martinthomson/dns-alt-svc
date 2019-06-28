@@ -306,9 +306,8 @@ ul.toc li {
 <link href="#rfc.section.5" rel="Chapter" title="5 DNS Server Behaviors">
 <link href="#rfc.section.6" rel="Chapter" title="6 Performance optimizations">
 <link href="#rfc.section.7" rel="Chapter" title="7 Extensions to enhance privacy">
-<link href="#rfc.section.7.1" rel="Chapter" title="7.1 Alt-Svc parameter for cleartext SNI value">
-<link href="#rfc.section.7.2" rel="Chapter" title="7.2 Alt-Svc parameter for ESNI keys">
-<link href="#rfc.section.7.3" rel="Chapter" title="7.3 Interaction with other standards">
+<link href="#rfc.section.7.1" rel="Chapter" title="7.1 Alt-Svc parameter for ESNI keys">
+<link href="#rfc.section.7.2" rel="Chapter" title="7.2 Interaction with other standards">
 <link href="#rfc.section.8" rel="Chapter" title="8 Security Considerations">
 <link href="#rfc.section.9" rel="Chapter" title="9 IANA Considerations">
 <link href="#rfc.section.10" rel="Chapter" title="10 Acknowledgements and Related Proposals">
@@ -445,11 +444,9 @@ ul.toc li {
 </li>
 <li>7.   <a href="#rfc.section.7">Extensions to enhance privacy</a>
 </li>
-<ul><li>7.1.   <a href="#rfc.section.7.1">Alt-Svc parameter for cleartext SNI value</a>
+<ul><li>7.1.   <a href="#rfc.section.7.1">Alt-Svc parameter for ESNI keys</a>
 </li>
-<li>7.2.   <a href="#rfc.section.7.2">Alt-Svc parameter for ESNI keys</a>
-</li>
-<li>7.3.   <a href="#rfc.section.7.3">Interaction with other standards</a>
+<li>7.2.   <a href="#rfc.section.7.2">Interaction with other standards</a>
 </li>
 </ul><li>8.   <a href="#rfc.section.8">Security Considerations</a>
 </li>
@@ -562,10 +559,7 @@ svc3.example.net. 300 IN AAAA    2001:db8::3
 <p id="rfc.section.1.4.p.1">This document also defines additional Alt-Svc parameters that can be used within SvcFieldValue:</p>
 <p></p>
 
-<ul>
-<li>sni (<a href="#sni" class="xref">Section 7.1</a>): An alternative cleartext SNI value to send when establishing a TLS connection.</li>
-<li>esnikeys (<a href="#esnikeys" class="xref">Section 7.2</a>): The ESNIKeys structure from Section 4.1 of <a href="#ESNI" class="xref">[ESNI]</a> for use in encrypting the actual origin hostname in the TLS handshake.</li>
-</ul>
+<ul><li>esnikeys (<a href="#esnikeys" class="xref">Section 7.1</a>): The ESNIKeys structure from Section 4.1 of <a href="#ESNI" class="xref">[ESNI]</a> for use in encrypting the actual origin hostname in the TLS handshake.</li></ul>
 <h1 id="rfc.section.1.5">
 <a href="#rfc.section.1.5">1.5.</a> <a href="#terminology" id="terminology">Terminology</a>
 </h1>
@@ -742,31 +736,19 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 <a href="#rfc.section.7">7.</a> <a href="#extensions-to-enhance-privacy" id="extensions-to-enhance-privacy">Extensions to enhance privacy</a>
 </h1>
 <h1 id="rfc.section.7.1">
-<a href="#rfc.section.7.1">7.1.</a> <a href="#sni" id="sni">Alt-Svc parameter for cleartext SNI value</a>
+<a href="#rfc.section.7.1">7.1.</a> <a href="#esnikeys" id="esnikeys">Alt-Svc parameter for ESNI keys</a>
 </h1>
-<p id="rfc.section.7.1.p.1">An Alt-Svc &#8220;sni&#8221; parameter is defined for specifying the cleartext SNI value to be sent when connecting to this alternative service.  When present, clients SHOULD send this SNI value when connecting to the alternative.</p>
-<p id="rfc.section.7.1.p.2">For example:</p>
-<pre>
-sni="_wildcard.example.com"
-</pre>
-<p id="rfc.section.7.1.p.3">would indicate that &#8220;_wildcard.example.com&#8221; should be sent when connecting to the corresponding alternative service.  For a large set of origin names covered by a wildcard cert, this can help hide which specific origin name is needed.</p>
-<p id="rfc.section.7.1.p.4">Because service operators control the HTTPSSVC record, this allows them to specify what information they need from the SNI value.</p>
-<p id="rfc.section.7.1.p.5">Servers MUST still be prepared for clients to continue to send an SNI value of the origin hostname.</p>
-<p id="rfc.section.7.1.p.6">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.</p>
+<p id="rfc.section.7.1.p.1">An Alt-Svc &#8220;esnikeys&#8221; parameter is defined for specifying ESNI keys corresponding to an alternative service.  The value of the parameter is an ESNIKeys structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a> or the empty string.  ESNI-aware clients SHOULD prefer alt-values with nonempty esnikeys.</p>
+<p id="rfc.section.7.1.p.2">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.</p>
+<p id="rfc.section.7.1.p.3">The Alt-Svc specification states that &#8220;the client MAY fall back to using the origin&#8221; in case of connection failure <a href="#AltSvc" class="xref">[AltSvc]</a>.  This behavior is not suitable for ESNI, because fallback would negate the privacy benefits of ESNI.</p>
+<p id="rfc.section.7.1.p.4">Accordingly, any connection attempt that uses ESNI MUST fall back only to another alt-value that also has the esnikeys parameter.  If the parameter&#8217;s value is the empty string, the client SHOULD connect as it would in the absence of any ESNIKeys information.</p>
+<p id="rfc.section.7.1.p.5">For example, suppose a server operator has two alternatives.  Alternative A is reliably accessible but does not support ESNI.  Alternative B supports ESNI but is not reliably accessible.  The server operator could include a full esnikeys value in Alternative B, and mark Alternative A with esnikeys=&#8221;&#8221; to indicate that fallback from B to A is allowed.</p>
 <h1 id="rfc.section.7.2">
-<a href="#rfc.section.7.2">7.2.</a> <a href="#esnikeys" id="esnikeys">Alt-Svc parameter for ESNI keys</a>
+<a href="#rfc.section.7.2">7.2.</a> <a href="#interaction-with-other-standards" id="interaction-with-other-standards">Interaction with other standards</a>
 </h1>
-<p id="rfc.section.7.2.p.1">An Alt-Svc &#8220;esnikeys&#8221; parameter is defined for specifying ESNI keys corresponding to an alternative service.  The value of the parameter is an ESNIKeys structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a> or the empty string.  ESNI-aware clients SHOULD prefer alt-values with nonempty esnikeys.</p>
-<p id="rfc.section.7.2.p.2">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.</p>
-<p id="rfc.section.7.2.p.3">The Alt-Svc specification states that &#8220;the client MAY fall back to using the origin&#8221; in case of connection failure <a href="#AltSvc" class="xref">[AltSvc]</a>.  This behavior is not suitable for ESNI, because fallback would negate the privacy benefits of ESNI.</p>
-<p id="rfc.section.7.2.p.4">Accordingly, any connection attempt that uses ESNI MUST fall back only to another alt-value that also has the esnikeys parameter.  If the parameter&#8217;s value is the empty string, the client SHOULD connect as it would in the absence of any ESNIKeys information.</p>
-<p id="rfc.section.7.2.p.5">For example, suppose a server operator has two alternatives.  Alternative A is reliably accessible but does not support ESNI.  Alternative B supports ESNI but is not reliably accessible.  The server operator could include a full esnikeys value in Alternative B, and mark Alternative A with esnikeys=&#8221;&#8221; to indicate that fallback from B to A is allowed.</p>
-<h1 id="rfc.section.7.3">
-<a href="#rfc.section.7.3">7.3.</a> <a href="#interaction-with-other-standards" id="interaction-with-other-standards">Interaction with other standards</a>
-</h1>
-<p id="rfc.section.7.3.p.1">The purpose of this standard is to reduce connection latency and improve user privacy.  Server operators implementing this standard SHOULD also implement TLS 1.3 <a href="#I-D.ietf-tls-tls13" class="xref">[I-D.ietf-tls-tls13]</a> and OCSP Stapling <a href="#RFC6066" class="xref">[RFC6066]</a>, both of which confer substantial performance and privacy benefits when used in combination with HTTPSSVC records.</p>
-<p id="rfc.section.7.3.p.2">To realize the greatest privacy benefits, this proposal is intended for use with a privacy-preserving DNS transport (like DNS over TLS <a href="#RFC7858" class="xref">[RFC7858]</a> or DNS over HTTPS <a href="#DOH" class="xref">[DOH]</a>).  However, performance improvements, and some modest privacy improvements, are possible without the use of those standards.</p>
-<p id="rfc.section.7.3.p.3">This RRType could be extended to support schemes other than &#8220;https&#8221;.  Any such scheme MUST have an entry under the HTTPSSVC RRType in the IANA DNS Underscore Global Scoped Entry Registry <a href="#Attrleaf" class="xref">[Attrleaf]</a> The scheme SHOULD have an entry in the IANA URI Schemes Registry <a href="#RFC7595" class="xref">[RFC7595]</a>.  The scheme SHOULD be one for which Alt-Svc is defined.</p>
+<p id="rfc.section.7.2.p.1">The purpose of this standard is to reduce connection latency and improve user privacy.  Server operators implementing this standard SHOULD also implement TLS 1.3 <a href="#I-D.ietf-tls-tls13" class="xref">[I-D.ietf-tls-tls13]</a> and OCSP Stapling <a href="#RFC6066" class="xref">[RFC6066]</a>, both of which confer substantial performance and privacy benefits when used in combination with HTTPSSVC records.</p>
+<p id="rfc.section.7.2.p.2">To realize the greatest privacy benefits, this proposal is intended for use with a privacy-preserving DNS transport (like DNS over TLS <a href="#RFC7858" class="xref">[RFC7858]</a> or DNS over HTTPS <a href="#DOH" class="xref">[DOH]</a>).  However, performance improvements, and some modest privacy improvements, are possible without the use of those standards.</p>
+<p id="rfc.section.7.2.p.3">This RRType could be extended to support schemes other than &#8220;https&#8221;.  Any such scheme MUST have an entry under the HTTPSSVC RRType in the IANA DNS Underscore Global Scoped Entry Registry <a href="#Attrleaf" class="xref">[Attrleaf]</a> The scheme SHOULD have an entry in the IANA URI Schemes Registry <a href="#RFC7595" class="xref">[RFC7595]</a>.  The scheme SHOULD be one for which Alt-Svc is defined.</p>
 <h1 id="rfc.section.8">
 <a href="#rfc.section.8">8.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
