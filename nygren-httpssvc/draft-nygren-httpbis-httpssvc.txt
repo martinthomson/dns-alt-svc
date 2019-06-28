@@ -139,6 +139,8 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
      B.2.  Applicability to other schemes  . . . . . . . . . . . . .  22
      B.3.  Wire Format . . . . . . . . . . . . . . . . . . . . . . .  22
      B.4.  Extensibility of SvcRecordType  . . . . . . . . . . . . .  22
+     B.5.  Where to include Priority . . . . . . . . . . . . . . . .  23
+     B.6.  Whether to include Weight . . . . . . . . . . . . . . . .  23
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  23
 
 1.  Introduction
@@ -158,8 +160,6 @@ Internet-Draft             HTTPSSVC RR for DNS                 June 2019
    situations beyond this within the DNS requires learning additional
    information, and it is highly desirable to minimize the number of
    round-trip and lookups required to learn this additional information.
-
-
 
 
 
@@ -1234,6 +1234,23 @@ Schwartz, et al.        Expires December 30, 2019              [Page 22]
 Internet-Draft             HTTPSSVC RR for DNS                 June 2019
 
 
+B.5.  Where to include Priority
+
+   The SvcFieldPriority could alternately be included as a pri= Alt-Svc
+   attribute.  It wouldn't be applicable for Alt-Svc returned via HTTP,
+   but it is also not necessarily needed by DNS servers.  It is also not
+   used when SvcRecordType=0.  A related question is whether to omit it
+   from the textual representation when SvcRecordType=0.  Regardless,
+   having a series of sequential numeric values in the textual
+   representation has risk of user error, especially as MX, SRV, and
+   others all have their own variations here.
+
+B.6.  Whether to include Weight
+
+   Some other similar mechanisms such as SRV have a weight in-addition
+   to priority.  That is excluded here for simplicity.  It could always
+   be added as an optional Alt-Svc attribute.
+
 Authors' Addresses
 
    Ben Schwartz
@@ -1252,23 +1269,6 @@ Authors' Addresses
    Akamai Technologies
 
    Email: erik+ietf@nygren.org
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
