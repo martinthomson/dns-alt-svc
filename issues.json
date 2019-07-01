@@ -1,6 +1,168 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/30",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/30/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/30/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/30/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/30",
+    "id": 462197052,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjkyOTYwNTUy",
+    "number": 30,
+    "title": "Minor textual polish",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-06-28T20:31:36Z",
+    "updated_at": "2019-07-01T14:53:39Z",
+    "closed_at": "2019-07-01T14:53:36Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/30",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/30",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/30.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/30.patch"
+    },
+    "body": "Fixing typos, improving consistency, and removing trailing whitespace that makes the linter complain."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/29",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/29/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/29/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/29/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/29",
+    "id": 462183837,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjkyOTQ5Nzgz",
+    "number": 29,
+    "title": "Remove sni= parameter",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-06-28T19:49:17Z",
+    "updated_at": "2019-06-28T19:57:54Z",
+    "closed_at": "2019-06-28T19:57:51Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/29",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/29",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/29.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/29.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/28",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/28/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/28/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/28/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/28",
+    "id": 462099783,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjkyODgyOTEy",
+    "number": 28,
+    "title": "Add discussion to Open Issues on Priority/Weight",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-06-28T15:51:32Z",
+    "updated_at": "2019-06-28T16:02:05Z",
+    "closed_at": "2019-06-28T16:02:02Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/28",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/28",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/28.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/28.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/27",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/27/labels{/name}",
@@ -539,7 +701,7 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2019-06-20T15:27:12Z",
-    "updated_at": "2019-06-20T18:39:30Z",
+    "updated_at": "2019-06-28T19:58:58Z",
     "closed_at": "2019-06-20T18:39:30Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1133,7 +1295,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-05-24T21:29:24Z",
-    "updated_at": "2019-06-17T21:30:10Z",
+    "updated_at": "2019-06-28T19:58:11Z",
     "closed_at": "2019-06-17T21:30:10Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1457,7 +1619,7 @@
     "milestone": null,
     "comments": 2,
     "created_at": "2019-05-16T13:33:59Z",
-    "updated_at": "2019-06-28T15:44:55Z",
+    "updated_at": "2019-07-01T14:53:37Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
