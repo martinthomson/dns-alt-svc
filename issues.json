@@ -1,6 +1,264 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/35",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/35/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/35/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/35/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/35",
+    "id": 464626371,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjk0ODY0OTI1",
+    "number": 35,
+    "title": "Remove redundancy from the wire format.",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-05T12:49:45Z",
+    "updated_at": "2019-07-05T12:49:45Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/35",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/35",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/35.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/35.patch"
+    },
+    "body": "Address most issues in #32 \r\n\r\nWe should still land:\r\n\r\n\r\n## Special cases for SvcDomainName\r\n\r\nWhen SvcRecordType=1, there are some special cases to handle\r\nfor SvcDomainName:\r\n* How to indicate it should be equivalent to the RRNAME?\r\n* How to indicate it should be equivalent to the hostname?\r\n* What happens if it has the value \".\"?  SRV and MX have this\r\n  mean \"no service available."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/34",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/34/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/34/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/34/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/34",
+    "id": 463930077,
+    "node_id": "MDU6SXNzdWU0NjM5MzAwNzc=",
+    "number": 34,
+    "title": "HTTPSSVC: Be more clear on chaining behaviors",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-03T20:03:36Z",
+    "updated_at": "2019-07-03T20:03:36Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "From Ilari Liusvaara <ilariliusvaara@welho.com> \r\n\r\n\r\n- Is there any envisioned use for chained HTTPSSVC records, except\r\n  for type 0 record pointing to type 1 record?\r\n- The MUST requirement to have only one type 0 record and then\r\n  SHOULD behave non-deterministically if this is violated is pretty\r\n  odd."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/33",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/33/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/33/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/33/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/33",
+    "id": 463929846,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjk0MzExMTM5",
+    "number": 33,
+    "title": "Suggestions from Ilari: Update tls13 reference.  Switch from 302 to 307 redirect.",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-03T20:02:58Z",
+    "updated_at": "2019-07-03T20:09:09Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/33",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/33",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/33.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/33.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/32",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/32/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/32/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/32/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/32",
+    "id": 463929079,
+    "node_id": "MDU6SXNzdWU0NjM5MjkwNzk=",
+    "number": 32,
+    "title": "Remove ambiguities/redundancies in encoding",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2019-07-03T20:00:45Z",
+    "updated_at": "2019-07-05T12:47:48Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "From Ilari Liusvaara <ilariliusvaara@welho.com> \r\n\r\n- What if SvcDomainName has length different from its length field?\r\n  DNS wire-form names are self-delimiting (DNS message parsing relies\r\n  on this).\r\n- What does it mean for SvcDomainName to be absent in alternative\r\n  service form? I would guess it means \"same as RRNAME\".\r\n- Why there is length field for SvcFieldValue? Why not let it run to\r\n  the end of record?\r\n- 2 byte length field can encode values up to 65535, not 65536.\r\n  And the length of SvcFieldValue can not be that big, because\r\n  RRDATA and DNS message length limits (both 65535) would be hit."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/31",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/31/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/31/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/31/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/31",
+    "id": 463826173,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjk0MjI4NDI4",
+    "number": 31,
+    "title": "Replace typos of \"HTTPSVC\" with \"HTTPSSVC\"",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-03T15:43:57Z",
+    "updated_at": "2019-07-03T16:00:36Z",
+    "closed_at": "2019-07-03T16:00:36Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/31",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/31",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/31.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/31.patch"
+    },
+    "body": "Of course I noticed this just as we submitted the -00."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/30",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/30/labels{/name}",
@@ -1413,7 +1671,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/6.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/5",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
