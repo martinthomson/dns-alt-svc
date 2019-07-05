@@ -676,7 +676,7 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 <p></p>
 
 <ol>
-<li>For each RR, the SvcDomainName MUST be inserted as the uri-host.  If SvcDomainName is empty (&#8220;&#8221;) then the RRNAME for the HTTPSSVC record MUST be inserted as the uri-host.</li>
+<li>For each RR, the SvcDomainName MUST be inserted as the uri-host.  If SvcDomainName is empty (&#8220;&#8221;) then the RRNAME for the final HTTPSSVC record MUST be inserted as the uri-host.  (In the case of a CNAME or a HTTPSSVC SvcRecordType &#8220;0&#8221; record pointing to an HTTPSSVC record with SvcRecordType &#8220;1&#8221; and SvcDomainName &#8220;&#8221; then it is RRNAME for the terminal HTTPSSVC record that must be inserted as the uri-host.)</li>
 <li>The RRs SHOULD be ordered by increasing SvcFieldPriority, with shuffling for equal SvcFieldPriority values.  Clients MAY choose to further prioritize alt-values where address records are immediately available for the alt-value&#8217;s SvcDomainName.</li>
 <li>The client SHOULD concatenate the thus-transformed-and-ordered SvcFieldValues in the RRSET, separated by commas.  (This is semantically equivalent to receiving multiple Alt-Svc HTTP response headers, according to Section 3.2.2 of <a href="#HTTP" class="xref">[HTTP]</a>).</li>
 </ol>
