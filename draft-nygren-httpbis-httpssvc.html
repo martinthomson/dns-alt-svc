@@ -335,7 +335,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Schwartz, B., Bishop, M., and E. Nygren" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-nygren-httpbis-httpssvc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-03" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-05" />
   <meta name="dct.abstract" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.  Finally, it provides a way to indicate that the origin supports HTTPS without having to resort to redirects, allowing clients to remove HTTP from the bootstrapping process.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).   These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges." />
   <meta name="description" content="This document specifies an &#8220;HTTPSSVC&#8221; DNS resource record type to facilitate the lookup of information needed to make connections for HTTPS URIs.  The HTTPSSVC DNS RR mechanism allows an HTTPS origin hostname to be served from multiple network services, each with associated parameters (such as transport protocol and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.  Finally, it provides a way to indicate that the origin supports HTTPS without having to resort to redirects, allowing clients to remove HTTP from the bootstrapping process.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).   These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges." />
 
@@ -359,7 +359,7 @@ ul.toc li {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: January 4, 2020</td>
+<td class="left">Expires: January 6, 2020</td>
 <td class="right">E. Nygren</td>
 </tr>
 <tr>
@@ -368,7 +368,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">July 3, 2019</td>
+<td class="right">July 5, 2019</td>
 </tr>
 
     	
@@ -386,7 +386,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 4, 2020.</p>
+<p>This Internet-Draft will expire on January 6, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -603,10 +603,17 @@ svc3.example.net. 300 IN AAAA    2001:db8::3
 <p></p>
 
 <ol>
-<li>If the scheme is &#8220;https&#8221; and the port is 443, then the RRName is equal to the origin host name.  Otherwise the RRName is represented by prefixing the port and scheme with &#8220;_&#8221;, then concatenating them with the host name, resulting in a domain name like &#8220;_832._https.www.example.com.&#8221;.</li>
+<li>If the scheme is &#8220;https&#8221; and the port is 443, then the RRName is equal to the origin host name.  Otherwise the RRName is represented by prefixing the port and scheme with &#8220;_&#8221;, then concatenating them with the host name, resulting in a domain name like &#8220;_8443._https.www.example.com.&#8221;.</li>
 <li>When a prior CNAME or HTTPSSVC record has aliased to an HTTPSSVC record, RRName shall be the name of the alias target.</li>
 </ol>
 <p id="rfc.section.2.2.p.3">Note that none of these forms alter the HTTPS origin or authority.  For example, clients MUST continue to validate TLS certificate hostnames based on the origin host.</p>
+<p id="rfc.section.2.2.p.4">As an example for schemes and ports other than &#8220;https&#8221; and port 443:</p>
+<pre>
+_8443._wss.api.example.com. 2H IN HTTPSSVC 0 0 svc4.example.net.
+svc4.example.net.  2H  IN HTTPSSVC 1 3 svc4.example.net. "h2=\":8004\" \
+                                   esnikeys=\"...\""
+</pre>
+<p id="rfc.section.2.2.p.5">would indicate that &#8220;wss://api.example.com:8443&#8221; is aliased to use HTTP/2 service endpoints offered as &#8220;svc4.example.net&#8221; on port 8004.</p>
 <h1 id="rfc.section.2.3">
 <a href="#rfc.section.2.3">2.3.</a> <a href="#svcrecordtype" id="svcrecordtype">SvcRecordType</a>
 </h1>
@@ -802,7 +809,7 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 <a href="#rfc.section.10">10.</a> <a href="#acknowledgements-and-related-proposals" id="acknowledgements-and-related-proposals">Acknowledgements and Related Proposals</a>
 </h1>
 <p id="rfc.section.10.p.1">There have been a wide range of proposed solutions over the years to the &#8220;CNAME at the Zone Apex&#8221; challenge proposed.  These include <a href="#I-D.draft-bellis-dnsop-http-record-00" class="xref">[I-D.draft-bellis-dnsop-http-record-00]</a>, <a href="#I-D.draft-ietf-dnsop-aname-03" class="xref">[I-D.draft-ietf-dnsop-aname-03]</a>, and others.</p>
-<p id="rfc.section.10.p.2">Thank you to Ian Swett, Ralf Weber, Jon Reed, and others for their feedback and suggestions on this draft.</p>
+<p id="rfc.section.10.p.2">Thank you to Ian Swett, Ralf Weber, Jon Reed, Martin Thompson and others for their feedback and suggestions on this draft.</p>
 <h1 id="rfc.references">
 <a href="#rfc.references">11.</a> References</h1>
 <h1 id="rfc.references.1">
