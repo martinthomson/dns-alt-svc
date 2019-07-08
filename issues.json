@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/36",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/36/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/36/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/36/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/36",
+    "id": 464856375,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjk1MDQwNzEz",
+    "number": 36,
+    "title": "Missing semicolons in Alt-Svc records",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-06T13:50:35Z",
+    "updated_at": "2019-07-06T13:50:35Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/36",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/36",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/36.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/36.patch"
+    },
+    "body": "There should be a semicolon before esnikeys"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/35",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/35/labels{/name}",
@@ -43,7 +97,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-07-05T12:49:45Z",
-    "updated_at": "2019-07-06T13:15:13Z",
+    "updated_at": "2019-07-08T12:19:44Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1617,7 +1671,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/7.patch"
     },
     "body": "EDIT: New approach: This handles nonstandard HTTP ports in the same way as HSTS."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/6",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1671,10 +1728,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/6.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/5",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
