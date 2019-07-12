@@ -1,6 +1,204 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/43",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/43/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/43/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/43/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/43",
+    "id": 467591852,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mjk3MjE2MzY2",
+    "number": 43,
+    "title": "fix title",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-12T20:39:24Z",
+    "updated_at": "2019-07-12T20:39:24Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/43",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/43",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/43.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/43.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/42",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/42/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/42/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/42/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/42",
+    "id": 465756872,
+    "node_id": "MDU6SXNzdWU0NjU3NTY4NzI=",
+    "number": 42,
+    "title": "HTTPSSVC: Security considerations: add note that unauthenticated",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-09T12:37:48Z",
+    "updated_at": "2019-07-09T12:37:48Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "We should add a note to Security Considerations indicating that HTTPSSVC is unauthenticated in many cases (ie, unless DNSSEC is present and verified) and thus care should be taken around Alt-Svc parameters that imply trust.\r\n\r\nI wonder if we should be explicit to say that Alt-Svc parameters must opt-in to indicate that they can be used in HTTPSSVC?  (As even with \"ma\" we've had to define constraints.)\r\n\r\n"
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/41",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/41/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/41/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/41/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/41",
+    "id": 465754664,
+    "node_id": "MDU6SXNzdWU0NjU3NTQ2NjQ=",
+    "number": 41,
+    "title": "HTTPSSVC: Feedback from Mark Andrews ",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-09T12:32:54Z",
+    "updated_at": "2019-07-09T12:32:54Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "From Mark Andrews:\r\n\r\n================================\r\n\r\nIntroductory Example: The example record\r\n\r\nexample.com.      2H  IN HTTPSSVC 0 0 svc.example.net.\r\n\r\ndoes not match the description of the record (missing last field). It should be:\r\n\r\nexample.com.      7200  IN HTTPSSVC 0 0 svc.example.net. “”\r\n\r\nSimilarly in 2.4.  HTTPSSVC records: alias form\r\n\r\nAlso don’t use 2H for the TTL.  While some servers will accept it, it is not RFC compliant.\r\n\r\nUnless these is a real reason for the record to be class agnostic please specify that\r\nit is class IN specific."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/40",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/40/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/40/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/40/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/40",
+    "id": 465524809,
+    "node_id": "MDU6SXNzdWU0NjU1MjQ4MDk=",
+    "number": 40,
+    "title": "HTTPSSVC: Comments from Brian Dickson",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-09T01:24:04Z",
+    "updated_at": "2019-07-09T01:24:04Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "One minor issue is that wherever CNAME is referenced, you probably want to also include a reference to DNAME, including any implied or explicit chaining of CNAMEs (which could be sequences of CNAME and/or DNAME modulo their respective behavior.)\r\n\r\nYou might also want to explain the motivation for keeping the FQDN separate from the alt-svc parameters (to make it trivial to parse, and thus to do DNS substitutions like CNAME/DNAME). It is there, just not as up-front as it could be.\r\n\r\n\r\nIt might be a little clearer if the list of alt-svc values (h2, h3, etc) that can occur were to be listed in the document. In particular, the association between h3 and QUIC is inferred but not explicitly called out (at least not that I noticed.)\r\n"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/39",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/39/labels{/name}",
@@ -41,9 +239,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 7,
     "created_at": "2019-07-08T20:09:27Z",
-    "updated_at": "2019-07-08T20:09:27Z",
+    "updated_at": "2019-07-10T14:34:41Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "Similar to how HSTS super cookies are used to track users, I think the Alt SVC lifetime instructions could be used to create implicit long term identifiers for users.  \r\n\r\nB/c of local DNS caching, its unlikely that popular (e.g. Apple) protections for HSTS cookies could be applied here (since the context of the DNS request would be lost, there'd be no sense of 1p / 3p requests).\r\n\r\nI'm not sure how this issue could be addressed given then proposal, but would be happy to think through one.  This is less a problem with the existing markup / header ALT-SVC options, since the browser can control the life time of those."
@@ -346,7 +544,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -355,8 +553,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-07-03T20:02:58Z",
-    "updated_at": "2019-07-03T20:09:09Z",
-    "closed_at": null,
+    "updated_at": "2019-07-08T21:03:21Z",
+    "closed_at": "2019-07-08T21:03:15Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/33",
@@ -400,17 +598,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 4,
+    "comments": 5,
     "created_at": "2019-07-03T20:00:45Z",
-    "updated_at": "2019-07-05T12:47:48Z",
-    "closed_at": null,
+    "updated_at": "2019-07-08T21:02:19Z",
+    "closed_at": "2019-07-08T21:02:19Z",
     "author_association": "COLLABORATOR",
     "body": "From Ilari Liusvaara <ilariliusvaara@welho.com> \r\n\r\n- What if SvcDomainName has length different from its length field?\r\n  DNS wire-form names are self-delimiting (DNS message parsing relies\r\n  on this).\r\n- What does it mean for SvcDomainName to be absent in alternative\r\n  service form? I would guess it means \"same as RRNAME\".\r\n- Why there is length field for SvcFieldValue? Why not let it run to\r\n  the end of record?\r\n- 2 byte length field can encode values up to 65535, not 65536.\r\n  And the length of SvcFieldValue can not be that big, because\r\n  RRDATA and DNS message length limits (both 65535) would be hit."
   },
@@ -1449,7 +1647,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/14.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/13",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1665,10 +1866,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/10.patch"
     },
     "body": "This gives clients an opt-out in the rare cases where\r\nHTTPSSVC would impair performance, and also gives\r\nserver admins a clear way to avoid these cases."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/9",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
