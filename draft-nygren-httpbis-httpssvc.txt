@@ -5,12 +5,12 @@
 HTTP Working Group                                           B. Schwartz
 Internet-Draft                                                    Google
 Intended status: Standards Track                               M. Bishop
-Expires: January 9, 2020                                       E. Nygren
+Expires: February 21, 2020                                     E. Nygren
                                                      Akamai Technologies
-                                                            July 8, 2019
+                                                         August 20, 2019
 
 
- HTTPSSVC service location and parameter specification via the DNS (DNS
+  HTTPS service location and parameter specification via the DNS (DNS
                                HTTPSSVC)
                   draft-nygren-httpbis-httpssvc-latest
 
@@ -53,9 +53,9 @@ Status of This Memo
 
 
 
-Schwartz, et al.         Expires January 9, 2020                [Page 1]
+Schwartz, et al.        Expires February 21, 2020               [Page 1]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    Internet-Drafts are working documents of the Internet Engineering
@@ -68,7 +68,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 9, 2020.
+   This Internet-Draft will expire on February 21, 2020.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Schwartz, et al.         Expires January 9, 2020                [Page 2]
+Schwartz, et al.        Expires February 21, 2020               [Page 2]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
      4.2.  HTTP Strict Transport Security  . . . . . . . . . . . . .  13
@@ -165,9 +165,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020                [Page 3]
+Schwartz, et al.        Expires February 21, 2020               [Page 3]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    number of round-trip and lookups required to learn this additional
@@ -221,9 +221,9 @@ svc3.example.net. 300 IN AAAA    2001:db8::3
 
 
 
-Schwartz, et al.         Expires January 9, 2020                [Page 4]
+Schwartz, et al.        Expires February 21, 2020               [Page 4]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
       does not provide any way to tie together multiple RRs for the same
@@ -277,9 +277,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020                [Page 5]
+Schwartz, et al.        Expires February 21, 2020               [Page 5]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    HTTPSSVC, A, AAAA, and CNAME records in the Additional Section to
@@ -333,9 +333,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020                [Page 6]
+Schwartz, et al.        Expires February 21, 2020               [Page 6]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    o  The "origin server" is the server that the client would reach when
@@ -389,9 +389,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020                [Page 7]
+Schwartz, et al.        Expires February 21, 2020               [Page 7]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    o  the SvcFieldValue byte string, consuming the remainder of the
@@ -445,9 +445,9 @@ svc4.example.net.  2H  IN HTTPSSVC 1 3 svc4.example.net. "h2=\":8004\"; \
 
 
 
-Schwartz, et al.         Expires January 9, 2020                [Page 8]
+Schwartz, et al.        Expires February 21, 2020               [Page 8]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
 2.4.  HTTPSSVC records: alias form
@@ -501,9 +501,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020                [Page 9]
+Schwartz, et al.        Expires February 21, 2020               [Page 9]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    Alt-Svc: h3="svc.example.net:8003"; ma=3600, \
@@ -557,9 +557,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 10]
+Schwartz, et al.        Expires February 21, 2020              [Page 10]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    record, clients MUST discard any records that contain a "persist"
@@ -613,9 +613,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 11]
+Schwartz, et al.        Expires February 21, 2020              [Page 11]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    3.  The client SHOULD concatenate the thus-transformed-and-ordered
@@ -669,9 +669,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 12]
+Schwartz, et al.        Expires February 21, 2020              [Page 12]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    Some possible optimizations are discussed in Section 6 to reduce
@@ -725,9 +725,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 13]
+Schwartz, et al.        Expires February 21, 2020              [Page 13]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
 4.3.  Cache interaction
@@ -781,9 +781,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 14]
+Schwartz, et al.        Expires February 21, 2020              [Page 14]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    of the HTTPSSVC records returned has SvcRecordType=0, (2) its
@@ -837,9 +837,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 15]
+Schwartz, et al.        Expires February 21, 2020              [Page 15]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    both of which confer substantial performance and privacy benefits
@@ -893,9 +893,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 16]
+Schwartz, et al.        Expires February 21, 2020              [Page 16]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    Per [AltSvc], please add the following entries to the HTTP Alt-Svc
@@ -941,7 +941,7 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
    [ESNI]     Rescorla, E., Oku, K., Sullivan, N., and C. Wood,
               "Encrypted Server Name Indication for TLS 1.3", draft-
-              ietf-tls-esni-03 (work in progress), March 2019.
+              ietf-tls-esni-04 (work in progress), July 2019.
 
 
 
@@ -949,9 +949,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 17]
+Schwartz, et al.        Expires February 21, 2020              [Page 17]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    [HappyEyeballsV2]
@@ -1005,9 +1005,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 18]
+Schwartz, et al.        Expires February 21, 2020              [Page 18]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
@@ -1061,9 +1061,9 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 19]
+Schwartz, et al.        Expires February 21, 2020              [Page 19]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
 Appendix A.  Additional examples
@@ -1117,9 +1117,9 @@ B.1.  Differences from the SRV RRTYPE
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 20]
+Schwartz, et al.        Expires February 21, 2020              [Page 20]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    o  Using SRV records would not allow a client to skip processing of
@@ -1173,9 +1173,9 @@ B.4.  Differences from the proposed ESNI record
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 21]
+Schwartz, et al.        Expires February 21, 2020              [Page 21]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
 B.5.  SNI Alt-Svc parameter
@@ -1229,9 +1229,9 @@ C.5.  Where to include Priority
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 22]
+Schwartz, et al.        Expires February 21, 2020              [Page 22]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    from the textual representation when SvcRecordType=0.  Regardless,
@@ -1285,9 +1285,9 @@ Authors' Addresses
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 23]
+Schwartz, et al.        Expires February 21, 2020              [Page 23]
 
-Internet-Draft             HTTPSSVC RR for DNS                 July 2019
+Internet-Draft             HTTPSSVC RR for DNS               August 2019
 
 
    Erik Nygren
@@ -1341,4 +1341,4 @@ Internet-Draft             HTTPSSVC RR for DNS                 July 2019
 
 
 
-Schwartz, et al.         Expires January 9, 2020               [Page 24]
+Schwartz, et al.        Expires February 21, 2020              [Page 24]
