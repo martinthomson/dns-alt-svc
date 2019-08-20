@@ -1,6 +1,294 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/49",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/49/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/49/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/49/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/49",
+    "id": 482545802,
+    "node_id": "MDU6SXNzdWU0ODI1NDU4MDI=",
+    "number": 49,
+    "title": "HTTPSSVC: define \"ips\" SvcParamKey",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-08-19T21:52:30Z",
+    "updated_at": "2019-08-19T21:53:10Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Define a way to include/inline a list of A and AAAA values to optimize for when SvcDomainName has not yet been resolved.  \r\n\r\nThe current proposal is to create a separate draft for this purpose defining an \"ips\" SvcParamKey that can be used as a hint while waiting on SvcDomainName.\r\n\r\nThis is likely needed to retain parity with optimizations in the ESNI draft."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/48",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/48/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/48/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/48/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/48",
+    "id": 482538952,
+    "node_id": "MDU6SXNzdWU0ODI1Mzg5NTI=",
+    "number": 48,
+    "title": "HTTPSSVC: reintroduce esnikeysref?",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-08-19T21:33:17Z",
+    "updated_at": "2019-08-19T21:51:46Z",
+    "closed_at": "2019-08-19T21:51:46Z",
+    "author_association": "COLLABORATOR",
+    "body": "I'm pulling esnikeysref out of the existing version.  \r\nThis also allows DNS servers to treat the Params as opaque which I've added a SHOULD regarding.\r\n\r\nThe removed text is here in-case we wish to re-insert it:\r\n\r\n## in {#resolution}\r\n\r\n* If the selected alternative service\r\n   has parameters which reference other names (such as \"esnikeysref\")\r\n   the client will also need to resolve those prior to making a connection.\r\n\r\n## In DNS Server Behaviors:\r\n\r\nFor ServiceForm, recursive DNS servers\r\nMAY also include names referenced by SvcParamValue (such\r\nas \"esnikeysref\") when those records are available and fit\r\nwithin the response.\r\n\r\nFor ServiceForm, authoritative DNS\r\nservers MAY also include in-bailiwick names referenced by\r\nSvcParamValue (such as \"esnikeysref\").\r\n\r\n\r\n### External references to esnikeys\r\n\r\nA SVCB parameter \"esnikeysref\" is also defined for specifying a\r\nreference to ESNI keys.  This allows for both separation\r\nof ESNI keys operational management as well as allows\r\nESNI keys to be cached with a longer TTL than the\r\nSVCB record.\r\n\r\nThe value is a domain name which references a TXT RRSet containing\r\nexactly one RR with a base64-encoded ESNIKeys structure.\r\n\r\nThe presentation format of the SvcParamValue is a fully qualified\r\ndomain name.  The wire format of the SvcParamValue is the domain name\r\nrepresented as a sequence of length-prefixed labels as in Section 3.1\r\nof {{!RFC1035}}.\r\n\r\nTo translate this parameter to Alt-Svc, an \"esnikeys\"\r\nparameter should be generated with the contents of the \r\nTXT record pointed to by the domain name in the SvcParamValue.\r\n\r\nIf both \"esnikeys\" and \"esnikeysref\" parameters are specified in a\r\nSVCB RR, the \"esnikeysref\" parameter MUST be ignored.\r\n\r\n\r\nTODO: what happens if the TTL of the esnikeysref target is *shorter*\r\nthan that of the SVCB record?  Requiring replacement adds lots\r\nof complexity.  Perhaps a SHOULD on relative TTLs with a warning\r\nthat clients may not reconstruct the Alt-Svc?\r\n\r\nTODO: add logic on failure handling, perhaps also on when\r\nto wait, as well as on prefering entries with literal \"esnikeys\"\r\nwhen no \"esnikeysref\" value is in the DNS cache.\r\n\r\nTODO: does this add to much complexity?  This is in this draft to\r\nexpore the viability of external references since some people seemed\r\ninterested.\r\n\r\n\r\n\r\n"
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/47",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/47/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/47/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/47/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/47",
+    "id": 480870015,
+    "node_id": "MDU6SXNzdWU0ODA4NzAwMTU=",
+    "number": 47,
+    "title": "HTTPSSVC: incorporate comments from discussion on 2019-08-14",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-08-14T20:20:46Z",
+    "updated_at": "2019-08-19T22:00:08Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Concrete changes to make based on todays' discussion with Mike, Erik, Tommy, Chris, Ben, and Tim:\r\n\r\n- Have one draft defining two rrtypes, making it easier to keep it all in DNSOP.\r\n- Define a separate HTTPSSVC RRTYPE in the draft\r\n\r\n- Add a separate draft that adds an optional A/AAAA stapling parameter (and altsvc parameter).\r\n    - Having this be a generic \"rrdata\" parameter is cute, but might add more problems.\r\n\r\n- Keep using expert review for the key type registry.  (No changes needed.)\r\n- Clarify that recursives should be able to treat key types as opaque.\r\n\r\n- Remove the \"esnikeysref\".  (But perhaps move it back to an issue.)   Helpful for separating operational management, but pull this out for now.\r\n    - Having an authoritative feature for copying this into place might be cute down-the-road but not needed here.\r\n\r\n- Remove general parameter type specifications.\r\n\r\n- Ben: remove the \"can ignore\" optimization.  (That Ben added in)\r\n\r\n- Bike shed: what to name the records.   Keep with them for now, and get consensus later on what to rename them with.\r\n  - SVCB            (later to ???)\r\n  - HTTPSSVC   (later to HTTPS or SVCHTTPS ?)\r\n\r\n- For delimiters between parameters and their encoding:\r\n  - Just leave delimiter as space.  \r\n  - Copy over or reference string quoting from TXT record RFC (or some similar but more recent RFC)\r\n"
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/46",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/46/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/46/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/46/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/46",
+    "id": 472992194,
+    "node_id": "MDU6SXNzdWU0NzI5OTIxOTQ=",
+    "number": 46,
+    "title": "HTTPSSVC: make SvcRecordType implicit?",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-07-25T17:48:35Z",
+    "updated_at": "2019-08-09T22:31:09Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "One suggestion in DNSOP was to make the SvcRecordType implicit.\r\nFor example, remove the field and distinguish between the two forms by\r\nwhether the SvcRecordValue is empty or not."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/45",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/45/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/45/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/45/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/45",
+    "id": 472917832,
+    "node_id": "MDU6SXNzdWU0NzI5MTc4MzI=",
+    "number": 45,
+    "title": "HTTPSSVC: clarify behavior when using a proxy",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-07-25T15:02:33Z",
+    "updated_at": "2019-07-25T15:02:33Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Clients using a proxy want special handling.  Rather than simply doing a CONNECT through the proxy to the origin hostname, clients should attempt to resolve HTTPSSVC and then issue the CONNECT to the terminal SvcDomainName (ie, still the same name that a CONNECT for an Alt-Svc  received via a header would have used).\r\n\r\nFor background rfc7838 says:\r\n>    A client configured to use a proxy for a given request SHOULD NOT\r\n>    directly connect to an alternative service for this request, but\r\n>    instead route it through that proxy.\r\n\r\nOne caveat here is that environments requiring a proxy may not allow clients to do DNS resolution.  (Although clients doing HTTPSSVC resolutions via DoH through the proxy may not have this issue.)\r\n\r\nThe proxy case is another good reason/case to NOT inline the address records into the HTTPSSVC record.  (or into an ESNI record)"
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/44",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/44/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/44/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/44/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/44",
+    "id": 471774865,
+    "node_id": "MDU6SXNzdWU0NzE3NzQ4NjU=",
+    "number": 44,
+    "title": "HTTPSSVC: make more generic?  and change record name?",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 8,
+    "created_at": "2019-07-23T15:45:08Z",
+    "updated_at": "2019-08-09T22:34:45Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "A question from the DNSOP WG discussion is whether to make this record somewhat more generic, inclduing whether to change the record name.  Some options:\r\n\r\n0. Leave as-is and clarify that HTTPS is not just about web browsers.\r\n\r\n1.  Rename to ALTSVC.  Keep default behavior for https:// and http:// but clarify that _$label use-cases can be used more generically for other protocols.\r\n\r\n2. Make even more generic  (SRVBIS?  SRV2?).  Define that format of the SvcFieldValue is specific to the protocol/scheme.  (ie, might be Alt-Svc for HTTPS.)   \r\n\r\n3. Define a generic format with SvcFieldValue being specific to protocol/scheme. But then define a set of RRTYPES that are specific instantiations of this generic format.  For example: HTTPSSVC as an instantiation for HTTPS with Alt-Svc in SvcFieldFalue.  SRV2 as something purely generic.  NS2 for handling secure delegations to DoH/DoT authorities with specification of protocols, ESNIKEYS, ports, etc, in some format of SvcFieldValue.  \r\n\r\n"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/43",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/43/labels{/name}",
@@ -34,7 +322,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -43,8 +331,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-07-12T20:39:24Z",
-    "updated_at": "2019-07-12T20:39:24Z",
-    "closed_at": null,
+    "updated_at": "2019-08-20T18:43:51Z",
+    "closed_at": "2019-08-20T18:43:48Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/43",
@@ -239,9 +527,9 @@
 
     ],
     "milestone": null,
-    "comments": 7,
+    "comments": 10,
     "created_at": "2019-07-08T20:09:27Z",
-    "updated_at": "2019-07-10T14:34:41Z",
+    "updated_at": "2019-08-14T17:50:07Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "Similar to how HSTS super cookies are used to track users, I think the Alt SVC lifetime instructions could be used to create implicit long term identifiers for users.  \r\n\r\nB/c of local DNS caching, its unlikely that popular (e.g. Apple) protections for HSTS cookies could be applied here (since the context of the DNS request would be lost, there'd be no sense of 1p / 3p requests).\r\n\r\nI'm not sure how this issue could be addressed given then proposal, but would be happy to think through one.  This is less a problem with the existing markup / header ALT-SVC options, since the browser can control the life time of those."
@@ -1323,7 +1611,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/20.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/19",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1647,10 +1938,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/14.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/13",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
