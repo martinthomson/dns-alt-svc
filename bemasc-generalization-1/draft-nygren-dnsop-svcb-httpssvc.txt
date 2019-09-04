@@ -5,9 +5,9 @@
 DNSOP Working Group                                          B. Schwartz
 Internet-Draft                                                    Google
 Intended status: Standards Track                               M. Bishop
-Expires: March 1, 2020                                         E. Nygren
+Expires: March 7, 2020                                         E. Nygren
                                                      Akamai Technologies
-                                                         August 29, 2019
+                                                       September 4, 2019
 
 
  Service binding and parameter specification via the DNS (DNS SVCB and
@@ -53,9 +53,9 @@ Abstract
 
 
 
-Schwartz, et al.          Expires March 1, 2020                 [Page 1]
+Schwartz, et al.          Expires March 7, 2020                 [Page 1]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    TO BE REMOVED: The specific name for this RRtype is an open topic for
@@ -78,7 +78,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on March 1, 2020.
+   This Internet-Draft will expire on March 7, 2020.
 
 Copyright Notice
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Schwartz, et al.          Expires March 1, 2020                 [Page 2]
+Schwartz, et al.          Expires March 7, 2020                 [Page 2]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
      2.2.  SVCB RDATA Wire Format  . . . . . . . . . . . . . . . . .  10
@@ -165,9 +165,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                 [Page 3]
+Schwartz, et al.          Expires March 7, 2020                 [Page 3]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
      B.5.  SNI Alt-Svc parameter . . . . . . . . . . . . . . . . . .  29
@@ -221,9 +221,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                 [Page 4]
+Schwartz, et al.          Expires March 7, 2020                 [Page 4]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    SVCB is intended to support a wide range of services and protocols,
@@ -277,9 +277,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                 [Page 5]
+Schwartz, et al.          Expires March 7, 2020                 [Page 5]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    In the preceding example, both of the "example.com" and
@@ -333,9 +333,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                 [Page 6]
+Schwartz, et al.          Expires March 7, 2020                 [Page 6]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    o  Obtain the [ESNI] keys associated with an alternative service
@@ -389,9 +389,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                 [Page 7]
+Schwartz, et al.          Expires March 7, 2020                 [Page 7]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    When in the ServiceForm, the SvcFieldValue of the SVCB RR provides an
@@ -445,9 +445,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                 [Page 8]
+Schwartz, et al.          Expires March 7, 2020                 [Page 8]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 2.  The SVCB record type
@@ -501,9 +501,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                 [Page 9]
+Schwartz, et al.          Expires March 7, 2020                 [Page 9]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    The value format is intended to match the definition of <character-
@@ -557,9 +557,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 10]
+Schwartz, et al.          Expires March 7, 2020                [Page 10]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 2.3.  RRNames
@@ -613,9 +613,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 11]
+Schwartz, et al.          Expires March 7, 2020                [Page 11]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    The common use-case for this form of the SVCB record is as an
@@ -669,9 +669,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 12]
+Schwartz, et al.          Expires March 7, 2020                [Page 12]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 2.6.1.  Special handling of "." for SvcDomainName in ServiceForm
@@ -725,13 +725,13 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 13]
+Schwartz, et al.          Expires March 7, 2020                [Page 13]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    When selecting between AAAA and A records to use, clients may use an
-   approach such as [HappyEyeballsV2]
+   approach such as [HappyEyeballsV2].
 
    Some important optimizations are discussed in Section 5 to avoid
    additional latency in comparison to ordinary AAAA/A lookups.
@@ -781,9 +781,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 14]
+Schwartz, et al.          Expires March 7, 2020                [Page 14]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    A nonconforming recursive resolver might not return all the
@@ -828,7 +828,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 6.3.  "esnikeys"
 
-   The SvcParamKey for ESNI is "esnikeys".  Its value is defined i
+   The SvcParamKey for ESNI is "esnikeys".  Its value is defined in
    Section 8.1.  It is applicable to most TLS-based protocols.
 
 
@@ -837,9 +837,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 15]
+Schwartz, et al.          Expires March 7, 2020                [Page 15]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 6.4.  "a" and "aaaa"
@@ -893,9 +893,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 16]
+Schwartz, et al.          Expires March 7, 2020                [Page 16]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    o  the "Alt-Svc Field Value", a text format for representing this
@@ -949,9 +949,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 17]
+Schwartz, et al.          Expires March 7, 2020                [Page 17]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    o  The DNS TTL is mapped to the "ma" (max age) Alt-Svc parameter.
@@ -1005,9 +1005,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 18]
+Schwartz, et al.          Expires March 7, 2020                [Page 18]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 7.3.1.  Max Age and Persist
@@ -1061,9 +1061,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 19]
+Schwartz, et al.          Expires March 7, 2020                [Page 19]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    Some DNS caching systems incorrectly extend the lifetime of DNS
@@ -1117,9 +1117,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 20]
+Schwartz, et al.          Expires March 7, 2020                [Page 20]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 7.7.  Cache interaction
@@ -1173,9 +1173,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 21]
+Schwartz, et al.          Expires March 7, 2020                [Page 21]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    Other clients and services implementing SVCB or HTTPSSVC with
@@ -1229,9 +1229,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 22]
+Schwartz, et al.          Expires March 7, 2020                [Page 22]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 11.1.1.  Procedure
@@ -1285,9 +1285,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 23]
+Schwartz, et al.          Expires March 7, 2020                [Page 23]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 11.2.  Registry updates
@@ -1341,9 +1341,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 24]
+Schwartz, et al.          Expires March 7, 2020                [Page 24]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 13.  References
@@ -1397,9 +1397,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 25]
+Schwartz, et al.          Expires March 7, 2020                [Page 25]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    [RFC2181]  Elz, R. and R. Bush, "Clarifications to the DNS
@@ -1453,9 +1453,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 26]
+Schwartz, et al.          Expires March 7, 2020                [Page 26]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
@@ -1509,9 +1509,9 @@ A.1.  Equivalence to Alt-Svc records
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 27]
+Schwartz, et al.          Expires March 7, 2020                [Page 27]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 www.example.com.  7200  IN CNAME    svc.example.net.
@@ -1565,9 +1565,9 @@ B.1.  Differences from the SRV RRTYPE
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 28]
+Schwartz, et al.          Expires March 7, 2020                [Page 28]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 B.2.  Differences from the proposed HTTP record
@@ -1621,9 +1621,9 @@ B.5.  SNI Alt-Svc parameter
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 29]
+Schwartz, et al.          Expires March 7, 2020                [Page 29]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    precluding SVCB from being used with an sni= parameter if one were to
@@ -1677,9 +1677,9 @@ C.5.  Whether to include Weight
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 30]
+Schwartz, et al.          Expires March 7, 2020                [Page 30]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
 Appendix D.  Change history
@@ -1733,9 +1733,9 @@ Authors' Addresses
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 31]
+Schwartz, et al.          Expires March 7, 2020                [Page 31]
 
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
    Mike Bishop
@@ -1789,4 +1789,4 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS          August 2019
 
 
 
-Schwartz, et al.          Expires March 1, 2020                [Page 32]
+Schwartz, et al.          Expires March 7, 2020                [Page 32]

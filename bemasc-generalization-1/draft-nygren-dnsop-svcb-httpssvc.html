@@ -353,7 +353,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Schwartz, B., Bishop, M., and E. Nygren" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-nygren-dnsop-svcb-httpssvc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-29" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-04" />
   <meta name="dct.abstract" content="This document specifies the &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; DNS resource record types to facilitate the lookup of information needed to make connections for origin resources, such as for HTTPS URLs.  The SVCB DNS RR mechanism allows an origin hostname to be served from multiple network locations, each with associated parameters (such as transport protocol configuration and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.  The HTTPSSVC DNS RR is a more-specific variation of the SVCB RR which is specific to the use-case of HTTPS and HTTP origin resources.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy.This document specifies both a general-purpose record (via SVCB), but also specifies explicit behavior for HTTP and HTTPS URIs (via HTTPSSVC).  As part of the latter, it also provides a way to indicate that the origin supports HTTPS without having to resort to redirects, allowing clients to remove HTTP from the bootstrapping process.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).  These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges.TO BE REMOVED: The specific name for this RRtype is an open topic for discussion.  &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; are meant as placeholders as they are easy to replace.  Other names might include &#8220;B&#8221;, &#8220;SRV2&#8221;, &#8220;SVCHTTPS&#8221;, &#8220;HTTPS&#8221;, and &#8220;ALTSVC&#8221;." />
   <meta name="description" content="This document specifies the &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; DNS resource record types to facilitate the lookup of information needed to make connections for origin resources, such as for HTTPS URLs.  The SVCB DNS RR mechanism allows an origin hostname to be served from multiple network locations, each with associated parameters (such as transport protocol configuration and keying material for encrypting TLS SNI).  It also provides a solution for the inability of the DNS to allow a CNAME to be placed at the apex of a domain name.  The HTTPSSVC DNS RR is a more-specific variation of the SVCB RR which is specific to the use-case of HTTPS and HTTP origin resources.By allowing this information to be bootstrapped in the DNS, it allows for clients to learn of alternative services before their first contact with the origin.  This arrangement offers potential benefits to both performance and privacy.This document specifies both a general-purpose record (via SVCB), but also specifies explicit behavior for HTTP and HTTPS URIs (via HTTPSSVC).  As part of the latter, it also provides a way to indicate that the origin supports HTTPS without having to resort to redirects, allowing clients to remove HTTP from the bootstrapping process.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).  These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges.TO BE REMOVED: The specific name for this RRtype is an open topic for discussion.  &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; are meant as placeholders as they are easy to replace.  Other names might include &#8220;B&#8221;, &#8220;SRV2&#8221;, &#8220;SVCHTTPS&#8221;, &#8220;HTTPS&#8221;, and &#8220;ALTSVC&#8221;." />
 
@@ -377,7 +377,7 @@ ul.toc li {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: March 1, 2020</td>
+<td class="left">Expires: March 7, 2020</td>
 <td class="right">E. Nygren</td>
 </tr>
 <tr>
@@ -386,7 +386,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">August 29, 2019</td>
+<td class="right">September 4, 2019</td>
 </tr>
 
     	
@@ -406,7 +406,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on March 1, 2020.</p>
+<p>This Internet-Draft will expire on March 7, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -751,7 +751,7 @@ example.com. 3600 IN SVCB 0 svc.example.net.
 <li>If an SVCB record for HOST does not exist, the received AAAA and/or A records are the preferred IP addresses, and there is no preferred SvcFieldValue.</li>
 </ol>
 <p id="rfc.section.3.p.3">This procedure does not rely on any recursive or authoritative server to comply with this specification or have any awareness of SVCB.</p>
-<p id="rfc.section.3.p.4">When selecting between AAAA and A records to use, clients may use an approach such as <a href="#HappyEyeballsV2" class="xref">[HappyEyeballsV2]</a></p>
+<p id="rfc.section.3.p.4">When selecting between AAAA and A records to use, clients may use an approach such as <a href="#HappyEyeballsV2" class="xref">[HappyEyeballsV2]</a>.</p>
 <p id="rfc.section.3.p.5">Some important optimizations are discussed in <a href="#optimizations" class="xref">Section 5</a> to avoid additional latency in comparison to ordinary AAAA/A lookups.</p>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#server-behavior" id="server-behavior">DNS Server Behavior</a>
@@ -791,7 +791,7 @@ example.com. 3600 IN SVCB 0 svc.example.net.
 <h1 id="rfc.section.6.3">
 <a href="#rfc.section.6.3">6.3.</a> <a href="#svcparamkeys-esnikeys" id="svcparamkeys-esnikeys">&#8220;esnikeys&#8221;</a>
 </h1>
-<p id="rfc.section.6.3.p.1">The SvcParamKey for ESNI is &#8220;esnikeys&#8221;.  Its value is defined i <a href="#esnikeys" class="xref">Section 8.1</a>.  It is applicable to most TLS-based protocols.</p>
+<p id="rfc.section.6.3.p.1">The SvcParamKey for ESNI is &#8220;esnikeys&#8221;.  Its value is defined in <a href="#esnikeys" class="xref">Section 8.1</a>.  It is applicable to most TLS-based protocols.</p>
 <h1 id="rfc.section.6.4">
 <a href="#rfc.section.6.4">6.4.</a> <a href="#a-and-aaaa" id="a-and-aaaa">&#8220;a&#8221; and &#8220;aaaa&#8221;</a>
 </h1>
