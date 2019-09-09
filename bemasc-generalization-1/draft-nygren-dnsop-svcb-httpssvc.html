@@ -555,12 +555,11 @@ ul.toc li {
 <p id="rfc.section.1.p.1">The SVCB and HTTPSSVC RRs provide clients with complete instructions for access to an origin.  This information enables improved performance and privacy by avoiding transient connections to a sub-optimal default server, negotiating a preferred protocol, and providing relevant public keys.</p>
 <p id="rfc.section.1.p.2">For example, when clients need to make a connection to fetch resources associated with an HTTPS URI, they currently resolve only A and/or AAAA records for the origin hostname.  This is adequate when clients default to TCP port 443, do not support Encrypted SNI <a href="#ESNI" class="xref">[ESNI]</a>, and where the origin service operator does not have a desire to put an CNAME at a zone apex (such as for &#8220;https://example.com&#8221;).  Handling situations beyond this within the DNS requires learning additional information, and it is highly desirable to minimize the number of round-trip and lookups required to learn this additional information.</p>
 <p id="rfc.section.1.p.3">The SVCB and HTTPSSVC RRs also help in scenarios where an the operator of an origin resource in a domain wishes to delegate operational control to one or more service operators who manage other domains, such as for delegating the origin resource &#8220;https://example.com&#8221; to a service operator endpoint at &#8220;svc.example.net&#8221;.  While this case can sometimes be handled by a CNAME, that does not cover all use-cases.  It also is inadequate when the service operator needs to provide a bound collection of consistent configuration parameters through the DNS (such as network location, protocol, and keying information).</p>
-<p id="rfc.section.1.p.4">This document first describes the SVCB RR as a general-purpose resource record that can be applicable to a wide range of services.  As HTTPS is a primary use-case and with special requirements, the HTTPSSVC RR is also defined within this document as a special case of SVCB.</p>
-<p id="rfc.section.1.p.5">SVCB is intended to support a wide range of services and protocols, many of which may be able to use it directly.  Services wishing to avoid the need for an <a href="#Attrleaf" class="xref">[Attrleaf]</a> label with SVCB may follow the pattern of HTTPSSVC and assign their own SVCB-compatible RRTypes.</p>
-<p id="rfc.section.1.p.6">All behaviors described as applying to the SVCB RR also apply to the HTTPSSVC RR unless explicitly stated otherwise.  <a href="#https" class="xref">Section 7</a> describes additional behaviors specific to the HTTPSSVC record.  Apart from <a href="#https" class="xref">Section 7</a> and introductory examples, much of this document refers only to the SVCB RR, but those references should be taken to apply to SVCB, HTTPSSVC, and any future SVCB-compatible RRTypes.</p>
-<p id="rfc.section.1.p.7">The SVCB RR has two forms: 1) the &#8220;Alias Form&#8221; simply delegates operational control for a resource; 2) the &#8220;Service Form&#8221; binds together configuration information for a service endpoint.  The Service Form provides additional key=value parameters within each RRData set.</p>
-<p id="rfc.section.1.p.8">TO BE REMOVED: If we use this for providing configuration for DNS authorities, it is likely we&#8217;d specify a distinct &#8220;NS2&#8221; RRType that is an instantiation of SVCB for authoritative nameserver delegation and parameter specification, similar to HTTPSSVC.</p>
-<p id="rfc.section.1.p.9">TO BE REMOVED: Another open question is whether SVCB records should be self-descriptive and include the service name (eg, &#8220;https&#8221;) in the RRData section to avoid ambiguity.  Perhaps this could be included as a svc=&#8221;baz&#8221; parameter for protocols that are not the default for the RRType? Current inclination is to not do so.</p>
+<p id="rfc.section.1.p.4">This document first describes the SVCB RR as a general-purpose resource record that can be applied directly and efficiently to a wide range of services.  As HTTPS is a primary use-case and with special requirements, the HTTPSSVC RR is also defined within this document as a special case of SVCB.  Services wishing to avoid the need for an <a href="#Attrleaf" class="xref">[Attrleaf]</a> label with SVCB may follow the pattern of HTTPSSVC and assign their own SVCB-compatible RRTypes.</p>
+<p id="rfc.section.1.p.5">All behaviors described as applying to the SVCB RR also apply to the HTTPSSVC RR unless explicitly stated otherwise.  <a href="#https" class="xref">Section 7</a> describes additional behaviors specific to the HTTPSSVC record.  Apart from <a href="#https" class="xref">Section 7</a> and introductory examples, much of this document refers only to the SVCB RR, but those references should be taken to apply to SVCB, HTTPSSVC, and any future SVCB-compatible RRTypes.</p>
+<p id="rfc.section.1.p.6">The SVCB RR has two forms: 1) the &#8220;Alias Form&#8221; simply delegates operational control for a resource; 2) the &#8220;Service Form&#8221; binds together configuration information for a service endpoint.  The Service Form provides additional key=value parameters within each RRData set.</p>
+<p id="rfc.section.1.p.7">TO BE REMOVED: If we use this for providing configuration for DNS authorities, it is likely we&#8217;d specify a distinct &#8220;NS2&#8221; RRType that is an instantiation of SVCB for authoritative nameserver delegation and parameter specification, similar to HTTPSSVC.</p>
+<p id="rfc.section.1.p.8">TO BE REMOVED: Another open question is whether SVCB records should be self-descriptive and include the service name (eg, &#8220;https&#8221;) in the RRData section to avoid ambiguity.  Perhaps this could be included as a svc=&#8221;baz&#8221; parameter for protocols that are not the default for the RRType? Current inclination is to not do so.</p>
 <h1 id="rfc.section.1.1">
 <a href="#rfc.section.1.1">1.1.</a> <a href="#introductory-example" id="introductory-example">Introductory Example</a>
 </h1>
@@ -593,7 +592,7 @@ _8765._baz.api.example.com. 2H IN SVCB 0 svc4-baz.example.net.
 <ul>
 <li>Provides service endpoints authoritative for the service, along with parameters associated with each of these endpoints.</li>
 <li>Does not assume that all alternative service endpoints have the same parameters or capabilities, or are even operated by the same entity.  This is important as DNS does not provide any way to tie together multiple RRs for the same name.  For example, if www.example.com is a CNAME alias that switches between one of three CDNs or hosting environments, successive queries for that name may return records that correspond to different environments.</li>
-<li>Enables the functional equivalent of a CNAME at a zone apex (such as &#8220;example.com&#8221;), and generally enables delegation of operational authority for an origin within the DNS to an alternate name.</li>
+<li>Enables CNAME-like functionality at a zone apex (such as &#8220;example.com&#8221;) for participating protocols, and generally enables delegation of operational authority for an origin within the DNS to an alternate name.</li>
 </ul>
 <p id="rfc.section.1.2.p.3">Additional goals specific to HTTPSSVC and the HTTPS use-case include:</p>
 <p></p>
@@ -651,23 +650,25 @@ RRName TTL Class SVCB SvcFieldPriority SvcDomainName SvcFieldValue
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#svcfieldvalue" id="svcfieldvalue">Parameter specification via ServiceFieldValue</a>
 </h1>
-<p id="rfc.section.2.1.p.1">In ServiceForm, the SvcFieldValue contains key=value pairs.  Keys are IANA-registered SvcParamKeys (<a href="#svcparamregistry" class="xref">Section 11.1</a>) with both a case-insensitive string representation and a numeric representation in the range 0-65535.  They should only contain characters from the ranges &#8220;a&#8221;-&#8220;z&#8221;, &#8220;0&#8221;-&#8220;9&#8221;, and &#8220;-&#8220;.  In ABNF <a href="#RFC5234" class="xref">[RFC5234]</a>,</p>
+<p id="rfc.section.2.1.p.1">In ServiceForm, the SvcFieldValue contains key=value pairs.  Keys are IANA-registered SvcParamKeys (<a href="#svcparamregistry" class="xref">Section 11.1</a>) with both a case-insensitive string representation and a numeric representation in the range 0-65535.  Registered key names should only contain characters from the ranges &#8220;a&#8221;-&#8220;z&#8221;, &#8220;0&#8221;-&#8220;9&#8221;, and &#8220;-&#8220;.  In ABNF <a href="#RFC5234" class="xref">[RFC5234]</a>,</p>
 <pre>
-key = ALPHA / DIGIT / "-"
+ALPHA_LC    = %x61-7A   ;  a-z
+key         = ALPHA_LC / DIGIT / "-"
+display-key = ALPHA / DIGIT / "-"
 </pre>
 <p id="rfc.section.2.1.p.2">Values are in a format specific to the SvcParamKey.  Their definition should specify both their presentation format and wire encoding (e.g., domain names, binary data, or numeric values).</p>
-<p id="rfc.section.2.1.p.3">The SVCB format preserves the order of values and can encode multiple values for the same parameter.  However, a parameter should not appear more than once unless its specification explicitly allows this.</p>
+<p id="rfc.section.2.1.p.3">The SVCB format preserves the order of values and can encode multiple values for the same parameter.  However, clients MUST consider only the first appearance of a parameter unless its specification explicitly allows multiple values.</p>
 <h1 id="rfc.section.2.1.1">
 <a href="#rfc.section.2.1.1">2.1.1.</a> <a href="#presentation-format" id="presentation-format">Presentation format</a>
 </h1>
 <p id="rfc.section.2.1.1.p.1">The presentation format for SvcFieldValue is a whitespace-separated list of the key=value pairs.  Each pair is presented in the following form:</p>
 <pre>
 basic-visible = %x21 / %x23-5B / %x5D-7E ; VCHAR minus DQUOTE and "\"
-escaped       = "\" (VCHAR / WSP)
-contiguous    = *(basic-visible / escaped-character)
+escaped-char  = "\" (VCHAR / WSP)
+contiguous    = *(basic-visible / escaped-char)
 quoted-string = DQUOTE *(contiguous / WSP) DQUOTE
 value         = quoted-string / contiguous
-pair          = key "=" value
+pair          = display-key "=" value
 </pre>
 <p id="rfc.section.2.1.1.p.2">The value format is intended to match the definition of &lt;character-string&gt; in <a href="#RFC1035" class="xref">[RFC1035]</a> Section 5.1.  (Unlike &lt;character-string&gt;, the length of a value is not limited to 255 characters.)</p>
 <p id="rfc.section.2.1.1.p.3">Unrecognized keys are represented in presentation format as &#8220;keyNNNNN&#8221; where NNNNN is the numeric value of the key type.  In presentation format, values of unrecognized keys should be represented in wire format, using decimal escape codes (e.g. \255) when necessary.</p>
@@ -730,7 +731,7 @@ example.com. 3600 IN SVCB 0 svc.example.net.
 <a href="#rfc.section.2.6">2.6.</a> <a href="#svcb-records-serviceform" id="svcb-records-serviceform">SVCB records: ServiceForm</a>
 </h1>
 <p id="rfc.section.2.6.p.1">When SvcRecordType is the ServiceForm, the combination of SvcDomainName and SvcFieldValue parameters within each resource record associates an alternative service and associated parameters with an origin.</p>
-<p><a href="#map2altsvc" class="xref">Section 7.2</a> defines a direct mapping between Alt-Svc (<a href="#AltSvc" class="xref">[AltSvc]</a>) values and the SVCB ServiceForm.  Protocols using SVCB may use this Alt-Svc mapping or specify their own semantics.  Each protocol mapping must specify client behavior when a SvcFieldValue contains unrecognized parameters.</p>
+<p><a href="#map2altsvc" class="xref">Section 7.2</a> defines a direct mapping between Alt-Svc (<a href="#AltSvc" class="xref">[AltSvc]</a>) values and the SVCB ServiceForm.  Protocols using SVCB may use this Alt-Svc mapping or specify their own semantics.  Unless specified otherwise by the protocol mapping, clients MUST ignore SvcFieldValue parameters that they do not recognize.</p>
 <h1 id="rfc.section.2.6.1">
 <a href="#rfc.section.2.6.1">2.6.1.</a> <a href="#svcdomainnamedot" id="svcdomainnamedot">Special handling of &#8220;.&#8221; for SvcDomainName in ServiceForm</a>
 </h1>
@@ -848,7 +849,7 @@ svc2.example.net. 300   IN AAAA      2001:db8::2
 <p></p>
 
 <ul>
-<li>The SvcDomainName is mapped into the uri-host portion of alt-authority.  (If SvcDomainName is &#8220;.&#8221;, the special handling described in <a href="#svcdomainnamedot" class="xref">Section 2.6.1</a> MUST be applied first.)</li>
+<li>The SvcDomainName is mapped into the uri-host portion of alt-authority with the trailing &#8220;.&#8221; removed.  (If SvcDomainName is &#8220;.&#8221;, the special handling described in <a href="#svcdomainnamedot" class="xref">Section 2.6.1</a> MUST be applied first.)</li>
 <li>The SvcParamValue of the &#8220;port&#8221; service parameter, or 443 if no such parameter is present, is written to the port portion of the alt-authority.</li>
 <li>The SvcParamValue of the &#8220;alpn&#8221; service parameter is mapped to the protocol-id.  This MUST follow the normalization and encoding requirements for protocol-id specified in <a href="#AltSvc" class="xref">[AltSvc]</a> Section 3.  This parameter is MANDATORY.</li>
 <li>The DNS TTL is mapped to the &#8220;ma&#8221; (max age) Alt-Svc parameter.</li>
@@ -1359,7 +1360,7 @@ Alt-Svc: h3="svc3.example.net:8003"; esnikeys="ABC..."; ma=7200, \
 
 <ul>
 <li>draft-nygren-dnsop-svcb-httpssvc-00 <ul>
-<li>Generalize to a SVCB record, with special-case handling for Alt-Svc and HTTPS separated out to dedicated sections.</li>
+<li>Generalize to an SVCB record, with special-case handling for Alt-Svc and HTTPS separated out to dedicated sections.</li>
 <li>Split out a separate HTTPSSVC record for the HTTPS use-case.</li>
 <li>Remove the explicit SvcRecordType=0/1 and instead make the AliasForm vs ServiceForm be implicit.  This was based on feedback recommending against subtyping RRTYPE.</li>
 <li>Remove one optimization.</li>
