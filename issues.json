@@ -1,6 +1,98 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/51",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/51/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/51/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/51/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/51",
+    "id": 490584952,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzE1MTYyMDM1",
+    "number": 51,
+    "title": "Proposed edits to Ben's edits.  Most are minor.",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "assignees": [
+      {
+        "login": "bemasc",
+        "id": 191945,
+        "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bemasc",
+        "html_url": "https://github.com/bemasc",
+        "followers_url": "https://api.github.com/users/bemasc/followers",
+        "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+        "organizations_url": "https://api.github.com/users/bemasc/orgs",
+        "repos_url": "https://api.github.com/users/bemasc/repos",
+        "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bemasc/received_events",
+        "type": "User",
+        "site_admin": false
+      }
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-09-07T03:18:45Z",
+    "updated_at": "2019-09-09T14:22:36Z",
+    "closed_at": "2019-09-09T14:22:36Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/51",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/51",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/51.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/51.patch"
+    },
+    "body": "Minor typo fixes and edits.  Add proxy behavior.  Add a/aaaa param clarifications."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/50",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/50/labels{/name}",
@@ -37,26 +129,46 @@
     "state": "open",
     "locked": false,
     "assignee": {
-      "login": "enygren",
-      "id": 6840678,
-      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
       "gravatar_id": "",
-      "url": "https://api.github.com/users/enygren",
-      "html_url": "https://github.com/enygren",
-      "followers_url": "https://api.github.com/users/enygren/followers",
-      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
-      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
-      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
-      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
-      "organizations_url": "https://api.github.com/users/enygren/orgs",
-      "repos_url": "https://api.github.com/users/enygren/repos",
-      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
-      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
       "type": "User",
       "site_admin": false
     },
     "assignees": [
+      {
+        "login": "bemasc",
+        "id": 191945,
+        "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bemasc",
+        "html_url": "https://github.com/bemasc",
+        "followers_url": "https://api.github.com/users/bemasc/followers",
+        "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+        "organizations_url": "https://api.github.com/users/bemasc/orgs",
+        "repos_url": "https://api.github.com/users/bemasc/repos",
+        "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bemasc/received_events",
+        "type": "User",
+        "site_admin": false
+      },
       {
         "login": "enygren",
         "id": 6840678,
@@ -81,7 +193,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-08-29T21:08:13Z",
-    "updated_at": "2019-09-07T03:10:15Z",
+    "updated_at": "2019-09-09T14:22:37Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1595,7 +1707,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/22.patch"
     },
     "body": "Mention the HTTPS bootstrapping in the intro.\r\nRemind the importance of using the origin name for validating\r\nthe TLS server cert."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/21",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1649,10 +1764,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/21.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/20",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
