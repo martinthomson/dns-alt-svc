@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/53",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/53/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/53/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/53/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/53",
+    "id": 497234904,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzIwNDA1Mzcz",
+    "number": 53,
+    "title": "Minor changes from a fresh read",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-09-23T17:40:49Z",
+    "updated_at": "2019-09-23T17:40:49Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/53",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/53",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/53.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/53.patch"
+    },
+    "body": "* Use DNS terminology consistent with RFC 8419.\r\n* Renamed \"a\" and \"aaaa\" to \"ipv4hint\" and \"ipv6hint\"\r\n* Editorial changes for clarity and brevity."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/52",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/52/labels{/name}",
@@ -1621,7 +1675,10 @@
     "closed_at": "2019-06-28T00:58:48Z",
     "author_association": "COLLABORATOR",
     "body": "It seems like it would be useful for DNS clients to be able to process the priority field directly, without having to gain Alt-Svc parsing capability.  Conversely, \"pri\" is not needed in Alt-Svc, where values are considered to be ordered already.  Therefore, we should consider a fourth value (`SvcFieldPriority`?) in the RR, present only when `SvcRecordType` is 1."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/23",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1707,10 +1764,7 @@
     "closed_at": "2019-06-28T01:05:41Z",
     "author_association": "COLLABORATOR",
     "body": "Right now SvcDomainName appears to be in presentation format (i.e. dot-delimited), which is inconvenient for recursive operators.  We should switch it to the usual DNS name encoding (but still uncompressed)."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/22",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
