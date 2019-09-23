@@ -438,10 +438,10 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
    handling for the case of "https" origins.  The presentation format of
    the record is:
 
-   Name TTL Class SVCB SvcFieldPriority SvcDomainName SvcFieldValue
+   Name TTL IN SVCB SvcFieldPriority SvcDomainName SvcFieldValue
 
-
-
+   The SVCB record is defined specifically within the Internet ("IN")
+   Class ([RFC1035]).  SvcFieldPriority is a number in the range
 
 
 
@@ -450,9 +450,9 @@ Schwartz, et al.         Expires March 26, 2020                 [Page 8]
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS       September 2019
 
 
-   SvcFieldPriority is a number in the range 0-65535, SvcDomainName is a
-   domain name, and SvcFieldValue is a set of key=value pairs present
-   for the ServiceForm.  The SvcFieldValue is empty for the AliasForm.
+   0-65535, SvcDomainName is a domain name, and SvcFieldValue is a set
+   of key=value pairs present for the ServiceForm.  The SvcFieldValue is
+   empty for the AliasForm.
 
    The algorithm for resolving SVCB records and associated address
    records is specified in Section 3.

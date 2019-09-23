@@ -648,9 +648,9 @@ _8765._baz.api.example.com. 7200 IN SVCB 0 svc4-baz.example.net.
 </h1>
 <p id="rfc.section.2.p.1">The SVCB DNS resource record (RR) type (RR type ???) is used to locate endpoints that can service an origin.  There is special handling for the case of &#8220;https&#8221; origins.  The presentation format of the record is:</p>
 <pre>
-Name TTL Class SVCB SvcFieldPriority SvcDomainName SvcFieldValue
+Name TTL IN SVCB SvcFieldPriority SvcDomainName SvcFieldValue
 </pre>
-<p id="rfc.section.2.p.2">SvcFieldPriority is a number in the range 0-65535, SvcDomainName is a domain name, and SvcFieldValue is a set of key=value pairs present for the ServiceForm.  The SvcFieldValue is empty for the AliasForm.</p>
+<p id="rfc.section.2.p.2">The SVCB record is defined specifically within the Internet (&#8220;IN&#8221;) Class (<a href="#RFC1035" class="xref">[RFC1035]</a>).  SvcFieldPriority is a number in the range 0-65535, SvcDomainName is a domain name, and SvcFieldValue is a set of key=value pairs present for the ServiceForm.  The SvcFieldValue is empty for the AliasForm.</p>
 <p id="rfc.section.2.p.3">The algorithm for resolving SVCB records and associated address records is specified in <a href="#client-behavior" class="xref">Section 3</a>.</p>
 <h1 id="rfc.section.2.1">
 <a href="#rfc.section.2.1">2.1.</a> <a href="#svcfieldvalue" id="svcfieldvalue">Parameter specification via ServiceFieldValue</a>
