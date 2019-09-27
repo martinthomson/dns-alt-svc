@@ -349,12 +349,12 @@ ul.toc li {
 <link href="#rfc.authors" rel="Chapter">
 
 
-  <meta name="generator" content="xml2rfc version 2.22.2 - https://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.31.0 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Schwartz, B., Bishop, M., and E. Nygren" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-nygren-dnsop-svcb-httpssvc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-23" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-27" />
   <meta name="dct.abstract" content="This document specifies the &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; DNS resource record types to facilitate the lookup of information needed to make connections for origin resources, such as for HTTPS URLs.  SVCB records allow an origin to be served from multiple network locations, each with associated parameters (such as transport protocol configuration and keying material for encrypting TLS SNI).  They also enable aliasing of apex domains, which is not possible with CNAME.  The HTTPSSVC DNS RR is a variation of SVCB for HTTPS and HTTP origins.  By providing more information to the client before it attempts to establish a connection, these records offer potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).  These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges.TO BE REMOVED: The specific name for this RR type is an open topic for discussion.  &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; are meant as placeholders as they are easy to replace.  Other names might include &#8220;B&#8221;, &#8220;SRV2&#8221;, &#8220;SVCHTTPS&#8221;, &#8220;HTTPS&#8221;, and &#8220;ALTSVC&#8221;." />
   <meta name="description" content="This document specifies the &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; DNS resource record types to facilitate the lookup of information needed to make connections for origin resources, such as for HTTPS URLs.  SVCB records allow an origin to be served from multiple network locations, each with associated parameters (such as transport protocol configuration and keying material for encrypting TLS SNI).  They also enable aliasing of apex domains, which is not possible with CNAME.  The HTTPSSVC DNS RR is a variation of SVCB for HTTPS and HTTP origins.  By providing more information to the client before it attempts to establish a connection, these records offer potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).  These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges.TO BE REMOVED: The specific name for this RR type is an open topic for discussion.  &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; are meant as placeholders as they are easy to replace.  Other names might include &#8220;B&#8221;, &#8220;SRV2&#8221;, &#8220;SVCHTTPS&#8221;, &#8220;HTTPS&#8221;, and &#8220;ALTSVC&#8221;." />
 
@@ -378,7 +378,7 @@ ul.toc li {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: March 26, 2020</td>
+<td class="left">Expires: March 30, 2020</td>
 <td class="right">E. Nygren</td>
 </tr>
 <tr>
@@ -387,7 +387,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">September 23, 2019</td>
+<td class="right">September 27, 2019</td>
 </tr>
 
     	
@@ -405,7 +405,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on March 26, 2020.</p>
+<p>This Internet-Draft will expire on March 30, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -757,14 +757,14 @@ svc2.example.net. 300   IN AAAA      2001:db8::2
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#client-behavior" id="client-behavior">Client behavior</a>
 </h1>
-<p id="rfc.section.3.p.1">An SVCB-aware client resolves an origin by attempting to determine the preferred SvcFieldValue and IP addresses for its service, using the following procedure:</p>
+<p id="rfc.section.3.p.1">An SVCB-aware client resolves an origin HOST by attempting to determine the preferred SvcFieldValue and IP addresses for its service, using the following procedure:</p>
 <p></p>
 
 <ol>
 <li>Issue parallel AAAA/A and SVCB queries for the name HOST.  The answers for these may or may not include CNAME pointers before reaching one or more of these records.</li>
 <li>If an SVCB record of AliasForm SvcRecordType is returned for HOST, clients MUST loop back to step 1 replacing HOST with SvcDomainName, subject to loop detection heuristics.</li>
-<li>If one or more SVCB records of ServiceForm SvcRecordType are returned for HOST, clients should select the highest-priority option with acceptable parameters, and resolve AAAA and/or A records for its SvcDomainName if they are not already available.  These are the preferred SvcFieldValue and IP addresses.  If connection fails, the client MAY try to connect using values from a lower-priority record.  If none of the options are acceptable and working, the client SHOULD connect to the origin server directly.</li>
-<li>If an SVCB record for HOST does not exist, the received AAAA and/or A records are the preferred IP addresses, and there is no SvcFieldValue.</li>
+<li>If one or more SVCB records of ServiceForm SvcRecordType are returned for HOST, clients should select the highest-priority option with acceptable parameters, and resolve AAAA and/or A records for its SvcDomainName if they are not already available.  These are the preferred SvcFieldValue and IP addresses.  If the connection fails, the client MAY try to connect using values from a lower-priority record.  If none of the options succeed, the client SHOULD connect to the origin server directly.</li>
+<li>If an SVCB record for HOST does not exist, the received AAAA and/or A records are the preferred IP addresses and there is no SvcFieldValue.</li>
 </ol>
 <p id="rfc.section.3.p.3">This procedure does not rely on any recursive or authoritative server to comply with this specification or have any awareness of SVCB.</p>
 <p id="rfc.section.3.p.4">When selecting between AAAA and A records to use, clients may use an approach such as <a href="#HappyEyeballsV2" class="xref">[HappyEyeballsV2]</a>.</p>
@@ -800,8 +800,10 @@ svc2.example.net. 300   IN AAAA      2001:db8::2
 <a href="#rfc.section.5">5.</a> <a href="#optimizations" id="optimizations">Performance optimizations</a>
 </h1>
 <p id="rfc.section.5.p.1">For optimal performance (i.e. minimum connection setup time), clients SHOULD issue address (AAAA and/or A) and SVCB queries simultaneously, and SHOULD implement a client-side DNS cache.  Responses in the Additional section of an SVCB response SHOULD be placed in cache before performing any followup queries.  With these optimizations in place, and conforming DNS servers, using SVCB does not add network latency to connection setup.</p>
-<p id="rfc.section.5.p.2">A nonconforming recursive resolver might not return all the information required to use all the records in an SVCB response.  If some of the SVCB RRs in the response can be used without requiring additional DNS queries, the client MAY prefer those RRs, regardless of their priorities.</p>
-<p id="rfc.section.5.p.3">To avoid a delay for clients using a nonconforming recursive resolver, domain owners SHOULD use a single SVCB record whose SvcDomainName is in the origin hostname&#8217;s CNAME chain if possible.  This will ensure that the required address records are already present in the client&#8217;s DNS cache as part of the responses to the address queries that were issued in parallel.</p>
+<p id="rfc.section.5.p.2">Moreover, if an A or AAAA response arrives before an SVCB response, the client MAY wait at least CD milliseconds before connecting as if the SVCB query returned NODATA, but MUST NOT transmit any information that could be altered by an SVCB response until the SVCB response arrives.  For example, a TLS ClientHello may be altered by the &#8220;esnikeys&#8221; value of an SVCB response <a href="#svcparamkeys-esnikeys" class="xref">Section 6.3</a>. CD (Connection Delay) is a configurable parameter. The recommended value is 50 milliseconds, as per the guidance in <a href="#HappyEyeballsV2" class="xref">[HappyEyeballsV2]</a>.</p>
+<p id="rfc.section.5.p.3">An SVCB record is consistent with an active or in-progress connection if the client would attempt an equivalent connection when making use of that record. If an SVCB record is consistent with an active or in-progress connection C, the client may continue using C with any information provided by the SVCB record. For example, if an SVCB record with a &#8220;esnikeys&#8221; value and &#8220;ipv4hint&#8221; or &#8220;ipv6hint&#8221; values <a href="#svcparamkeys-iphints" class="xref">Section 6.4</a> arrives, and one of those hints matches the address of an in-progress connection TCP connection, TLS should proceed on that connection using the provided ESNI keying material.  If the SVCB record is not consistent with any active or in-progress connection, clients must proceed as described in Step 3 of the procedure in <a href="#client-behavior" class="xref">Section 3</a>.</p>
+<p id="rfc.section.5.p.4">A nonconforming recursive resolver might not return all the information required to use all the records in an SVCB response.  If some of the SVCB records in the response can be used without requiring additional DNS queries, the client MAY prefer those records, regardless of their priorities.</p>
+<p id="rfc.section.5.p.5">To avoid a delay for clients using a nonconforming recursive resolver, domain owners SHOULD use a single SVCB record whose SvcDomainName is in the origin hostname&#8217;s CNAME chain if possible.  This will ensure that the required address records are already present in the client&#8217;s DNS cache as part of the responses to the address queries that were issued in parallel.</p>
 <h1 id="rfc.section.6">
 <a href="#rfc.section.6">6.</a> <a href="#initial-svcparamkeys" id="initial-svcparamkeys">Initial SvcParamKeys</a>
 </h1>
@@ -822,9 +824,9 @@ svc2.example.net. 300   IN AAAA      2001:db8::2
 </h1>
 <p id="rfc.section.6.3.p.1">The SvcParamKey for ESNI is &#8220;esnikeys&#8221;.  Its value is defined in <a href="#esnikeys" class="xref">Section 8.1</a>.  It is applicable to most TLS-based protocols.</p>
 <h1 id="rfc.section.6.4">
-<a href="#rfc.section.6.4">6.4.</a> <a href="#ipv4hint-and-ipv6hint" id="ipv4hint-and-ipv6hint">&#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221;</a>
+<a href="#rfc.section.6.4">6.4.</a> <a href="#svcparamkeys-iphints" id="svcparamkeys-iphints">&#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221;</a>
 </h1>
-<p id="rfc.section.6.4.p.1">The &#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221; keys represent IP address hints for the service.  If A and AAAA records for SvcDomainName are locally available, the client SHOULD ignore these hints.  Otherwise, clients MUST perform A and/or AAAA queries for SvcDomainName as in <a href="#client-behavior" class="xref">Section 3</a>, and clients SHOULD switch to an IP address in those records as soon as possible.</p>
+<p id="rfc.section.6.4.p.1">The &#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221; keys represent IP address hints for the service.  If A and AAAA records for SvcDomainName are locally available, the client SHOULD ignore these hints.  Otherwise, clients MUST perform A and/or AAAA queries for SvcDomainName as in <a href="#client-behavior" class="xref">Section 3</a>, and clients SHOULD switch to an IP address in those records as soon as possible. Failure to use A and/or AAAA response addresses may negatively impact load balancing or other geo-aware features and thereby degrade client performance.</p>
 <p id="rfc.section.6.4.p.2">The wire format for each parameter is a sequence of IP addresses in network byte order.  Like an A or AAAA RRSet, the list of addresses represents an unordered collection, and clients SHOULD pick addresses to use in a random order.</p>
 <p id="rfc.section.6.4.p.3">These parameters MAY be repeated multiple times within a record.  When receiving such a record, clients SHOULD combine the sets of addresses.</p>
 <p id="rfc.section.6.4.p.4">When selecting between IPv4 and IPv6 addresses to use, clients may use an approach such as <a href="#HappyEyeballsV2" class="xref">[HappyEyeballsV2]</a>.  When only &#8220;ipv4hint&#8221; parameters are present, IPv6-only clients may synthesize IPv6 addresses as specified in <a href="#RFC7050" class="xref">[RFC7050]</a> or ignore the &#8220;ipv4hint&#8221; key and wait for AAAA resolution (<a href="#client-behavior" class="xref">Section 3</a>).  Recursive resolvers MUST NOT perform DNS64 (<a href="#RFC6147" class="xref">[RFC6147]</a>) on parameters within an SVCB record.  For best performance, server operators SHOULD include &#8220;ipv6hint&#8221; parameters whenever they publish &#8220;ipv4hint&#8221; parameters.</p>
