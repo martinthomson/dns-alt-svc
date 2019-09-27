@@ -1,6 +1,402 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/61",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/61/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/61/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/61/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/61",
+    "id": 499265010,
+    "node_id": "MDU6SXNzdWU0OTkyNjUwMTA=",
+    "number": 61,
+    "title": "Semi-colon also needs to be escaped when used in master files.",
+    "user": {
+      "login": "marka63",
+      "id": 6355493,
+      "node_id": "MDQ6VXNlcjYzNTU0OTM=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6355493?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/marka63",
+      "html_url": "https://github.com/marka63",
+      "followers_url": "https://api.github.com/users/marka63/followers",
+      "following_url": "https://api.github.com/users/marka63/following{/other_user}",
+      "gists_url": "https://api.github.com/users/marka63/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/marka63/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/marka63/subscriptions",
+      "organizations_url": "https://api.github.com/users/marka63/orgs",
+      "repos_url": "https://api.github.com/users/marka63/repos",
+      "events_url": "https://api.github.com/users/marka63/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/marka63/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-09-27T06:41:12Z",
+    "updated_at": "2019-09-27T11:07:54Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "```\r\n   basic-visible = %x21 / %x23-5B / %x5D-7E ; VCHAR minus DQUOTE and \"\\\"\r\n   escaped-char  = \"\\\" (VCHAR / WSP)\r\n   contiguous    = *(basic-visible / escaped-char)\r\n   quoted-string = DQUOTE *(contiguous / WSP) DQUOTE\r\n   value         = quoted-string / contiguous\r\n   pair          = display-key \"=\" value\r\n```\r\nfails to account for ';' which is the comment leader in master files."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/60",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/60/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/60/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/60/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/60",
+    "id": 498966313,
+    "node_id": "MDU6SXNzdWU0OTg5NjYzMTM=",
+    "number": 60,
+    "title": "Reduce emphasis on HTTPSSVC <-> Alt-Svc equivalence",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-09-26T15:39:28Z",
+    "updated_at": "2019-09-26T16:28:04Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Given that conversion between HTTPSSVC and Alt-Svc is now potentially quite lossy (any unmapped or unrecognized keys are dropped) and has unclear security properties, we should probably de-emphasize the idea of converting between them, and focus on their parallel structure instead."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/59",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/59/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/59/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/59/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/59",
+    "id": 498964375,
+    "node_id": "MDU6SXNzdWU0OTg5NjQzNzU=",
+    "number": 59,
+    "title": "Clarify rationale for SVCB/HTTPSSVC split",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-09-26T15:36:08Z",
+    "updated_at": "2019-09-26T15:36:08Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "We've gotten a few questions about why these aren't a single RR type.  The text could be more explicit on the design rationale for this."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/58",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/58/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/58/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/58/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/58",
+    "id": 498963238,
+    "node_id": "MDU6SXNzdWU0OTg5NjMyMzg=",
+    "number": 58,
+    "title": "Consider removing the in-band Alt-Svc precedence guarantee",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-09-26T15:34:12Z",
+    "updated_at": "2019-09-26T16:36:06Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Currently, in-band Alt-Svc always has precedence over HTTPSSVC, and the presence of a cached Alt-Svc is supposed to disable the HTTPSSVC query altogether.  However, this could be a problem for Chrome.\r\n\r\nChrome currently implements only \"local Alt-Svc\", i.e. Alt-Svc where the origin hostname is empty.  All other Alt-Svc headers are ignored.\r\n\r\nConsider a site hosted in a multi-CDN configuration, using QUIC on both CDNs.  Currently, that site could send a header like `h3=:443`, and Chrome would upgrade to QUIC.\r\n\r\nNow suppose that both CDNs support ESNI.  The site could send additional Alt-Svc headers like `h3=cdn1.example:443; esnikeys=ABC...` and `h3=cdn2.example:443; esnikeys=123...`, but Chrome would ignore both of these, so Chrome users would get QUIC but not ESNI.\r\n\r\nIf some Chrome users can query HTTPSSVC, those users could get the full package for ESNI through the DNS.  However, the presence of `h3=:443` in the Alt-Svc cache would prevent them from even doing the HTTPSSVC query (in the current draft).\r\n\r\nA straightforward solution here would be to declare that the precedence of HTTPSSVC vs. Alt-Svc is implementation-defined.  This might reduce the ability of origins to fine-tune suboptimal HTTPSSVC, but it gives clients more flexibility to do what makes sense for them."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/57",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/57/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/57/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/57/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/57",
+    "id": 498954013,
+    "node_id": "MDU6SXNzdWU0OTg5NTQwMTM=",
+    "number": 57,
+    "title": "Consider limiting chain lengths to 1",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2019-09-26T15:18:15Z",
+    "updated_at": "2019-09-26T17:32:45Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "It's not clear that we have a use case for SVCB chains containing more than one AliasForm record.  The purpose of AliasForm is mostly for aliasing the apex; everything else can pretty much be handled with CNAME (e.g. AliasForm -> CNAME -> CNAME -> SvcForm)\r\n\r\nAt a minimum, limiting the chain length to 1 would seem to reduce the likelihood of a performance footgun."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/56",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/56/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/56/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/56/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/56",
+    "id": 498487449,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzIxNDA5NDM5",
+    "number": 56,
+    "title": "Clarify racing behavior for A/AAAA and SVCB parallel queries. Give rationale to A/AAAA answer preference.",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-09-25T19:49:20Z",
+    "updated_at": "2019-09-27T13:51:24Z",
+    "closed_at": "2019-09-27T13:51:24Z",
+    "author_association": "NONE",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/56",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/56",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/56.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/56.patch"
+    },
+    "body": "We have text in the ESNI draft which describes what to do when A/AAAA arrives before ESNI (equivalently SVCB). This attempts to port that text over. Please have a look!\r\n\r\n@enygren @MikeBishop @bemasc "
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/55",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/55/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/55/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/55/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/55",
+    "id": 497765357,
+    "node_id": "MDU6SXNzdWU0OTc3NjUzNTc=",
+    "number": 55,
+    "title": "Clarify RRset preservation with multiple AliasForm records [Bob Harold]",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-09-24T15:32:33Z",
+    "updated_at": "2019-09-24T15:32:33Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "The draft currently says that recursives must ignore additional AliasForm records, because only one is allowed.  (Following all aliases in parallel would allow some terrifying exponential blowup.)  We should clarify that recursives should nevertheless forward the entire RRset intact, in order to preserve DNSSEC validity."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/54",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/54/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/54/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/54/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/54",
+    "id": 497338127,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzIwNDg5MTI4",
+    "number": 54,
+    "title": "Define SVCB only within the IN class (issue #41)",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-09-23T21:28:44Z",
+    "updated_at": "2019-09-23T22:54:11Z",
+    "closed_at": "2019-09-23T22:54:01Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/54",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/54",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/54.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/54.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/53",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/53/labels{/name}",
@@ -34,7 +430,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -43,8 +439,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-09-23T17:40:49Z",
-    "updated_at": "2019-09-23T17:40:49Z",
-    "closed_at": null,
+    "updated_at": "2019-09-23T21:04:49Z",
+    "closed_at": "2019-09-23T21:04:43Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/53",
@@ -52,7 +448,7 @@
       "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/53.diff",
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/53.patch"
     },
-    "body": "* Use DNS terminology consistent with RFC 8419.\r\n* Renamed \"a\" and \"aaaa\" to \"ipv4hint\" and \"ipv6hint\"\r\n* Editorial changes for clarity and brevity."
+    "body": "* Use DNS terminology consistent with RFC 8499.\r\n* Renamed \"a\" and \"aaaa\" to \"ipv4hint\" and \"ipv6hint\"\r\n* Editorial changes for clarity and brevity."
   },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/52",
@@ -346,17 +742,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-08-19T21:52:30Z",
-    "updated_at": "2019-08-19T21:53:10Z",
-    "closed_at": null,
+    "updated_at": "2019-09-23T21:18:15Z",
+    "closed_at": "2019-09-23T21:18:15Z",
     "author_association": "COLLABORATOR",
     "body": "Define a way to include/inline a list of A and AAAA values to optimize for when SvcDomainName has not yet been resolved.  \r\n\r\nThe current proposal is to create a separate draft for this purpose defining an \"ips\" SvcParamKey that can be used as a hint while waiting on SvcDomainName.\r\n\r\nThis is likely needed to retain parity with optimizations in the ESNI draft."
   },
@@ -442,17 +838,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2019-08-14T20:20:46Z",
-    "updated_at": "2019-08-19T22:00:08Z",
-    "closed_at": null,
+    "updated_at": "2019-09-23T21:19:28Z",
+    "closed_at": "2019-09-23T21:19:28Z",
     "author_association": "COLLABORATOR",
     "body": "Concrete changes to make based on todays' discussion with Mike, Erik, Tommy, Chris, Ben, and Tim:\r\n\r\n- Have one draft defining two rrtypes, making it easier to keep it all in DNSOP.\r\n- Define a separate HTTPSSVC RRTYPE in the draft\r\n\r\n- Add a separate draft that adds an optional A/AAAA stapling parameter (and altsvc parameter).\r\n    - Having this be a generic \"rrdata\" parameter is cute, but might add more problems.\r\n\r\n- Keep using expert review for the key type registry.  (No changes needed.)\r\n- Clarify that recursives should be able to treat key types as opaque.\r\n\r\n- Remove the \"esnikeysref\".  (But perhaps move it back to an issue.)   Helpful for separating operational management, but pull this out for now.\r\n    - Having an authoritative feature for copying this into place might be cute down-the-road but not needed here.\r\n\r\n- Remove general parameter type specifications.\r\n\r\n- Ben: remove the \"can ignore\" optimization.  (That Ben added in)\r\n\r\n- Bike shed: what to name the records.   Keep with them for now, and get consensus later on what to rename them with.\r\n  - SVCB            (later to ???)\r\n  - HTTPSSVC   (later to HTTPS or SVCHTTPS ?)\r\n\r\n- For delimiters between parameters and their encoding:\r\n  - Just leave delimiter as space.  \r\n  - Copy over or reference string quoting from TXT record RFC (or some similar but more recent RFC)\r\n"
   },
@@ -490,17 +886,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2019-07-25T17:48:35Z",
-    "updated_at": "2019-08-09T22:31:09Z",
-    "closed_at": null,
+    "updated_at": "2019-09-23T21:19:45Z",
+    "closed_at": "2019-09-23T21:19:45Z",
     "author_association": "COLLABORATOR",
     "body": "One suggestion in DNSOP was to make the SvcRecordType implicit.\r\nFor example, remove the field and distinguish between the two forms by\r\nwhether the SvcRecordValue is empty or not."
   },
@@ -538,17 +934,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-07-25T15:02:33Z",
-    "updated_at": "2019-07-25T15:02:33Z",
-    "closed_at": null,
+    "updated_at": "2019-09-23T21:20:43Z",
+    "closed_at": "2019-09-23T21:20:43Z",
     "author_association": "COLLABORATOR",
     "body": "Clients using a proxy want special handling.  Rather than simply doing a CONNECT through the proxy to the origin hostname, clients should attempt to resolve HTTPSSVC and then issue the CONNECT to the terminal SvcDomainName (ie, still the same name that a CONNECT for an Alt-Svc  received via a header would have used).\r\n\r\nFor background rfc7838 says:\r\n>    A client configured to use a proxy for a given request SHOULD NOT\r\n>    directly connect to an alternative service for this request, but\r\n>    instead route it through that proxy.\r\n\r\nOne caveat here is that environments requiring a proxy may not allow clients to do DNS resolution.  (Although clients doing HTTPSSVC resolutions via DoH through the proxy may not have this issue.)\r\n\r\nThe proxy case is another good reason/case to NOT inline the address records into the HTTPSSVC record.  (or into an ESNI record)"
   },
@@ -586,17 +982,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 8,
+    "comments": 9,
     "created_at": "2019-07-23T15:45:08Z",
-    "updated_at": "2019-08-09T22:34:45Z",
-    "closed_at": null,
+    "updated_at": "2019-09-23T21:21:25Z",
+    "closed_at": "2019-09-23T21:21:25Z",
     "author_association": "COLLABORATOR",
     "body": "A question from the DNSOP WG discussion is whether to make this record somewhat more generic, inclduing whether to change the record name.  Some options:\r\n\r\n0. Leave as-is and clarify that HTTPS is not just about web browsers.\r\n\r\n1.  Rename to ALTSVC.  Keep default behavior for https:// and http:// but clarify that _$label use-cases can be used more generically for other protocols.\r\n\r\n2. Make even more generic  (SRVBIS?  SRV2?).  Define that format of the SvcFieldValue is specific to the protocol/scheme.  (ie, might be Alt-Svc for HTTPS.)   \r\n\r\n3. Define a generic format with SvcFieldValue being specific to protocol/scheme. But then define a set of RRTYPES that are specific instantiations of this generic format.  For example: HTTPSSVC as an instantiation for HTTPS with Alt-Svc in SvcFieldFalue.  SRV2 as something purely generic.  NS2 for handling secure delegations to DoH/DoT authorities with specification of protocols, ESNIKEYS, ports, etc, in some format of SvcFieldValue.  \r\n\r\n"
   },
@@ -743,9 +1139,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-07-09T12:32:54Z",
-    "updated_at": "2019-07-09T12:32:54Z",
+    "updated_at": "2019-09-23T21:29:20Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "From Mark Andrews:\r\n\r\n================================\r\n\r\nIntroductory Example: The example record\r\n\r\nexample.com.      2H  IN HTTPSSVC 0 0 svc.example.net.\r\n\r\ndoes not match the description of the record (missing last field). It should be:\r\n\r\nexample.com.      7200  IN HTTPSSVC 0 0 svc.example.net. “”\r\n\r\nSimilarly in 2.4.  HTTPSSVC records: alias form\r\n\r\nAlso don’t use 2H for the TTL.  While some servers will accept it, it is not RFC compliant.\r\n\r\nUnless these is a real reason for the record to be class agnostic please specify that\r\nit is class IN specific."
@@ -791,9 +1187,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-07-09T01:24:04Z",
-    "updated_at": "2019-07-09T01:24:04Z",
+    "updated_at": "2019-09-23T21:30:34Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "One minor issue is that wherever CNAME is referenced, you probably want to also include a reference to DNAME, including any implied or explicit chaining of CNAMEs (which could be sequences of CNAME and/or DNAME modulo their respective behavior.)\r\n\r\nYou might also want to explain the motivation for keeping the FQDN separate from the alt-svc parameters (to make it trivial to parse, and thus to do DNS substitutions like CNAME/DNAME). It is there, just not as up-front as it could be.\r\n\r\n\r\nIt might be a little clearer if the list of alt-svc values (h2, h3, etc) that can occur were to be listed in the document. In particular, the association between h3 and QUIC is inferred but not explicitly called out (at least not that I noticed.)\r\n"
@@ -1211,7 +1607,10 @@
     "closed_at": "2019-07-08T21:02:19Z",
     "author_association": "COLLABORATOR",
     "body": "From Ilari Liusvaara <ilariliusvaara@welho.com> \r\n\r\n- What if SvcDomainName has length different from its length field?\r\n  DNS wire-form names are self-delimiting (DNS message parsing relies\r\n  on this).\r\n- What does it mean for SvcDomainName to be absent in alternative\r\n  service form? I would guess it means \"same as RRNAME\".\r\n- Why there is length field for SvcFieldValue? Why not let it run to\r\n  the end of record?\r\n- 2 byte length field can encode values up to 65535, not 65536.\r\n  And the length of SvcFieldValue can not be that big, because\r\n  RRDATA and DNS message length limits (both 65535) would be hit."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/31",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1675,10 +2074,7 @@
     "closed_at": "2019-06-28T00:58:48Z",
     "author_association": "COLLABORATOR",
     "body": "It seems like it would be useful for DNS clients to be able to process the priority field directly, without having to gain Alt-Svc parsing capability.  Conversely, \"pri\" is not needed in Alt-Svc, where values are considered to be ordered already.  Therefore, we should consider a fourth value (`SvcFieldPriority`?) in the RR, present only when `SvcRecordType` is 1."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/23",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -2898,7 +3294,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/2.patch"
     },
     "body": "This is Erik's original draft from my inbox, except for RFC-markdown syntax and linter fixes."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/1",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
