@@ -1,6 +1,162 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/64",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/64/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/64/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/64/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/64",
+    "id": 499654639,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzIyMzMwOTA0",
+    "number": 64,
+    "title": "Change the definition of AliasForm",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-09-27T21:16:26Z",
+    "updated_at": "2019-10-04T15:22:26Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/64",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/64",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/64.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/64.patch"
+    },
+    "body": "This makes checking the form of an RR faster and simpler,\r\nand ensures that sorting by priority does the right\r\nthing.\r\n\r\nFixes #55 "
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/63",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/63/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/63/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/63/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/63",
+    "id": 499634352,
+    "node_id": "MDU6SXNzdWU0OTk2MzQzNTI=",
+    "number": 63,
+    "title": "Consider switching the SvcDomainName and SvcFieldPriority in presentation format",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2019-09-27T20:25:03Z",
+    "updated_at": "2019-09-27T20:44:20Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Currently, the format is `[SvcFieldPriority] [SvcDomainName] [SvcFieldValue]`.  I think it should probably be `[SvcDomainName] [SvcFieldPriority] [SvcFieldValue]`.  Then in AliasForm, the redundant `0` priority can be omitted without making the parser more complex.\r\n\r\nWe could maintain the current wire format, or reverse the order there too."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/62",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/62/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/62/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/62/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/62",
+    "id": 499490327,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzIyMjAwMTI1",
+    "number": 62,
+    "title": "Polish the performance optimization section",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-09-27T14:49:35Z",
+    "updated_at": "2019-09-27T14:49:35Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/62",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/62",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/62.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/62.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/61",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/61/labels{/name}",
@@ -41,9 +197,9 @@
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2019-09-27T06:41:12Z",
-    "updated_at": "2019-09-27T11:07:54Z",
+    "updated_at": "2019-09-29T06:59:51Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "```\r\n   basic-visible = %x21 / %x23-5B / %x5D-7E ; VCHAR minus DQUOTE and \"\\\"\r\n   escaped-char  = \"\\\" (VCHAR / WSP)\r\n   contiguous    = *(basic-visible / escaped-char)\r\n   quoted-string = DQUOTE *(contiguous / WSP) DQUOTE\r\n   value         = quoted-string / contiguous\r\n   pair          = display-key \"=\" value\r\n```\r\nfails to account for ';' which is the comment leader in master files."
@@ -1457,7 +1613,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/35.patch"
     },
     "body": "Address most issues in #32 \r\n\r\nWe should still land:\r\n\r\n\r\n## Special cases for SvcDomainName\r\n\r\nWhen SvcRecordType=1, there are some special cases to handle\r\nfor SvcDomainName:\r\n* How to indicate it should be equivalent to the RRNAME?\r\n* How to indicate it should be equivalent to the hostname?\r\n* What happens if it has the value \".\"?  SRV and MX have this\r\n  mean \"no service available."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/34",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1499,9 +1658,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-07-03T20:03:36Z",
-    "updated_at": "2019-07-03T20:03:36Z",
+    "updated_at": "2019-09-27T21:18:22Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "From Ilari Liusvaara <ilariliusvaara@welho.com> \r\n\r\n\r\n- Is there any envisioned use for chained HTTPSSVC records, except\r\n  for type 0 record pointing to type 1 record?\r\n- The MUST requirement to have only one type 0 record and then\r\n  SHOULD behave non-deterministically if this is violated is pretty\r\n  odd."
@@ -1607,10 +1766,7 @@
     "closed_at": "2019-07-08T21:02:19Z",
     "author_association": "COLLABORATOR",
     "body": "From Ilari Liusvaara <ilariliusvaara@welho.com> \r\n\r\n- What if SvcDomainName has length different from its length field?\r\n  DNS wire-form names are self-delimiting (DNS message parsing relies\r\n  on this).\r\n- What does it mean for SvcDomainName to be absent in alternative\r\n  service form? I would guess it means \"same as RRNAME\".\r\n- Why there is length field for SvcFieldValue? Why not let it run to\r\n  the end of record?\r\n- 2 byte length field can encode values up to 65535, not 65536.\r\n  And the length of SvcFieldValue can not be that big, because\r\n  RRDATA and DNS message length limits (both 65535) would be hit."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/31",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3132,7 +3288,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/5.patch"
     },
     "body": "This makes HTTPSSVC more valuable as a security measure, for\r\nwebsites that can't easily get themselves on the HSTS preload\r\nlist.\r\n\r\nThe value of the \"_http\" scheme prefix is unclear in this\r\nformulation.  It could possibly be removed, depending on\r\nthe importance of supporting strange situations like\r\n\"https://example.com:80\", or http and https on the same port."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/4",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3294,10 +3453,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/2.patch"
     },
     "body": "This is Erik's original draft from my inbox, except for RFC-markdown syntax and linter fixes."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/1",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
