@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/65",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/65/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/65/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/65/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/65",
+    "id": 503652308,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzI1NDYzMDI1",
+    "number": 65,
+    "title": "Account for semicolon in the presentation format",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-07T19:45:00Z",
+    "updated_at": "2019-10-07T19:45:00Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/65",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/65",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/65.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/65.patch"
+    },
+    "body": "Semicolon is the comment character in zone files.\r\n\r\nFixes #61"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/64",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/64/labels{/name}",
@@ -145,7 +199,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-09-27T14:49:35Z",
-    "updated_at": "2019-09-27T14:49:35Z",
+    "updated_at": "2019-10-10T17:19:24Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -245,9 +299,9 @@
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": "2019-09-26T15:39:28Z",
-    "updated_at": "2019-09-26T16:28:04Z",
+    "updated_at": "2019-10-09T16:54:07Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "Given that conversion between HTTPSSVC and Alt-Svc is now potentially quite lossy (any unmapped or unrecognized keys are dropped) and has unclear security properties, we should probably de-emphasize the idea of converting between them, and focus on their parallel structure instead."
@@ -341,9 +395,9 @@
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": "2019-09-26T15:34:12Z",
-    "updated_at": "2019-09-26T16:36:06Z",
+    "updated_at": "2019-10-09T16:57:21Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "Currently, in-band Alt-Svc always has precedence over HTTPSSVC, and the presence of a cached Alt-Svc is supposed to disable the HTTPSSVC query altogether.  However, this could be a problem for Chrome.\r\n\r\nChrome currently implements only \"local Alt-Svc\", i.e. Alt-Svc where the origin hostname is empty.  All other Alt-Svc headers are ignored.\r\n\r\nConsider a site hosted in a multi-CDN configuration, using QUIC on both CDNs.  Currently, that site could send a header like `h3=:443`, and Chrome would upgrade to QUIC.\r\n\r\nNow suppose that both CDNs support ESNI.  The site could send additional Alt-Svc headers like `h3=cdn1.example:443; esnikeys=ABC...` and `h3=cdn2.example:443; esnikeys=123...`, but Chrome would ignore both of these, so Chrome users would get QUIC but not ESNI.\r\n\r\nIf some Chrome users can query HTTPSSVC, those users could get the full package for ESNI through the DNS.  However, the presence of `h3=:443` in the Alt-Svc cache would prevent them from even doing the HTTPSSVC query (in the current draft).\r\n\r\nA straightforward solution here would be to declare that the precedence of HTTPSSVC vs. Alt-Svc is implementation-defined.  This might reduce the ability of origins to fine-tune suboptimal HTTPSSVC, but it gives clients more flexibility to do what makes sense for them."
@@ -439,7 +493,7 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2019-09-25T19:49:20Z",
-    "updated_at": "2019-09-27T13:51:24Z",
+    "updated_at": "2019-10-09T14:26:14Z",
     "closed_at": "2019-09-27T13:51:24Z",
     "author_association": "NONE",
     "pull_request": {
@@ -1559,7 +1613,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/36.patch"
     },
     "body": "There should be a semicolon before esnikeys"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/35",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1613,10 +1670,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/35.patch"
     },
     "body": "Address most issues in #32 \r\n\r\nWe should still land:\r\n\r\n\r\n## Special cases for SvcDomainName\r\n\r\nWhen SvcRecordType=1, there are some special cases to handle\r\nfor SvcDomainName:\r\n* How to indicate it should be equivalent to the RRNAME?\r\n* How to indicate it should be equivalent to the hostname?\r\n* What happens if it has the value \".\"?  SRV and MX have this\r\n  mean \"no service available."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/34",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3234,7 +3288,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/6.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/5",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3288,10 +3345,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/5.patch"
     },
     "body": "This makes HTTPSSVC more valuable as a security measure, for\r\nwebsites that can't easily get themselves on the HSTS preload\r\nlist.\r\n\r\nThe value of the \"_http\" scheme prefix is unclear in this\r\nformulation.  It could possibly be removed, depending on\r\nthe importance of supporting strange situations like\r\n\"https://example.com:80\", or http and https on the same port."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/4",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
