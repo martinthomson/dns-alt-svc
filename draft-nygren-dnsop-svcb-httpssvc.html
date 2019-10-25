@@ -352,12 +352,12 @@ ul.toc li {
 <link href="#rfc.authors" rel="Chapter">
 
 
-  <meta name="generator" content="xml2rfc version 2.32.0 - https://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.33.0 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Schwartz, B., Bishop, M., and E. Nygren" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-nygren-dnsop-svcb-httpssvc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-13" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-25" />
   <meta name="dct.abstract" content="This document specifies the &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; DNS resource record types to facilitate the lookup of information needed to make connections for origin resources, such as for HTTPS URLs.  SVCB records allow an origin to be served from multiple network locations, each with associated parameters (such as transport protocol configuration and keying material for encrypting TLS SNI).  They also enable aliasing of apex domains, which is not possible with CNAME.  The HTTPSSVC DNS RR is a variation of SVCB for HTTPS and HTTP origins.  By providing more information to the client before it attempts to establish a connection, these records offer potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).  These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges.TO BE REMOVED: The specific name for this RR type is an open topic for discussion.  &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; are meant as placeholders as they are easy to replace.  Other names might include &#8220;B&#8221;, &#8220;SRV2&#8221;, &#8220;SVCHTTPS&#8221;, &#8220;HTTPS&#8221;, and &#8220;ALTSVC&#8221;." />
   <meta name="description" content="This document specifies the &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; DNS resource record types to facilitate the lookup of information needed to make connections for origin resources, such as for HTTPS URLs.  SVCB records allow an origin to be served from multiple network locations, each with associated parameters (such as transport protocol configuration and keying material for encrypting TLS SNI).  They also enable aliasing of apex domains, which is not possible with CNAME.  The HTTPSSVC DNS RR is a variation of SVCB for HTTPS and HTTP origins.  By providing more information to the client before it attempts to establish a connection, these records offer potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).  These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges.TO BE REMOVED: The specific name for this RR type is an open topic for discussion.  &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; are meant as placeholders as they are easy to replace.  Other names might include &#8220;B&#8221;, &#8220;SRV2&#8221;, &#8220;SVCHTTPS&#8221;, &#8220;HTTPS&#8221;, and &#8220;ALTSVC&#8221;." />
 
@@ -381,7 +381,7 @@ ul.toc li {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: April 15, 2020</td>
+<td class="left">Expires: April 27, 2020</td>
 <td class="right">E. Nygren</td>
 </tr>
 <tr>
@@ -390,7 +390,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">October 13, 2019</td>
+<td class="right">October 25, 2019</td>
 </tr>
 
     	
@@ -408,7 +408,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 15, 2020.</p>
+<p>This Internet-Draft will expire on April 27, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -853,7 +853,7 @@ _1234._bar.example.com. 300 IN SVCB 1 svc1.example.net ( esnikeys="111..."
 <h1 id="rfc.section.6.4">
 <a href="#rfc.section.6.4">6.4.</a> <a href="#svcparamkeys-iphints" id="svcparamkeys-iphints">&#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221;</a>
 </h1>
-<p id="rfc.section.6.4.p.1">The &#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221; keys represent IP address hints for the service.  If A and AAAA records for SvcDomainName are locally available, the client SHOULD ignore these hints.  Otherwise, clients MUST perform A and/or AAAA queries for SvcDomainName as in <a href="#client-behavior" class="xref">Section 3</a>, and clients SHOULD switch to an IP address in those records as soon as possible. Failure to use A and/or AAAA response addresses may negatively impact load balancing or other geo-aware features and thereby degrade client performance.</p>
+<p id="rfc.section.6.4.p.1">The &#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221; keys represent IP address hints for the service.  If A and AAAA records for SvcDomainName are locally available, the client SHOULD ignore these hints.  Otherwise, clients SHOULD perform A and/or AAAA queries for SvcDomainName as in <a href="#client-behavior" class="xref">Section 3</a>, and clients SHOULD use the IP address in those responses for future connections. Clients MAY opt to terminate any connections using the addresses in hints and instead switch to the addresses in response to the SvcDomainName. Failure to use A and/or AAAA response addresses may negatively impact load balancing or other geo-aware features and thereby degrade client performance.</p>
 <p id="rfc.section.6.4.p.2">The wire format for each parameter is a sequence of IP addresses in network byte order.  Like an A or AAAA RRSet, the list of addresses represents an unordered collection, and clients SHOULD pick addresses to use in a random order.</p>
 <p id="rfc.section.6.4.p.3">These parameters MAY be repeated multiple times within a record.  When receiving such a record, clients SHOULD combine the sets of addresses.</p>
 <p id="rfc.section.6.4.p.4">When selecting between IPv4 and IPv6 addresses to use, clients may use an approach such as <a href="#HappyEyeballsV2" class="xref">[HappyEyeballsV2]</a>.  When only &#8220;ipv4hint&#8221; parameters are present, IPv6-only clients may synthesize IPv6 addresses as specified in <a href="#RFC7050" class="xref">[RFC7050]</a> or ignore the &#8220;ipv4hint&#8221; key and wait for AAAA resolution (<a href="#client-behavior" class="xref">Section 3</a>).  Recursive resolvers MUST NOT perform DNS64 (<a href="#RFC6147" class="xref">[RFC6147]</a>) on parameters within an SVCB record.  For best performance, server operators SHOULD include &#8220;ipv6hint&#8221; parameters whenever they publish &#8220;ipv4hint&#8221; parameters.</p>
