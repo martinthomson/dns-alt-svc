@@ -1,6 +1,168 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/69",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/69/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/69/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/69/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/69",
+    "id": 512712434,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzMyNjc0MDY0",
+    "number": 69,
+    "title": "Relax the text around when to use ipv[46]hints and when to",
+    "user": {
+      "login": "ekr",
+      "id": 1111457,
+      "node_id": "MDQ6VXNlcjExMTE0NTc=",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1111457?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/ekr",
+      "html_url": "https://github.com/ekr",
+      "followers_url": "https://api.github.com/users/ekr/followers",
+      "following_url": "https://api.github.com/users/ekr/following{/other_user}",
+      "gists_url": "https://api.github.com/users/ekr/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/ekr/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/ekr/subscriptions",
+      "organizations_url": "https://api.github.com/users/ekr/orgs",
+      "repos_url": "https://api.github.com/users/ekr/repos",
+      "events_url": "https://api.github.com/users/ekr/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/ekr/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-25T20:43:19Z",
+    "updated_at": "2019-10-25T21:02:42Z",
+    "closed_at": "2019-10-25T21:02:42Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/69",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/69",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/69.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/69.patch"
+    },
+    "body": "switch to the SrvDomainName IPs. There are two normative\r\nchanges here:\r\n\r\n- Relax the MUST look up SrvDomainName to SHOULD\r\n- Relax the SHOULD switch as soon as possible to MAY and\r\n  leave the SHOULD for future connections.\r\n\r\nThis makes HTTPSVC more closely match the previous ESNI behavior, which\r\nis appropriate if we are going to replace it."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/68",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/68/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/68/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/68/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/68",
+    "id": 512082669,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzMyMTYxNDQ5",
+    "number": 68,
+    "title": "Expand on ESNI requirements for the server.",
+    "user": {
+      "login": "chris-wood",
+      "id": 2172048,
+      "node_id": "MDQ6VXNlcjIxNzIwNDg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2172048?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/chris-wood",
+      "html_url": "https://github.com/chris-wood",
+      "followers_url": "https://api.github.com/users/chris-wood/followers",
+      "following_url": "https://api.github.com/users/chris-wood/following{/other_user}",
+      "gists_url": "https://api.github.com/users/chris-wood/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/chris-wood/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/chris-wood/subscriptions",
+      "organizations_url": "https://api.github.com/users/chris-wood/orgs",
+      "repos_url": "https://api.github.com/users/chris-wood/repos",
+      "events_url": "https://api.github.com/users/chris-wood/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/chris-wood/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-24T17:34:23Z",
+    "updated_at": "2019-10-24T18:46:31Z",
+    "closed_at": null,
+    "author_association": "FIRST_TIME_CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/68",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/68",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/68.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/68.patch"
+    },
+    "body": ""
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/67",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/67/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/67/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/67/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/67",
+    "id": 507349748,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzI4MzU2NTU1",
+    "number": 67,
+    "title": "Explain the need for HTTPSSVC due to wildcards",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-15T16:19:05Z",
+    "updated_at": "2019-10-15T16:19:06Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/67",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/67",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/67.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/67.patch"
+    },
+    "body": "Fixes #59"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/66",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/66/labels{/name}",
@@ -43,7 +205,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-10-11T22:00:54Z",
-    "updated_at": "2019-10-15T14:17:16Z",
+    "updated_at": "2019-10-15T14:18:07Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -549,7 +711,7 @@
     "created_at": "2019-09-25T19:49:20Z",
     "updated_at": "2019-10-09T14:26:14Z",
     "closed_at": "2019-09-27T13:51:24Z",
-    "author_association": "NONE",
+    "author_association": "FIRST_TIME_CONTRIBUTOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/56",
       "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/56",
@@ -1457,7 +1619,10 @@
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "One minor issue is that wherever CNAME is referenced, you probably want to also include a reference to DNAME, including any implied or explicit chaining of CNAMEs (which could be sequences of CNAME and/or DNAME modulo their respective behavior.)\r\n\r\nYou might also want to explain the motivation for keeping the FQDN separate from the alt-svc parameters (to make it trivial to parse, and thus to do DNS substitutions like CNAME/DNAME). It is there, just not as up-front as it could be.\r\n\r\n\r\nIt might be a little clearer if the list of alt-svc values (h2, h3, etc) that can occur were to be listed in the document. In particular, the association between h3 and QUIC is inferred but not explicitly called out (at least not that I noticed.)\r\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/39",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1613,10 +1778,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/37.patch"
     },
     "body": "Per suggestion from Lucas Pardue."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/36",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3126,7 +3288,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/10.patch"
     },
     "body": "This gives clients an opt-out in the rare cases where\r\nHTTPSSVC would impair performance, and also gives\r\nserver admins a clear way to avoid these cases."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/9",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3288,10 +3453,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/7.patch"
     },
     "body": "EDIT: New approach: This handles nonstandard HTTP ports in the same way as HSTS."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/6",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
