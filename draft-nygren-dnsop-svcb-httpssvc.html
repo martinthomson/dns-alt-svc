@@ -850,6 +850,7 @@ _1234._bar.example.com. 300 IN SVCB 1 svc1.example.net ( esnikeys="111..."
 <a href="#rfc.section.6.3">6.3.</a> <a href="#svcparamkeys-esnikeys" id="svcparamkeys-esnikeys">&#8220;esnikeys&#8221;</a>
 </h1>
 <p id="rfc.section.6.3.p.1">The SvcParamKey for ESNI is &#8220;esnikeys&#8221;.  Its value is defined in <a href="#esnikeys" class="xref">Section 8.1</a>.  It is applicable to most TLS-based protocols.</p>
+<p id="rfc.section.6.3.p.2">When publishing a record containing an &#8220;esnikeys&#8221; parameter, the publisher MUST ensure that all IP addresses of SvcDomainName correspond to servers that have access to the corresponding private key or are authoritative for the fallback domain. (See <a href="#ESNI" class="xref">[ESNI]</a> for more details about the fallback domain.) This yields an anonymity set of cardinality equal to the number of ESNI-enabled server domains supported by a given client-facing server. Thus, even with SNI encryption, an attacker who can enumerate the set of ESNI-enabled domains supported by a client-facing server can guess the correct SNI with probability at least 1/K, where K is the size of this ESNI-enabled server anonymity set. This probability may be increased via traffic analysis or other mechanisms.</p>
 <h1 id="rfc.section.6.4">
 <a href="#rfc.section.6.4">6.4.</a> <a href="#svcparamkeys-iphints" id="svcparamkeys-iphints">&#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221;</a>
 </h1>
