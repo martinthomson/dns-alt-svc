@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/70",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/70/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/70/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/70/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/70",
+    "id": 512724861,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzMyNjg0MzU0",
+    "number": 70,
+    "title": "Clarify utility of IP hints",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-25T21:17:53Z",
+    "updated_at": "2019-10-25T21:17:53Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/70",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/70",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/70.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/70.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/69",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/69/labels{/name}",
@@ -88,7 +142,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -97,9 +151,9 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-10-24T17:34:23Z",
-    "updated_at": "2019-10-24T18:46:31Z",
-    "closed_at": null,
-    "author_association": "FIRST_TIME_CONTRIBUTOR",
+    "updated_at": "2019-10-25T21:21:53Z",
+    "closed_at": "2019-10-25T21:21:52Z",
+    "author_association": "CONTRIBUTOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/68",
       "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/68",
@@ -711,7 +765,7 @@
     "created_at": "2019-09-25T19:49:20Z",
     "updated_at": "2019-10-09T14:26:14Z",
     "closed_at": "2019-09-27T13:51:24Z",
-    "author_association": "FIRST_TIME_CONTRIBUTOR",
+    "author_association": "CONTRIBUTOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/56",
       "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/56",
@@ -1571,7 +1625,10 @@
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "From Mark Andrews:\r\n\r\n================================\r\n\r\nIntroductory Example: The example record\r\n\r\nexample.com.      2H  IN HTTPSSVC 0 0 svc.example.net.\r\n\r\ndoes not match the description of the record (missing last field). It should be:\r\n\r\nexample.com.      7200  IN HTTPSSVC 0 0 svc.example.net. “”\r\n\r\nSimilarly in 2.4.  HTTPSSVC records: alias form\r\n\r\nAlso don’t use 2H for the TTL.  While some servers will accept it, it is not RFC compliant.\r\n\r\nUnless these is a real reason for the record to be class agnostic please specify that\r\nit is class IN specific."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/40",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1619,10 +1676,7 @@
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "One minor issue is that wherever CNAME is referenced, you probably want to also include a reference to DNAME, including any implied or explicit chaining of CNAMEs (which could be sequences of CNAME and/or DNAME modulo their respective behavior.)\r\n\r\nYou might also want to explain the motivation for keeping the FQDN separate from the alt-svc parameters (to make it trivial to parse, and thus to do DNS substitutions like CNAME/DNAME). It is there, just not as up-front as it could be.\r\n\r\n\r\nIt might be a little clearer if the list of alt-svc values (h2, h3, etc) that can occur were to be listed in the document. In particular, the association between h3 and QUIC is inferred but not explicitly called out (at least not that I noticed.)\r\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/39",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3234,7 +3288,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/11.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/10",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3288,10 +3345,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/10.patch"
     },
     "body": "This gives clients an opt-out in the rare cases where\r\nHTTPSSVC would impair performance, and also gives\r\nserver admins a clear way to avoid these cases."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/9",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
