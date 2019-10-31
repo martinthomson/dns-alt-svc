@@ -172,7 +172,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         October 2019
 
      C.5.  Whether to include Weight . . . . . . . . . . . . . . . .  33
    Appendix D.  Change history . . . . . . . . . . . . . . . . . . .  34
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  35
 
 1.  Introduction
 
@@ -1852,6 +1852,13 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         October 2019
 
 Appendix D.  Change history
 
+   o  draft-ietf-dnsop-svcb-httpssvc-00
+
+      *  Document an optimization for optimistic pre-connection.  (Chris
+         Wood)
+
+      *  Relax IP hint handling requirements.  (Eric Rescorla)
+
    o  draft-nygren-dnsop-svcb-httpssvc-00
 
       *  Generalize to an SVCB record, with special-case handling for
@@ -1888,13 +1895,6 @@ Appendix D.  Change history
 
       *  Initial version
 
-Authors' Addresses
-
-   Ben Schwartz
-   Google
-
-   Email: bemasc@google.com
-
 
 
 
@@ -1904,6 +1904,14 @@ Authors' Addresses
 Schwartz, et al.           Expires May 3, 2020                 [Page 34]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         October 2019
+
+
+Authors' Addresses
+
+   Ben Schwartz
+   Google
+
+   Email: bemasc@google.com
 
 
    Mike Bishop
@@ -1916,14 +1924,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         October 2019
    Akamai Technologies
 
    Email: erik+ietf@nygren.org
-
-
-
-
-
-
-
-
 
 
 
