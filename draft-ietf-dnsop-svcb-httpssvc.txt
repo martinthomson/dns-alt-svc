@@ -1829,10 +1829,26 @@ C.5.  Whether to include Weight
 
 Appendix D.  Change history
 
+   o  draft-ietf-dnsop-svcb-httpssvc-01
+
+      *  Reduce the emphasis on conversion between HTTPSSVC and Alt-Svc
+
+      *  Make the "untrusted channel" concept more precise.
+
+      *  Make SvcFieldPriority = 0 the definition of AliasForm, instead
+         of a requirement.
+
    o  draft-ietf-dnsop-svcb-httpssvc-00
 
       *  Document an optimization for optimistic pre-connection.  (Chris
          Wood)
+
+
+
+Schwartz, et al.           Expires May 7, 2020                 [Page 33]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
+
 
       *  Relax IP hint handling requirements.  (Eric Rescorla)
 
@@ -1842,13 +1858,6 @@ Appendix D.  Change history
          Alt-Svc and HTTPS separated out to dedicated sections.
 
       *  Split out a separate HTTPSSVC record for the HTTPS use-case.
-
-
-
-Schwartz, et al.           Expires May 7, 2020                 [Page 33]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
-
 
       *  Remove the explicit SvcRecordType=0/1 and instead make the
          AliasForm vs ServiceForm be implicit.  This was based on
@@ -1887,6 +1896,16 @@ Authors' Addresses
    Email: bemasc@google.com
 
 
+
+
+
+
+
+Schwartz, et al.           Expires May 7, 2020                 [Page 34]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
+
+
    Mike Bishop
    Akamai Technologies
 
@@ -1901,4 +1920,41 @@ Authors' Addresses
 
 
 
-Schwartz, et al.           Expires May 7, 2020                 [Page 34]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Schwartz, et al.           Expires May 7, 2020                 [Page 35]
