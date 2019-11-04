@@ -863,8 +863,8 @@ _1234._bar.example.com. 300 IN SVCB 1 svc1.example.net (
 <a href="#rfc.section.7.1">7.1.</a> <a href="#httpsnames" id="httpsnames">Owner names for HTTPSSVC records</a>
 </h1>
 <p id="rfc.section.7.1.p.1">The HTTPSSVC RR extends the behavior for determining a QNAME specified above in <a href="#svcb-names" class="xref">Section 2.3</a>.  In particular, if the scheme is &#8220;https&#8221; with port 443, then the client&#8217;s original QNAME is equal to the origin host name.</p>
-<p id="rfc.section.7.1.p.2">For &#8220;https&#8221; origins with ports other than 443, the port and scheme continue to be prefixed to the hostname as described in <a href="#svcb-names" class="xref">Section 2.3</a>.  Following of HTTPSSVC AliasForm and CNAME aliases is also unchanged from SVCB.</p>
-<p id="rfc.section.7.1.p.3">Clients always convert &#8220;http&#8221; origins to &#8220;https&#8221; before performing any HTTPSSVC queries (<a href="#hsts" class="xref">Section 7.4</a>), so domain owners MUST NOT publish HTTPSSVC or SVCB records with a prefix of &#8220;_http&#8221;.</p>
+<p id="rfc.section.7.1.p.2">For HTTPS origins with ports other than 443, the port and scheme continue to be prefixed to the hostname as described in <a href="#svcb-names" class="xref">Section 2.3</a>.  Following of HTTPSSVC AliasForm and CNAME aliases is also unchanged from SVCB.</p>
+<p id="rfc.section.7.1.p.3">Clients always convert the &#8220;http&#8221; scheme to &#8220;https&#8221; before performing an HTTPSSVC query (<a href="#hsts" class="xref">Section 7.4</a>), so domain owners MUST NOT publish HTTPSSVC records with a prefix of &#8220;_http&#8221;.</p>
 <p id="rfc.section.7.1.p.4">Note that none of these forms alter the HTTPS origin or authority.  For example, clients MUST continue to validate TLS certificate hostnames based on the origin host.</p>
 <h1 id="rfc.section.7.2">
 <a href="#rfc.section.7.2">7.2.</a> <a href="#populating-alt-used" id="populating-alt-used">Populating Alt-Used</a>

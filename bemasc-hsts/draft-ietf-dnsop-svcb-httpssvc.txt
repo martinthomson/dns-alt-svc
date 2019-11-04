@@ -1017,14 +1017,14 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    "https" with port 443, then the client's original QNAME is equal to
    the origin host name.
 
-   For "https" origins with ports other than 443, the port and scheme
+   For HTTPS origins with ports other than 443, the port and scheme
    continue to be prefixed to the hostname as described in Section 2.3.
    Following of HTTPSSVC AliasForm and CNAME aliases is also unchanged
    from SVCB.
 
-   Clients always convert "http" origins to "https" before performing
-   any HTTPSSVC queries (Section 7.4), so domain owners MUST NOT publish
-   HTTPSSVC or SVCB records with a prefix of "_http".
+   Clients always convert the "http" scheme to "https" before performing
+   an HTTPSSVC query (Section 7.4), so domain owners MUST NOT publish
+   HTTPSSVC records with a prefix of "_http".
 
    Note that none of these forms alter the HTTPS origin or authority.
    For example, clients MUST continue to validate TLS certificate
