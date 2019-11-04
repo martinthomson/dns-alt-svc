@@ -317,10 +317,8 @@ ul.toc li {
 <link href="#rfc.section.7.3.1" rel="Chapter" title="7.3.1 Untrusted channel">
 <link href="#rfc.section.7.3.2" rel="Chapter" title="7.3.2 Caching and granularity">
 <link href="#rfc.section.7.4" rel="Chapter" title="7.4 HTTP Strict Transport Security">
-<link href="#rfc.section.7.5" rel="Chapter" title="7.5 Cache interaction">
-<link href="#rfc.section.8" rel="Chapter" title="8 Extensions to enhance privacy">
-<link href="#rfc.section.8.1" rel="Chapter" title="8.1 Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys">
-<link href="#rfc.section.8.1.1" rel="Chapter" title="8.1.1 Handling a mixture of alternatives not supporting ESNI">
+<link href="#rfc.section.8" rel="Chapter" title="8 Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys">
+<link href="#rfc.section.8.1" rel="Chapter" title="8.1 Handling a mixture of alternatives not supporting ESNI">
 <link href="#rfc.section.9" rel="Chapter" title="9 Interaction with other standards">
 <link href="#rfc.section.10" rel="Chapter" title="10 Security Considerations">
 <link href="#rfc.section.11" rel="Chapter" title="11 IANA Considerations">
@@ -487,15 +485,11 @@ ul.toc li {
 </li>
 </ul><li>7.4.   <a href="#rfc.section.7.4">HTTP Strict Transport Security</a>
 </li>
-<li>7.5.   <a href="#rfc.section.7.5">Cache interaction</a>
+</ul><li>8.   <a href="#rfc.section.8">Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys</a>
 </li>
-</ul><li>8.   <a href="#rfc.section.8">Extensions to enhance privacy</a>
+<ul><li>8.1.   <a href="#rfc.section.8.1">Handling a mixture of alternatives not supporting ESNI</a>
 </li>
-<ul><li>8.1.   <a href="#rfc.section.8.1">Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys</a>
-</li>
-<ul><li>8.1.1.   <a href="#rfc.section.8.1.1">Handling a mixture of alternatives not supporting ESNI</a>
-</li>
-</ul></ul><li>9.   <a href="#rfc.section.9">Interaction with other standards</a>
+</ul><li>9.   <a href="#rfc.section.9">Interaction with other standards</a>
 </li>
 <li>10.   <a href="#rfc.section.10">Security Considerations</a>
 </li>
@@ -633,7 +627,7 @@ _8765._baz.api.example.com. 7200 IN SVCB 0 svc4-baz.example.net.
 <h1 id="rfc.section.1.4">
 <a href="#rfc.section.1.4">1.4.</a> <a href="#parameter-for-esni" id="parameter-for-esni">Parameter for ESNI</a>
 </h1>
-<p id="rfc.section.1.4.p.1">This document also defines a parameter for Encrypted SNI <a href="#ESNI" class="xref">[ESNI]</a> keys, both as a general SVCB parameter and also as a corresponding Alt-Svc parameter. See <a href="#esniconfig" class="xref">Section 8.1</a>.</p>
+<p id="rfc.section.1.4.p.1">This document also defines a parameter for Encrypted SNI <a href="#ESNI" class="xref">[ESNI]</a> keys, both as a general SVCB parameter and also as a corresponding Alt-Svc parameter. See <a href="#esniconfig" class="xref">Section 8</a>.</p>
 <h1 id="rfc.section.1.5">
 <a href="#rfc.section.1.5">1.5.</a> <a href="#terminology" id="terminology">Terminology</a>
 </h1>
@@ -846,7 +840,7 @@ _1234._bar.example.com. 300 IN SVCB 1 svc1.example.net (
 <h1 id="rfc.section.6.3">
 <a href="#rfc.section.6.3">6.3.</a> <a href="#svcparamkeys-esniconfig" id="svcparamkeys-esniconfig">&#8220;esniconfig&#8221;</a>
 </h1>
-<p id="rfc.section.6.3.p.1">The SvcParamKey for ESNI is &#8220;esniconfig&#8221;.  Its value is defined in <a href="#esniconfig" class="xref">Section 8.1</a>.  It is applicable to most TLS-based protocols.</p>
+<p id="rfc.section.6.3.p.1">The SvcParamKey for ESNI is &#8220;esniconfig&#8221;.  Its value is defined in <a href="#esniconfig" class="xref">Section 8</a>.  It is applicable to most TLS-based protocols.</p>
 <p id="rfc.section.6.3.p.2">When publishing a record containing an &#8220;esniconfig&#8221; parameter, the publisher MUST ensure that all IP addresses of SvcDomainName correspond to servers that have access to the corresponding private key or are authoritative for the fallback domain. (See <a href="#ESNI" class="xref">[ESNI]</a> for more details about the fallback domain.) This yields an anonymity set of cardinality equal to the number of ESNI-enabled server domains supported by a given client-facing server. Thus, even with SNI encryption, an attacker who can enumerate the set of ESNI-enabled domains supported by a client-facing server can guess the correct SNI with probability at least 1/K, where K is the size of this ESNI-enabled server anonymity set. This probability may be increased via traffic analysis or other mechanisms.</p>
 <h1 id="rfc.section.6.4">
 <a href="#rfc.section.6.4">6.4.</a> <a href="#svcparamkeys-iphints" id="svcparamkeys-iphints">&#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221;</a>
@@ -912,27 +906,19 @@ uri-host ":" port
 <p id="rfc.section.7.4.p.5">If an HTTPSSVC record is present for this &#8220;https&#8221; URL, the client should treat this as the equivalent of receiving an HTTP &#8220;307 Temporary Redirect&#8221; redirect to the &#8220;https&#8221; URL.  Because HTTPSSVC is received over an often insecure channel (DNS), clients MUST NOT place any more trust in this signal than if they had received a 307 redirect over cleartext HTTP.</p>
 <p id="rfc.section.7.4.p.6">If the HTTPSSVC query results in a SERVFAIL error, and the connection between the client and the recursive resolver is cryptographically protected (e.g. using TLS <a href="#RFC7858" class="xref">[RFC7858]</a> or HTTPS <a href="#RFC8484" class="xref">[RFC8484]</a>), the client SHOULD abandon the connection attempt and display an error message.  A SERVFAIL error can occur if the domain is DNSSEC-signed, the recursive resolver is DNSSEC-validating, and an active attacker between the recursive resolver and the authoritative DNS server is attempting to prevent the upgrade to HTTPS.</p>
 <p id="rfc.section.7.4.p.7">Similarly, if the client enforces DNSSEC validation on A/AAAA responses, it SHOULD abandon the connection attempt if the HTTPSSVC response fails to validate.</p>
-<h1 id="rfc.section.7.5">
-<a href="#rfc.section.7.5">7.5.</a> <a href="#cache-interaction" id="cache-interaction">Cache interaction</a>
-</h1>
-<p id="rfc.section.7.5.p.1">If the client has an Alt-Svc cache, and a usable Alt-Svc value is present in that cache, then the client SHOULD NOT issue an HTTPSSVC DNS query.  Instead, the client SHOULD proceed with alternative service connection as usual.</p>
-<p id="rfc.section.7.5.p.2">If the client has a cached Alt-Svc entry that is expiring, the client MAY perform an HTTPSSVC query to refresh the entry.</p>
 <h1 id="rfc.section.8">
-<a href="#rfc.section.8">8.</a> <a href="#extensions-to-enhance-privacy" id="extensions-to-enhance-privacy">Extensions to enhance privacy</a>
+<a href="#rfc.section.8">8.</a> <a href="#esniconfig" id="esniconfig">Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys</a>
 </h1>
+<p id="rfc.section.8.p.1">Both SVCB/HTTPSSVC and Alt-Svc &#8220;esniconfig&#8221; parameters are defined for conveying the ESNI configuration of an alternative service.  The value of the parameter is an ESNIConfig structure <a href="#ESNI" class="xref">[ESNI]</a> or the empty string.  ESNI-aware clients SHOULD prefer alt-values and SVCB/HTTPSSVC RRs with non-empty esniconfig.</p>
+<p id="rfc.section.8.p.2">Both the SVCB SvcParamValue presentation format as well as the Alt-Svc parameter value is the ESNIConfig structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a> or the empty string.  The SVCB SvcParamValue wire format is the octet string containing the binary ESNIConfig structure.</p>
+<p id="rfc.section.8.p.3">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.  This parameter MUST NOT appear more than once in a single alt-value.</p>
 <h1 id="rfc.section.8.1">
-<a href="#rfc.section.8.1">8.1.</a> <a href="#esniconfig" id="esniconfig">Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys</a>
+<a href="#rfc.section.8.1">8.1.</a> <a href="#handling-a-mixture-of-alternatives-not-supporting-esni" id="handling-a-mixture-of-alternatives-not-supporting-esni">Handling a mixture of alternatives not supporting ESNI</a>
 </h1>
-<p id="rfc.section.8.1.p.1">Both SVCB/HTTPSSVC and Alt-Svc &#8220;esniconfig&#8221; parameters are defined for conveying the ESNI configuration of an alternative service.  The value of the parameter is an ESNIConfig structure <a href="#ESNI" class="xref">[ESNI]</a> or the empty string.  ESNI-aware clients SHOULD prefer alt-values and SVCB/HTTPSSVC RRs with non-empty esniconfig.</p>
-<p id="rfc.section.8.1.p.2">Both the SVCB SvcParamValue presentation format as well as the Alt-Svc parameter value is the ESNIConfig structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a> or the empty string.  The SVCB SvcParamValue wire format is the octet string containing the binary ESNIConfig structure.</p>
-<p id="rfc.section.8.1.p.3">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.  This parameter MUST NOT appear more than once in a single alt-value.</p>
-<h1 id="rfc.section.8.1.1">
-<a href="#rfc.section.8.1.1">8.1.1.</a> <a href="#handling-a-mixture-of-alternatives-not-supporting-esni" id="handling-a-mixture-of-alternatives-not-supporting-esni">Handling a mixture of alternatives not supporting ESNI</a>
-</h1>
-<p id="rfc.section.8.1.1.p.1">The Alt-Svc specification states that &#8220;the client MAY fall back to using the origin&#8221; in case of connection failure (Section 2.4 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  This behavior is not suitable for ESNI, because fallback would negate the privacy benefits of ESNI.</p>
-<p id="rfc.section.8.1.1.p.2">Accordingly, any connection attempt that uses ESNI MUST fall back only to another alt-value that also has the esniconfig parameter.  If the parameter&#8217;s value is the empty string, the client SHOULD connect as it would in the absence of any ESNIConfig information.</p>
-<p id="rfc.section.8.1.1.p.3">For example, suppose a server operator has two alternatives.  Alternative A is reliably accessible but does not support ESNI.  Alternative B supports ESNI but is not reliably accessible.  The server operator could include a full esniconfig value in Alternative B, and mark Alternative A with esniconfig=&#8221;&#8221; to indicate that fallback from B to A is allowed.</p>
-<p id="rfc.section.8.1.1.p.4">Other clients and services implementing SVCB or HTTPSSVC with esniconfig are encouraged to take a similar approach.</p>
+<p id="rfc.section.8.1.p.1">The Alt-Svc specification states that &#8220;the client MAY fall back to using the origin&#8221; in case of connection failure (Section 2.4 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  This behavior is not suitable for ESNI, because fallback would negate the privacy benefits of ESNI.</p>
+<p id="rfc.section.8.1.p.2">Accordingly, any connection attempt that uses ESNI MUST fall back only to another alt-value that also has the esniconfig parameter.  If the parameter&#8217;s value is the empty string, the client SHOULD connect as it would in the absence of any ESNIConfig information.</p>
+<p id="rfc.section.8.1.p.3">For example, suppose a server operator has two alternatives.  Alternative A is reliably accessible but does not support ESNI.  Alternative B supports ESNI but is not reliably accessible.  The server operator could include a full esniconfig value in Alternative B, and mark Alternative A with esniconfig=&#8221;&#8221; to indicate that fallback from B to A is allowed.</p>
+<p id="rfc.section.8.1.p.4">Other clients and services implementing SVCB or HTTPSSVC with esniconfig are encouraged to take a similar approach.</p>
 <h1 id="rfc.section.9">
 <a href="#rfc.section.9">9.</a> <a href="#interaction-with-other-standards" id="interaction-with-other-standards">Interaction with other standards</a>
 </h1>

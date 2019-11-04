@@ -131,15 +131,12 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
        7.3.1.  Untrusted channel . . . . . . . . . . . . . . . . . .  19
        7.3.2.  Caching and granularity . . . . . . . . . . . . . . .  20
      7.4.  HTTP Strict Transport Security  . . . . . . . . . . . . .  20
-     7.5.  Cache interaction . . . . . . . . . . . . . . . . . . . .  21
-   8.  Extensions to enhance privacy . . . . . . . . . . . . . . . .  21
-     8.1.  Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys . . . .  21
-       8.1.1.  Handling a mixture of alternatives not supporting
-               ESNI  . . . . . . . . . . . . . . . . . . . . . . . .  22
+   8.  Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys . . . . . .  21
+     8.1.  Handling a mixture of alternatives not supporting ESNI  .  21
    9.  Interaction with other standards  . . . . . . . . . . . . . .  22
    10. Security Considerations . . . . . . . . . . . . . . . . . . .  22
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  23
-     11.1.  New registry for Service Parameters  . . . . . . . . . .  23
+   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  22
+     11.1.  New registry for Service Parameters  . . . . . . . . . .  22
        11.1.1.  Procedure  . . . . . . . . . . . . . . . . . . . . .  23
        11.1.2.  Initial contents . . . . . . . . . . . . . . . . . .  23
      11.2.  Registry updates . . . . . . . . . . . . . . . . . . . .  24
@@ -162,6 +159,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
      C.3.  Wire Format . . . . . . . . . . . . . . . . . . . . . . .  33
      C.4.  Where to include Priority . . . . . . . . . . . . . . . .  33
      C.5.  Whether to include Weight . . . . . . . . . . . . . . . .  33
+   Appendix D.  Change history . . . . . . . . . . . . . . . . . . .  33
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
+
 
 
 
@@ -169,9 +169,6 @@ Schwartz, et al.           Expires May 7, 2020                  [Page 3]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
-
-   Appendix D.  Change history . . . . . . . . . . . . . . . . . . .  33
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  34
 
 1.  Introduction
 
@@ -218,6 +215,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    The SVCB RR has two forms: 1) the "Alias Form" simply delegates
    operational control for a resource; 2) the "Service Form" binds
    together configuration information for a service endpoint.  The
+   Service Form provides additional key=value parameters within each
+   RDATA set.
+
 
 
 
@@ -225,9 +225,6 @@ Schwartz, et al.           Expires May 7, 2020                  [Page 4]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
-
-   Service Form provides additional key=value parameters within each
-   RDATA set.
 
    TO BE REMOVED: If we use this for providing configuration for DNS
    authorities, it is likely we'd specify a distinct "NS2" RR type that
@@ -275,6 +272,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    clients will continue to treat the authoritative origins as
    "https://example.com" and "https://www.example.com", respectively.
 
+   For services other than HTTPS (as well as for HTTPS origins with non-
+   default ports), the SVCB RR and an [Attrleaf] label will be used.
+
 
 
 Schwartz, et al.           Expires May 7, 2020                  [Page 5]
@@ -282,8 +282,6 @@ Schwartz, et al.           Expires May 7, 2020                  [Page 5]
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
 
-   For services other than HTTPS (as well as for HTTPS origins with non-
-   default ports), the SVCB RR and an [Attrleaf] label will be used.
    For example, to reach an example resource of
    "baz://api.example.com:8765", the following Alias Form SVCB record
    would be used to delegate to "svc4-baz.example.net." which in-turn
@@ -330,6 +328,8 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    o  Provide an HSTS-like indication signaling for the duration of the
       DNS RR TTL that the HTTPS scheme should be used instead of HTTP
       (see Section 7.4).
+
+
 
 
 
@@ -398,7 +398,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
    This document also defines a parameter for Encrypted SNI [ESNI] keys,
    both as a general SVCB parameter and also as a corresponding Alt-Svc
-   parameter.  See Section 8.1.
+   parameter.  See Section 8.
 
 1.5.  Terminology
 
@@ -913,7 +913,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 6.3.  "esniconfig"
 
    The SvcParamKey for ESNI is "esniconfig".  Its value is defined in
-   Section 8.1.  It is applicable to most TLS-based protocols.
+   Section 8.  It is applicable to most TLS-based protocols.
 
    When publishing a record containing an "esniconfig" parameter, the
    publisher MUST ensure that all IP addresses of SvcDomainName
@@ -1138,19 +1138,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    responses, it SHOULD abandon the connection attempt if the HTTPSSVC
    response fails to validate.
 
-7.5.  Cache interaction
-
-   If the client has an Alt-Svc cache, and a usable Alt-Svc value is
-   present in that cache, then the client SHOULD NOT issue an HTTPSSVC
-   DNS query.  Instead, the client SHOULD proceed with alternative
-   service connection as usual.
-
-   If the client has a cached Alt-Svc entry that is expiring, the client
-   MAY perform an HTTPSSVC query to refresh the entry.
-
-8.  Extensions to enhance privacy
-
-8.1.  Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys
+8.  Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys
 
    Both SVCB/HTTPSSVC and Alt-Svc "esniconfig" parameters are defined
    for conveying the ESNI configuration of an alternative service.  The
@@ -1167,18 +1155,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    HTTP/2 ALTSVC frames.  This parameter MUST NOT appear more than once
    in a single alt-value.
 
-
-
-
-
-
-
-Schwartz, et al.           Expires May 7, 2020                 [Page 21]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
-
-
-8.1.1.  Handling a mixture of alternatives not supporting ESNI
+8.1.  Handling a mixture of alternatives not supporting ESNI
 
    The Alt-Svc specification states that "the client MAY fall back to
    using the origin" in case of connection failure (Section 2.4 of
@@ -1193,6 +1170,14 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    For example, suppose a server operator has two alternatives.
    Alternative A is reliably accessible but does not support ESNI.
    Alternative B supports ESNI but is not reliably accessible.  The
+
+
+
+Schwartz, et al.           Expires May 7, 2020                 [Page 21]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
+
+
    server operator could include a full esniconfig value in Alternative
    B, and mark Alternative A with esniconfig="" to indicate that
    fallback from B to A is allowed.
@@ -1225,15 +1210,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    SVCB/HTTPSSVC RRs are intended for distribution over untrusted
    channels, and clients are REQUIRED to verify that the alternative
    service is authoritative for the origin (Section 2.1 of [AltSvc]).
-
-
-
-
-Schwartz, et al.           Expires May 7, 2020                 [Page 22]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
-
-
    Therefore, DNSSEC signing and validation are OPTIONAL for publishing
    and using SVCB and HTTPSSVC records.
 
@@ -1249,6 +1225,15 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
    The "Service Binding (SVCB) Parameter Registry" defines the name
    space for parameters, including string representations and numeric
+
+
+
+
+Schwartz, et al.           Expires May 7, 2020                 [Page 22]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
+
+
    SvcParamKey values.  This registry is shared with other SVCB-
    compatible RR types, such as HTTPSSVC.
 
@@ -1275,6 +1260,21 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
    The "Service Binding (SVCB) Parameter Registry" shall initially be
    populated with the registrations below:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
