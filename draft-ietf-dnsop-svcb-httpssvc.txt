@@ -515,7 +515,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    The RDATA for the SVCB RR consists of:
 
    o  a 2 octet field for SvcFieldPriority as an integer in network byte
-      order.  For AliasForm, SvcFieldPriority MUST be 0.
+      order.
 
    o  the uncompressed SvcDomainName, represented as a sequence of
       length-prefixed labels as in Section 3.1 of [RFC1035].
@@ -524,7 +524,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
       record (so smaller than 65535 octets and constrained by the RDATA
       and DNS message sizes).
 
-   AliasForm is defined by SvcFieldValue being empty.
+   AliasForm is defined by SvcFieldPriority being 0.
 
    When SvcFieldValue is non-empty (ServiceForm), it contains a list of
    SvcParamKey=SvcParamValue pairs with length-prefixes for the
@@ -587,10 +587,10 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
 2.4.  SvcRecordType
 
-   The SvcRecordType is implicit based on the presence of SvcFieldValue,
-   and defines the form of the SVCB RR.  When SvcFieldValue is empty,
-   the SVCB SvcRecordType is defined to be in AliasForm.  Otherwise, the
-   SVCB SvcRecordType is defined to be in ServiceForm.
+   The SvcRecordType is indicated by the SvcFieldPriority, and defines
+   the form of the SVCB RR.  When SvcFieldPriority is 0, the SVCB
+   SvcRecordType is defined to be in AliasForm.  Otherwise, the SVCB
+   SvcRecordType is defined to be in ServiceForm.
 
    Within an SVCB RRSet, all RRs should have the same SvcRecordType.  If
    an RRSet contains a record in AliasForm, the client MUST ignore any
@@ -679,10 +679,10 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
    www.example.com.  7200  IN HTTPSSVC svc.example.net.
    svc.example.net.  7200  IN CNAME    svc2.example.net.
-   svc2.example.net. 7200  IN HTTPSSVC 0 . ( alpn=h2
-                                        port=8002 esnikeys="..." )
-   svc2.example.net. 300   IN A         192.0.2.2
-   svc2.example.net. 300   IN AAAA      2001:db8::2
+   svc2.example.net. 7200  IN HTTPSSVC 1 . ( alpn=h2
+                                       port=8002 esnikeys="..." )
+   svc2.example.net. 300   IN A        192.0.2.2
+   svc2.example.net. 300   IN AAAA     2001:db8::2
 
 2.6.2.  SvcFieldPriority
 
@@ -789,22 +789,25 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    1.  When processing an SVCB response from an authoritative server,
        add it to the Additional section (unless it is the Answer).
 
-   2.  Inspect whether each record is in AliasForm or ServiceForm.  If
-       at least one record is in AliasForm, ignore all other SVCB
-       records in the RRSet.
-
-   3.  If the record is in AliasForm, resolve A, AAAA, and SVCB records
-       for the SvcDomainName.  If the SVCB record does not exist, add
-       the A and AAAA records to the Additional section.  Otherwise, go
-       to step 1, subject to loop detection heuristics.
-
-   4.  If the records are in ServiceForm, resolve A and AAAA records for
+   2.  If all records are in ServiceForm, resolve A and AAAA records for
        each SvcDomainName (or for the owner name if the SvcDomainName is
        "."), and include all the results in the Additional section.
+
+   3.  Otherwise, select an AliasForm record at random, and resolve A,
+       AAAA, and SVCB records for the SvcDomainName.  If the SVCB record
+       does not exist, add the A and AAAA records to the Additional
+       section.  Otherwise, go to step 1, subject to loop detection
+       heuristics.
 
    All DNS servers SHOULD treat the SvcParam portion of the SVCB RR as
    opaque and SHOULD NOT try to alter their behavior based on its
    contents.
+
+   When responding to a query that includes the DNSSEC OK bit
+   ([RFC3225]), DNSSEC-capable recursive and authoritative DNS servers
+   MUST accompany each RRSet in the Additional section with the same
+   DNSSEC-related records that it would send when providing that RRSet
+   as an Answer.
 
 5.  Performance optimizations
 
@@ -831,9 +834,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    attempt an equivalent connection when making use of that record.  If
    an SVCB record is consistent with an active or in-progress connection
    C, the client MAY prefer that record and use C as its connection.
-   For example, suppose the client receives this SVCB RRSet for a
-   protocol that uses TLS over TCP:
-
 
 
 
@@ -841,6 +841,9 @@ Schwartz, et al.           Expires May 7, 2020                 [Page 15]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
+
+   For example, suppose the client receives this SVCB RRSet for a
+   protocol that uses TLS over TCP:
 
 _1234._bar.example.com. 300 IN SVCB 1 svc1.example.net ( esnikeys="111..."
                                     ipv6hint=2001:db8::1 port=1234 ... )
@@ -888,15 +891,15 @@ _1234._bar.example.com. 300 IN SVCB 1 svc1.example.net ( esnikeys="111..."
    The presentation format and wire format of SvcParamValue is its
    registered "Identification Sequence".
 
-   Clients MUST ignore SVCB RRs where the "alpn" SvcParamValue is
-   unknown or unsupported.
-
 
 
 Schwartz, et al.           Expires May 7, 2020                 [Page 16]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
+
+   Clients MUST ignore SVCB RRs where the "alpn" SvcParamValue is
+   unknown or unsupported.
 
 6.2.  "port"
 
@@ -943,9 +946,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    represents an unordered collection, and clients SHOULD pick addresses
    to use in a random order.
 
-   These parameters MAY be repeated multiple times within a record.
-   When receiving such a record, clients SHOULD combine the sets of
-   addresses.
 
 
 
@@ -953,6 +953,10 @@ Schwartz, et al.           Expires May 7, 2020                 [Page 17]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
 
+
+   These parameters MAY be repeated multiple times within a record.
+   When receiving such a record, clients SHOULD combine the sets of
+   addresses.
 
    When selecting between IPv4 and IPv6 addresses to use, clients may
    use an approach such as [HappyEyeballsV2].  When only "ipv4hint"
@@ -997,10 +1001,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
    that implement HTTPSSVC are NOT REQUIRED to implement Alt-Svc.
    However, many clients and servers will implement both, and a partial
    mapping exists between them (Appendix A).
-
-
-
-
 
 
 
@@ -1443,13 +1443,13 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        November 2019
               Specification", RFC 2181, DOI 10.17487/RFC2181, July 1997,
               <https://www.rfc-editor.org/info/rfc2181>.
 
+   [RFC3225]  Conrad, D., "Indicating Resolver Support of DNSSEC",
+              RFC 3225, DOI 10.17487/RFC3225, December 2001,
+              <https://www.rfc-editor.org/info/rfc3225>.
+
    [RFC3597]  Gustafsson, A., "Handling of Unknown DNS Resource Record
               (RR) Types", RFC 3597, DOI 10.17487/RFC3597, September
               2003, <https://www.rfc-editor.org/info/rfc3597>.
-
-
-
-
 
 
 

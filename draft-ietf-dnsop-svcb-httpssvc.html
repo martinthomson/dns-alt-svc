@@ -685,11 +685,11 @@ pair          = display-key "=" value
 <p></p>
 
 <ul>
-<li>a 2 octet field for SvcFieldPriority as an integer in network byte order.  For AliasForm, SvcFieldPriority MUST be 0.</li>
+<li>a 2 octet field for SvcFieldPriority as an integer in network byte order.</li>
 <li>the uncompressed SvcDomainName, represented as a sequence of length-prefixed labels as in Section 3.1 of <a href="#RFC1035" class="xref">[RFC1035]</a>.</li>
 <li>the SvcFieldValue byte string, consuming the remainder of the record (so smaller than 65535 octets and constrained by the RDATA and DNS message sizes).</li>
 </ul>
-<p id="rfc.section.2.2.p.3">AliasForm is defined by SvcFieldValue being empty.</p>
+<p id="rfc.section.2.2.p.3">AliasForm is defined by SvcFieldPriority being 0.</p>
 <p id="rfc.section.2.2.p.4">When SvcFieldValue is non-empty (ServiceForm), it contains a list of SvcParamKey=SvcParamValue pairs with length-prefixes for the SvcParamValues, each of which contains:</p>
 <p></p>
 
@@ -717,7 +717,7 @@ svc4.example.net.  7200  IN SVCB 3 ( svc4.example.net. alpn="bar"
 <h1 id="rfc.section.2.4">
 <a href="#rfc.section.2.4">2.4.</a> <a href="#svcrecordtype" id="svcrecordtype">SvcRecordType</a>
 </h1>
-<p id="rfc.section.2.4.p.1">The SvcRecordType is implicit based on the presence of SvcFieldValue, and defines the form of the SVCB RR.  When SvcFieldValue is empty, the SVCB SvcRecordType is defined to be in AliasForm.  Otherwise, the SVCB SvcRecordType is defined to be in ServiceForm.</p>
+<p id="rfc.section.2.4.p.1">The SvcRecordType is indicated by the SvcFieldPriority, and defines the form of the SVCB RR.  When SvcFieldPriority is 0, the SVCB SvcRecordType is defined to be in AliasForm.  Otherwise, the SVCB SvcRecordType is defined to be in ServiceForm.</p>
 <p id="rfc.section.2.4.p.2">Within an SVCB RRSet, all RRs should have the same SvcRecordType.  If an RRSet contains a record in AliasForm, the client MUST ignore any records in the set with ServiceForm.</p>
 <h1 id="rfc.section.2.5">
 <a href="#rfc.section.2.5">2.5.</a> <a href="#svcb-records-aliasform" id="svcb-records-aliasform">SVCB records: AliasForm</a>
@@ -745,10 +745,10 @@ example.com. 3600 IN SVCB 0 svc.example.net.
 <pre>
 www.example.com.  7200  IN HTTPSSVC svc.example.net.
 svc.example.net.  7200  IN CNAME    svc2.example.net.
-svc2.example.net. 7200  IN HTTPSSVC 0 . ( alpn=h2
-                                     port=8002 esnikeys="..." )
-svc2.example.net. 300   IN A         192.0.2.2
-svc2.example.net. 300   IN AAAA      2001:db8::2
+svc2.example.net. 7200  IN HTTPSSVC 1 . ( alpn=h2
+                                    port=8002 esnikeys="..." )
+svc2.example.net. 300   IN A        192.0.2.2
+svc2.example.net. 300   IN AAAA     2001:db8::2
 </pre>
 <h1 id="rfc.section.2.6.2">
 <a href="#rfc.section.2.6.2">2.6.2.</a> <a href="#svcfieldpri" id="svcfieldpri">SvcFieldPriority</a>
@@ -792,11 +792,11 @@ svc2.example.net. 300   IN AAAA      2001:db8::2
 
 <ol>
 <li>When processing an SVCB response from an authoritative server, add it to the Additional section (unless it is the Answer).</li>
-<li>Inspect whether each record is in AliasForm or ServiceForm.  If at least one record is in AliasForm, ignore all other SVCB records in the RRSet.</li>
-<li>If the record is in AliasForm, resolve A, AAAA, and SVCB records for the SvcDomainName.  If the SVCB record does not exist, add the A and AAAA records to the Additional section.  Otherwise, go to step 1, subject to loop detection heuristics.</li>
-<li>If the records are in ServiceForm, resolve A and AAAA records for each SvcDomainName (or for the owner name if the SvcDomainName is &#8220;.&#8221;), and include all the results in the Additional section.</li>
+<li>If all records are in ServiceForm, resolve A and AAAA records for each SvcDomainName (or for the owner name if the SvcDomainName is &#8220;.&#8221;), and include all the results in the Additional section.</li>
+<li>Otherwise, select an AliasForm record at random, and resolve A, AAAA, and SVCB records for the SvcDomainName.  If the SVCB record does not exist, add the A and AAAA records to the Additional section.  Otherwise, go to step 1, subject to loop detection heuristics.</li>
 </ol>
 <p id="rfc.section.4.p.4">All DNS servers SHOULD treat the SvcParam portion of the SVCB RR as opaque and SHOULD NOT try to alter their behavior based on its contents.</p>
+<p id="rfc.section.4.p.5">When responding to a query that includes the DNSSEC OK bit (<a href="#RFC3225" class="xref">[RFC3225]</a>), DNSSEC-capable recursive and authoritative DNS servers MUST accompany each RRSet in the Additional section with the same DNSSEC-related records that it would send when providing that RRSet as an Answer.</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#optimizations" id="optimizations">Performance optimizations</a>
 </h1>
@@ -1148,6 +1148,11 @@ uri-host ":" port
 <td class="reference"><b id="RFC2181">[RFC2181]</b></td>
 <td class="top">
 <a>Elz, R.</a> and <a>R. Bush</a>, "<a href="https://tools.ietf.org/html/rfc2181">Clarifications to the DNS Specification</a>", RFC 2181, DOI 10.17487/RFC2181, July 1997.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC3225">[RFC3225]</b></td>
+<td class="top">
+<a>Conrad, D.</a>, "<a href="https://tools.ietf.org/html/rfc3225">Indicating Resolver Support of DNSSEC</a>", RFC 3225, DOI 10.17487/RFC3225, December 2001.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC3597">[RFC3597]</b></td>
