@@ -308,7 +308,7 @@ ul.toc li {
 <link href="#rfc.section.6" rel="Chapter" title="6 Initial SvcParamKeys">
 <link href="#rfc.section.6.1" rel="Chapter" title="6.1 &#8220;alpn&#8221;">
 <link href="#rfc.section.6.2" rel="Chapter" title="6.2 &#8220;port&#8221;">
-<link href="#rfc.section.6.3" rel="Chapter" title="6.3 &#8220;esnikeys&#8221;">
+<link href="#rfc.section.6.3" rel="Chapter" title="6.3 &#8220;esniconfig&#8221;">
 <link href="#rfc.section.6.4" rel="Chapter" title="6.4 &#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221;">
 <link href="#rfc.section.7" rel="Chapter" title="7 Using SVCB with HTTPS and HTTP">
 <link href="#rfc.section.7.1" rel="Chapter" title="7.1 Owner names for HTTPSSVC records">
@@ -317,8 +317,10 @@ ul.toc li {
 <link href="#rfc.section.7.3.1" rel="Chapter" title="7.3.1 Untrusted channel">
 <link href="#rfc.section.7.3.2" rel="Chapter" title="7.3.2 Caching and granularity">
 <link href="#rfc.section.7.4" rel="Chapter" title="7.4 HTTP Strict Transport Security">
-<link href="#rfc.section.8" rel="Chapter" title="8 Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys">
-<link href="#rfc.section.8.1" rel="Chapter" title="8.1 Handling a mixture of alternatives not supporting esnikeys">
+<link href="#rfc.section.7.5" rel="Chapter" title="7.5 Cache interaction">
+<link href="#rfc.section.8" rel="Chapter" title="8 Extensions to enhance privacy">
+<link href="#rfc.section.8.1" rel="Chapter" title="8.1 Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys">
+<link href="#rfc.section.8.1.1" rel="Chapter" title="8.1.1 Handling a mixture of alternatives not supporting ESNI">
 <link href="#rfc.section.9" rel="Chapter" title="9 Interaction with other standards">
 <link href="#rfc.section.10" rel="Chapter" title="10 Security Considerations">
 <link href="#rfc.section.11" rel="Chapter" title="11 IANA Considerations">
@@ -467,7 +469,7 @@ ul.toc li {
 </li>
 <li>6.2.   <a href="#rfc.section.6.2">&#8220;port&#8221;</a>
 </li>
-<li>6.3.   <a href="#rfc.section.6.3">&#8220;esnikeys&#8221;</a>
+<li>6.3.   <a href="#rfc.section.6.3">&#8220;esniconfig&#8221;</a>
 </li>
 <li>6.4.   <a href="#rfc.section.6.4">&#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221;</a>
 </li>
@@ -485,11 +487,15 @@ ul.toc li {
 </li>
 </ul><li>7.4.   <a href="#rfc.section.7.4">HTTP Strict Transport Security</a>
 </li>
-</ul><li>8.   <a href="#rfc.section.8">Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys</a>
+<li>7.5.   <a href="#rfc.section.7.5">Cache interaction</a>
 </li>
-<ul><li>8.1.   <a href="#rfc.section.8.1">Handling a mixture of alternatives not supporting esnikeys</a>
+</ul><li>8.   <a href="#rfc.section.8">Extensions to enhance privacy</a>
 </li>
-</ul><li>9.   <a href="#rfc.section.9">Interaction with other standards</a>
+<ul><li>8.1.   <a href="#rfc.section.8.1">Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys</a>
+</li>
+<ul><li>8.1.1.   <a href="#rfc.section.8.1.1">Handling a mixture of alternatives not supporting ESNI</a>
+</li>
+</ul></ul><li>9.   <a href="#rfc.section.9">Interaction with other standards</a>
 </li>
 <li>10.   <a href="#rfc.section.10">Security Considerations</a>
 </li>
@@ -570,9 +576,9 @@ www.example.com.  7200  IN CNAME    svc.example.net.
 example.com.      7200  IN HTTPSSVC 0 svc.example.net.
 ; ServiceForm
 svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. ( alpn=h3
-                                    port=8003 esnikeys="..." )
+                                    port=8003 esniconfig="..." )
 svc.example.net.  7200  IN HTTPSSVC 3 svc2.example.net. ( alpn=h2
-                                    port=8002 esnikeys="..." )
+                                    port=8002 esniconfig="..." )
 svc2.example.net. 300   IN A        192.0.2.2
 svc2.example.net. 300   IN AAAA     2001:db8::2
 svc3.example.net. 300   IN A        192.0.2.3
@@ -627,7 +633,7 @@ _8765._baz.api.example.com. 7200 IN SVCB 0 svc4-baz.example.net.
 <h1 id="rfc.section.1.4">
 <a href="#rfc.section.1.4">1.4.</a> <a href="#parameter-for-esni" id="parameter-for-esni">Parameter for ESNI</a>
 </h1>
-<p id="rfc.section.1.4.p.1">This document also defines a parameter for Encrypted SNI <a href="#ESNI" class="xref">[ESNI]</a> keys, both as a general SVCB parameter and also as a corresponding Alt-Svc parameter. See <a href="#esnikeys" class="xref">Section 8</a>.</p>
+<p id="rfc.section.1.4.p.1">This document also defines a parameter for Encrypted SNI <a href="#ESNI" class="xref">[ESNI]</a> keys, both as a general SVCB parameter and also as a corresponding Alt-Svc parameter. See <a href="#esniconfig" class="xref">Section 8.1</a>.</p>
 <h1 id="rfc.section.1.5">
 <a href="#rfc.section.1.5">1.5.</a> <a href="#terminology" id="terminology">Terminology</a>
 </h1>
@@ -711,7 +717,7 @@ pair          = display-key "=" value
 <pre>
 _8443._foo.api.example.com. 7200 IN SVCB 0 svc4.example.net.
 svc4.example.net.  7200  IN SVCB 3 ( svc4.example.net. alpn="bar"
-                                   port="8004" esnikeys="..." )
+                                   port="8004" esniconfig="..." )
 </pre>
 <p id="rfc.section.2.3.p.6">would indicate that &#8220;foo://api.example.com:8443&#8221; is aliased to use ALPN protocol &#8220;bar&#8221; service endpoints offered at &#8220;svc4.example.net&#8221; on port 8004.</p>
 <h1 id="rfc.section.2.4">
@@ -746,7 +752,7 @@ example.com. 3600 IN SVCB 0 svc.example.net.
 www.example.com.  7200  IN HTTPSSVC svc.example.net.
 svc.example.net.  7200  IN CNAME    svc2.example.net.
 svc2.example.net. 7200  IN HTTPSSVC 1 . ( alpn=h2
-                                    port=8002 esnikeys="..." )
+                                    port=8002 esniconfig="..." )
 svc2.example.net. 300   IN A        192.0.2.2
 svc2.example.net. 300   IN AAAA     2001:db8::2
 </pre>
@@ -779,7 +785,7 @@ svc2.example.net. 300   IN AAAA     2001:db8::2
 <p></p>
 
 <ul>
-<li>It allows the client to use the SvcFieldValue, if present, which is only usable with a specific SvcDomainName.  The SvcFieldValue may include information that enhances performance (e.g. alpn) and privacy (e.g. esnikeys).</li>
+<li>It allows the client to use the SvcFieldValue, if present, which is only usable with a specific SvcDomainName.  The SvcFieldValue may include information that enhances performance (e.g. alpn) and privacy (e.g. esniconfig).</li>
 <li>It allows the origin to delegate the apex domain.</li>
 <li>It allows the proxy to select between IPv4 and IPv6 addresses for the server according to its configuration, and receive addresses based on its network geolocation.</li>
 </ul>
@@ -804,15 +810,15 @@ svc2.example.net. 300   IN AAAA     2001:db8::2
 <h1 id="rfc.section.5.1">
 <a href="#rfc.section.5.1">5.1.</a> <a href="#optimistic-pre-connection-and-connection-reuse" id="optimistic-pre-connection-and-connection-reuse">Optimistic pre-connection and connection reuse</a>
 </h1>
-<p id="rfc.section.5.1.p.1">If an address response arrives before the corresponding SVCB response, the client MAY initiate a connection as if the SVCB query returned NODATA, but MUST NOT transmit any information that could be altered by the SVCB response until it arrives.  For example, a TLS ClientHello can be altered by the &#8220;esnikeys&#8221; value of an SVCB response (<a href="#svcparamkeys-esnikeys" class="xref">Section 6.3</a>).  Clients implementing this optimization SHOULD wait for 50 milliseconds before starting optimistic pre-connection, as per the guidance in <a href="#HappyEyeballsV2" class="xref">[HappyEyeballsV2]</a>.</p>
+<p id="rfc.section.5.1.p.1">If an address response arrives before the corresponding SVCB response, the client MAY initiate a connection as if the SVCB query returned NODATA, but MUST NOT transmit any information that could be altered by the SVCB response until it arrives.  For example, a TLS ClientHello can be altered by the &#8220;esniconfig&#8221; value of an SVCB response (<a href="#svcparamkeys-esniconfig" class="xref">Section 6.3</a>).  Clients implementing this optimization SHOULD wait for 50 milliseconds before starting optimistic pre-connection, as per the guidance in <a href="#HappyEyeballsV2" class="xref">[HappyEyeballsV2]</a>.</p>
 <p id="rfc.section.5.1.p.2">An SVCB record is consistent with a connection if the client would attempt an equivalent connection when making use of that record. If an SVCB record is consistent with an active or in-progress connection C, the client MAY prefer that record and use C as its connection.  For example, suppose the client receives this SVCB RRSet for a protocol that uses TLS over TCP:</p>
 <pre>
-_1234._bar.example.com. 300 IN SVCB 1 svc1.example.net ( esnikeys="111..."
-                                    ipv6hint=2001:db8::1 port=1234 ... )
-                               SVCB 2 svc2.example.net ( esnikeys="222..."
-                                    ipv6hint=2001:db8::2 port=1234 ... )
+_1234._bar.example.com. 300 IN SVCB 1 svc1.example.net (
+    esniconfig="111..." ipv6hint=2001:db8::1 port=1234 ... )
+                               SVCB 2 svc2.example.net (
+    esniconfig="222..." ipv6hint=2001:db8::2 port=1234 ... )
 </pre>
-<p id="rfc.section.5.1.p.3">If the client has an in-progress TCP connection to <samp>[2001:db8::2]:1234</samp>, it MAY proceed with TLS on that connection using <samp>esnikeys="222..."</samp>, even though the other record in the RRSet has higher priority.</p>
+<p id="rfc.section.5.1.p.3">If the client has an in-progress TCP connection to <samp>[2001:db8::2]:1234</samp>, it MAY proceed with TLS on that connection using <samp>esniconfig="222..."</samp>, even though the other record in the RRSet has higher priority.</p>
 <p id="rfc.section.5.1.p.4">If none of the SVCB records are consistent with any active or in-progress connection, clients must proceed as described in Step 3 of the procedure in <a href="#client-behavior" class="xref">Section 3</a>.</p>
 <h1 id="rfc.section.5.2">
 <a href="#rfc.section.5.2">5.2.</a> <a href="#preferring-usable-records" id="preferring-usable-records">Preferring usable records</a>
@@ -838,10 +844,10 @@ _1234._bar.example.com. 300 IN SVCB 1 svc1.example.net ( esnikeys="111..."
 <p id="rfc.section.6.2.p.1">The &#8220;port&#8221; SvcParamKey defines the TCP or UDP port that should be used to contact this alternative service.</p>
 <p id="rfc.section.6.2.p.2">The presentation format of the SvcParamValue is a numeric value between 0 and 65535 inclusive.  The wire format of the SvcParamValue is the corresponding 2 octet numeric value in network byte order.</p>
 <h1 id="rfc.section.6.3">
-<a href="#rfc.section.6.3">6.3.</a> <a href="#svcparamkeys-esnikeys" id="svcparamkeys-esnikeys">&#8220;esnikeys&#8221;</a>
+<a href="#rfc.section.6.3">6.3.</a> <a href="#svcparamkeys-esniconfig" id="svcparamkeys-esniconfig">&#8220;esniconfig&#8221;</a>
 </h1>
-<p id="rfc.section.6.3.p.1">The SvcParamKey for ESNI is &#8220;esnikeys&#8221;.  Its value is defined in <a href="#esnikeys" class="xref">Section 8</a>.  It is applicable to most TLS-based protocols.</p>
-<p id="rfc.section.6.3.p.2">When publishing a record containing an &#8220;esnikeys&#8221; parameter, the publisher MUST ensure that all IP addresses of SvcDomainName correspond to servers that have access to the corresponding private key or are authoritative for the fallback domain. (See <a href="#ESNI" class="xref">[ESNI]</a> for more details about the fallback domain.) This yields an anonymity set of cardinality equal to the number of ESNI-enabled server domains supported by a given client-facing server. Thus, even with SNI encryption, an attacker who can enumerate the set of ESNI-enabled domains supported by a client-facing server can guess the correct SNI with probability at least 1/K, where K is the size of this ESNI-enabled server anonymity set. This probability may be increased via traffic analysis or other mechanisms.</p>
+<p id="rfc.section.6.3.p.1">The SvcParamKey for ESNI is &#8220;esniconfig&#8221;.  Its value is defined in <a href="#esniconfig" class="xref">Section 8.1</a>.  It is applicable to most TLS-based protocols.</p>
+<p id="rfc.section.6.3.p.2">When publishing a record containing an &#8220;esniconfig&#8221; parameter, the publisher MUST ensure that all IP addresses of SvcDomainName correspond to servers that have access to the corresponding private key or are authoritative for the fallback domain. (See <a href="#ESNI" class="xref">[ESNI]</a> for more details about the fallback domain.) This yields an anonymity set of cardinality equal to the number of ESNI-enabled server domains supported by a given client-facing server. Thus, even with SNI encryption, an attacker who can enumerate the set of ESNI-enabled domains supported by a client-facing server can guess the correct SNI with probability at least 1/K, where K is the size of this ESNI-enabled server anonymity set. This probability may be increased via traffic analysis or other mechanisms.</p>
 <h1 id="rfc.section.6.4">
 <a href="#rfc.section.6.4">6.4.</a> <a href="#svcparamkeys-iphints" id="svcparamkeys-iphints">&#8220;ipv4hint&#8221; and &#8220;ipv6hint&#8221;</a>
 </h1>
@@ -906,19 +912,27 @@ uri-host ":" port
 <p id="rfc.section.7.4.p.5">If an HTTPSSVC record is present for this &#8220;https&#8221; URL, the client should treat this as the equivalent of receiving an HTTP &#8220;307 Temporary Redirect&#8221; redirect to the &#8220;https&#8221; URL.  Because HTTPSSVC is received over an often insecure channel (DNS), clients MUST NOT place any more trust in this signal than if they had received a 307 redirect over cleartext HTTP.</p>
 <p id="rfc.section.7.4.p.6">If the HTTPSSVC query results in a SERVFAIL error, and the connection between the client and the recursive resolver is cryptographically protected (e.g. using TLS <a href="#RFC7858" class="xref">[RFC7858]</a> or HTTPS <a href="#RFC8484" class="xref">[RFC8484]</a>), the client SHOULD abandon the connection attempt and display an error message.  A SERVFAIL error can occur if the domain is DNSSEC-signed, the recursive resolver is DNSSEC-validating, and an active attacker between the recursive resolver and the authoritative DNS server is attempting to prevent the upgrade to HTTPS.</p>
 <p id="rfc.section.7.4.p.7">Similarly, if the client enforces DNSSEC validation on A/AAAA responses, it SHOULD abandon the connection attempt if the HTTPSSVC response fails to validate.</p>
+<h1 id="rfc.section.7.5">
+<a href="#rfc.section.7.5">7.5.</a> <a href="#cache-interaction" id="cache-interaction">Cache interaction</a>
+</h1>
+<p id="rfc.section.7.5.p.1">If the client has an Alt-Svc cache, and a usable Alt-Svc value is present in that cache, then the client SHOULD NOT issue an HTTPSSVC DNS query.  Instead, the client SHOULD proceed with alternative service connection as usual.</p>
+<p id="rfc.section.7.5.p.2">If the client has a cached Alt-Svc entry that is expiring, the client MAY perform an HTTPSSVC query to refresh the entry.</p>
 <h1 id="rfc.section.8">
-<a href="#rfc.section.8">8.</a> <a href="#esnikeys" id="esnikeys">Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys</a>
+<a href="#rfc.section.8">8.</a> <a href="#extensions-to-enhance-privacy" id="extensions-to-enhance-privacy">Extensions to enhance privacy</a>
 </h1>
-<p id="rfc.section.8.p.1">Both SVCB/HTTPSSVC and Alt-Svc &#8220;esnikeys&#8221; parameters are defined for specifying ESNI keys corresponding to an alternative service.  The value of the parameter is an ESNIKeys structure <a href="#ESNI" class="xref">[ESNI]</a> or the empty string.  ESNI-aware clients SHOULD prefer alt-values and SVCB/HTTPSSVC RRs with non-empty esnikeys.</p>
-<p id="rfc.section.8.p.2">Both the SVCB SvcParamValue presentation format as well as the Alt-Svc parameter value is the ESNIKeys structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a> or the empty string.  The SVCB SvcParamValue wire format is the octet string containing the binary ESNIKeys structure.</p>
-<p id="rfc.section.8.p.3">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.  This parameter MUST NOT appear more than once in a single alt-value.</p>
 <h1 id="rfc.section.8.1">
-<a href="#rfc.section.8.1">8.1.</a> <a href="#handling-a-mixture-of-alternatives-not-supporting-esnikeys" id="handling-a-mixture-of-alternatives-not-supporting-esnikeys">Handling a mixture of alternatives not supporting esnikeys</a>
+<a href="#rfc.section.8.1">8.1.</a> <a href="#esniconfig" id="esniconfig">Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys</a>
 </h1>
-<p id="rfc.section.8.1.p.1">The Alt-Svc specification states that &#8220;the client MAY fall back to using the origin&#8221; in case of connection failure (Section 2.4 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  This behavior is not suitable for ESNI, because fallback would negate the privacy benefits of ESNI.</p>
-<p id="rfc.section.8.1.p.2">Accordingly, any connection attempt that uses ESNI MUST fall back only to another alt-value that also has the esnikeys parameter.  If the parameter&#8217;s value is the empty string, the client SHOULD connect as it would in the absence of any ESNIKeys information.</p>
-<p id="rfc.section.8.1.p.3">For example, suppose a server operator has two alternatives.  Alternative A is reliably accessible but does not support ESNI.  Alternative B supports ESNI but is not reliably accessible.  The server operator could include a full esnikeys value in Alternative B, and mark Alternative A with esnikeys=&#8221;&#8221; to indicate that fallback from B to A is allowed.</p>
-<p id="rfc.section.8.1.p.4">Other clients and services implementing SVCB or HTTPSSVC with esnikeys are encouraged to take a similar approach.</p>
+<p id="rfc.section.8.1.p.1">Both SVCB/HTTPSSVC and Alt-Svc &#8220;esniconfig&#8221; parameters are defined for conveying the ESNI configuration of an alternative service.  The value of the parameter is an ESNIConfig structure <a href="#ESNI" class="xref">[ESNI]</a> or the empty string.  ESNI-aware clients SHOULD prefer alt-values and SVCB/HTTPSSVC RRs with non-empty esniconfig.</p>
+<p id="rfc.section.8.1.p.2">Both the SVCB SvcParamValue presentation format as well as the Alt-Svc parameter value is the ESNIConfig structure <a href="#ESNI" class="xref">[ESNI]</a> encoded in <a href="#base64" class="xref">[base64]</a> or the empty string.  The SVCB SvcParamValue wire format is the octet string containing the binary ESNIConfig structure.</p>
+<p id="rfc.section.8.1.p.3">This parameter MAY also be sent in Alt-Svc HTTP response headers and HTTP/2 ALTSVC frames.  This parameter MUST NOT appear more than once in a single alt-value.</p>
+<h1 id="rfc.section.8.1.1">
+<a href="#rfc.section.8.1.1">8.1.1.</a> <a href="#handling-a-mixture-of-alternatives-not-supporting-esni" id="handling-a-mixture-of-alternatives-not-supporting-esni">Handling a mixture of alternatives not supporting ESNI</a>
+</h1>
+<p id="rfc.section.8.1.1.p.1">The Alt-Svc specification states that &#8220;the client MAY fall back to using the origin&#8221; in case of connection failure (Section 2.4 of <a href="#AltSvc" class="xref">[AltSvc]</a>).  This behavior is not suitable for ESNI, because fallback would negate the privacy benefits of ESNI.</p>
+<p id="rfc.section.8.1.1.p.2">Accordingly, any connection attempt that uses ESNI MUST fall back only to another alt-value that also has the esniconfig parameter.  If the parameter&#8217;s value is the empty string, the client SHOULD connect as it would in the absence of any ESNIConfig information.</p>
+<p id="rfc.section.8.1.1.p.3">For example, suppose a server operator has two alternatives.  Alternative A is reliably accessible but does not support ESNI.  Alternative B supports ESNI but is not reliably accessible.  The server operator could include a full esniconfig value in Alternative B, and mark Alternative A with esniconfig=&#8221;&#8221; to indicate that fallback from B to A is allowed.</p>
+<p id="rfc.section.8.1.1.p.4">Other clients and services implementing SVCB or HTTPSSVC with esniconfig are encouraged to take a similar approach.</p>
 <h1 id="rfc.section.9">
 <a href="#rfc.section.9">9.</a> <a href="#interaction-with-other-standards" id="interaction-with-other-standards">Interaction with other standards</a>
 </h1>
@@ -983,8 +997,8 @@ uri-host ":" port
 </tr>
 <tr>
 <td class="left">3</td>
-<td class="left">esnikeys</td>
-<td class="left">ESNI keys literal</td>
+<td class="left">esniconfig</td>
+<td class="left">Encrypted SNI configuration</td>
 <td class="left">(This document)</td>
 </tr>
 <tr>
@@ -1074,8 +1088,8 @@ uri-host ":" port
 <th class="left">Reference</th>
 </tr></thead>
 <tbody><tr>
-<td class="left">esnikeys</td>
-<td class="left">Encrypted SNI keys</td>
+<td class="left">esniconfig</td>
+<td class="left">Encrypted SNI configuration</td>
 <td class="left">(This document)</td>
 </tr></tbody>
 </table>
@@ -1318,13 +1332,14 @@ www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
 www.example.com.  7200  IN CNAME    svc.example.net.
 example.com.      7200  IN HTTPSSVC 0 svc.example.net.
 svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. (
-                                    alpn=h3 port=8003 esnikeys="ABC..." )
-svc.example.net.  7200  IN HTTPSSVC 3 . alpn=h2 port=8002 esnikeys="123..."
+    alpn=h3 port=8003 esniconfig="ABC..." )
+svc.example.net.  7200  IN HTTPSSVC 3 . (
+    alpn=h2 port=8002 esniconfig="123..." )
 </pre>
 <p id="rfc.section.A.2.p.2">is equivalent to the Alt-Svc record:</p>
 <pre>
-Alt-Svc: h3="svc3.example.net:8003"; esnikeys="ABC..."; ma=7200, \
-         h2="svc.example.net:8002"; esnikeys="123..."; ma=7200
+Alt-Svc: h3="svc3.example.net:8003"; esniconfig="ABC..."; ma=7200, \
+         h2="svc.example.net:8002"; esniconfig="123..."; ma=7200
 </pre>
 <p id="rfc.section.A.2.p.3">for the origins of both &#8220;https://www.example.com&#8221; and &#8220;https://example.com&#8221;.</p>
 <h1 id="rfc.appendix.B">
@@ -1346,12 +1361,12 @@ Alt-Svc: h3="svc3.example.net:8003"; esnikeys="ABC..."; ma=7200, \
 <h1 id="rfc.appendix.B.2">
 <a href="#rfc.appendix.B.2">B.2.</a> <a href="#differences-from-the-proposed-http-record" id="differences-from-the-proposed-http-record">Differences from the proposed HTTP record</a>
 </h1>
-<p id="rfc.section.B.2.p.1">Unlike <a href="#I-D.draft-bellis-dnsop-http-record-00" class="xref">[I-D.draft-bellis-dnsop-http-record-00]</a>, this approach is extensible to cover Alt-Svc and ESNIKeys use-cases.  Like that proposal, this addresses the zone apex CNAME challenge.</p>
+<p id="rfc.section.B.2.p.1">Unlike <a href="#I-D.draft-bellis-dnsop-http-record-00" class="xref">[I-D.draft-bellis-dnsop-http-record-00]</a>, this approach is extensible to cover Alt-Svc and ESNI use-cases.  Like that proposal, this addresses the zone apex CNAME challenge.</p>
 <p id="rfc.section.B.2.p.2">Like that proposal it remains necessary to continue to include address records at the zone apex for legacy clients.</p>
 <h1 id="rfc.appendix.B.3">
 <a href="#rfc.appendix.B.3">B.3.</a> <a href="#differences-from-the-proposed-aname-record" id="differences-from-the-proposed-aname-record">Differences from the proposed ANAME record</a>
 </h1>
-<p id="rfc.section.B.3.p.1">Unlike <a href="#I-D.draft-ietf-dnsop-aname-03" class="xref">[I-D.draft-ietf-dnsop-aname-03]</a>, this approach is extensible to cover Alt-Svc and ESNIKeys use-cases.  This approach also does not require any changes or special handling on either authoritative or master servers, beyond optionally returning in-bailiwick additional records.</p>
+<p id="rfc.section.B.3.p.1">Unlike <a href="#I-D.draft-ietf-dnsop-aname-03" class="xref">[I-D.draft-ietf-dnsop-aname-03]</a>, this approach is extensible to cover Alt-Svc and ESNI use-cases.  This approach also does not require any changes or special handling on either authoritative or master servers, beyond optionally returning in-bailiwick additional records.</p>
 <p id="rfc.section.B.3.p.2">Like that proposal, this addresses the zone apex CNAME challenge for clients that implement this.</p>
 <p id="rfc.section.B.3.p.3">However with this SVCB proposal it remains necessary to continue to include address records at the zone apex for legacy clients.  If deployment of this standard is successful, the number of legacy clients will fall over time.  As the number of legacy clients declines, the operational effort required to serve these users without the benefit of SVCB indirection should fall.  Server operators can easily observe how much traffic reaches this legacy endpoint, and may remove the apex&#8217;s address records if the observed legacy traffic has fallen to negligible levels.</p>
 <h1 id="rfc.appendix.B.4">
