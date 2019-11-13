@@ -816,7 +816,7 @@ svc2.example.net. 300   IN AAAA     2001:db8::2
 <a href="#rfc.section.4.3">4.3.</a> <a href="#general-requirements" id="general-requirements">General requirements</a>
 </h1>
 <p id="rfc.section.4.3.p.1">All DNS servers SHOULD treat the SvcParam portion of the SVCB RR as opaque and SHOULD NOT try to alter their behavior based on its contents.</p>
-<p id="rfc.section.4.3.p.2">When responding to a query that includes the DNSSEC OK bit (<a href="#RFC3225" class="xref">[RFC3225]</a>), DNSSEC-capable recursive and authoritative DNS servers MUST accompany each RRSet in the Additional section with the same DNSSEC-related records that it would send when providing that RRSet as an Answer (e.g. RRSIG, NSEC3).</p>
+<p id="rfc.section.4.3.p.2">When responding to a query that includes the DNSSEC OK bit (<a href="#RFC3225" class="xref">[RFC3225]</a>), DNSSEC-capable recursive and authoritative DNS servers MUST accompany each RRSet in the Additional section with the same DNSSEC-related records that they would send when providing that RRSet as an Answer (e.g. RRSIG, NSEC, NSEC3).</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#optimizations" id="optimizations">Performance optimizations</a>
 </h1>
