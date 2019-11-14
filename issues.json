@@ -1,6 +1,264 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/80",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/80/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/80/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/80/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/80",
+    "id": 522487518,
+    "node_id": "MDU6SXNzdWU1MjI0ODc1MTg=",
+    "number": 80,
+    "title": "Bikeshed and finalize the record names",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-13T21:38:09Z",
+    "updated_at": "2019-11-13T21:38:21Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "We should finalize the record names with community input (along with pronunciation for SVCB).\r\nIt's possible that \"SVCB\" is just fine, but \"HTTPSSVC\" is a constant pain due to the double-S.\r\n\"SVCHTTPS\" might be slightly better.  \"HTTPS\" is great but makes text less readable.\r\n"
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/79",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/79/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/79/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/79/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/79",
+    "id": 522486561,
+    "node_id": "MDU6SXNzdWU1MjI0ODY1NjE=",
+    "number": 79,
+    "title": "Clarify behavior when alpn=h2 but origin only supports http/1.1 (and vice-versa)",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 7,
+    "created_at": "2019-11-13T21:36:04Z",
+    "updated_at": "2019-11-14T18:07:03Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "We should clarify the behavior for how alpn=h2 and alpn=http/1.1 interact with ALPN negotiation over TLS with an origin, including in cases where only one is specified in the DNS but where only the other can get negotiated via TLA.\r\n\r\nOne option would be to call this out and recommend that \"h2\" can negotiate to http/1.1 and/or h2 if only one is specified in HTTPSSVC records."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/78",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/78/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/78/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/78/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/78",
+    "id": 522485545,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzQwNjc4NDYw",
+    "number": 78,
+    "title": "Restore and clarify ALPN requirements",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-13T21:33:41Z",
+    "updated_at": "2019-11-14T18:17:02Z",
+    "closed_at": "2019-11-14T18:16:59Z",
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/78",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/78",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/78.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/78.patch"
+    },
+    "body": "Addresses #40"
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/77",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/77/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/77/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/77/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/77",
+    "id": 522426014,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzQwNjI4ODk4",
+    "number": 77,
+    "title": "Clarify various recommendations",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-13T19:32:01Z",
+    "updated_at": "2019-11-13T20:45:53Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/77",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/77",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/77.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/77.patch"
+    },
+    "body": "Fixes #75 and addresses comments in #40\r\n\r\n@puneetsood FYI"
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/76",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/76/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/76/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/76/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/76",
+    "id": 522398927,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzQwNjA2OTcx",
+    "number": 76,
+    "title": "Remove recommendation to shorten the TTL",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-13T18:34:08Z",
+    "updated_at": "2019-11-13T18:34:08Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/76",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/76",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/76.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/76.patch"
+    },
+    "body": "Shortening the TTL doesn't actually solve the problem,\r\nbecause some caches ignore small TTL values.  Regardless of TTL,\r\nservers have to be able to deal with occasional use of expired\r\nrecords.  Shortening TTL is also bad for efficiency, so we\r\nshouldn't encourage it.\r\n\r\nFixes #74"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/75",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/75/labels{/name}",
@@ -1348,7 +1606,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/51.patch"
     },
     "body": "Minor typo fixes and edits.  Add proxy behavior.  Add a/aaaa param clarifications."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/50",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1652,10 +1913,7 @@
     "closed_at": "2019-09-23T21:19:45Z",
     "author_association": "COLLABORATOR",
     "body": "One suggestion in DNSOP was to make the SvcRecordType implicit.\r\nFor example, remove the field and distinguish between the two forms by\r\nwhether the SvcRecordValue is empty or not."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/45",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3021,7 +3279,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/21.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/20",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3291,10 +3552,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/16.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/15",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
