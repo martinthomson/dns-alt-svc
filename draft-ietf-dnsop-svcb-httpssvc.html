@@ -354,7 +354,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Schwartz, B., Bishop, M., and E. Nygren" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-dnsop-svcb-httpssvc-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-04" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-14" />
   <meta name="dct.abstract" content="This document specifies the &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; DNS resource record types to facilitate the lookup of information needed to make connections for origin resources, such as for HTTPS URLs.  SVCB records allow an origin to be served from multiple network locations, each with associated parameters (such as transport protocol configuration and keying material for encrypting TLS SNI).  They also enable aliasing of apex domains, which is not possible with CNAME.  The HTTPSSVC DNS RR is a variation of SVCB for HTTPS and HTTP origins.  By providing more information to the client before it attempts to establish a connection, these records offer potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).  These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges.TO BE REMOVED: The specific name for this RR type is an open topic for discussion.  &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; are meant as placeholders as they are easy to replace.  Other names might include &#8220;B&#8221;, &#8220;SRV2&#8221;, &#8220;SVCHTTPS&#8221;, &#8220;HTTPS&#8221;, and &#8220;ALTSVC&#8221;." />
   <meta name="description" content="This document specifies the &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; DNS resource record types to facilitate the lookup of information needed to make connections for origin resources, such as for HTTPS URLs.  SVCB records allow an origin to be served from multiple network locations, each with associated parameters (such as transport protocol configuration and keying material for encrypting TLS SNI).  They also enable aliasing of apex domains, which is not possible with CNAME.  The HTTPSSVC DNS RR is a variation of SVCB for HTTPS and HTTP origins.  By providing more information to the client before it attempts to establish a connection, these records offer potential benefits to both performance and privacy.TO BE REMOVED: This proposal is inspired by and based on recent DNS usage proposals such as ALTSVC, ANAME, and ESNIKEYS (as well as long standing desires to have SRV or a functional equivalent implemented for HTTP).  These proposals each provide an important function but are potentially incompatible with each other, such as when an origin is load-balanced across multiple hosting providers (multi-CDN).  Furthermore, these each add potential cases for adding additional record lookups in-addition to AAAA/A lookups. This design attempts to provide a unified framework that encompasses the key functionality of these proposals, as well as providing some extensibility for addressing similar future challenges.TO BE REMOVED: The specific name for this RR type is an open topic for discussion.  &#8220;SVCB&#8221; and &#8220;HTTPSSVC&#8221; are meant as placeholders as they are easy to replace.  Other names might include &#8220;B&#8221;, &#8220;SRV2&#8221;, &#8220;SVCHTTPS&#8221;, &#8220;HTTPS&#8221;, and &#8220;ALTSVC&#8221;." />
 
@@ -378,7 +378,7 @@ ul.toc li {
 <td class="right">M. Bishop</td>
 </tr>
 <tr>
-<td class="left">Expires: May 7, 2020</td>
+<td class="left">Expires: May 17, 2020</td>
 <td class="right">E. Nygren</td>
 </tr>
 <tr>
@@ -387,7 +387,7 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">November 4, 2019</td>
+<td class="right">November 14, 2019</td>
 </tr>
 
     	
@@ -405,7 +405,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on May 7, 2020.</p>
+<p>This Internet-Draft will expire on May 17, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -823,15 +823,17 @@ _1234._bar.example.com. 300 IN SVCB 1 svc1.example.net (
 </h1>
 <p id="rfc.section.5.3.p.1">To avoid a delay for clients using a nonconforming recursive resolver, domain owners SHOULD use a single SVCB record whose SvcDomainName is in the origin hostname&#8217;s CNAME chain if possible.  This will ensure that the required address records are already present in the client&#8217;s DNS cache as part of the responses to the address queries that were issued in parallel.</p>
 <h1 id="rfc.section.6">
-<a href="#rfc.section.6">6.</a> <a href="#initial-svcparamkeys" id="initial-svcparamkeys">Initial SvcParamKeys</a>
+<a href="#rfc.section.6">6.</a> <a href="#keys" id="keys">Initial SvcParamKeys</a>
 </h1>
 <p id="rfc.section.6.p.1">A few initial SvcParamKeys are defined here.  These keys are useful for HTTPS, and most are applicable to other protocols as well.</p>
 <h1 id="rfc.section.6.1">
 <a href="#rfc.section.6.1">6.1.</a> <a href="#alpn" id="alpn">&#8220;alpn&#8221;</a>
 </h1>
 <p id="rfc.section.6.1.p.1">The &#8220;alpn&#8221; SvcParamKey defines the Application Layer Protocol (ALPN, as defined in {{!RFC7301}) supported by a TLS-based alternative service.  Its value SHOULD be an entry in the IANA registry &#8220;TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs&#8221;.</p>
-<p id="rfc.section.6.1.p.2">The presentation format and wire format of SvcParamValue is its registered &#8220;Identification Sequence&#8221;.</p>
-<p id="rfc.section.6.1.p.3">Clients MUST ignore SVCB RRs where the &#8220;alpn&#8221; SvcParamValue is unknown or unsupported.</p>
+<p id="rfc.section.6.1.p.2">The presentation format and wire format of SvcParamValue is its registered &#8220;Identification Sequence&#8221;.  This key SHALL NOT appear more than once in a SvcFieldValue.</p>
+<p id="rfc.section.6.1.p.3">Clients MUST include this value in the ProtocolNameList in their ClientHello&#8217;s <samp>application_layer_protocol_negotiation</samp> extension.  Clients SHOULD also include any other values that they support and could negotiate on that connection with equivalent or better security properties.  For example, when using a SvcFieldValue with an &#8220;alpn&#8221; of &#8220;h2&#8221;, the client MAY also include &#8220;http/1.1&#8221; in the ProtocolNameList.</p>
+<p id="rfc.section.6.1.p.4">Clients MUST ignore SVCB RRs where the &#8220;alpn&#8221; SvcParamValue is unknown or not supported for use with the current scheme.</p>
+<p id="rfc.section.6.1.p.5">The value of the &#8220;alpn&#8221; SvcParamKey can have effects beyond the content of the TLS handshake and stream.  For example, an &#8220;alpn&#8221; value of &#8220;h3&#8221; (<a href="#HTTP3" class="xref">[HTTP3]</a> Section 11.1) indicates the client must use QUIC, not TLS.</p>
 <h1 id="rfc.section.6.2">
 <a href="#rfc.section.6.2">6.2.</a> <a href="#port" id="port">&#8220;port&#8221;</a>
 </h1>
@@ -856,7 +858,7 @@ _1234._bar.example.com. 300 IN SVCB 1 svc1.example.net (
 </h1>
 <p id="rfc.section.7.p.1">Use of any protocol with SVCB requires a protocol-specific mapping specification.  This section specifies the mapping for HTTPS and HTTP.</p>
 <p id="rfc.section.7.p.2">To enable special handling for the HTTPS and HTTP use-cases, the HTTPSSVC RR type is defined as an SVCB-compatible RR type, specific to the https and http schemes.  Clients MUST NOT perform SVCB queries or accept SVCB responses for https or http schemes.</p>
-<p id="rfc.section.7.p.3">The HTTPSSVC wire format and presentation format are identical to SVCB, and both share the SvcParamKey registry.  SVCB semantics apply equally to HTTPSSVC unless specified otherwise.</p>
+<p id="rfc.section.7.p.3">The HTTPSSVC wire format and presentation format are identical to SVCB, and both share the SvcParamKey registry.  SVCB semantics apply equally to HTTPSSVC unless specified otherwise.  All the SvcParamKeys defined in <a href="#keys" class="xref">Section 6</a> are permitted for use in HTTPSSVC, and the &#8220;alpn&#8221; SvcParamKey is REQUIRED.  Its value MUST be an ALPN that is suitable for use with HTTPS.  For example, the value MAY be &#8220;http/1.1&#8221;, &#8220;h2&#8221;, or &#8220;h3&#8221;, but MUST NOT be &#8220;h2c&#8221; or &#8220;ftp&#8221;.</p>
 <p id="rfc.section.7.p.4">The presence of an HTTPSSVC record for an HTTP or HTTPS service also provides an indication that all resources are available over HTTPS, as discussed in <a href="#hsts" class="xref">Section 7.4</a>.  This allows HTTPSSVC RRs to apply to pre-existing HTTP scheme URLs, while ensuring that the client uses a secure and authenticated HTTPS connection.</p>
 <p id="rfc.section.7.p.5">The HTTPSSVC RR parallels the concepts introduced in the HTTP Alternative Services proposed standard <a href="#AltSvc" class="xref">[AltSvc]</a>.  Clients and servers that implement HTTPSSVC are NOT REQUIRED to implement Alt-Svc.  However, many clients and servers will implement both, and a partial mapping exists between them (<a href="#map2altsvc" class="xref">Appendix A</a>).</p>
 <h1 id="rfc.section.7.1">
