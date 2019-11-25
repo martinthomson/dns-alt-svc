@@ -1,6 +1,274 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/84",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/84/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/84/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/84/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/84",
+    "id": 528355437,
+    "node_id": "MDU6SXNzdWU1MjgzNTU0Mzc=",
+    "number": 84,
+    "title": "Add a simple example",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "assignees": [
+      {
+        "login": "bemasc",
+        "id": 191945,
+        "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bemasc",
+        "html_url": "https://github.com/bemasc",
+        "followers_url": "https://api.github.com/users/bemasc/followers",
+        "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+        "organizations_url": "https://api.github.com/users/bemasc/orgs",
+        "repos_url": "https://api.github.com/users/bemasc/repos",
+        "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bemasc/received_events",
+        "type": "User",
+        "site_admin": false
+      }
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-25T21:46:42Z",
+    "updated_at": "2019-11-25T21:46:42Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "After looking at the examples, several readers came away with the impression that an alias is required to use SVCB.  In fact, aliasing is bad for performance and should be avoided when possible, but we've included it in all of our examples to show how all the pieces of the system work.\r\n\r\nWe should include an optimized example, and make it clear that many common cases can be handled without adding any indirection."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/83",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/83/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/83/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/83/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/83",
+    "id": 528352076,
+    "node_id": "MDU6SXNzdWU1MjgzNTIwNzY=",
+    "number": 83,
+    "title": "Grammar for presentation format does not produce parentheses",
+    "user": {
+      "login": "dmcardle",
+      "id": 183652,
+      "node_id": "MDQ6VXNlcjE4MzY1Mg==",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/183652?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dmcardle",
+      "html_url": "https://github.com/dmcardle",
+      "followers_url": "https://api.github.com/users/dmcardle/followers",
+      "following_url": "https://api.github.com/users/dmcardle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dmcardle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dmcardle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dmcardle/subscriptions",
+      "organizations_url": "https://api.github.com/users/dmcardle/orgs",
+      "repos_url": "https://api.github.com/users/dmcardle/repos",
+      "events_url": "https://api.github.com/users/dmcardle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dmcardle/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "assignees": [
+      {
+        "login": "bemasc",
+        "id": 191945,
+        "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bemasc",
+        "html_url": "https://github.com/bemasc",
+        "followers_url": "https://api.github.com/users/bemasc/followers",
+        "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+        "organizations_url": "https://api.github.com/users/bemasc/orgs",
+        "repos_url": "https://api.github.com/users/bemasc/repos",
+        "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bemasc/received_events",
+        "type": "User",
+        "site_admin": false
+      }
+    ],
+    "milestone": null,
+    "comments": 3,
+    "created_at": "2019-11-25T21:39:19Z",
+    "updated_at": "2019-11-25T22:54:33Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "Examples like this one (from section 1.1) use a notation where the SvcFieldValue is surrounded by parentheses.\r\n```\r\n   ; ServiceForm\r\n   svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. ( alpn=h3\r\n                                       port=8003 esniconfig=\"...\" )\r\n```\r\n\r\nIt looks like the top-level production rule is this:\r\n```\r\n   pair          = display-key \"=\" value\r\n```\r\n\r\nShouldn't there be a rule just one level higher? Something like this?\r\n```\r\n   svc-field-value = [ \"(\" 1*pair \")\" ]\r\n```\r\n"
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/82",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/82/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/82/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/82/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/82",
+    "id": 524297231,
+    "node_id": "MDU6SXNzdWU1MjQyOTcyMzE=",
+    "number": 82,
+    "title": "Adjust CamelCase names",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-11-18T11:11:46Z",
+    "updated_at": "2019-11-18T11:11:46Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Some of the CamelCase names could be improved.  For example, SvcFieldPriority is now used in AliasForm, so maybe it should just be SvcPriority or SvcIndex."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/81",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/81/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/81/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/81/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/81",
+    "id": 524176655,
+    "node_id": "MDU6SXNzdWU1MjQxNzY2NTU=",
+    "number": 81,
+    "title": "Clarify fallback behaviour",
+    "user": {
+      "login": "c-taylor",
+      "id": 12032425,
+      "node_id": "MDQ6VXNlcjEyMDMyNDI1",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/12032425?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/c-taylor",
+      "html_url": "https://github.com/c-taylor",
+      "followers_url": "https://api.github.com/users/c-taylor/followers",
+      "following_url": "https://api.github.com/users/c-taylor/following{/other_user}",
+      "gists_url": "https://api.github.com/users/c-taylor/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/c-taylor/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/c-taylor/subscriptions",
+      "organizations_url": "https://api.github.com/users/c-taylor/orgs",
+      "repos_url": "https://api.github.com/users/c-taylor/repos",
+      "events_url": "https://api.github.com/users/c-taylor/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/c-taylor/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-11-18T07:08:47Z",
+    "updated_at": "2019-11-18T10:07:46Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "I believe that either this draft or a revision of rfc7838 should clarify the client behaviour or provide stronger guidance for the scenarios:\r\n- Fallback to origin from alternates\r\n-- Both with and without downgrade considerations\r\n- Multiple same priority alternates\r\n-- After random shuffle do I use one? all?\r\n-- Should client fail to origin or same priority?\r\n- Multiple differing priority alternates\r\n-- Fail down the tree or straight to origin?\r\n\r\n \r\n\r\nrfc7838 was not explicit here either, which has (probably) led to the fail-back having low implementation. Defined/predictable client failover behaviour is a big win.\r\n\r\nHappy to help with words if you think there's a place for this..."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/80",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/80/labels{/name}",
@@ -32,7 +300,15 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 1665734917,
+        "node_id": "MDU6TGFiZWwxNjY1NzM0OTE3",
+        "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/labels/wg",
+        "name": "wg",
+        "color": "b60205",
+        "default": false,
+        "description": "This should be considered by the working group"
+      }
     ],
     "state": "open",
     "locked": false,
@@ -43,7 +319,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T21:38:09Z",
-    "updated_at": "2019-11-13T21:38:21Z",
+    "updated_at": "2019-11-18T10:05:10Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "We should finalize the record names with community input (along with pronunciation for SVCB).\r\nIt's possible that \"SVCB\" is just fine, but \"HTTPSSVC\" is a constant pain due to the double-S.\r\n\"SVCHTTPS\" might be slightly better.  \"HTTPS\" is great but makes text less readable.\r\n"
@@ -82,17 +358,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 7,
+    "comments": 8,
     "created_at": "2019-11-13T21:36:04Z",
-    "updated_at": "2019-11-14T18:07:03Z",
-    "closed_at": null,
+    "updated_at": "2019-11-14T18:17:49Z",
+    "closed_at": "2019-11-14T18:17:48Z",
     "author_association": "COLLABORATOR",
     "body": "We should clarify the behavior for how alpn=h2 and alpn=http/1.1 interact with ALPN negotiation over TLS with an origin, including in cases where only one is specified in the DNS but where only the other can get negotiated via TLA.\r\n\r\nOne option would be to call this out and recommend that \"h2\" can negotiate to http/1.1 and/or h2 if only one is specified in HTTPSSVC records."
   },
@@ -294,14 +570,52 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "bemasc",
+        "id": 191945,
+        "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bemasc",
+        "html_url": "https://github.com/bemasc",
+        "followers_url": "https://api.github.com/users/bemasc/followers",
+        "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+        "organizations_url": "https://api.github.com/users/bemasc/orgs",
+        "repos_url": "https://api.github.com/users/bemasc/repos",
+        "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bemasc/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T16:31:01Z",
-    "updated_at": "2019-11-13T16:31:01Z",
+    "updated_at": "2019-11-25T20:09:56Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "* Disentangle description of recursive and authoritative server behavior in section 4\r\n* Explain why alias and service forms need to share an RR type\r\n* Clarify interaction between CNAME and AliasForm in Section 4\r\n* State clearly that only A and AAAA records will ever need to be added to the response\r\n"
@@ -342,14 +656,52 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "bemasc",
+        "id": 191945,
+        "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bemasc",
+        "html_url": "https://github.com/bemasc",
+        "followers_url": "https://api.github.com/users/bemasc/followers",
+        "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+        "organizations_url": "https://api.github.com/users/bemasc/orgs",
+        "repos_url": "https://api.github.com/users/bemasc/repos",
+        "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bemasc/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T16:23:04Z",
-    "updated_at": "2019-11-13T16:23:04Z",
+    "updated_at": "2019-11-25T20:24:42Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "The current text recommends shortening the TTL to compensate for misbehaving clients.  This is not a good recommendation, since some clients will just ignore the shorter TTL.  Instead, we should just mention that servers cannot rely on prompt expiration.\r\n\r\nCredit: @puneetsood"
@@ -392,7 +744,8 @@
         "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/labels/wg",
         "name": "wg",
         "color": "b60205",
-        "default": false
+        "default": false,
+        "description": "This should be considered by the working group"
       }
     ],
     "state": "open",
@@ -402,9 +755,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-11-06T16:23:13Z",
-    "updated_at": "2019-11-08T16:41:16Z",
+    "updated_at": "2019-11-18T10:32:51Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "Currently, if a server publishes a QUIC-only HTTPSSVC RRSet with ESNI, there is no way for a client to fall back to a non-QUIC connection, because doing so would reveal the SNI.  This could increase the likelihood of partial outages for server admins who haven't considered the small fraction of users whose network path does not support QUIC.\r\n\r\nReviewers have reported concerns that this creates an undesirable level of fragility.  We should consider whether there is an alternative design that would be less likely to result in accidental breakage."
@@ -933,20 +1286,21 @@
         "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/labels/wg",
         "name": "wg",
         "color": "b60205",
-        "default": false
+        "default": false,
+        "description": "This should be considered by the working group"
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2019-09-27T20:25:03Z",
-    "updated_at": "2019-11-08T16:41:54Z",
-    "closed_at": null,
+    "updated_at": "2019-11-25T20:23:39Z",
+    "closed_at": "2019-11-25T20:23:38Z",
     "author_association": "COLLABORATOR",
     "body": "Currently, the format is `[SvcFieldPriority] [SvcDomainName] [SvcFieldValue]`.  I think it should probably be `[SvcDomainName] [SvcFieldPriority] [SvcFieldValue]`.  Then in AliasForm, the redundant `0` priority can be omitted without making the parser more complex.\r\n\r\nWe could maintain the current wire format, or reverse the order there too."
   },
@@ -1136,14 +1490,52 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "bemasc",
+        "id": 191945,
+        "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bemasc",
+        "html_url": "https://github.com/bemasc",
+        "followers_url": "https://api.github.com/users/bemasc/followers",
+        "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+        "organizations_url": "https://api.github.com/users/bemasc/orgs",
+        "repos_url": "https://api.github.com/users/bemasc/repos",
+        "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bemasc/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2019-09-26T15:36:08Z",
-    "updated_at": "2019-09-26T15:36:08Z",
+    "updated_at": "2019-11-25T20:24:53Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "We've gotten a few questions about why these aren't a single RR type.  The text could be more explicit on the design rationale for this."
@@ -1234,7 +1626,8 @@
         "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/labels/wg",
         "name": "wg",
         "color": "b60205",
-        "default": false
+        "default": false,
+        "description": "This should be considered by the working group"
       }
     ],
     "state": "open",
@@ -1244,9 +1637,9 @@
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": "2019-09-26T15:18:15Z",
-    "updated_at": "2019-11-08T16:42:26Z",
+    "updated_at": "2019-11-25T20:21:41Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "It's not clear that we have a use case for SVCB chains containing more than one AliasForm record.  The purpose of AliasForm is mostly for aliasing the apex; everything else can pretty much be handled with CNAME (e.g. AliasForm -> CNAME -> CNAME -> SvcForm)\r\n\r\nAt a minimum, limiting the chain length to 1 would seem to reduce the likelihood of a performance footgun."
@@ -1352,7 +1745,10 @@
     "closed_at": "2019-11-04T15:10:32Z",
     "author_association": "COLLABORATOR",
     "body": "The draft currently says that recursives must ignore additional AliasForm records, because only one is allowed.  (Following all aliases in parallel would allow some terrifying exponential blowup.)  We should clarify that recursives should nevertheless forward the entire RRset intact, in order to preserve DNSSEC validity."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/54",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1606,10 +2002,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/51.patch"
     },
     "body": "Minor typo fixes and edits.  Add proxy behavior.  Add a/aaaa param clarifications."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/50",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -2196,14 +2589,52 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "bemasc",
+        "id": 191945,
+        "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bemasc",
+        "html_url": "https://github.com/bemasc",
+        "followers_url": "https://api.github.com/users/bemasc/followers",
+        "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+        "organizations_url": "https://api.github.com/users/bemasc/orgs",
+        "repos_url": "https://api.github.com/users/bemasc/repos",
+        "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bemasc/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 2,
     "created_at": "2019-07-09T01:24:04Z",
-    "updated_at": "2019-11-08T16:35:53Z",
+    "updated_at": "2019-11-25T20:10:41Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "One minor issue is that wherever CNAME is referenced, you probably want to also include a reference to DNAME, including any implied or explicit chaining of CNAMEs (which could be sequences of CNAME and/or DNAME modulo their respective behavior.)\r\n\r\nYou might also want to explain the motivation for keeping the FQDN separate from the alt-svc parameters (to make it trivial to parse, and thus to do DNS substitutions like CNAME/DNAME). It is there, just not as up-front as it could be.\r\n\r\n\r\nIt might be a little clearer if the list of alt-svc values (h2, h3, etc) that can occur were to be listed in the document. In particular, the association between h3 and QUIC is inferred but not explicitly called out (at least not that I noticed.)\r\n"
@@ -2999,7 +3430,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/25.patch"
     },
     "body": "Fixes #23"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/24",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3279,10 +3713,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/21.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/20",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
