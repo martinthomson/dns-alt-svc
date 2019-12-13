@@ -846,7 +846,7 @@ table.left {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwartz, et al.</td>
-<td class="center">Expires 8 June 2020</td>
+<td class="center">Expires 15 June 2020</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -859,12 +859,12 @@ table.left {
 <dd class="internet-draft">draft-ietf-dnsop-svcb-httpssvc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2019-12-06" class="published">6 December 2019</time>
+<time datetime="2019-12-13" class="published">13 December 2019</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2020-06-08">8 June 2020</time></dd>
+<dd class="expires"><time datetime="2020-06-15">15 June 2020</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -931,7 +931,7 @@ as they are easy to replace.  Other names might include "B",
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 June 2020.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 June 2020.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1045,7 +1045,7 @@ as they are easy to replace.  Other names might include "B",
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-initial-svcparamkeys" class="xref">Initial SvcParamKeys</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
 <ul class="toc ulEmpty">
 <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
-                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-alpn" class="xref">"alpn"</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-proto-and-no-proto" class="xref">"proto" and "no-proto"</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
               <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-port" class="xref">"port"</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
@@ -1261,9 +1261,9 @@ www.example.com.  7200  IN CNAME    svc.example.net.
 ; AliasForm
 example.com.      7200  IN HTTPSSVC 0 svc.example.net.
 ; ServiceForm
-svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. ( alpn=h3
+svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. ( proto=h3
                                     port=8003 esniconfig="..." )
-svc.example.net.  7200  IN HTTPSSVC 3 svc2.example.net. ( alpn=h2
+svc.example.net.  7200  IN HTTPSSVC 3 svc2.example.net. (
                                     port=8002 esniconfig="..." )
 svc2.example.net. 300   IN A        192.0.2.2
 svc2.example.net. 300   IN AAAA     2001:db8::2
@@ -1279,9 +1279,10 @@ svc.example.net.  300   IN AAAA     2001:db8::1
 <p id="section-1.1-3">In the preceding example, both of the "example.com" and
 "www.example.com" origin names are aliased to use alternative service
 endpoints offered as "svc.example.net" (with "www.example.com"
-continuing to use a CNAME alias).  HTTP/2 is available on a cluster of
-machines located at svc2.example.net with TCP port 8002 and HTTP/3 is
-available on a cluster of machines located at svc3.example.net with
+continuing to use a CNAME alias).  HTTP/1.1 and HTTP/2 are available
+on a cluster of machines located at svc2.example.net at TCP port 8002,
+and HTTP/1.1, HTTP/2, and HTTP/3 are available on a cluster of machines
+located at svc3.example.net at TCP and
 UDP port 8003.  The client can use the specified ESNI keys to encrypt
 the SNI values of "example.com" and "www.example.com" in the handshake
 with these alternative service endpoints.  When connecting, clients will
@@ -1579,13 +1580,14 @@ hostnames based on the origin host.<a href="#section-2.3-4" class="pilcrow">¶</
 <div class="artwork art-text alignLeft" id="section-2.3-6">
 <pre>
 _8443._foo.api.example.com. 7200 IN SVCB 0 svc4.example.net.
-svc4.example.net.  7200  IN SVCB 3 ( svc4.example.net. alpn="bar"
+svc4.example.net.  7200  IN SVCB 3 ( svc4.example.net. proto="bar"
                                    port="8004" esniconfig="..." )
 </pre><a href="#section-2.3-6" class="pilcrow">¶</a>
 </div>
 <p id="section-2.3-7">would indicate that "foo://api.example.com:8443" is aliased
-to use ALPN protocol "bar" service endpoints offered at "svc4.example.net"
-on port 8004.<a href="#section-2.3-7" class="pilcrow">¶</a></p>
+to the service endpoints offered at "svc4.example.net" on port 8004,
+which support the protocol "bar" in addition to the default protocols
+for "foo://".<a href="#section-2.3-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="svcrecordtype">
@@ -1676,8 +1678,7 @@ is the effective SvcDomainName:<a href="#section-2.6.1-2" class="pilcrow">¶</a>
 <pre>
 www.example.com.  7200  IN HTTPSSVC svc.example.net.
 svc.example.net.  7200  IN CNAME    svc2.example.net.
-svc2.example.net. 7200  IN HTTPSSVC 1 . ( alpn=h2
-                                    port=8002 esniconfig="..." )
+svc2.example.net. 7200  IN HTTPSSVC 1 . port=8002 esniconfig="..."
 svc2.example.net. 300   IN A        192.0.2.2
 svc2.example.net. 300   IN AAAA     2001:db8::2
 </pre><a href="#section-2.6.1-3" class="pilcrow">¶</a>
@@ -1758,7 +1759,7 @@ proxy as the destination host and port.<a href="#section-3.1-2" class="pilcrow">
 <ul>
 <li id="section-3.1-4.1">It allows the client to use the SvcFieldValue, if present, which is
 only usable with a specific SvcDomainName.  The SvcFieldValue may
-include information that enhances performance (e.g. alpn) and privacy
+include information that enhances performance (e.g. proto) and privacy
 (e.g. esniconfig).<a href="#section-3.1-4.1" class="pilcrow">¶</a>
 </li>
           <li id="section-3.1-4.2">It allows the origin to delegate the apex domain.<a href="#section-3.1-4.2" class="pilcrow">¶</a>
@@ -1889,25 +1890,34 @@ responses to the address queries that were issued in parallel.<a href="#section-
       </h2>
 <p id="section-6-1">A few initial SvcParamKeys are defined here.  These keys are useful for
 HTTPS, and most are applicable to other protocols as well.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<div id="alpn">
+<div id="proto-and-no-proto">
 <section id="section-6.1">
-        <h3 id="name-alpn">
-<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-alpn" class="section-name selfRef">"alpn"</a>
+        <h3 id="name-proto-and-no-proto">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-proto-and-no-proto" class="section-name selfRef">"proto" and "no-proto"</a>
         </h3>
-<p id="section-6.1-1">The "alpn" SvcParamKey defines the Application Layer Protocol
-(ALPN, as defined in {{!RFC7301}) supported by a TLS-based alternative
-service.  Its value SHOULD be an entry in the IANA registry "TLS
-Application-Layer Protocol Negotiation (ALPN) Protocol IDs".<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.1-2">The presentation format and wire format of SvcParamValue
-is its registered "Identification Sequence".  This key SHALL NOT
-appear more than once in a SvcFieldValue.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
-<p id="section-6.1-3">The presence of a protocol ID in SvcParamKeys indicates that this
+<p id="section-6.1-1">The "proto" and "no-proto" SvcParamKeys together indicate the set of protocols
+supported by this service endpoint.  The presentation and wire format are
+the same, in the expectation that values will typically be ASCII strings, but
+any sequence of octets is a permissible value.  Both "proto" and "no-proto"
+are optional, and may appear multiple times.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-2">Each scheme that is mapped to SVCB can define a set or registry of allowed
+protocols.  For TLS-based schemes, the value will typically be an
+"Identification Sequence" from the IANA registry "TLS
+Application-Layer Protocol Negotiation (ALPN) Protocol IDs".<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.1-3">Each scheme that makes use of "proto" or "no-proto" will have a "default set"
+of supported protocol values, which SHOULD NOT be empty.  To determine the
+set of protocols supported by an endpoint, the client adds every "proto"
+value to this set, and removes every "no-proto" value from the set.  A
+SvcFieldValue MUST NOT contain both "proto" and "no-proto" keys with the same
+value.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.1-4">The presence of a protocol ID in the protocol set indicates that this
 service endpoint supports the named protocol ID, and is able to negotiate
-it.  For example, an "alpn" value of "h3" (<span>[<a href="#HTTP3" class="xref">HTTP3</a>]</span> Section 11.1)
+it in practice.  For example, a value of "h3" (<span>[<a href="#HTTP3" class="xref">HTTP3</a>]</span> Section 11.1)
 indicates the endpoint supports QUIC, because that is the only transport
-protocol over which HTTP/3 can be negotiated.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
-<p id="section-6.1-4">The service endpoint MAY also support protocol IDs that are not listed in
-SvcParamKeys.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+protocol over which HTTP/3 can be negotiated.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+<p id="section-6.1-5">Clients MAY offer to negotiate suitable protocol values that are not in an
+endpoint's protocol set, but SHOULD NOT attempt connection to a service
+endpoint whose protocol set does not contain any compatible protocols.<a href="#section-6.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="port">
@@ -1996,22 +2006,22 @@ or http schemes.<a href="#section-7-2" class="pilcrow">¶</a></p>
 identical to SVCB, and both share the SvcParamKey registry.  SVCB
 semantics apply equally to HTTPSSVC unless specified otherwise.
 All the SvcParamKeys defined in <a href="#keys" class="xref">Section 6</a> are permitted for use in
-HTTPSSVC, and the "alpn" SvcParamKey is REQUIRED.  Its value MUST
-be an ALPN that is suitable for use with HTTPS.  For example, the
-value MAY be "http/1.1", "h2", or "h3", but MUST NOT be "h2c" or
-"ftp".  Regardless of the "alpn" SvcParamValue, all service endpoints
-MUST support HTTP/1.1.<a href="#section-7-3" class="pilcrow">¶</a></p>
-<p id="section-7-4">The presence of an HTTPSSVC record for an HTTP or HTTPS service also
+HTTPSSVC.<a href="#section-7-3" class="pilcrow">¶</a></p>
+<p id="section-7-4">The allowed protocols are the TLS ALPN <span>[<a href="#RFC7301" class="xref">RFC7301</a>]</span> values suitable for
+use with HTTPS.  For example, "http/1.1", "h2", and "h3" are allowed
+protocol values, but "h2c" and "ftp" are not.  The default set of
+protocol values is "http/1.1" and "h2".<a href="#section-7-4" class="pilcrow">¶</a></p>
+<p id="section-7-5">The presence of an HTTPSSVC record for an HTTP or HTTPS service also
 provides an indication that all resources are available over HTTPS, as
 discussed in <a href="#hsts" class="xref">Section 7.4</a>.  This allows HTTPSSVC RRs to apply to
 pre-existing HTTP scheme URLs, while ensuring that the client uses a
-secure and authenticated HTTPS connection.<a href="#section-7-4" class="pilcrow">¶</a></p>
-<p id="section-7-5">The HTTPSSVC RR parallels the concepts
+secure and authenticated HTTPS connection.<a href="#section-7-5" class="pilcrow">¶</a></p>
+<p id="section-7-6">The HTTPSSVC RR parallels the concepts
 introduced in the HTTP Alternative Services proposed standard
 <span>[<a href="#AltSvc" class="xref">AltSvc</a>]</span>.  Clients and servers that implement HTTPSSVC are NOT
 REQUIRED to implement Alt-Svc.  However, many clients and servers
 will implement both, and a partial mapping exists between them
-(<a href="#map2altsvc" class="xref">Appendix A</a>).<a href="#section-7-5" class="pilcrow">¶</a></p>
+(<a href="#map2altsvc" class="xref">Appendix A</a>).<a href="#section-7-6" class="pilcrow">¶</a></p>
 <div id="httpsnames">
 <section id="section-7.1">
         <h3 id="name-owner-names-for-httpssvc-re">
@@ -2279,14 +2289,14 @@ be populated with the registrations below:<a href="#section-11.1.2-1" class="pil
             <tbody>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">0</td>
-                <td class="text-left" rowspan="1" colspan="1">key0</td>
-                <td class="text-left" rowspan="1" colspan="1">Reserved</td>
+                <td class="text-left" rowspan="1" colspan="1">proto</td>
+                <td class="text-left" rowspan="1" colspan="1">Supported protocol</td>
                 <td class="text-left" rowspan="1" colspan="1">(This document)</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">1</td>
-                <td class="text-left" rowspan="1" colspan="1">alpn</td>
-                <td class="text-left" rowspan="1" colspan="1">ALPN for alternative service</td>
+                <td class="text-left" rowspan="1" colspan="1">no-proto</td>
+                <td class="text-left" rowspan="1" colspan="1">Unsupported protocol</td>
                 <td class="text-left" rowspan="1" colspan="1">(This document)</td>
               </tr>
               <tr>
@@ -2507,6 +2517,9 @@ and others for their feedback and suggestions on this draft.<a href="#section-12
 <dt id="RFC7231">[RFC7231]</dt>
         <dd>
 <span class="refAuthor">Fielding, R., Ed.</span><span class="refAuthor"> and J. Reschke, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content"</span>, <span class="seriesInfo">RFC 7231</span>, <span class="seriesInfo">DOI 10.17487/RFC7231</span>, <time datetime="2014-06">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7231">https://www.rfc-editor.org/info/rfc7231</a>&gt;</span>. </dd>
+<dt id="RFC7301">[RFC7301]</dt>
+        <dd>
+<span class="refAuthor">Friedl, S.</span><span class="refAuthor">, Popov, A.</span><span class="refAuthor">, Langley, A.</span><span class="refAuthor">, and E. Stephan</span>, <span class="refTitle">"Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension"</span>, <span class="seriesInfo">RFC 7301</span>, <span class="seriesInfo">DOI 10.17487/RFC7301</span>, <time datetime="2014-07">July 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7301">https://www.rfc-editor.org/info/rfc7301</a>&gt;</span>. </dd>
 <dt id="RFC7595">[RFC7595]</dt>
         <dd>
 <span class="refAuthor">Thaler, D., Ed.</span><span class="refAuthor">, Hansen, T.</span><span class="refAuthor">, and T. Hardie</span>, <span class="refTitle">"Guidelines and Registration Procedures for URI Schemes"</span>, <span class="seriesInfo">BCP 35</span>, <span class="seriesInfo">RFC 7595</span>, <span class="seriesInfo">DOI 10.17487/RFC7595</span>, <time datetime="2015-06">June 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7595">https://www.rfc-editor.org/info/rfc7595</a>&gt;</span>. </dd>
@@ -2561,21 +2574,22 @@ and others for their feedback and suggestions on this draft.<a href="#section-12
 <p id="section-appendix.a-1">Conversion between HTTPSSVC's ServiceForm and Alt-Svc is possible.
 Note that conversion in either direction can be lossy, because
 some parameters are only defined for HTTPSSVC or Alt-Svc.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
-<p id="section-appendix.a-2">To construct an Alt-Svc Field Value (as defined in Section 4 of
+<p id="section-appendix.a-2">To construct a set of Alt-Svc Field Values (as defined in Section 4 of
 <span>[<a href="#AltSvc" class="xref">AltSvc</a>]</span>) from an HTTPSSVC record:<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
 <ul>
-<li id="section-appendix.a-3.1">The SvcDomainName is mapped into the uri-host portion of alt-authority
-with the trailing "." removed.
-(If SvcDomainName is ".", the special handling described in
-<a href="#svcdomainnamedot" class="xref">Section 2.6.1</a> MUST be applied first.)<a href="#section-appendix.a-3.1" class="pilcrow">¶</a>
-</li>
-        <li id="section-appendix.a-3.2">The SvcParamValue of the "port" service parameter, or 443 if no such
-parameter is present, is written to the port portion of the alt-authority.<a href="#section-appendix.a-3.2" class="pilcrow">¶</a>
-</li>
-        <li id="section-appendix.a-3.3">The SvcParamValue of the "alpn" service parameter is mapped to the
+<li id="section-appendix.a-3.1">Each value in the SvcFieldValue's protocol set is mapped to a
 protocol-id.  This MUST follow the normalization and encoding
 requirements for protocol-id specified in <span>[<a href="#AltSvc" class="xref">AltSvc</a>]</span> Section 3.
-This parameter is MANDATORY.<a href="#section-appendix.a-3.3" class="pilcrow">¶</a>
+For each protocol-id, create a distinct Alt-Svc Field Value.  Apart from
+the protocol-id, these Alt-Svc Field Values will otherwise be identical.<a href="#section-appendix.a-3.1" class="pilcrow">¶</a>
+</li>
+        <li id="section-appendix.a-3.2">The SvcDomainName is mapped into the uri-host portion of alt-authority
+with the trailing "." removed.
+(If SvcDomainName is ".", the special handling described in
+<a href="#svcdomainnamedot" class="xref">Section 2.6.1</a> MUST be applied first.)<a href="#section-appendix.a-3.2" class="pilcrow">¶</a>
+</li>
+        <li id="section-appendix.a-3.3">The SvcParamValue of the "port" service parameter, or 443 if no such
+parameter is present, is written to the port portion of the alt-authority.<a href="#section-appendix.a-3.3" class="pilcrow">¶</a>
 </li>
         <li id="section-appendix.a-3.4">The DNS TTL is mapped to the "ma" (max age) Alt-Svc parameter.<a href="#section-appendix.a-3.4" class="pilcrow">¶</a>
 </li>
@@ -2601,12 +2615,15 @@ Alt-Svc: h3="svc.example.net:8003"; ma=3600; foo=123, \
 <div class="artwork art-text alignLeft" id="section-appendix.a-9">
 <pre>
 www.example.com. 3600 IN HTTPSSVC 2 svc.example.net. (
-                                    alpn=h3 port=8003 foo=123 )
+                                    proto=h3 port=8003 foo=123 )
                          HTTPSSVC 3 svc.example.net. (
-                                    alpn=h2 port=8002 foo=123 )
+                                    port=8002 foo=123 )
 </pre><a href="#section-appendix.a-9" class="pilcrow">¶</a>
 </div>
-<p id="section-appendix.a-10">Where "foo" is a hypothetical future HTTPSSVC and Alt-Svc parameter.<a href="#section-appendix.a-10" class="pilcrow">¶</a></p>
+<p id="section-appendix.a-10">Where "foo" is a hypothetical future HTTPSSVC and Alt-Svc parameter.
+(Note that unlike the Alt-Svc values, these records also indicate support
+for HTTP/1.1 and HTTP/2 on both ports.  This indication could be removed
+by adding "no-proto" SvcParamKeys for these protocols.)<a href="#section-appendix.a-10" class="pilcrow">¶</a></p>
 <p id="section-appendix.a-11">This data type can also be represented as an Unknown RR as described in
 <span>[<a href="#RFC3597" class="xref">RFC3597</a>]</span>:<a href="#section-appendix.a-11" class="pilcrow">¶</a></p>
 <div class="artwork art-text alignLeft" id="section-appendix.a-12">
@@ -2655,19 +2672,21 @@ headers, according to Section 3.2.2 of <span>[<a href="#HTTP" class="xref">HTTP<
 www.example.com.  7200  IN CNAME    svc.example.net.
 example.com.      7200  IN HTTPSSVC 0 svc.example.net.
 svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. (
-    alpn=h3 port=8003 esniconfig="ABC..." )
+    proto=h3 port=8003 esniconfig="ABC..." )
 svc.example.net.  7200  IN HTTPSSVC 3 . (
-    alpn=h2 port=8002 esniconfig="123..." )
+    port=8002 esniconfig="123..." )
 </pre><a href="#section-a.2-2" class="pilcrow">¶</a>
 </div>
-<p id="section-a.2-3">is equivalent to the Alt-Svc record:<a href="#section-a.2-3" class="pilcrow">¶</a></p>
+<p id="section-a.2-3">is similar to the Alt-Svc record:<a href="#section-a.2-3" class="pilcrow">¶</a></p>
 <div class="artwork art-text alignLeft" id="section-a.2-4">
 <pre>
 Alt-Svc: h3="svc3.example.net:8003"; esniconfig="ABC..."; ma=7200, \
          h2="svc.example.net:8002"; esniconfig="123..."; ma=7200
 </pre><a href="#section-a.2-4" class="pilcrow">¶</a>
 </div>
-<p id="section-a.2-5">for the origins of both "https://www.example.com" and "https://example.com".<a href="#section-a.2-5" class="pilcrow">¶</a></p>
+<p id="section-a.2-5">for the origins of both "https://www.example.com" and "https://example.com".
+(Note that the HTTPSSVC records also indicate support for HTTP/1.1 and
+HTTP/2 on both endpoints.)<a href="#section-a.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

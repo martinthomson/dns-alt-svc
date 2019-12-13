@@ -5,9 +5,9 @@
 DNSOP Working Group                                          B. Schwartz
 Internet-Draft                                                    Google
 Intended status: Standards Track                               M. Bishop
-Expires: 8 June 2020                                           E. Nygren
+Expires: 15 June 2020                                          E. Nygren
                                                      Akamai Technologies
-                                                         6 December 2019
+                                                        13 December 2019
 
 
  Service binding and parameter specification via the DNS (DNS SVCB and
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Schwartz, et al.           Expires 8 June 2020                  [Page 1]
+Schwartz, et al.          Expires 15 June 2020                  [Page 1]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -68,7 +68,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 June 2020.
+   This Internet-Draft will expire on 15 June 2020.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Schwartz, et al.           Expires 8 June 2020                  [Page 2]
+Schwartz, et al.          Expires 15 June 2020                  [Page 2]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -119,10 +119,10 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
      5.2.  Preferring usable records . . . . . . . . . . . . . . . .  16
      5.3.  Structuring zones for performance . . . . . . . . . . . .  16
    6.  Initial SvcParamKeys  . . . . . . . . . . . . . . . . . . . .  16
-     6.1.  "alpn"  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     6.1.  "proto" and "no-proto"  . . . . . . . . . . . . . . . . .  16
      6.2.  "port"  . . . . . . . . . . . . . . . . . . . . . . . . .  17
      6.3.  "esniconfig"  . . . . . . . . . . . . . . . . . . . . . .  17
-     6.4.  "ipv4hint" and "ipv6hint" . . . . . . . . . . . . . . . .  17
+     6.4.  "ipv4hint" and "ipv6hint" . . . . . . . . . . . . . . . .  18
    7.  Using SVCB with HTTPS and HTTP  . . . . . . . . . . . . . . .  18
      7.1.  Owner names for HTTPSSVC records  . . . . . . . . . . . .  19
      7.2.  Populating Alt-Used . . . . . . . . . . . . . . . . . . .  19
@@ -130,7 +130,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
        7.3.1.  Untrusted channel . . . . . . . . . . . . . . . . . .  20
        7.3.2.  Caching and granularity . . . . . . . . . . . . . . .  20
      7.4.  HTTP Strict Transport Security  . . . . . . . . . . . . .  21
-   8.  Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys . . . . . .  21
+   8.  Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys . . . . . .  22
      8.1.  Handling a mixture of alternatives not supporting ESNI  .  22
    9.  Interaction with other standards  . . . . . . . . . . . . . .  22
    10. Security Considerations . . . . . . . . . . . . . . . . . . .  23
@@ -142,11 +142,11 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    12. Acknowledgments and Related Proposals . . . . . . . . . . . .  25
    13. References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
      13.1.  Normative References . . . . . . . . . . . . . . . . . .  26
-     13.2.  Informative References . . . . . . . . . . . . . . . . .  28
+     13.2.  Informative References . . . . . . . . . . . . . . . . .  29
    Appendix A.  Mapping between HTTPSSVC and Alt-Svc . . . . . . . .  29
-     A.1.  Multiple records and preference ordering  . . . . . . . .  30
+     A.1.  Multiple records and preference ordering  . . . . . . . .  31
      A.2.  Additional examples . . . . . . . . . . . . . . . . . . .  31
-   Appendix B.  Comparison with alternatives . . . . . . . . . . . .  31
+   Appendix B.  Comparison with alternatives . . . . . . . . . . . .  32
      B.1.  Differences from the SRV RR type  . . . . . . . . . . . .  32
      B.2.  Differences from the proposed HTTP record . . . . . . . .  32
      B.3.  Differences from the proposed ANAME record  . . . . . . .  32
@@ -154,7 +154,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
      B.5.  SNI Alt-Svc parameter . . . . . . . . . . . . . . . . . .  33
    Appendix C.  Design Considerations and Open Issues  . . . . . . .  33
      C.1.  Record Name . . . . . . . . . . . . . . . . . . . . . . .  33
-     C.2.  Generality  . . . . . . . . . . . . . . . . . . . . . . .  33
+     C.2.  Generality  . . . . . . . . . . . . . . . . . . . . . . .  34
      C.3.  Wire Format . . . . . . . . . . . . . . . . . . . . . . .  34
      C.4.  Where to include Priority . . . . . . . . . . . . . . . .  34
      C.5.  Whether to include Weight . . . . . . . . . . . . . . . .  34
@@ -165,7 +165,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                  [Page 3]
+Schwartz, et al.          Expires 15 June 2020                  [Page 3]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -221,7 +221,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                  [Page 4]
+Schwartz, et al.          Expires 15 June 2020                  [Page 4]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -246,9 +246,9 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    ; AliasForm
    example.com.      7200  IN HTTPSSVC 0 svc.example.net.
    ; ServiceForm
-   svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. ( alpn=h3
+   svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. ( proto=h3
                                        port=8003 esniconfig="..." )
-   svc.example.net.  7200  IN HTTPSSVC 3 svc2.example.net. ( alpn=h2
+   svc.example.net.  7200  IN HTTPSSVC 3 svc2.example.net. (
                                        port=8002 esniconfig="..." )
    svc2.example.net. 300   IN A        192.0.2.2
    svc2.example.net. 300   IN AAAA     2001:db8::2
@@ -263,25 +263,27 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    In the preceding example, both of the "example.com" and
    "www.example.com" origin names are aliased to use alternative service
    endpoints offered as "svc.example.net" (with "www.example.com"
-   continuing to use a CNAME alias).  HTTP/2 is available on a cluster
-   of machines located at svc2.example.net with TCP port 8002 and HTTP/3
-   is available on a cluster of machines located at svc3.example.net
-   with UDP port 8003.  The client can use the specified ESNI keys to
-   encrypt the SNI values of "example.com" and "www.example.com" in the
-   handshake with these alternative service endpoints.  When connecting,
-   clients will continue to treat the authoritative origins as
-   "https://example.com" and "https://www.example.com", respectively.
-
-   For services other than HTTPS (as well as for HTTPS origins with non-
-   default ports), the SVCB RR and an [Attrleaf] label will be used.
+   continuing to use a CNAME alias).  HTTP/1.1 and HTTP/2 are available
+   on a cluster of machines located at svc2.example.net at TCP port
+   8002, and HTTP/1.1, HTTP/2, and HTTP/3 are available on a cluster of
+   machines located at svc3.example.net at TCP and UDP port 8003.  The
+   client can use the specified ESNI keys to encrypt the SNI values of
+   "example.com" and "www.example.com" in the handshake with these
+   alternative service endpoints.  When connecting, clients will
+   continue to treat the authoritative origins as "https://example.com"
+   and "https://www.example.com", respectively.
 
 
 
-Schwartz, et al.           Expires 8 June 2020                  [Page 5]
+
+
+Schwartz, et al.          Expires 15 June 2020                  [Page 5]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
+   For services other than HTTPS (as well as for HTTPS origins with non-
+   default ports), the SVCB RR and an [Attrleaf] label will be used.
    For example, to reach an example resource of
    "baz://api.example.com:8765", the following Alias Form SVCB record
    would be used to delegate to "svc4-baz.example.net." which in-turn
@@ -331,9 +333,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-
-
-Schwartz, et al.           Expires 8 June 2020                  [Page 6]
+Schwartz, et al.          Expires 15 June 2020                  [Page 6]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -389,7 +389,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                  [Page 7]
+Schwartz, et al.          Expires 15 June 2020                  [Page 7]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -445,7 +445,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                  [Page 8]
+Schwartz, et al.          Expires 15 June 2020                  [Page 8]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -501,7 +501,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                  [Page 9]
+Schwartz, et al.          Expires 15 June 2020                  [Page 9]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -557,7 +557,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 10]
+Schwartz, et al.          Expires 15 June 2020                 [Page 10]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -578,12 +578,13 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    As an example:
 
    _8443._foo.api.example.com. 7200 IN SVCB 0 svc4.example.net.
-   svc4.example.net.  7200  IN SVCB 3 ( svc4.example.net. alpn="bar"
+   svc4.example.net.  7200  IN SVCB 3 ( svc4.example.net. proto="bar"
                                       port="8004" esniconfig="..." )
 
-   would indicate that "foo://api.example.com:8443" is aliased to use
-   ALPN protocol "bar" service endpoints offered at "svc4.example.net"
-   on port 8004.
+   would indicate that "foo://api.example.com:8443" is aliased to the
+   service endpoints offered at "svc4.example.net" on port 8004, which
+   support the protocol "bar" in addition to the default protocols for
+   "foo://".
 
 2.4.  SvcRecordType
 
@@ -609,14 +610,15 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    https://example.com wanted to point HTTPS requests to a service
    operating at svc.example.net, they would publish a record such as:
 
-   example.com. 3600 IN SVCB 0 svc.example.net.
 
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 11]
+Schwartz, et al.          Expires 15 June 2020                 [Page 11]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
+
+   example.com. 3600 IN SVCB 0 svc.example.net.
 
    The SvcDomainName MUST point to a domain name that contains another
    SVCB record, address (AAAA and/or A) records, or both address records
@@ -667,9 +669,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 12]
+Schwartz, et al.          Expires 15 June 2020                 [Page 12]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -679,8 +679,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
    www.example.com.  7200  IN HTTPSSVC svc.example.net.
    svc.example.net.  7200  IN CNAME    svc2.example.net.
-   svc2.example.net. 7200  IN HTTPSSVC 1 . ( alpn=h2
-                                       port=8002 esniconfig="..." )
+   svc2.example.net. 7200  IN HTTPSSVC 1 . port=8002 esniconfig="..."
    svc2.example.net. 300   IN A        192.0.2.2
    svc2.example.net. 300   IN AAAA     2001:db8::2
 
@@ -725,7 +724,8 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 13]
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 13]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -758,7 +758,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
    *  It allows the client to use the SvcFieldValue, if present, which
       is only usable with a specific SvcDomainName.  The SvcFieldValue
-      may include information that enhances performance (e.g. alpn) and
+      may include information that enhances performance (e.g. proto) and
       privacy (e.g. esniconfig).
 
    *  It allows the origin to delegate the apex domain.
@@ -781,7 +781,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 14]
+Schwartz, et al.          Expires 15 June 2020                 [Page 14]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -837,7 +837,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 15]
+Schwartz, et al.          Expires 15 June 2020                 [Page 15]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -881,34 +881,45 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    A few initial SvcParamKeys are defined here.  These keys are useful
    for HTTPS, and most are applicable to other protocols as well.
 
-6.1.  "alpn"
+6.1.  "proto" and "no-proto"
 
-   The "alpn" SvcParamKey defines the Application Layer Protocol (ALPN,
-   as defined in {{!RFC7301}) supported by a TLS-based alternative
-   service.  Its value SHOULD be an entry in the IANA registry "TLS
-   Application-Layer Protocol Negotiation (ALPN) Protocol IDs".
-
-   The presentation format and wire format of SvcParamValue is its
-
-
+   The "proto" and "no-proto" SvcParamKeys together indicate the set of
+   protocols supported by this service endpoint.  The presentation and
+   wire format are the same, in the expectation that values will
+   typically be ASCII strings, but any sequence of octets is a
+   permissible value.  Both "proto" and "no-proto" are optional, and may
+   appear multiple times.
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 16]
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 16]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
-   registered "Identification Sequence".  This key SHALL NOT appear more
-   than once in a SvcFieldValue.
+   Each scheme that is mapped to SVCB can define a set or registry of
+   allowed protocols.  For TLS-based schemes, the value will typically
+   be an "Identification Sequence" from the IANA registry "TLS
+   Application-Layer Protocol Negotiation (ALPN) Protocol IDs".
 
-   The presence of a protocol ID in SvcParamKeys indicates that this
+   Each scheme that makes use of "proto" or "no-proto" will have a
+   "default set" of supported protocol values, which SHOULD NOT be
+   empty.  To determine the set of protocols supported by an endpoint,
+   the client adds every "proto" value to this set, and removes every
+   "no-proto" value from the set.  A SvcFieldValue MUST NOT contain both
+   "proto" and "no-proto" keys with the same value.
+
+   The presence of a protocol ID in the protocol set indicates that this
    service endpoint supports the named protocol ID, and is able to
-   negotiate it.  For example, an "alpn" value of "h3" ([HTTP3]
+   negotiate it in practice.  For example, a value of "h3" ([HTTP3]
    Section 11.1) indicates the endpoint supports QUIC, because that is
    the only transport protocol over which HTTP/3 can be negotiated.
 
-   The service endpoint MAY also support protocol IDs that are not
-   listed in SvcParamKeys.
+   Clients MAY offer to negotiate suitable protocol values that are not
+   in an endpoint's protocol set, but SHOULD NOT attempt connection to a
+   service endpoint whose protocol set does not contain any compatible
+   protocols.
 
 6.2.  "port"
 
@@ -934,6 +945,15 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    encryption, an attacker who can enumerate the set of ESNI-enabled
    domains supported by a client-facing server can guess the correct SNI
    with probability at least 1/K, where K is the size of this ESNI-
+
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 17]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
    enabled server anonymity set.  This probability may be increased via
    traffic analysis or other mechanisms.
 
@@ -946,14 +966,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    Section 3, and clients SHOULD use the IP address in those responses
    for future connections.  Clients MAY opt to terminate any connections
    using the addresses in hints and instead switch to the addresses in
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 17]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
-
    response to the SvcDomainName.  Failure to use A and/or AAAA response
    addresses may negatively impact load balancing or other geo-aware
    features and thereby degrade client performance.
@@ -990,6 +1002,14 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    specification.  This section specifies the mapping for HTTPS and
    HTTP.
 
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 18]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
    To enable special handling for the HTTPS and HTTP use-cases, the
    HTTPSSVC RR type is defined as an SVCB-compatible RR type, specific
    to the https and http schemes.  Clients MUST NOT perform SVCB queries
@@ -998,20 +1018,12 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    The HTTPSSVC wire format and presentation format are identical to
    SVCB, and both share the SvcParamKey registry.  SVCB semantics apply
    equally to HTTPSSVC unless specified otherwise.  All the SvcParamKeys
-   defined in Section 6 are permitted for use in HTTPSSVC, and the
-   "alpn" SvcParamKey is REQUIRED.  Its value MUST be an ALPN that is
-   suitable for use with HTTPS.  For example, the value MAY be
-   "http/1.1", "h2", or "h3", but MUST NOT be "h2c" or "ftp".
+   defined in Section 6 are permitted for use in HTTPSSVC.
 
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 18]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
-
-   Regardless of the "alpn" SvcParamValue, all service endpoints MUST
-   support HTTP/1.1.
+   The allowed protocols are the TLS ALPN [RFC7301] values suitable for
+   use with HTTPS.  For example, "http/1.1", "h2", and "h3" are allowed
+   protocol values, but "h2c" and "ftp" are not.  The default set of
+   protocol values is "http/1.1" and "h2".
 
    The presence of an HTTPSSVC record for an HTTP or HTTPS service also
    provides an indication that all resources are available over HTTPS,
@@ -1047,24 +1059,17 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    the "Alt-Used" HTTP header (Section 5 of [RFC7838]).  The header's
    value (in ABNF) SHOULD be
 
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 19]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
    uri-host ":" port
 
    where uri-host is the final value of HOST ({client-behavior}) minus
    the trailing ".", and port is the port number in use.
-
-
-
-
-
-
-
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 19]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
 
 7.3.  Differences from Alt-Svc
 
@@ -1108,19 +1113,17 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    If the client has an Alt-Svc cache, and a usable Alt-Svc value is
    present in that cache, then the client MAY skip the HTTPSSVC query.
 
-   If the client has a cached Alt-Svc entry that is expiring, the client
-   MAY perform an HTTPSSVC query to refresh the entry.
 
 
 
 
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 20]
+Schwartz, et al.          Expires 15 June 2020                 [Page 20]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
+
+   If the client has a cached Alt-Svc entry that is expiring, the client
+   MAY perform an HTTPSSVC query to refresh the entry.
 
 7.4.  HTTP Strict Transport Security
 
@@ -1163,6 +1166,18 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    responses, it SHOULD abandon the connection attempt if the HTTPSSVC
    response fails to validate.
 
+
+
+
+
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 21]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
 8.  Alt-Svc and SVCB/HTTPSSVC parameter for ESNI keys
 
    Both SVCB/HTTPSSVC and Alt-Svc "esniconfig" parameters are defined
@@ -1170,13 +1185,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    value of the parameter is an ESNIConfig structure [ESNI] or the empty
    string.  ESNI-aware clients SHOULD prefer alt-values and SVCB/
    HTTPSSVC RRs with non-empty esniconfig.
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 21]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
 
    Both the SVCB SvcParamValue presentation format as well as the Alt-
    Svc parameter value is the ESNIConfig structure [ESNI] encoded in
@@ -1217,6 +1225,15 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    which confer substantial performance and privacy benefits when used
    in combination with SVCB records.
 
+
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 22]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
    To realize the greatest privacy benefits, this proposal is intended
    for use over a privacy-preserving DNS transport (like DNS over TLS
    [RFC7858] or DNS over HTTPS [RFC8484]).  However, performance
@@ -1226,14 +1243,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    Any specification for use of SVCB with a protocol MUST have an entry
    for its scheme under the SVCB RR type in the IANA DNS Underscore
    Global Scoped Entry Registry [Attrleaf].  The scheme SHOULD have an
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 22]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
-
    entry in the IANA URI Schemes Registry [RFC7595].  The scheme SHOULD
    have a defined specification for use with SVCB.
 
@@ -1273,54 +1282,51 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
    *  Meaning: a short description
 
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 23]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
    *  Pointer to specification text
 
    Values to be added to this name space require Expert Review (see
    [RFC5226], Section 4.1).  Apart from the initial contents, the name
    MUST NOT start with "key".
 
-
-
-
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 23]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
-
 11.1.2.  Initial contents
 
    The "Service Binding (SVCB) Parameter Registry" shall initially be
    populated with the registrations below:
 
-   +-------------+------------+---------------------+-----------------+
-   | SvcParamKey | NAME       | Meaning             | Reference       |
-   +=============+============+=====================+=================+
-   | 0           | key0       | Reserved            | (This document) |
-   +-------------+------------+---------------------+-----------------+
-   | 1           | alpn       | ALPN for            | (This document) |
-   |             |            | alternative service |                 |
-   +-------------+------------+---------------------+-----------------+
-   | 2           | port       | Port for            | (This document) |
-   |             |            | alternative service |                 |
-   +-------------+------------+---------------------+-----------------+
-   | 3           | esniconfig | Encrypted SNI       | (This document) |
-   |             |            | configuration       |                 |
-   +-------------+------------+---------------------+-----------------+
-   | 4           | ipv4hint   | IPv4 address hints  | (This document) |
-   +-------------+------------+---------------------+-----------------+
-   | 5           | key5       | Reserved            | (This document) |
-   +-------------+------------+---------------------+-----------------+
-   | 6           | ipv6hint   | IPv6 address hints  | (This document) |
-   +-------------+------------+---------------------+-----------------+
-   | 65280-65534 | keyNNNNN   | Private Use         | (This document) |
-   +-------------+------------+---------------------+-----------------+
-   | 65535       | key65535   | Reserved            | (This document) |
-   +-------------+------------+---------------------+-----------------+
+   +-------------+------------+----------------------+-----------------+
+   | SvcParamKey | NAME       | Meaning              | Reference       |
+   +=============+============+======================+=================+
+   | 0           | proto      | Supported protocol   | (This document) |
+   +-------------+------------+----------------------+-----------------+
+   | 1           | no-proto   | Unsupported          | (This document) |
+   |             |            | protocol             |                 |
+   +-------------+------------+----------------------+-----------------+
+   | 2           | port       | Port for             | (This document) |
+   |             |            | alternative service  |                 |
+   +-------------+------------+----------------------+-----------------+
+   | 3           | esniconfig | Encrypted SNI        | (This document) |
+   |             |            | configuration        |                 |
+   +-------------+------------+----------------------+-----------------+
+   | 4           | ipv4hint   | IPv4 address hints   | (This document) |
+   +-------------+------------+----------------------+-----------------+
+   | 5           | key5       | Reserved             | (This document) |
+   +-------------+------------+----------------------+-----------------+
+   | 6           | ipv6hint   | IPv6 address hints   | (This document) |
+   +-------------+------------+----------------------+-----------------+
+   | 65280-65534 | keyNNNNN   | Private Use          | (This document) |
+   +-------------+------------+----------------------+-----------------+
+   | 65535       | key65535   | Reserved             | (This document) |
+   +-------------+------------+----------------------+-----------------+
 
-                                 Table 1
+                                  Table 1
 
    TODO: do we also want to reserve a range for greasing?
 
@@ -1335,13 +1341,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-
-
-
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 24]
+Schwartz, et al.          Expires 15 June 2020                 [Page 24]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -1397,7 +1397,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 25]
+Schwartz, et al.          Expires 15 June 2020                 [Page 25]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -1453,7 +1453,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 26]
+Schwartz, et al.          Expires 15 June 2020                 [Page 26]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -1509,7 +1509,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 27]
+Schwartz, et al.          Expires 15 June 2020                 [Page 27]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
 
@@ -1530,6 +1530,11 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
               Protocol (HTTP/1.1): Semantics and Content", RFC 7231,
               DOI 10.17487/RFC7231, June 2014,
               <https://www.rfc-editor.org/info/rfc7231>.
+
+   [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
+              "Transport Layer Security (TLS) Application-Layer Protocol
+              Negotiation Extension", RFC 7301, DOI 10.17487/RFC7301,
+              July 2014, <https://www.rfc-editor.org/info/rfc7301>.
 
    [RFC7595]  Thaler, D., Ed., Hansen, T., and T. Hardie, "Guidelines
               and Registration Procedures for URI Schemes", BCP 35,
@@ -1557,18 +1562,19 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
               (DoH)", RFC 8484, DOI 10.17487/RFC8484, October 2018,
               <https://www.rfc-editor.org/info/rfc8484>.
 
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 28]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
 13.2.  Informative References
 
    [DNSTerm]  Hoffman, P., Sullivan, A., and K. Fujiwara, "DNS
               Terminology", BCP 219, RFC 8499, DOI 10.17487/RFC8499,
               January 2019, <https://www.rfc-editor.org/info/rfc8499>.
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 28]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
 
    [HTTP]     Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
@@ -1603,8 +1609,22 @@ Appendix A.  Mapping between HTTPSSVC and Alt-Svc
    Note that conversion in either direction can be lossy, because some
    parameters are only defined for HTTPSSVC or Alt-Svc.
 
-   To construct an Alt-Svc Field Value (as defined in Section 4 of
-   [AltSvc]) from an HTTPSSVC record:
+   To construct a set of Alt-Svc Field Values (as defined in Section 4
+   of [AltSvc]) from an HTTPSSVC record:
+
+   *  Each value in the SvcFieldValue's protocol set is mapped to a
+      protocol-id.  This MUST follow the normalization and encoding
+      requirements for protocol-id specified in [AltSvc] Section 3.  For
+      each protocol-id, create a distinct Alt-Svc Field Value.  Apart
+      from the protocol-id, these Alt-Svc Field Values will otherwise be
+      identical.
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 29]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
 
    *  The SvcDomainName is mapped into the uri-host portion of alt-
       authority with the trailing "." removed.  (If SvcDomainName is
@@ -1614,20 +1634,6 @@ Appendix A.  Mapping between HTTPSSVC and Alt-Svc
    *  The SvcParamValue of the "port" service parameter, or 443 if no
       such parameter is present, is written to the port portion of the
       alt-authority.
-
-   *  The SvcParamValue of the "alpn" service parameter is mapped to the
-      protocol-id.  This MUST follow the normalization and encoding
-
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 29]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
-
-      requirements for protocol-id specified in [AltSvc] Section 3.
-      This parameter is MANDATORY.
 
    *  The DNS TTL is mapped to the "ma" (max age) Alt-Svc parameter.
 
@@ -1651,16 +1657,30 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
    they could also publish an HTTPSSVC DNS RRSet like
 
    www.example.com. 3600 IN HTTPSSVC 2 svc.example.net. (
-                                       alpn=h3 port=8003 foo=123 )
+                                       proto=h3 port=8003 foo=123 )
                             HTTPSSVC 3 svc.example.net. (
-                                       alpn=h2 port=8002 foo=123 )
+                                       port=8002 foo=123 )
 
    Where "foo" is a hypothetical future HTTPSSVC and Alt-Svc parameter.
+   (Note that unlike the Alt-Svc values, these records also indicate
+   support for HTTP/1.1 and HTTP/2 on both ports.  This indication could
+   be removed by adding "no-proto" SvcParamKeys for these protocols.)
 
    This data type can also be represented as an Unknown RR as described
    in [RFC3597]:
 
    www.example.com. 3600 IN TYPE??? \\# TBD:WRITEME
+
+
+
+
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 30]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
 
 A.1.  Multiple records and preference ordering
 
@@ -1672,15 +1692,6 @@ A.1.  Multiple records and preference ordering
 
    Each RR corresponds to exactly one alt-value, as described in
    Section 3 of [AltSvc].
-
-
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 30]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
 
    As discussed in Section 2.6.2, HTTPSSVC RRs with a smaller
    SvcFieldPriority value SHOULD be sorted ahead of and given preference
@@ -1705,17 +1716,27 @@ A.2.  Additional examples
    www.example.com.  7200  IN CNAME    svc.example.net.
    example.com.      7200  IN HTTPSSVC 0 svc.example.net.
    svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. (
-       alpn=h3 port=8003 esniconfig="ABC..." )
+       proto=h3 port=8003 esniconfig="ABC..." )
    svc.example.net.  7200  IN HTTPSSVC 3 . (
-       alpn=h2 port=8002 esniconfig="123..." )
+       port=8002 esniconfig="123..." )
 
-   is equivalent to the Alt-Svc record:
+   is similar to the Alt-Svc record:
 
    Alt-Svc: h3="svc3.example.net:8003"; esniconfig="ABC..."; ma=7200, \
             h2="svc.example.net:8002"; esniconfig="123..."; ma=7200
 
    for the origins of both "https://www.example.com" and
-   "https://example.com".
+   "https://example.com".  (Note that the HTTPSSVC records also indicate
+   support for HTTP/1.1 and HTTP/2 on both endpoints.)
+
+
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 31]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
 
 Appendix B.  Comparison with alternatives
 
@@ -1725,18 +1746,6 @@ Appendix B.  Comparison with alternatives
    about implementing them.  The hope here is that by providing an
    extensible solution that solves multiple problems we will overcome
    the inertia and have a path to achieve client implementation.
-
-
-
-
-
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 31]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
 
 B.1.  Differences from the SRV RR type
 
@@ -1776,6 +1785,15 @@ B.3.  Differences from the proposed ANAME record
    master servers, beyond optionally returning in-bailiwick additional
    records.
 
+
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 32]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
    Like that proposal, this addresses the zone apex CNAME challenge for
    clients that implement this.
 
@@ -1786,14 +1804,6 @@ B.3.  Differences from the proposed ANAME record
    declines, the operational effort required to serve these users
    without the benefit of SVCB indirection should fall.  Server
    operators can easily observe how much traffic reaches this legacy
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 32]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
-
    endpoint, and may remove the apex's address records if the observed
    legacy traffic has fallen to negligible levels.
 
@@ -1832,6 +1842,14 @@ C.1.  Record Name
    Other names for this record might include B, ALTSVC, HTTPS, HTTPSSRV,
    HTTPSSVC, SVCHTTPS, or something else.
 
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 33]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
 C.2.  Generality
 
    The SVCB record was designed as a generalization of HTTPSSVC, based
@@ -1839,16 +1857,6 @@ C.2.  Generality
    than HTTP.  Past efforts to over-generalize have not met with broad
    success, but we hope that HTTPSSVC and SVCB have struck an acceptable
    balance between generality and focus.
-
-
-
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 33]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
 
 C.3.  Wire Format
 
@@ -1891,6 +1899,13 @@ Appendix D.  Change history
       -  Generalize to an SVCB record, with special-case handling for
          Alt-Svc and HTTPS separated out to dedicated sections.
 
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 34]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
       -  Split out a separate HTTPSSVC record for the HTTPS use-case.
 
       -  Remove the explicit SvcRecordType=0/1 and instead make the
@@ -1898,13 +1913,6 @@ Appendix D.  Change history
          feedback recommending against subtyping RR type.
 
       -  Remove one optimization.
-
-
-
-Schwartz, et al.           Expires 8 June 2020                 [Page 34]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
-
 
    *  draft-nygren-httpbis-httpssvc-03
 
@@ -1946,6 +1954,14 @@ Authors' Addresses
    Erik Nygren
    Akamai Technologies
 
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 35]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS        December 2019
+
+
    Email: erik+ietf@nygren.org
 
 
@@ -1957,4 +1973,44 @@ Authors' Addresses
 
 
 
-Schwartz, et al.           Expires 8 June 2020                 [Page 35]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Schwartz, et al.          Expires 15 June 2020                 [Page 36]
