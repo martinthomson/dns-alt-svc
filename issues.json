@@ -1,6 +1,204 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/92",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/92/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/92/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/92/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/92",
+    "id": 537701564,
+    "node_id": "MDU6SXNzdWU1Mzc3MDE1NjQ=",
+    "number": 92,
+    "title": "Consider requiring support for SNI",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-12-13T18:27:47Z",
+    "updated_at": "2019-12-13T18:27:47Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Clients that do HTTPSSVC should be modern enough to do SNI."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/91",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/91/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/91/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/91/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/91",
+    "id": 537690946,
+    "node_id": "MDU6SXNzdWU1Mzc2OTA5NDY=",
+    "number": 91,
+    "title": "Does HSTS apply if you fall back to A?",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-12-13T18:05:22Z",
+    "updated_at": "2019-12-13T19:16:10Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "We should clarify whether the HSTS implication applies to the fallback IPs, and also clarify that it _does_ apply to AliasForm."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/90",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/90/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/90/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/90/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/90",
+    "id": 535097031,
+    "node_id": "MDU6SXNzdWU1MzUwOTcwMzE=",
+    "number": 90,
+    "title": "WebSockets should use HTTPSSVC",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-12-09T18:11:31Z",
+    "updated_at": "2019-12-09T18:11:31Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "Despite having their own scheme (ws://, wss://), WebSockets should actually use HTTPSSVC.  This has a firm basis on the Fetch spec, which says that [each WebSocket has an equivalent http(s) URL](https://fetch.spec.whatwg.org/#websocket-opening-handshake), but it has come up as a point of confusion so I think it deserves a sentence in the draft."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/89",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/89/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/89/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/89/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/89",
+    "id": 534285640,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzUwMjIyOTIw",
+    "number": 89,
+    "title": "Make ALPN advisory and require HTTP/1.1 support",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-12-06T22:23:33Z",
+    "updated_at": "2019-12-13T21:07:43Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/89",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/89",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/89.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/89.patch"
+    },
+    "body": "This seems like the simplest and least error-prone\r\nsemantic for ALPN, while minimizing conflict with Alt-Svc."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/88",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/88/labels{/name}",
@@ -89,9 +287,9 @@
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2019-12-05T15:36:40Z",
-    "updated_at": "2019-12-05T15:38:11Z",
+    "updated_at": "2019-12-13T19:15:58Z",
     "closed_at": null,
     "author_association": "NONE",
     "body": "Elsewhere, HTTPSSVC's redirect was referred to as HSTS and it occurred to me we're missing one of HSTS's properties. It redirects and then it directs the browser to suppress the certificate click through button.\r\n\r\nWe could do something similar and say that HTTPS connections made off an HTTPSSVC record are assumed to have a competent TLS config and don't get a bypass button."
@@ -721,7 +919,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T18:34:08Z",
-    "updated_at": "2019-11-13T18:34:08Z",
+    "updated_at": "2019-12-13T18:12:27Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -953,9 +1151,9 @@
 
     ],
     "milestone": null,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2019-11-06T16:23:13Z",
-    "updated_at": "2019-12-04T19:10:29Z",
+    "updated_at": "2019-12-13T18:43:40Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "Currently, if a server publishes a QUIC-only HTTPSSVC RRSet with ESNI, there is no way for a client to fall back to a non-QUIC connection, because doing so would reveal the SNI.  This could increase the likelihood of partial outages for server admins who haven't considered the small fraction of users whose network path does not support QUIC.\r\n\r\nReviewers have reported concerns that this creates an undesirable level of fragility.  We should consider whether there is an alternative design that would be less likely to result in accidental breakage."
@@ -1501,7 +1699,10 @@
     "closed_at": "2019-11-25T20:23:38Z",
     "author_association": "COLLABORATOR",
     "body": "Currently, the format is `[SvcFieldPriority] [SvcDomainName] [SvcFieldValue]`.  I think it should probably be `[SvcDomainName] [SvcFieldPriority] [SvcFieldValue]`.  Then in AliasForm, the redundant `0` priority can be omitted without making the parser more complex.\r\n\r\nWe could maintain the current wire format, or reverse the order there too."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/62",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1737,10 +1938,7 @@
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "We've gotten a few questions about why these aren't a single RR type.  The text could be more explicit on the design rationale for this."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/58",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1838,9 +2036,9 @@
 
     ],
     "milestone": null,
-    "comments": 6,
+    "comments": 7,
     "created_at": "2019-09-26T15:18:15Z",
-    "updated_at": "2019-12-05T15:31:29Z",
+    "updated_at": "2019-12-13T18:55:00Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "It's not clear that we have a use case for SVCB chains containing more than one AliasForm record.  The purpose of AliasForm is mostly for aliasing the apex; everything else can pretty much be handled with CNAME (e.g. AliasForm -> CNAME -> CNAME -> SvcForm)\r\n\r\nAt a minimum, limiting the chain length to 1 would seem to reduce the likelihood of a performance footgun."
@@ -2785,7 +2983,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "bemasc",
@@ -2832,8 +3030,8 @@
     "milestone": null,
     "comments": 2,
     "created_at": "2019-07-09T01:24:04Z",
-    "updated_at": "2019-11-25T20:10:41Z",
-    "closed_at": null,
+    "updated_at": "2019-12-13T18:44:56Z",
+    "closed_at": "2019-12-13T18:44:56Z",
     "author_association": "COLLABORATOR",
     "body": "One minor issue is that wherever CNAME is referenced, you probably want to also include a reference to DNAME, including any implied or explicit chaining of CNAMEs (which could be sequences of CNAME and/or DNAME modulo their respective behavior.)\r\n\r\nYou might also want to explain the motivation for keeping the FQDN separate from the alt-svc parameters (to make it trivial to parse, and thus to do DNS substitutions like CNAME/DNAME). It is there, just not as up-front as it could be.\r\n\r\n\r\nIt might be a little clearer if the list of alt-svc values (h2, h3, etc) that can occur were to be listed in the document. In particular, the association between h3 and QUIC is inferred but not explicitly called out (at least not that I noticed.)\r\n"
   },
@@ -2871,7 +3069,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -2880,8 +3078,8 @@
     "milestone": null,
     "comments": 10,
     "created_at": "2019-07-08T20:09:27Z",
-    "updated_at": "2019-08-14T17:50:07Z",
-    "closed_at": null,
+    "updated_at": "2019-12-13T18:44:11Z",
+    "closed_at": "2019-12-13T18:44:11Z",
     "author_association": "NONE",
     "body": "Similar to how HSTS super cookies are used to track users, I think the Alt SVC lifetime instructions could be used to create implicit long term identifiers for users.  \r\n\r\nB/c of local DNS caching, its unlikely that popular (e.g. Apple) protections for HSTS cookies could be applied here (since the context of the DNS request would be lost, there'd be no sense of 1p / 3p requests).\r\n\r\nI'm not sure how this issue could be addressed given then proposal, but would be happy to think through one.  This is less a problem with the existing markup / header ALT-SVC options, since the browser can control the life time of those."
   },
@@ -3202,7 +3400,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/33.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/32",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3412,10 +3613,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/29.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/28",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -4883,7 +5081,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/3.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/2",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
