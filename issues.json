@@ -1,6 +1,268 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/96",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/96/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/96/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/96/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/96",
+    "id": 539249687,
+    "node_id": "MDU6SXNzdWU1MzkyNDk2ODc=",
+    "number": 96,
+    "title": "Require sorted order of SvcFieldParams?",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-12-17T18:54:50Z",
+    "updated_at": "2019-12-17T18:54:50Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "The order of the SvcFieldParams is not meaningful.  Should we require (and enforce?) that they appear in key order?  This makes serialization more annoying to implement, but also removes a source of entropy that could be used to fingerprint authoritative implementations."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/95",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/95/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/95/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/95/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/95",
+    "id": 539217092,
+    "node_id": "MDU6SXNzdWU1MzkyMTcwOTI=",
+    "number": 95,
+    "title": "Why allow multiple values for the same parameter at all?",
+    "user": {
+      "login": "davidben",
+      "id": 109690,
+      "node_id": "MDQ6VXNlcjEwOTY5MA==",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/109690?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidben",
+      "html_url": "https://github.com/davidben",
+      "followers_url": "https://api.github.com/users/davidben/followers",
+      "following_url": "https://api.github.com/users/davidben/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidben/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidben/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidben/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidben/orgs",
+      "repos_url": "https://api.github.com/users/davidben/repos",
+      "events_url": "https://api.github.com/users/davidben/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidben/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 4,
+    "created_at": "2019-12-17T17:45:58Z",
+    "updated_at": "2019-12-18T21:20:12Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "body": "It seems the only parameters which allow this is ipv4hint and ipv6hint, which is not necessary because the value serialization supports multiple addresses (https://github.com/MikeBishop/dns-alt-svc/pull/94).\r\n\r\nWhy do we need this? I think we should only allow one value per parameter.\r\n\r\nThis means duplicate values can be rejected generically in the parser. Right now the spec says individual parameters silently ignore all but the first value. Silently ignoring things isn't great. Other protocols like Roughtime further require keys be sorted, which makes it easy for the parser to reject duplicates generically.\r\n\r\nThis also avoids questions when designing a new parameter as to whether to use multiple parameter values or to encode multiple structures in the value. We should have one way to do things, so let's use the latter."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/94",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/94/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/94/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/94/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/94",
+    "id": 539200113,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzU0MjE3NjU3",
+    "number": 94,
+    "title": "Do not allow duplicate ipv4hint and ipv6hint parameters",
+    "user": {
+      "login": "davidben",
+      "id": 109690,
+      "node_id": "MDQ6VXNlcjEwOTY5MA==",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/109690?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidben",
+      "html_url": "https://github.com/davidben",
+      "followers_url": "https://api.github.com/users/davidben/followers",
+      "following_url": "https://api.github.com/users/davidben/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidben/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidben/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidben/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidben/orgs",
+      "repos_url": "https://api.github.com/users/davidben/repos",
+      "events_url": "https://api.github.com/users/davidben/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidben/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-12-17T17:10:45Z",
+    "updated_at": "2019-12-18T21:19:29Z",
+    "closed_at": null,
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/94",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/94",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/94.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/94.patch"
+    },
+    "body": "The contents already encode multiple addresses. We shouldn't have multiple ways to say the same thing."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/93",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/93/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/93/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/93/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/93",
+    "id": 538587897,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzUzNzA3Nzky",
+    "number": 93,
+    "title": "Make HTTPSSVC imply fatal certificate errors",
+    "user": {
+      "login": "davidben",
+      "id": 109690,
+      "node_id": "MDQ6VXNlcjEwOTY5MA==",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/109690?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidben",
+      "html_url": "https://github.com/davidben",
+      "followers_url": "https://api.github.com/users/davidben/followers",
+      "following_url": "https://api.github.com/users/davidben/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidben/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidben/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidben/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidben/orgs",
+      "repos_url": "https://api.github.com/users/davidben/repos",
+      "events_url": "https://api.github.com/users/davidben/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidben/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": {
+      "login": "MikeBishop",
+      "id": 4273797,
+      "node_id": "MDQ6VXNlcjQyNzM3OTc=",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4273797?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/MikeBishop",
+      "html_url": "https://github.com/MikeBishop",
+      "followers_url": "https://api.github.com/users/MikeBishop/followers",
+      "following_url": "https://api.github.com/users/MikeBishop/following{/other_user}",
+      "gists_url": "https://api.github.com/users/MikeBishop/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/MikeBishop/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/MikeBishop/subscriptions",
+      "organizations_url": "https://api.github.com/users/MikeBishop/orgs",
+      "repos_url": "https://api.github.com/users/MikeBishop/repos",
+      "events_url": "https://api.github.com/users/MikeBishop/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/MikeBishop/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "assignees": [
+      {
+        "login": "MikeBishop",
+        "id": 4273797,
+        "node_id": "MDQ6VXNlcjQyNzM3OTc=",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/4273797?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MikeBishop",
+        "html_url": "https://github.com/MikeBishop",
+        "followers_url": "https://api.github.com/users/MikeBishop/followers",
+        "following_url": "https://api.github.com/users/MikeBishop/following{/other_user}",
+        "gists_url": "https://api.github.com/users/MikeBishop/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/MikeBishop/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/MikeBishop/subscriptions",
+        "organizations_url": "https://api.github.com/users/MikeBishop/orgs",
+        "repos_url": "https://api.github.com/users/MikeBishop/repos",
+        "events_url": "https://api.github.com/users/MikeBishop/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/MikeBishop/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      {
+        "login": "enygren",
+        "id": 6840678,
+        "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/enygren",
+        "html_url": "https://github.com/enygren",
+        "followers_url": "https://api.github.com/users/enygren/followers",
+        "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+        "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+        "organizations_url": "https://api.github.com/users/enygren/orgs",
+        "repos_url": "https://api.github.com/users/enygren/repos",
+        "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/enygren/received_events",
+        "type": "User",
+        "site_admin": false
+      }
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2019-12-16T18:48:14Z",
+    "updated_at": "2019-12-19T16:50:21Z",
+    "closed_at": "2019-12-19T16:50:21Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/93",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/93",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/93.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/93.patch"
+    },
+    "body": "This is the other half of HSTS. Closes #87."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/92",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/92/labels{/name}",
@@ -89,9 +351,9 @@
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": "2019-12-13T18:05:22Z",
-    "updated_at": "2019-12-13T19:16:10Z",
+    "updated_at": "2019-12-17T17:15:36Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "We should clarify whether the HSTS implication applies to the fallback IPs, and also clarify that it _does_ apply to AliasForm."
@@ -154,7 +416,7 @@
     "id": 534285640,
     "node_id": "MDExOlB1bGxSZXF1ZXN0MzUwMjIyOTIw",
     "number": 89,
-    "title": "Make ALPN advisory and require HTTP/1.1 support",
+    "title": "Replace \"alpn\" with \"proto\"/\"no-proto\"",
     "user": {
       "login": "bemasc",
       "id": 191945,
@@ -185,9 +447,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-12-06T22:23:33Z",
-    "updated_at": "2019-12-13T21:07:43Z",
+    "updated_at": "2019-12-19T16:30:13Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -196,7 +458,7 @@
       "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/89.diff",
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/89.patch"
     },
-    "body": "This seems like the simplest and least error-prone\r\nsemantic for ALPN, while minimizing conflict with Alt-Svc."
+    "body": "This change\r\n1. Makes it difficult for admins to accidentally drop support for HTTP/1.1 and HTTP/2\r\n2. Makes it easy for clients to determine the precise set of a protocols supported by an endpoint before attempting a connection.\r\n\r\nFixes #73"
   },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/88",
@@ -243,7 +505,7 @@
     "created_at": "2019-12-06T19:49:51Z",
     "updated_at": "2019-12-06T19:49:51Z",
     "closed_at": null,
-    "author_association": "NONE",
+    "author_association": "CONTRIBUTOR",
     "body": "We changed the ESNI configuration from a single ESNIConfig to a list of ESNIConfigs in https://github.com/tlswg/draft-ietf-tls-esni/pull/200. HTTPSSVC/SVCB needs to be updated to match."
   },
   {
@@ -280,18 +542,56 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "davidben",
+      "id": 109690,
+      "node_id": "MDQ6VXNlcjEwOTY5MA==",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/109690?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/davidben",
+      "html_url": "https://github.com/davidben",
+      "followers_url": "https://api.github.com/users/davidben/followers",
+      "following_url": "https://api.github.com/users/davidben/following{/other_user}",
+      "gists_url": "https://api.github.com/users/davidben/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/davidben/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/davidben/subscriptions",
+      "organizations_url": "https://api.github.com/users/davidben/orgs",
+      "repos_url": "https://api.github.com/users/davidben/repos",
+      "events_url": "https://api.github.com/users/davidben/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/davidben/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "davidben",
+        "id": 109690,
+        "node_id": "MDQ6VXNlcjEwOTY5MA==",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/109690?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/davidben",
+        "html_url": "https://github.com/davidben",
+        "followers_url": "https://api.github.com/users/davidben/followers",
+        "following_url": "https://api.github.com/users/davidben/following{/other_user}",
+        "gists_url": "https://api.github.com/users/davidben/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/davidben/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/davidben/subscriptions",
+        "organizations_url": "https://api.github.com/users/davidben/orgs",
+        "repos_url": "https://api.github.com/users/davidben/repos",
+        "events_url": "https://api.github.com/users/davidben/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/davidben/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2019-12-05T15:36:40Z",
-    "updated_at": "2019-12-13T19:15:58Z",
-    "closed_at": null,
-    "author_association": "NONE",
+    "updated_at": "2019-12-19T16:50:21Z",
+    "closed_at": "2019-12-19T16:50:21Z",
+    "author_association": "CONTRIBUTOR",
     "body": "Elsewhere, HTTPSSVC's redirect was referred to as HSTS and it occurred to me we're missing one of HSTS's properties. It redirects and then it directs the browser to suppress the certificate click through button.\r\n\r\nWe could do something similar and say that HTTPS connections made off an HTTPSSVC record are assumed to have a competent TLS config and don't get a bypass button."
   },
   {
@@ -335,9 +635,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-11-25T23:43:40Z",
-    "updated_at": "2019-11-25T23:43:40Z",
+    "updated_at": "2019-12-13T21:53:39Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "We need a careful implementor review on Section 4, particularly regarding what to put in the Additional section for negative responses (with and without DNSSEC).\r\n\r\nI also wonder how this would interact with the CHAIN query."
@@ -1146,14 +1446,52 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "bemasc",
+        "id": 191945,
+        "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/bemasc",
+        "html_url": "https://github.com/bemasc",
+        "followers_url": "https://api.github.com/users/bemasc/followers",
+        "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+        "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+        "organizations_url": "https://api.github.com/users/bemasc/orgs",
+        "repos_url": "https://api.github.com/users/bemasc/repos",
+        "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/bemasc/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 11,
     "created_at": "2019-11-06T16:23:13Z",
-    "updated_at": "2019-12-13T18:43:40Z",
+    "updated_at": "2019-12-19T16:35:57Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "Currently, if a server publishes a QUIC-only HTTPSSVC RRSet with ESNI, there is no way for a client to fall back to a non-QUIC connection, because doing so would reveal the SNI.  This could increase the likelihood of partial outages for server admins who haven't considered the small fraction of users whose network path does not support QUIC.\r\n\r\nReviewers have reported concerns that this creates an undesirable level of fragility.  We should consider whether there is an alternative design that would be less likely to result in accidental breakage."
@@ -1481,7 +1819,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/67.patch"
     },
     "body": "Fixes #59"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/66",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1699,10 +2040,7 @@
     "closed_at": "2019-11-25T20:23:38Z",
     "author_association": "COLLABORATOR",
     "body": "Currently, the format is `[SvcFieldPriority] [SvcDomainName] [SvcFieldValue]`.  I think it should probably be `[SvcDomainName] [SvcFieldPriority] [SvcFieldValue]`.  Then in AliasForm, the redundant `0` priority can be omitted without making the parser more complex.\r\n\r\nWe could maintain the current wire format, or reverse the order there too."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/62",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3190,7 +3528,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/37.patch"
     },
     "body": "Per suggestion from Lucas Pardue."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/36",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3400,10 +3741,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/33.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/32",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -4865,7 +5203,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/7.patch"
     },
     "body": "EDIT: New approach: This handles nonstandard HTTP ports in the same way as HSTS."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/6",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5081,10 +5422,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/3.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/2",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
