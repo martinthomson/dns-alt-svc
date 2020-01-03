@@ -1,6 +1,108 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/98",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/98/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/98/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/98/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/98",
+    "id": 543992768,
+    "node_id": "MDU6SXNzdWU1NDM5OTI3Njg=",
+    "number": 98,
+    "title": "Explicitly state semantics of SvcParamKey ranges",
+    "user": {
+      "login": "dmcardle",
+      "id": 183652,
+      "node_id": "MDQ6VXNlcjE4MzY1Mg==",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/183652?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dmcardle",
+      "html_url": "https://github.com/dmcardle",
+      "followers_url": "https://api.github.com/users/dmcardle/followers",
+      "following_url": "https://api.github.com/users/dmcardle/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dmcardle/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dmcardle/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dmcardle/subscriptions",
+      "organizations_url": "https://api.github.com/users/dmcardle/orgs",
+      "repos_url": "https://api.github.com/users/dmcardle/repos",
+      "events_url": "https://api.github.com/users/dmcardle/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dmcardle/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 10,
+    "created_at": "2019-12-30T19:53:34Z",
+    "updated_at": "2020-01-02T17:42:33Z",
+    "closed_at": null,
+    "author_association": "NONE",
+    "body": "Can we nail down the semantics of the different SvcParamKey ranges?\r\n\r\nTo start with:\r\n\r\n* Reserved => FAIL_PARSE\r\n* PrivateUse => EXTRACT_OR_SKIP\r\n* ALPN | PORT | ESNICONFIG | ... => EXTRACT_OR_SKIP\r\n\r\nI can't see any reason why we should accept records that contain reserved keys."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/97",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/97/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/97/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/97/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/97",
+    "id": 540541745,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzU1MzM2Mjg3",
+    "number": 97,
+    "title": "Replace \"alpn\" with \"transport\"/\"no-transport\"",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 6,
+    "created_at": "2019-12-19T20:23:31Z",
+    "updated_at": "2020-01-03T21:50:18Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/97",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/97",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/97.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/97.patch"
+    },
+    "body": "This is an alternative to #89, based on our discussion in #73.\r\n\r\nThis is the \"maximalist\" approach, including a new IANA registry and a (backwards-compatible) update to RFC 7838.\r\n\r\nCurrent text is definitely a rough cut.  We can clean up the requirements language if we agree this is the right direction."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/96",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/96/labels{/name}",
@@ -89,9 +191,9 @@
 
     ],
     "milestone": null,
-    "comments": 4,
+    "comments": 5,
     "created_at": "2019-12-17T17:45:58Z",
-    "updated_at": "2019-12-18T21:20:12Z",
+    "updated_at": "2019-12-19T20:56:35Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "It seems the only parameters which allow this is ipv4hint and ipv6hint, which is not necessary because the value serialization supports multiple addresses (https://github.com/MikeBishop/dns-alt-svc/pull/94).\r\n\r\nWhy do we need this? I think we should only allow one value per parameter.\r\n\r\nThis means duplicate values can be rejected generically in the parser. Right now the spec says individual parameters silently ignore all but the first value. Silently ignoring things isn't great. Other protocols like Roughtime further require keys be sorted, which makes it easy for the parser to reject duplicates generically.\r\n\r\nThis also avoids questions when designing a new parameter as to whether to use multiple parameter values or to encode multiple structures in the value. We should have one way to do things, so let's use the latter."
@@ -137,9 +239,9 @@
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": "2019-12-17T17:10:45Z",
-    "updated_at": "2019-12-18T21:19:29Z",
+    "updated_at": "2019-12-19T20:53:18Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -1489,9 +1591,9 @@
       }
     ],
     "milestone": null,
-    "comments": 11,
+    "comments": 14,
     "created_at": "2019-11-06T16:23:13Z",
-    "updated_at": "2019-12-19T16:35:57Z",
+    "updated_at": "2019-12-19T20:25:47Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "Currently, if a server publishes a QUIC-only HTTPSSVC RRSet with ESNI, there is no way for a client to fall back to a non-QUIC connection, because doing so would reveal the SNI.  This could increase the likelihood of partial outages for server admins who haven't considered the small fraction of users whose network path does not support QUIC.\r\n\r\nReviewers have reported concerns that this creates an undesirable level of fragility.  We should consider whether there is an alternative design that would be less likely to result in accidental breakage."
@@ -1711,7 +1813,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/69.patch"
     },
     "body": "switch to the SrvDomainName IPs. There are two normative\r\nchanges here:\r\n\r\n- Relax the MUST look up SrvDomainName to SHOULD\r\n- Relax the SHOULD switch as soon as possible to MAY and\r\n  leave the SHOULD for future connections.\r\n\r\nThis makes HTTPSVC more closely match the previous ESNI behavior, which\r\nis appropriate if we are going to replace it."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/68",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1819,10 +1924,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/67.patch"
     },
     "body": "Fixes #59"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/66",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3420,7 +3522,10 @@
     "closed_at": "2019-12-13T18:44:11Z",
     "author_association": "NONE",
     "body": "Similar to how HSTS super cookies are used to track users, I think the Alt SVC lifetime instructions could be used to create implicit long term identifiers for users.  \r\n\r\nB/c of local DNS caching, its unlikely that popular (e.g. Apple) protections for HSTS cookies could be applied here (since the context of the DNS request would be lost, there'd be no sense of 1p / 3p requests).\r\n\r\nI'm not sure how this issue could be addressed given then proposal, but would be happy to think through one.  This is less a problem with the existing markup / header ALT-SVC options, since the browser can control the life time of those."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/38",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3528,10 +3633,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/37.patch"
     },
     "body": "Per suggestion from Lucas Pardue."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/36",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5095,7 +5197,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/9.patch"
     },
     "body": "With this change, the behavior might even be worthy of\r\nthe name \"strict\"."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/8",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5203,10 +5308,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/7.patch"
     },
     "body": "EDIT: New approach: This handles nonstandard HTTP ports in the same way as HSTS."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/6",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
