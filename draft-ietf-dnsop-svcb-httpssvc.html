@@ -1979,7 +1979,9 @@ IP addresses in standard textual format <span>[<a href="#RFC5952" class="xref">R
 <p id="section-6.4-6">These parameters are intended to minimize additional connection latency
 when a recursive resolver is not compliant with the requirements in
 <a href="#server-behavior" class="xref">Section 4</a>, and SHOULD NOT be included if most clients are using
-compliant recursive resolvers.<a href="#section-6.4-6" class="pilcrow">¶</a></p>
+compliant recursive resolvers.  When SvcDomainName is ".", server operators
+SHOULD NOT include these hints, because they are unlikely to convey any
+performance benefit.<a href="#section-6.4-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
