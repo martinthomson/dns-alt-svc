@@ -1,6 +1,102 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/100",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/100/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/100/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/100/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/100",
+    "id": 549864257,
+    "node_id": "MDU6SXNzdWU1NDk4NjQyNTc=",
+    "number": 100,
+    "title": "Parameter to indicate no HSTS-like behavior?",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-01-14T22:51:00Z",
+    "updated_at": "2020-01-14T22:51:00Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "In digging into production use-cases, there may be scenarios where the \"HTTPSSVC means HTTPS-only\" is problematic.  For example, it may prevent a CDN from turning it on by default (as this means forcing everything to HTTPS-by-default which may not be possible for some customer content) which in-turns prevents turning on Encrypted SNI by default.\r\n\r\nLeaving the HSTS-like behavior as the default makes sense, but this asks the question as to whether an optional \"allow-insecure\" parameter should be included (with the default still being secure).  This opens up cans of worms from a security perspective but could ease deployment in some cases."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/99",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/99/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/99/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/99/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/99",
+    "id": 546933905,
+    "node_id": "MDU6SXNzdWU1NDY5MzM5MDU=",
+    "number": 99,
+    "title": "Clarify Alias wire format and motivation for binary SvcFieldValue encoding",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2020-01-08T15:30:04Z",
+    "updated_at": "2020-01-12T13:25:38Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "@miekg has asked for two related clarifications:\r\n1. How is it that the AliasForm and ServiceForm encodings are compatible?\r\n2. Why not reuse the TXT/SPF format?"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/98",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/98/labels{/name}",
@@ -89,9 +185,9 @@
 
     ],
     "milestone": null,
-    "comments": 6,
+    "comments": 7,
     "created_at": "2019-12-19T20:23:31Z",
-    "updated_at": "2020-01-03T21:50:18Z",
+    "updated_at": "2020-01-03T22:09:26Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1705,7 +1801,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/71.patch"
     },
     "body": "Matches the terminology from https://github.com/tlswg/draft-ietf-tls-esni/pull/187\r\n\r\n@chris-wood FYI"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/70",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1813,10 +1912,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/69.patch"
     },
     "body": "switch to the SrvDomainName IPs. There are two normative\r\nchanges here:\r\n\r\n- Relax the MUST look up SrvDomainName to SHOULD\r\n- Relax the SHOULD switch as soon as possible to MAY and\r\n  leave the SHOULD for future connections.\r\n\r\nThis makes HTTPSVC more closely match the previous ESNI behavior, which\r\nis appropriate if we are going to replace it."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/68",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1905,7 +2001,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -1914,8 +2010,8 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2019-10-15T16:19:05Z",
-    "updated_at": "2019-11-04T16:07:55Z",
-    "closed_at": null,
+    "updated_at": "2020-01-14T22:54:30Z",
+    "closed_at": "2020-01-14T22:54:29Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/67",
@@ -2327,7 +2423,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "bemasc",
@@ -2374,8 +2470,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-09-26T15:36:08Z",
-    "updated_at": "2019-11-25T20:24:53Z",
-    "closed_at": null,
+    "updated_at": "2020-01-14T22:54:29Z",
+    "closed_at": "2020-01-14T22:54:29Z",
     "author_association": "COLLABORATOR",
     "body": "We've gotten a few questions about why these aren't a single RR type.  The text could be more explicit on the design rationale for this."
   },
@@ -3388,7 +3484,10 @@
     "closed_at": "2019-11-04T21:31:07Z",
     "author_association": "COLLABORATOR",
     "body": "From Mark Andrews:\r\n\r\n================================\r\n\r\nIntroductory Example: The example record\r\n\r\nexample.com.      2H  IN HTTPSSVC 0 0 svc.example.net.\r\n\r\ndoes not match the description of the record (missing last field). It should be:\r\n\r\nexample.com.      7200  IN HTTPSSVC 0 0 svc.example.net. “”\r\n\r\nSimilarly in 2.4.  HTTPSSVC records: alias form\r\n\r\nAlso don’t use 2H for the TTL.  While some servers will accept it, it is not RFC compliant.\r\n\r\nUnless these is a real reason for the record to be class agnostic please specify that\r\nit is class IN specific."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/40",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3522,10 +3621,7 @@
     "closed_at": "2019-12-13T18:44:11Z",
     "author_association": "NONE",
     "body": "Similar to how HSTS super cookies are used to track users, I think the Alt SVC lifetime instructions could be used to create implicit long term identifiers for users.  \r\n\r\nB/c of local DNS caching, its unlikely that popular (e.g. Apple) protections for HSTS cookies could be applied here (since the context of the DNS request would be lost, there'd be no sense of 1p / 3p requests).\r\n\r\nI'm not sure how this issue could be addressed given then proposal, but would be happy to think through one.  This is less a problem with the existing markup / header ALT-SVC options, since the browser can control the life time of those."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/38",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5089,7 +5185,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/11.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/10",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5197,10 +5296,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/9.patch"
     },
     "body": "With this change, the behavior might even be worthy of\r\nthe name \"strict\"."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/8",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
