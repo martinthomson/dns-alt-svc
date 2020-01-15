@@ -119,12 +119,12 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
      4.3.  General requirements  . . . . . . . . . . . . . . . . . .  15
    5.  Performance optimizations . . . . . . . . . . . . . . . . . .  16
      5.1.  Optimistic pre-connection and connection reuse  . . . . .  16
-     5.2.  Preferring usable records . . . . . . . . . . . . . . . .  17
+     5.2.  Generating and using incomplete responses . . . . . . . .  17
      5.3.  Structuring zones for performance . . . . . . . . . . . .  17
    6.  Initial SvcParamKeys  . . . . . . . . . . . . . . . . . . . .  17
      6.1.  "alpn"  . . . . . . . . . . . . . . . . . . . . . . . . .  17
      6.2.  "port"  . . . . . . . . . . . . . . . . . . . . . . . . .  17
-     6.3.  "esniconfig"  . . . . . . . . . . . . . . . . . . . . . .  17
+     6.3.  "esniconfig"  . . . . . . . . . . . . . . . . . . . . . .  18
      6.4.  "ipv4hint" and "ipv6hint" . . . . . . . . . . . . . . . .  18
    7.  Using SVCB with HTTPS and HTTP  . . . . . . . . . . . . . . .  19
      7.1.  Owner names for HTTPSSVC records  . . . . . . . . . . . .  19
@@ -898,10 +898,19 @@ Schwartz, et al.          Expires 18 July 2020                 [Page 16]
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
 
-5.2.  Preferring usable records
+5.2.  Generating and using incomplete responses
 
-   A nonconforming recursive resolver might not return all the
-   information required to use all the records in an SVCB response.  If
+   When following the procedure in Section 4.2, recursive resolvers MAY
+   terminate the procedure early and produce a reply that omits some of
+   the associated RRSets.  This might be appropriate when the maximum
+   response size is reached, or when responding before fully chasing
+   dependencies would improve performance.  When omitting certain
+   RRSets, recursive resolvers SHOULD prioritize information from higher
+   priority ServiceForm records over lower priority ServiceForm records.
+
+   As discussed in Section 3, clients MUST be able fetch additional
+   information that is required to use an SVCB record, if it is not
+   included in the initial response.  As a performance optimization, if
    some of the SVCB records in the response can be used without
    requiring additional DNS queries, the client MAY prefer those
    records, regardless of their priorities.
@@ -938,6 +947,13 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    The "port" SvcParamKey defines the TCP or UDP port that should be
    used to contact this alternative service.
 
+
+
+Schwartz, et al.          Expires 18 July 2020                 [Page 17]
+
+Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
+
+
    The presentation format of the SvcParamValue is a numeric value
    between 0 and 65535 inclusive.  The wire format of the SvcParamValue
    is the corresponding 2 octet numeric value in network byte order.
@@ -946,13 +962,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
    The SvcParamKey for ESNI is "esniconfig".  Its value is defined in
    Section 8.  It is applicable to most TLS-based protocols.
-
-
-
-Schwartz, et al.          Expires 18 July 2020                 [Page 17]
-
-Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
-
 
    When publishing a record containing an "esniconfig" parameter, the
    publisher MUST ensure that all IP addresses of SvcDomainName
@@ -993,15 +1002,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    use an approach such as [HappyEyeballsV2].  When only "ipv4hint"
    parameters are present, IPv6-only clients may synthesize IPv6
    addresses as specified in [RFC7050] or ignore the "ipv4hint" key and
-   wait for AAAA resolution (Section 3).  Recursive resolvers MUST NOT
-   perform DNS64 ([RFC6147]) on parameters within an SVCB record.  For
-   best performance, server operators SHOULD include "ipv6hint"
-   parameters whenever they publish "ipv4hint" parameters.
-
-   The presentation format for each parameter is a comma-separated list
-   of IP addresses in standard textual format [RFC5952].
-
-
 
 
 
@@ -1009,6 +1009,14 @@ Schwartz, et al.          Expires 18 July 2020                 [Page 18]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
+
+   wait for AAAA resolution (Section 3).  Recursive resolvers MUST NOT
+   perform DNS64 ([RFC6147]) on parameters within an SVCB record.  For
+   best performance, server operators SHOULD include "ipv6hint"
+   parameters whenever they publish "ipv4hint" parameters.
+
+   The presentation format for each parameter is a comma-separated list
+   of IP addresses in standard textual format [RFC5952].
 
    These parameters are intended to minimize additional connection
    latency when a recursive resolver is not compliant with the
@@ -1049,14 +1057,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    "https" with port 443, or the scheme is "http" and the port is 80,
    then the client's original QNAME is equal to the origin host name.
 
-   For origins other than https with port 443 and http with port 80, the
-   port and scheme continue to be prefixed to the hostname as described
-   in Section 2.3.  Following of HTTPSSVC AliasForm and CNAME aliases is
-   also unchanged from SVCB.
-
-   Note that none of these forms alter the HTTPS origin or authority.
-   For example, clients MUST continue to validate TLS certificate
-   hostnames based on the origin host.
 
 
 
@@ -1065,6 +1065,15 @@ Schwartz, et al.          Expires 18 July 2020                 [Page 19]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
+
+   For origins other than https with port 443 and http with port 80, the
+   port and scheme continue to be prefixed to the hostname as described
+   in Section 2.3.  Following of HTTPSSVC AliasForm and CNAME aliases is
+   also unchanged from SVCB.
+
+   Note that none of these forms alter the HTTPS origin or authority.
+   For example, clients MUST continue to validate TLS certificate
+   hostnames based on the origin host.
 
 7.2.  Populating Alt-Used
 
@@ -1105,15 +1114,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    parameter.  Instead, server operators SHOULD encode the expiration
    time in the DNS TTL.
 
-   Some DNS caching systems incorrectly extend the lifetime of DNS
-   records beyond the stated TTL.  Server operators MUST NOT rely on
-   HTTPSSVC records expiring on time, and MAY shorten the TTL to
-   compensate.
-
-   Sending Alt-Svc over HTTP allows the server to tailor the Alt-Svc
-   Field Value specifically to the client.  When using an HTTPSSVC DNS
-   record, groups of clients will necessarily receive the same Alt-Svc
-
 
 
 
@@ -1122,6 +1122,14 @@ Schwartz, et al.          Expires 18 July 2020                 [Page 20]
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
 
+   Some DNS caching systems incorrectly extend the lifetime of DNS
+   records beyond the stated TTL.  Server operators MUST NOT rely on
+   HTTPSSVC records expiring on time, and MAY shorten the TTL to
+   compensate.
+
+   Sending Alt-Svc over HTTP allows the server to tailor the Alt-Svc
+   Field Value specifically to the client.  When using an HTTPSSVC DNS
+   record, groups of clients will necessarily receive the same Alt-Svc
    Field Value.  Therefore, HTTPSSVC is not suitable for uses that
    require single-client granularity.
 
@@ -1162,14 +1170,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    If the HTTPSSVC query results in a SERVFAIL error, and the connection
    between the client and the recursive resolver is cryptographically
    protected (e.g. using TLS [RFC7858] or HTTPS [RFC8484]), the client
-   SHOULD abandon the connection attempt and display an error message.
-   A SERVFAIL error can occur if the domain is DNSSEC-signed, the
-   recursive resolver is DNSSEC-validating, and an active attacker
-   between the recursive resolver and the authoritative DNS server is
-   attempting to prevent the upgrade to HTTPS.
-
-   Similarly, if the client enforces DNSSEC validation on A/AAAA
-
 
 
 
@@ -1178,6 +1178,13 @@ Schwartz, et al.          Expires 18 July 2020                 [Page 21]
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
 
+   SHOULD abandon the connection attempt and display an error message.
+   A SERVFAIL error can occur if the domain is DNSSEC-signed, the
+   recursive resolver is DNSSEC-validating, and an active attacker
+   between the recursive resolver and the authoritative DNS server is
+   attempting to prevent the upgrade to HTTPS.
+
+   Similarly, if the client enforces DNSSEC validation on A/AAAA
    responses, it SHOULD abandon the connection attempt if the HTTPSSVC
    response fails to validate.
 
@@ -1219,13 +1226,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
    Other clients and services implementing SVCB or HTTPSSVC with
    esniconfig are encouraged to take a similar approach.
-
-
-
-
-
-
-
 
 
 

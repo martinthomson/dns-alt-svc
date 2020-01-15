@@ -1045,7 +1045,7 @@ as they are easy to replace.  Other names might include "B",
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-optimistic-pre-connection-a" class="xref">Optimistic pre-connection and connection reuse</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-preferring-usable-records" class="xref">Preferring usable records</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-generating-and-using-incomp" class="xref">Generating and using incomplete responses</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.5.2.3">
                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-structuring-zones-for-perfo" class="xref">Structuring zones for performance</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
@@ -1800,7 +1800,7 @@ A, AAAA, and SVCB records (as well as any relevant CNAME or
 in-bailiwick SvcDomainNames.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="recursive-resolvers">
+<div id="recursive-behavior">
 <section id="section-4.2">
         <h3 id="name-recursive-resolvers">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-recursive-resolvers" class="section-name selfRef">Recursive resolvers</a>
@@ -1908,16 +1908,23 @@ with any active or in-progress connection,
 clients must proceed as described in Step 3 of the procedure in <a href="#client-behavior" class="xref">Section 3</a>.<a href="#section-5.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="preferring-usable-records">
+<div id="generating-and-using-incomplete-responses">
 <section id="section-5.2">
-        <h3 id="name-preferring-usable-records">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-preferring-usable-records" class="section-name selfRef">Preferring usable records</a>
+        <h3 id="name-generating-and-using-incomp">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-generating-and-using-incomp" class="section-name selfRef">Generating and using incomplete responses</a>
         </h3>
-<p id="section-5.2-1">A nonconforming recursive resolver might not return all the information
-required to use all the records in an SVCB response.  If
-some of the SVCB records in the response can be used without requiring
-additional DNS queries, the client MAY prefer those records, regardless of
-their priorities.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-1">When following the procedure in <a href="#recursive-behavior" class="xref">Section 4.2</a>, recursive
+resolvers MAY terminate the procedure early and produce a reply that omits
+some of the associated RRSets.  This might be appropriate when
+the maximum response size is reached, or when responding before fully
+chasing dependencies would improve performance.  When omitting certain
+RRSets, recursive resolvers SHOULD prioritize information from
+higher priority ServiceForm records over lower priority ServiceForm records.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">As discussed in <a href="#client-behavior" class="xref">Section 3</a>, clients MUST be able fetch additional
+information that is required to use an SVCB record, if it is not included
+in the initial response.  As a performance optimization, if some of the SVCB
+records in the response can be used without requiring additional DNS queries,
+the client MAY prefer those records, regardless of their priorities.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="structuring-zones-for-performance">
