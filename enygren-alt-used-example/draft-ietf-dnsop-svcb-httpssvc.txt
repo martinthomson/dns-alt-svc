@@ -1087,7 +1087,8 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
                 HTTPSSVC 2 . transport=tls
 
    The "Alt-Used" header for requests to all of https://example.com and
-   https://www.example.com and https://pool.svc.example would be one of:
+   https://www.example.com (and https://pool.svc.example if it exists)
+   would be one of:
 
    Alt-Used: h3pool.svc.example:8443
    Alt-Used: pool.svc.example:443
@@ -1113,7 +1114,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    Alt-Svc parameters that cannot be safely received in this model MUST
    NOT have a corresponding defined SvcParamKey.  For example, there is
    no SvcParamKey corresponding to the Alt-Svc "persist" parameter,
-
 
 
 
