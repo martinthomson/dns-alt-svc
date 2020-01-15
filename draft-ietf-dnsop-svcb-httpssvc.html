@@ -1035,6 +1035,17 @@ as they are easy to replace.  Other names might include "B",
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-dns-server-behavior" class="xref">DNS Server Behavior</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty">
+<li class="toc ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-authoritative-servers" class="xref">Authoritative servers</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
+</li>
+<li class="toc ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-recursive-resolvers" class="xref">Recursive resolvers</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
+</li>
+<li class="toc ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-general-requirements" class="xref">General requirements</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
+</li>
+</ul>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-performance-optimizations" class="xref">Performance optimizations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
@@ -1043,7 +1054,7 @@ as they are easy to replace.  Other names might include "B",
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-optimistic-pre-connection-a" class="xref">Optimistic pre-connection and connection reuse</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-preferring-usable-records" class="xref">Preferring usable records</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-generating-and-using-incomp" class="xref">Generating and using incomplete responses</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.5.2.3">
                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-structuring-zones-for-perfo" class="xref">Structuring zones for performance</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
@@ -1416,40 +1427,41 @@ be used instead of HTTP (see <a href="#hsts" class="xref">Section 7.4</a>).<a hr
 a non-normative manner.  (As mentioned above, this all
 applies equally to the HTTPSSVC RR which shares
 the same encoding, format, and high-level semantics.)<a href="#section-1.6-1" class="pilcrow">¶</a></p>
-<p id="section-1.6-2">The SVCB RR has two forms: AliasForm and ServiceForm.
-SVCB RR entries with two non-empty fields are in AliasForm.
-When more fields are present, this indicates that the SVCB RR
-is in ServiceForm.  The fields are:<a href="#section-1.6-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal" id="section-1.6-3">
-          <li id="section-1.6-3.1">SvcFieldPriority: The priority of this record (relative to others,
-with lower values preferred).  Applicable for the ServiceForm,
-and otherwise has value "0".  (Described in <a href="#pri" class="xref">Appendix A.1</a>.)<a href="#section-1.6-3.1" class="pilcrow">¶</a>
+<p id="section-1.6-2">The SVCB RR has two forms: AliasForm, which aliases a name to another name,
+and ServiceForm, which provides connection information bound to a service
+endpoint domain.  Placing both forms in a single RR type allows clients to
+fetch the relevant information with a single query.<a href="#section-1.6-2" class="pilcrow">¶</a></p>
+<p id="section-1.6-3">The SVCB RR has two mandatory fields and one optional.  The fields are:<a href="#section-1.6-3" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal" id="section-1.6-4">
+          <li id="section-1.6-4.1">SvcFieldPriority: The priority of this record (relative to others,
+with lower values preferred).  A value of 0 indicates AliasForm.
+(Described in <a href="#pri" class="xref">Appendix A.1</a>.)<a href="#section-1.6-4.1" class="pilcrow">¶</a>
 </li>
-<li id="section-1.6-3.2">SvcDomainName: The domain name of either the alias target (for
-AliasForm) or the alternative service endpoint (for ServiceForm).<a href="#section-1.6-3.2" class="pilcrow">¶</a>
+<li id="section-1.6-4.2">SvcDomainName: The domain name of either the alias target (for
+AliasForm) or the alternative service endpoint (for ServiceForm).<a href="#section-1.6-4.2" class="pilcrow">¶</a>
 </li>
-<li id="section-1.6-3.3">SvcFieldValue: A list of key=value pairs
+<li id="section-1.6-4.3">SvcFieldValue (optional): A list of key=value pairs
 describing the alternative service endpoint for the domain name specified in
-SvcDomainName (only for ServiceForm and otherwise empty).
-Described in <a href="#svcfieldvalue" class="xref">Section 2.1</a>.<a href="#section-1.6-3.3" class="pilcrow">¶</a>
+SvcDomainName (only used in ServiceForm and otherwise ignored).
+Described in <a href="#svcfieldvalue" class="xref">Section 2.1</a>.<a href="#section-1.6-4.3" class="pilcrow">¶</a>
 </li>
 </ol>
-<p id="section-1.6-4">Cooperating DNS recursive resolvers will perform subsequent record
+<p id="section-1.6-5">Cooperating DNS recursive resolvers will perform subsequent record
 resolution (for SVCB, A, and AAAA records) and return them in the
 Additional Section of the response.  Clients must either use responses
 included in the additional section returned by the recursive resolver
 or perform necessary SVCB, A, and AAAA record resolutions.  DNS
 authoritative servers may attach in-bailiwick SVCB, A, AAAA, and CNAME
-records in the Additional Section to responses for an SVCB query.<a href="#section-1.6-4" class="pilcrow">¶</a></p>
-<p id="section-1.6-5">When in the ServiceForm, the SvcFieldValue of the SVCB RR
+records in the Additional Section to responses for an SVCB query.<a href="#section-1.6-5" class="pilcrow">¶</a></p>
+<p id="section-1.6-6">When in the ServiceForm, the SvcFieldValue of the SVCB RR
 provides an extensible data model for describing network
 endpoints that are authoritative for the origin, along with
-parameters associated with each of these endpoints.<a href="#section-1.6-5" class="pilcrow">¶</a></p>
-<p id="section-1.6-6">For the HTTPS use-case, the HTTPSSVC RR enables many of the benefits of <span>[<a href="#AltSvc" class="xref">AltSvc</a>]</span>,
+parameters associated with each of these endpoints.<a href="#section-1.6-6" class="pilcrow">¶</a></p>
+<p id="section-1.6-7">For the HTTPS use-case, the HTTPSSVC RR enables many of the benefits of <span>[<a href="#AltSvc" class="xref">AltSvc</a>]</span>,
 without waiting for a full HTTP connection initiation (multiple roundtrips)
 before learning of the preferred alternative,
 and without necessarily revealing the user's
-intended destination to all entities along the network path.<a href="#section-1.6-6" class="pilcrow">¶</a></p>
+intended destination to all entities along the network path.<a href="#section-1.6-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="parameter-for-esni">
@@ -1838,36 +1850,76 @@ its network geolocation.<a href="#section-3.1-4.3" class="pilcrow">¶</a>
       <h2 id="name-dns-server-behavior">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-dns-server-behavior" class="section-name selfRef">DNS Server Behavior</a>
       </h2>
-<p id="section-4-1">When replying to an SVCB query, authoritative DNS servers SHOULD return
-A, AAAA, and SVCB records (as
-well as any relevant CNAME records) in the Additional Section for any
-in-bailiwick SvcDomainNames.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">Recursive resolvers that are aware of SVCB SHOULD ensure that the client can
+<div id="authoritative-servers">
+<section id="section-4.1">
+        <h3 id="name-authoritative-servers">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-authoritative-servers" class="section-name selfRef">Authoritative servers</a>
+        </h3>
+<p id="section-4.1-1">When replying to an SVCB query, authoritative DNS servers SHOULD return
+A, AAAA, and SVCB records (as well as any relevant CNAME or
+<span>[<a href="#DNAME" class="xref">DNAME</a>]</span> records) in the Additional Section for any
+in-bailiwick SvcDomainNames.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="recursive-behavior">
+<section id="section-4.2">
+        <h3 id="name-recursive-resolvers">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-recursive-resolvers" class="section-name selfRef">Recursive resolvers</a>
+        </h3>
+<p id="section-4.2-1">Recursive resolvers that are aware of SVCB SHOULD ensure that the client can
 execute the procedure in <a href="#client-behavior" class="xref">Section 3</a> without issuing a second
-round of queries, by following this procedure while constructing a response
-to a stub resolver for an SVCB record query:<a href="#section-4-2" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal" id="section-4-3">
-        <li id="section-4-3.1">When processing an SVCB response from an authoritative server, add it to
-the Additional section (unless it is the Answer).<a href="#section-4-3.1" class="pilcrow">¶</a>
+round of queries, by incorporating all the necessary information into a
+single response.  For the initial SVCB record query, this is just the normal
+response construction process (i.e. unknown RR type resolution under
+<span>[<a href="#RFC3597" class="xref">RFC3597</a>]</span>).  For followup resolutions performed during this procedure,
+we define incorporation as adding all Answer and Additional RRs to the
+Additional section, and all Authority RRs to the Authority section,
+without altering the response code.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">Upon receiving an SVCB query, recursive resolvers SHOULD start with the
+standard resolution procedure, and then follow this procedure to
+construct the full response to the stub resolver:<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal" id="section-4.2-3">
+          <li id="section-4.2-3.1">Incorporate the results of SVCB resolution.<a href="#section-4.2-3.1" class="pilcrow">¶</a>
 </li>
-<li id="section-4-3.2">If all records are in ServiceForm, resolve A and AAAA records for each
-SvcDomainName (or for the owner name if the SvcDomainName is "."), and include all
-the results in the Additional section.<a href="#section-4-3.2" class="pilcrow">¶</a>
+<li id="section-4.2-3.2">
+            <p id="section-4.2-3.2.1">If any of the resolved SVCB records are in AliasForm, choose an AliasForm
+record at random, and resolve SVCB, A, and AAAA records for its
+SvcDomainName.<a href="#section-4.2-3.2.1" class="pilcrow">¶</a></p>
+<ul>
+<li id="section-4.2-3.2.2.1">If any SVCB records are resolved, go to step 1, subject to loop
+detection heuristics.<a href="#section-4.2-3.2.2.1" class="pilcrow">¶</a>
 </li>
-<li id="section-4-3.3">Otherwise, select an AliasForm record at random, and resolve A, AAAA,
-and SVCB records for
-the SvcDomainName.  If the SVCB record does not exist, add the A and AAAA
-records to the Additional section.  Otherwise, go to step 1,
-subject to loop detection heuristics.<a href="#section-4-3.3" class="pilcrow">¶</a>
+<li id="section-4.2-3.2.2.2">Otherwise, incorporate the results of A and AAAA resolution, and
+terminate.<a href="#section-4.2-3.2.2.2" class="pilcrow">¶</a>
+</li>
+</ul>
+</li>
+<li id="section-4.2-3.3">All the resolved SVCB records are in ServiceForm.  Resolve A and AAAA
+queries for each SvcDomainName (or for the owner name if SvcDomainName
+is "."), incorporate all the results, and terminate.<a href="#section-4.2-3.3" class="pilcrow">¶</a>
 </li>
 </ol>
-<p id="section-4-4">All DNS servers SHOULD treat the SvcParam portion of the SVCB RR
+<p id="section-4.2-4">In this procedure, "resolve" means the resolver's ordinary recursive
+resolution procedure, as if processing a query for that RRSet.
+This includes following any aliases that the resolver would ordinarily
+follow (e.g. CNAME, <span>[<a href="#DNAME" class="xref">DNAME</a>]</span>).<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="general-requirements">
+<section id="section-4.3">
+        <h3 id="name-general-requirements">
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-general-requirements" class="section-name selfRef">General requirements</a>
+        </h3>
+<p id="section-4.3-1">All DNS servers SHOULD treat the SvcParam portion of the SVCB RR
 as opaque and SHOULD NOT try to alter their behavior based
-on its contents.<a href="#section-4-4" class="pilcrow">¶</a></p>
-<p id="section-4-5">When responding to a query that includes the DNSSEC OK bit (<span>[<a href="#RFC3225" class="xref">RFC3225</a>]</span>),
+on its contents.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-2">When responding to a query that includes the DNSSEC OK bit (<span>[<a href="#RFC3225" class="xref">RFC3225</a>]</span>),
 DNSSEC-capable recursive and authoritative DNS servers MUST accompany
 each RRSet in the Additional section with the same DNSSEC-related records
-that it would send when providing that RRSet as an Answer.<a href="#section-4-5" class="pilcrow">¶</a></p>
+that they would send when providing that RRSet as an Answer (e.g. RRSIG, NSEC,
+NSEC3).<a href="#section-4.3-2" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="optimizations">
@@ -1917,16 +1969,23 @@ with any active or in-progress connection,
 clients must proceed as described in Step 3 of the procedure in <a href="#client-behavior" class="xref">Section 3</a>.<a href="#section-5.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="preferring-usable-records">
+<div id="generating-and-using-incomplete-responses">
 <section id="section-5.2">
-        <h3 id="name-preferring-usable-records">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-preferring-usable-records" class="section-name selfRef">Preferring usable records</a>
+        <h3 id="name-generating-and-using-incomp">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-generating-and-using-incomp" class="section-name selfRef">Generating and using incomplete responses</a>
         </h3>
-<p id="section-5.2-1">A nonconforming recursive resolver might not return all the information
-required to use all the records in an SVCB response.  If
-some of the SVCB records in the response can be used without requiring
-additional DNS queries, the client MAY prefer those records, regardless of
-their priorities.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-1">When following the procedure in <a href="#recursive-behavior" class="xref">Section 4.2</a>, recursive
+resolvers MAY terminate the procedure early and produce a reply that omits
+some of the associated RRSets.  This might be appropriate when
+the maximum response size is reached, or when responding before fully
+chasing dependencies would improve performance.  When omitting certain
+RRSets, recursive resolvers SHOULD prioritize information from
+higher priority ServiceForm records over lower priority ServiceForm records.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-5.2-2">As discussed in <a href="#client-behavior" class="xref">Section 3</a>, clients MUST be able fetch additional
+information that is required to use an SVCB record, if it is not included
+in the initial response.  As a performance optimization, if some of the SVCB
+records in the response can be used without requiring additional DNS queries,
+the client MAY prefer those records, regardless of their priorities.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="structuring-zones-for-performance">
@@ -2528,6 +2587,9 @@ and others for their feedback and suggestions on this draft.<a href="#section-12
 <dt id="base64">[base64]</dt>
 <dd>
 <span class="refAuthor">Josefsson, S.</span>, <span class="refTitle">"The Base16, Base32, and Base64 Data Encodings"</span>, <span class="seriesInfo">RFC 4648</span>, <span class="seriesInfo">DOI 10.17487/RFC4648</span>, <time datetime="2006-10">October 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4648">https://www.rfc-editor.org/info/rfc4648</a>&gt;</span>. </dd>
+<dt id="DNAME">[DNAME]</dt>
+<dd>
+<span class="refAuthor">Rose, S.</span><span class="refAuthor"> and W. Wijngaards</span>, <span class="refTitle">"DNAME Redirection in the DNS"</span>, <span class="seriesInfo">RFC 6672</span>, <span class="seriesInfo">DOI 10.17487/RFC6672</span>, <time datetime="2012-06">June 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6672">https://www.rfc-editor.org/info/rfc6672</a>&gt;</span>. </dd>
 <dt id="ESNI">[ESNI]</dt>
 <dd>
 <span class="refAuthor">Rescorla, E.</span><span class="refAuthor">, Oku, K.</span><span class="refAuthor">, Sullivan, N.</span><span class="refAuthor">, and C. Wood</span>, <span class="refTitle">"Encrypted Server Name Indication for TLS 1.3"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-tls-esni-05</span>, <time datetime="2019-11-04">4 November 2019</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-tls-esni-05.txt">http://www.ietf.org/internet-drafts/draft-ietf-tls-esni-05.txt</a>&gt;</span>. </dd>
