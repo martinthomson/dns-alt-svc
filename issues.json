@@ -1,6 +1,54 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/101",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/101/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/101/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/101/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/101",
+    "id": 550245634,
+    "node_id": "MDU6SXNzdWU1NTAyNDU2MzQ=",
+    "number": 101,
+    "title": "Include Alt-Used example",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-01-15T15:10:24Z",
+    "updated_at": "2020-01-15T15:10:24Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "It would be good to include an example for Alt-Used (or mention it in a previous example).\r\n\r\nThe {client-behavior} reference is also broken."
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/100",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/100/labels{/name}",
@@ -883,7 +931,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-25T23:31:09Z",
-    "updated_at": "2019-11-25T23:31:09Z",
+    "updated_at": "2020-01-14T23:40:36Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1363,7 +1411,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T19:32:01Z",
-    "updated_at": "2019-11-13T20:45:53Z",
+    "updated_at": "2020-01-14T23:18:23Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1417,7 +1465,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T18:34:08Z",
-    "updated_at": "2019-12-13T18:12:27Z",
+    "updated_at": "2020-01-15T15:17:07Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1737,7 +1785,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-04T16:39:30Z",
-    "updated_at": "2019-11-04T16:39:31Z",
+    "updated_at": "2020-01-15T15:04:16Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1747,7 +1795,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/72.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/71",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1801,10 +1852,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/71.patch"
     },
     "body": "Matches the terminology from https://github.com/tlswg/draft-ietf-tls-esni/pull/187\r\n\r\n@chris-wood FYI"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/70",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1839,7 +1887,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -1848,8 +1896,8 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2019-10-25T21:17:53Z",
-    "updated_at": "2019-11-04T16:17:44Z",
-    "closed_at": null,
+    "updated_at": "2020-01-14T22:56:56Z",
+    "closed_at": "2020-01-14T22:56:56Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/70",
@@ -3436,7 +3484,10 @@
     "closed_at": "2019-11-04T21:32:28Z",
     "author_association": "COLLABORATOR",
     "body": "We should add a note to Security Considerations indicating that HTTPSSVC is unauthenticated in many cases (ie, unless DNSSEC is present and verified) and thus care should be taken around Alt-Svc parameters that imply trust.\r\n\r\nI wonder if we should be explicit to say that Alt-Svc parameters must opt-in to indicate that they can be used in HTTPSSVC?  (As even with \"ma\" we've had to define constraints.)\r\n\r\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/41",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3484,10 +3535,7 @@
     "closed_at": "2019-11-04T21:31:07Z",
     "author_association": "COLLABORATOR",
     "body": "From Mark Andrews:\r\n\r\n================================\r\n\r\nIntroductory Example: The example record\r\n\r\nexample.com.      2H  IN HTTPSSVC 0 0 svc.example.net.\r\n\r\ndoes not match the description of the record (missing last field). It should be:\r\n\r\nexample.com.      7200  IN HTTPSSVC 0 0 svc.example.net. “”\r\n\r\nSimilarly in 2.4.  HTTPSSVC records: alias form\r\n\r\nAlso don’t use 2H for the TTL.  While some servers will accept it, it is not RFC compliant.\r\n\r\nUnless these is a real reason for the record to be class agnostic please specify that\r\nit is class IN specific."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/40",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5131,7 +5179,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/12.patch"
     },
     "body": "This should address Mike's formatting comments from the main review."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/11",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5185,10 +5236,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/11.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/10",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
