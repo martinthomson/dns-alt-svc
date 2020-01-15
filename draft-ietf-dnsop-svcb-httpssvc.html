@@ -2216,9 +2216,16 @@ this parameter is not safe to accept over an untrusted channel.<a href="#section
           </h4>
 <p id="section-7.3.2-1">There is no SvcParamKey corresponding to the Alt-Svc "ma" (max age) parameter.
 Instead, server operators SHOULD encode the expiration time in the DNS TTL.<a href="#section-7.3.2-1" class="pilcrow">¶</a></p>
-<p id="section-7.3.2-2">Some DNS caching systems incorrectly extend the lifetime of DNS
-records beyond the stated TTL.  Server operators MUST NOT rely on
-HTTPSSVC records expiring on time, and MAY shorten the TTL to compensate.<a href="#section-7.3.2-2" class="pilcrow">¶</a></p>
+<p id="section-7.3.2-2">The appropriate TTL value will typically be similar to the "ma" value
+used for Alt-Svc, but may vary depending on the desired efficiency and
+agility.  Some DNS caches incorrectly extend the lifetime of DNS
+records beyond the stated TTL, so server operators cannot rely on
+HTTPSSVC records expiring on time.  Shortening the TTL to compensate
+for incorrect caching is NOT RECOMMENDED, as this practice impairs the
+performance of correctly functioning caches and does not guarantee
+faster expiration from incorrect caches.  Instead, server operators
+SHOULD maintain compatibility with expired records until they observe
+that nearly all connections have migrated to the new configuration.<a href="#section-7.3.2-2" class="pilcrow">¶</a></p>
 <p id="section-7.3.2-3">Sending Alt-Svc over HTTP allows the server to tailor the Alt-Svc
 Field Value specifically to the client.  When using an HTTPSSVC DNS
 record, groups of clients will necessarily receive the same Alt-Svc
