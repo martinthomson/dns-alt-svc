@@ -2057,8 +2057,8 @@ specification.  This section specifies the mapping for HTTPS and HTTP.<a href="#
 <p id="section-7-2">To enable special handling for the HTTPS and HTTP use-cases,
 the HTTPSSVC RR type is defined as an SVCB-compatible RR type,
 specific to the https and http schemes.  Clients MUST NOT
-perform SVCB queries or accept SVCB responses for https
-or http schemes.<a href="#section-7-2" class="pilcrow">¶</a></p>
+perform SVCB queries or accept SVCB responses for "https"
+or "http" schemes.<a href="#section-7-2" class="pilcrow">¶</a></p>
 <p id="section-7-3">The HTTPSSVC wire format and presentation format are
 identical to SVCB, and both share the SvcParamKey registry.  SVCB
 semantics apply equally to HTTPSSVC unless specified otherwise.
@@ -2067,10 +2067,10 @@ HTTPSSVC, and the "alpn" SvcParamKey is REQUIRED.  Its value MUST
 be an ALPN that is suitable for use with HTTPS.  For example, the
 value MAY be "http/1.1", "h2", or "h3", but MUST NOT be "h2c" or
 "ftp".<a href="#section-7-3" class="pilcrow">¶</a></p>
-<p id="section-7-4">The presence of an HTTPSSVC record for an HTTP or HTTPS service also
-provides an indication that all resources are available over HTTPS, as
+<p id="section-7-4">The presence of an HTTPSSVC record for an origin also indicates
+that all HTTP resources are available over HTTPS, as
 discussed in <a href="#hsts" class="xref">Section 7.4</a>.  This allows HTTPSSVC RRs to apply to
-pre-existing HTTP scheme URLs, while ensuring that the client uses a
+pre-existing "http" scheme URLs, while ensuring that the client uses a
 secure and authenticated HTTPS connection.<a href="#section-7-4" class="pilcrow">¶</a></p>
 <p id="section-7-5">The HTTPSSVC RR parallels the concepts
 introduced in the HTTP Alternative Services proposed standard
@@ -2085,22 +2085,26 @@ will implement both, and a partial mapping exists between them
         </h3>
 <p id="section-7.1-1">The HTTPSSVC RR extends the behavior for determining
 a QNAME specified above in <a href="#svcb-names" class="xref">Section 2.3</a>.
-In particular, if the scheme is "https" with port 443, or the scheme
-is "http" and the port is 80, then the client's original QNAME is
-equal to the origin host name.  By removing the <span>[<a href="#Attrleaf" class="xref">Attrleaf</a>]</span> labels
+In particular, if the scheme is "https" with port 443
+then the client's original QNAME is
+equal to the origin host name.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.1-2">By removing the <span>[<a href="#Attrleaf" class="xref">Attrleaf</a>]</span> labels
 used in SVCB, this construction enables offline DNSSEC signing of
 wildcard domains, which are commonly used with HTTPS.  Reusing the
 origin hostname also allows the targets of existing CNAME chains
 (e.g. CDN hosts) to start returning HTTPSSVC responses without
 requiring origin domains to configure and maintain an additional
-delegation.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
-<p id="section-7.1-2">For origins other than https with port 443 and http with port 80,
+delegation.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
+<p id="section-7.1-3">For HTTPS origins with ports other than 443,
 the port and scheme continue to be prefixed to the hostname
 as described in <a href="#svcb-names" class="xref">Section 2.3</a>.  Following of HTTPSSVC AliasForm and
-CNAME aliases is also unchanged from SVCB.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
-<p id="section-7.1-3">Note that none of these forms alter the HTTPS origin or authority.
+CNAME aliases is also unchanged from SVCB.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
+<p id="section-7.1-4">Clients always convert "http" URLS to "https" before performing an
+HTTPSSVC query using the process described in <a href="#hsts" class="xref">Section 7.4</a>, so domain owners
+MUST NOT publish HTTPSSVC records with a prefix of "_http".<a href="#section-7.1-4" class="pilcrow">¶</a></p>
+<p id="section-7.1-5">Note that none of these forms alter the HTTPS origin or authority.
 For example, clients MUST continue to validate TLS certificate
-hostnames based on the origin host.<a href="#section-7.1-3" class="pilcrow">¶</a></p>
+hostnames based on the origin host.<a href="#section-7.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="populating-alt-used">
@@ -2444,7 +2448,7 @@ range of the Resource Record (RR) TYPEs registry:<a href="#section-11.2-1" class
             </tr>
           </tbody>
         </table>
-<p id="section-11.2-3">Per <span>[<a href="#Attrleaf" class="xref">Attrleaf</a>]</span>, please add the following entries to the DNS Underscore
+<p id="section-11.2-3">Per <span>[<a href="#Attrleaf" class="xref">Attrleaf</a>]</span>, please add the following entry to the DNS Underscore
 Global Scoped Entry Registry:<a href="#section-11.2-3" class="pilcrow">¶</a></p>
 <table class="center" id="table-3">
           <caption><a href="#table-3" class="selfRef">Table 3</a></caption>
@@ -2460,12 +2464,6 @@ Global Scoped Entry Registry:<a href="#section-11.2-3" class="pilcrow">¶</a></p
             <tr>
               <td class="text-left" rowspan="1" colspan="1">HTTPSSVC</td>
               <td class="text-left" rowspan="1" colspan="1">_https</td>
-              <td class="text-left" rowspan="1" colspan="1">Alt-Svc for HTTPS</td>
-              <td class="text-left" rowspan="1" colspan="1">(This document)</td>
-            </tr>
-            <tr>
-              <td class="text-left" rowspan="1" colspan="1">HTTPSSVC</td>
-              <td class="text-left" rowspan="1" colspan="1">_http</td>
               <td class="text-left" rowspan="1" colspan="1">Alt-Svc for HTTPS</td>
               <td class="text-left" rowspan="1" colspan="1">(This document)</td>
             </tr>
