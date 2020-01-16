@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/102",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/102/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/102/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/102/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/102",
+    "id": 550251864,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzYzMTkxMzUy",
+    "number": 102,
+    "title": "Alt-Used example",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 1,
+    "created_at": "2020-01-15T15:19:56Z",
+    "updated_at": "2020-01-15T22:51:40Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/102",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/102",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/102.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/102.patch"
+    },
+    "body": "* Add an example for Alt-Used per issue #101  (although exact details may need to change depending on other PRs around alpn vs transport).\r\n* Fix reference to client-behavior"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/101",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/101/labels{/name}",
@@ -36,14 +90,52 @@
     ],
     "state": "open",
     "locked": false,
-    "assignee": null,
+    "assignee": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
     "assignees": [
-
+      {
+        "login": "enygren",
+        "id": 6840678,
+        "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/enygren",
+        "html_url": "https://github.com/enygren",
+        "followers_url": "https://api.github.com/users/enygren/followers",
+        "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+        "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+        "organizations_url": "https://api.github.com/users/enygren/orgs",
+        "repos_url": "https://api.github.com/users/enygren/repos",
+        "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/enygren/received_events",
+        "type": "User",
+        "site_admin": false
+      }
     ],
     "milestone": null,
     "comments": 0,
     "created_at": "2020-01-15T15:10:24Z",
-    "updated_at": "2020-01-15T15:10:24Z",
+    "updated_at": "2020-01-15T17:13:15Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "It would be good to include an example for Alt-Used (or mention it in a previous example).\r\n\r\nThe {client-behavior} reference is also broken."
@@ -89,9 +181,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 3,
     "created_at": "2020-01-14T22:51:00Z",
-    "updated_at": "2020-01-14T22:51:00Z",
+    "updated_at": "2020-01-16T00:50:15Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "In digging into production use-cases, there may be scenarios where the \"HTTPSSVC means HTTPS-only\" is problematic.  For example, it may prevent a CDN from turning it on by default (as this means forcing everything to HTTPS-by-default which may not be possible for some customer content) which in-turns prevents turning on Encrypted SNI by default.\r\n\r\nLeaving the HSTS-like behavior as the default makes sense, but this asks the question as to whether an optional \"allow-insecure\" parameter should be included (with the default still being secure).  This opens up cans of worms from a security perspective but could ease deployment in some cases."
@@ -233,9 +325,9 @@
 
     ],
     "milestone": null,
-    "comments": 7,
+    "comments": 10,
     "created_at": "2019-12-19T20:23:31Z",
-    "updated_at": "2020-01-03T22:09:26Z",
+    "updated_at": "2020-01-16T16:00:06Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -335,9 +427,9 @@
 
     ],
     "milestone": null,
-    "comments": 5,
+    "comments": 6,
     "created_at": "2019-12-17T17:45:58Z",
-    "updated_at": "2019-12-19T20:56:35Z",
+    "updated_at": "2020-01-15T19:00:27Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "It seems the only parameters which allow this is ipv4hint and ipv6hint, which is not necessary because the value serialization supports multiple addresses (https://github.com/MikeBishop/dns-alt-svc/pull/94).\r\n\r\nWhy do we need this? I think we should only allow one value per parameter.\r\n\r\nThis means duplicate values can be rejected generically in the parser. Right now the spec says individual parameters silently ignore all but the first value. Silently ignoring things isn't great. Other protocols like Roughtime further require keys be sorted, which makes it easy for the parser to reject duplicates generically.\r\n\r\nThis also avoids questions when designing a new parameter as to whether to use multiple parameter values or to encode multiple structures in the value. We should have one way to do things, so let's use the latter."
@@ -383,9 +475,9 @@
 
     ],
     "milestone": null,
-    "comments": 3,
+    "comments": 5,
     "created_at": "2019-12-17T17:10:45Z",
-    "updated_at": "2019-12-19T20:53:18Z",
+    "updated_at": "2020-01-15T21:29:36Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "pull_request": {
@@ -695,7 +787,7 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2019-12-06T22:23:33Z",
-    "updated_at": "2019-12-19T16:30:13Z",
+    "updated_at": "2020-01-15T21:05:51Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -922,7 +1014,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -931,8 +1023,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-25T23:31:09Z",
-    "updated_at": "2020-01-14T23:40:36Z",
-    "closed_at": null,
+    "updated_at": "2020-01-15T21:25:21Z",
+    "closed_at": "2020-01-15T21:25:20Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/85",
@@ -1062,7 +1154,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "bemasc",
@@ -1109,8 +1201,8 @@
     "milestone": null,
     "comments": 3,
     "created_at": "2019-11-25T21:39:19Z",
-    "updated_at": "2019-11-25T22:54:33Z",
-    "closed_at": null,
+    "updated_at": "2020-01-15T21:25:20Z",
+    "closed_at": "2020-01-15T21:25:20Z",
     "author_association": "NONE",
     "body": "Examples like this one (from section 1.1) use a notation where the SvcFieldValue is surrounded by parentheses.\r\n```\r\n   ; ServiceForm\r\n   svc.example.net.  7200  IN HTTPSSVC 2 svc3.example.net. ( alpn=h3\r\n                                       port=8003 esniconfig=\"...\" )\r\n```\r\n\r\nIt looks like the top-level production rule is this:\r\n```\r\n   pair          = display-key \"=\" value\r\n```\r\n\r\nShouldn't there be a rule just one level higher? Something like this?\r\n```\r\n   svc-field-value = [ \"(\" 1*pair \")\" ]\r\n```\r\n"
   },
@@ -1402,7 +1494,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -1411,8 +1503,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T19:32:01Z",
-    "updated_at": "2020-01-14T23:18:23Z",
-    "closed_at": null,
+    "updated_at": "2020-01-15T22:50:13Z",
+    "closed_at": "2020-01-15T22:50:13Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/77",
@@ -1456,7 +1548,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -1465,8 +1557,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T18:34:08Z",
-    "updated_at": "2020-01-15T15:17:07Z",
-    "closed_at": null,
+    "updated_at": "2020-01-15T22:51:41Z",
+    "closed_at": "2020-01-15T22:51:41Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/76",
@@ -1510,7 +1602,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "bemasc",
@@ -1557,8 +1649,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T16:31:01Z",
-    "updated_at": "2019-11-25T20:09:56Z",
-    "closed_at": null,
+    "updated_at": "2020-01-15T22:50:12Z",
+    "closed_at": "2020-01-15T22:50:12Z",
     "author_association": "COLLABORATOR",
     "body": "* Disentangle description of recursive and authoritative server behavior in section 4\r\n* Explain why alias and service forms need to share an RR type\r\n* Clarify interaction between CNAME and AliasForm in Section 4\r\n* State clearly that only A and AAAA records will ever need to be added to the response\r\n"
   },
@@ -1596,7 +1688,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": {
       "login": "bemasc",
@@ -1643,8 +1735,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-13T16:23:04Z",
-    "updated_at": "2019-11-25T20:24:42Z",
-    "closed_at": null,
+    "updated_at": "2020-01-15T22:51:41Z",
+    "closed_at": "2020-01-15T22:51:41Z",
     "author_association": "COLLABORATOR",
     "body": "The current text recommends shortening the TTL to compensate for misbehaving clients.  This is not a good recommendation, since some clients will just ignore the shorter TTL.  Instead, we should just mention that servers cannot rely on prompt expiration.\r\n\r\nCredit: @puneetsood"
   },
@@ -1741,7 +1833,10 @@
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "Currently, if a server publishes a QUIC-only HTTPSSVC RRSet with ESNI, there is no way for a client to fall back to a non-QUIC connection, because doing so would reveal the SNI.  This could increase the likelihood of partial outages for server admins who haven't considered the small fraction of users whose network path does not support QUIC.\r\n\r\nReviewers have reported concerns that this creates an undesirable level of fragility.  We should consider whether there is an alternative design that would be less likely to result in accidental breakage."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/72",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1776,7 +1871,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -1785,8 +1880,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-11-04T16:39:30Z",
-    "updated_at": "2020-01-15T15:04:16Z",
-    "closed_at": null,
+    "updated_at": "2020-01-15T22:47:41Z",
+    "closed_at": "2020-01-15T22:47:41Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
       "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/72",
@@ -1795,10 +1890,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/72.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/71",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3436,7 +3528,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/43.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/42",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3484,10 +3579,7 @@
     "closed_at": "2019-11-04T21:32:28Z",
     "author_association": "COLLABORATOR",
     "body": "We should add a note to Security Considerations indicating that HTTPSSVC is unauthenticated in many cases (ie, unless DNSSEC is present and verified) and thus care should be taken around Alt-Svc parameters that imply trust.\r\n\r\nI wonder if we should be explicit to say that Alt-Svc parameters must opt-in to indicate that they can be used in HTTPSSVC?  (As even with \"ma\" we've had to define constraints.)\r\n\r\n"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/41",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5125,7 +5217,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/13.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/12",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5179,10 +5274,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/12.patch"
     },
     "body": "This should address Mike's formatting comments from the main review."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/11",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
