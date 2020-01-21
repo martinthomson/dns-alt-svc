@@ -143,12 +143,12 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
      8.2.  Deployment considerations . . . . . . . . . . . . . . . .  26
        8.2.1.  Ensuring ESNI is used . . . . . . . . . . . . . . . .  26
        8.2.2.  Max age and TTL . . . . . . . . . . . . . . . . . . .  26
-       8.2.3.  Transfer of hosting service . . . . . . . . . . . . .  26
+       8.2.3.  Transfer of hosting service . . . . . . . . . . . . .  27
        8.2.4.  Reliability and outages . . . . . . . . . . . . . . .  27
    9.  Interaction with other standards  . . . . . . . . . . . . . .  27
    10. Security Considerations . . . . . . . . . . . . . . . . . . .  28
      10.1.  Downgrade attacks on ESNI  . . . . . . . . . . . . . . .  28
-   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  28
+   11. IANA Considerations . . . . . . . . . . . . . . . . . . . . .  29
      11.1.  New registry for Service Parameters  . . . . . . . . . .  29
        11.1.1.  Procedure  . . . . . . . . . . . . . . . . . . . . .  29
        11.1.2.  Initial contents . . . . . . . . . . . . . . . . . .  29
@@ -1335,8 +1335,8 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
    If a client implements support for esniconfig in HTTPSSVC, but not in
    Alt-Svc, it MUST NOT skip the HTTPSSVC lookup when an Alt-Svc entry
-   is in cache, and MUST NOT use cached Alt-Svc entries if an ESNI
-   connection with HTTPSSVC fails.
+   is in cache, and MUST prefer any HTTPSSVC RRs with esniconfig over
+   any Alt-Svc entries in the cache.
 
 
 
@@ -1351,12 +1351,14 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    The Alt-Svc specification states that "the client MAY fall back to
    using the origin" in case of connection failure (Section 2.4 of
    [AltSvc]).  This behavior is not suitable for ESNI, because fallback
-   would negate the privacy benefits of ESNI.
+   would negate the privacy benefits of ESNI.  To avoid harmful fallback
+   behaviors, we describe ESNI as "locked" for the duration of
+   connection establishment once an ESNI connection is attempted.
 
-   Accordingly, any connection attempt that uses ESNI MUST fall back
-   only to another alt-value that also has the esniconfig parameter.  If
-   the parameter's value is the empty string, the client SHOULD connect
-   as it would in the absence of any ESNIConfig information.
+   When ESNI is locked, any connection attempt MUST use another alt-
+   value that also has the esniconfig parameter.  If the parameter's
+   value is the empty string, the client SHOULD connect as it would in
+   the absence of any ESNIConfig information.
 
    For example, suppose a server operator has two alternatives.
    Alternative A is reliably accessible but does not support ESNI.
@@ -1368,11 +1370,10 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    Other clients and services implementing SVCB or HTTPSSVC with
    esniconfig are encouraged to take a similar approach.
 
-   When falling back from Alt-Svc to HTTPSSVC after attempting ESNI, the
-   client MUST follow the usual HTTPSSVC connection procedure,
-   preferring non-empty esniconfig if available as specified in
-   Section 8.  If the client does not support HTTPSSVC, it MUST fail the
-   connection to avoid enabling a downgrade attack.
+   When falling back from Alt-Svc to HTTPSSVC, ESNI is always unlocked,
+   and the client MUST follow the usual HTTPSSVC connection procedure as
+   specified in Section 8.  If the client does not support HTTPSSVC, it
+   MUST fail the connection to avoid enabling a downgrade attack.
 
 8.1.1.  Non-authoritative servers
 
@@ -1384,16 +1385,15 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
       the idempotency of the request method, they MAY retry the request,
       either at another alternative server, or at the origin.
 
-   If the entry contains an "esniconfig" SvcParamKey, removing the
-   cached entry also removes the requirement to fall back only to other
-   ESNI connections.  Therefore, the client MAY try other Alt-Svc Field
-   Values that do not include esniconfig, and SHOULD fall back to basic
-   connection establishment if it does not support HTTPSSVC.
+   Removing the cached entry also unlocks ESNI if it was locked.
+   Therefore, the client MAY try other Alt-Svc Field Values that do not
+   include esniconfig, and SHOULD fall back to basic connection
+   establishment if it does not support HTTPSSVC.
 
    If the client receives a TLS ServerHello containing a valid ESNI
    reply (including the expected nonce value), but the server is not
    authoritative for the origin (e.g. no certificate matches the
-
+   origin's name), the client MUST similarly unlock ESNI.
 
 
 
@@ -1401,9 +1401,6 @@ Schwartz, et al.          Expires 24 July 2020                 [Page 25]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
-
-   origin's name), the client MUST follow the same Alt-Svc-related
-   procedures as it would on receipt of an HTTP 421 response.
 
    To facilitate correct client behavior, HTTPS hosting providers that
    support ESNI MUST reply with a correct ESNI response when receiving a
@@ -1417,14 +1414,15 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    Origins MAY use esniconfig in Alt-Svc, HTTPSSVC, both, or neither.
    Depending on the origin configuration, some compliant clients might
    not be able to use ESNI, or might use ESNI sporadically.  For
-   example, if the origin publishes esniconfig in HTTPSSVC but not in
-   Alt-Svc, a compliant client could use ESNI for fresh connections
-   (requiring an HTTPSSVC query) but not for reconnections (using the
-   Alt-Svc cache).
+   example, if the origin publishes HTTPSSVC RRs with esniconfig, and
+   sends Alt-Svc Field Values without esniconfig, a compliant client
+   would use ESNI for fresh connections (requiring an HTTPSSVC query)
+   but not for reconnections (using the Alt-Svc cache).
 
    Including nonempty esniconfig in both Alt-Svc and HTTPSSVC will
-   ensure that ESNI protection extends to the greatest number of
-   clients.
+   ensure that ESNI protection is consistent for the greatest number of
+   clients, and also protect against downgrade attacks (see
+   Section 10.1)
 
 8.2.2.  Max age and TTL
 
@@ -1443,13 +1441,15 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    SHOULD retain the ESNI private key until all corresponding esniconfig
    values have expired.
 
-8.2.3.  Transfer of hosting service
 
-   When an origin transitions from one hosting provider to another,
-   clients might retain cached Alt-Svc field values from the first
-   hosting provider for days or weeks, as specified by the "ma"
-   parameter.  Accordingly, origin operators necessarily rely on their
-   hosting provider to behave correctly after the termination of their
+
+
+
+
+
+
+
+
 
 
 
@@ -1458,6 +1458,13 @@ Schwartz, et al.          Expires 24 July 2020                 [Page 26]
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
 
+8.2.3.  Transfer of hosting service
+
+   When an origin transitions from one hosting provider to another,
+   clients might retain cached Alt-Svc field values from the first
+   hosting provider for days or weeks, as specified by the "ma"
+   parameter.  Accordingly, origin operators necessarily rely on their
+   hosting provider to behave correctly after the termination of their
    service relationship.  For example, if a hosting provider deploys
    Alt-Svc, customers rely on the provider not to serve an HTTP 404
    error on their origin after they terminate service.
@@ -1498,14 +1505,7 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    which confer substantial performance and privacy benefits when used
    in combination with SVCB records.
 
-   To realize the greatest privacy benefits, this proposal is intended
-   for use over a privacy-preserving DNS transport (like DNS over TLS
-   [RFC7858] or DNS over HTTPS [RFC8484]).  However, performance
-   improvements, and some modest privacy improvements, are possible
-   without the use of those standards.
 
-   Any specification for use of SVCB with a protocol MUST have an entry
-   for its scheme under the SVCB RR type in the IANA DNS Underscore
 
 
 
@@ -1514,6 +1514,14 @@ Schwartz, et al.          Expires 24 July 2020                 [Page 27]
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
 
+   To realize the greatest privacy benefits, this proposal is intended
+   for use over a privacy-preserving DNS transport (like DNS over TLS
+   [RFC7858] or DNS over HTTPS [RFC8484]).  However, performance
+   improvements, and some modest privacy improvements, are possible
+   without the use of those standards.
+
+   Any specification for use of SVCB with a protocol MUST have an entry
+   for its scheme under the SVCB RR type in the IANA DNS Underscore
    Global Scoped Entry Registry [Attrleaf].  The scheme SHOULD have an
    entry in the IANA URI Schemes Registry [RFC7595].  The scheme SHOULD
    have a defined specification for use with SVCB.
@@ -1538,30 +1546,22 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
    interfering with TLS connections that use ESNI, in order to trigger a
    fallback to a non-ESNI connection.  A connection between a compliant
    client and origin is resistant to network downgrade attacks if the
-   origin meets all of the following conditions: - The origin does not
-   use esniconfig="" (empty esniconfig). - An HTTPSSVC query for the
-   origin always resolves to a ServiceForm RRSet. - All ServiceForm RRs
-   contain esniconfig. - Any Alt-Svc field values provided to the client
-   specify esniconfig.
+   origin meets all of the following conditions:
+
+   *  The origin does not use esniconfig="" (empty esniconfig).
+
+   *  An HTTPSSVC query for the origin always resolves to a ServiceForm
+      RRSet.
+
+   *  All ServiceForm RRs contain esniconfig.
+
+   *  Any Alt-Svc field values provided to the client specify
+      esniconfig.
 
    These conditions are all under the control of the origin.
 
    A DNS downgrade attack consists of a DNS intermediary that produces
    incorrect resolution results, in order to cause its clients not to
-   activate ESNI.  This specification is resistant to DNS downgrade
-   attacks if either of the following conditions is met: - All zones in
-   the HTTPSSVC resolution chain are DNSSEC-signed, and the client
-   enforces DNSSEC validation. - The origin provides esniconfig in Alt-
-   Svc, and the client supports esniconfig in Alt-Svc and has cached
-   this Alt-Svc Field Value.
-
-11.  IANA Considerations
-
-
-
-
-
-
 
 
 
@@ -1569,6 +1569,18 @@ Schwartz, et al.          Expires 24 July 2020                 [Page 28]
 
 Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
+
+   activate ESNI.  This specification is resistant to DNS downgrade
+   attacks if either of the following conditions is met:
+
+   *  All zones in the HTTPSSVC resolution chain are DNSSEC-signed, and
+      the client enforces DNSSEC validation.
+
+   *  The origin provides esniconfig in Alt-Svc, and the client supports
+      esniconfig in Alt-Svc and has this Alt-Svc Field Value in its
+      cache.
+
+11.  IANA Considerations
 
 11.1.  New registry for Service Parameters
 
@@ -1600,18 +1612,6 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS         January 2020
 
    The "Service Binding (SVCB) Parameter Registry" shall initially be
    populated with the registrations below:
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

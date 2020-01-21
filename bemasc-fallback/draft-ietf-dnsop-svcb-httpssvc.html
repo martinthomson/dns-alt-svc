@@ -2349,7 +2349,8 @@ once in a single alt-value.<a href="#section-8-3" class="pilcrow">¶</a></p>
 support for HTTPSSVC, it MUST support esniconfig in HTTPSSVC as well.<a href="#section-8-4" class="pilcrow">¶</a></p>
 <p id="section-8-5">If a client implements support for esniconfig in HTTPSSVC, but not in Alt-Svc,
 it MUST NOT skip the HTTPSSVC lookup when an Alt-Svc entry is in cache, and
-MUST NOT use cached Alt-Svc entries if an ESNI connection with HTTPSSVC fails.<a href="#section-8-5" class="pilcrow">¶</a></p>
+MUST prefer any HTTPSSVC RRs with esniconfig over any Alt-Svc entries in
+the cache.<a href="#section-8-5" class="pilcrow">¶</a></p>
 <div id="alt-svc-fallback-behaviors">
 <section id="section-8.1">
         <h3 id="name-alt-svc-fallback-behaviors">
@@ -2359,9 +2360,11 @@ MUST NOT use cached Alt-Svc entries if an ESNI connection with HTTPSSVC fails.<a
 the origin" in case of connection failure (Section 2.4 of <span>[<a href="#AltSvc" class="xref">AltSvc</a>]</span>).
 This behavior is
 not suitable for ESNI, because fallback would negate the privacy benefits of
-ESNI.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<p id="section-8.1-2">Accordingly, any connection attempt that uses ESNI MUST fall back only to
-another alt-value that also has the esniconfig parameter.  If the parameter's
+ESNI.  To avoid harmful fallback behaviors, we describe ESNI as "locked"
+for the duration of connection establishment once an ESNI connection is
+attempted.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<p id="section-8.1-2">When ESNI is locked, any connection attempt MUST use another alt-value that
+also has the esniconfig parameter.  If the parameter's
 value is the empty string, the client SHOULD connect as it would in the
 absence of any ESNIConfig information.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
 <p id="section-8.1-3">For example, suppose a server operator has two alternatives.  Alternative A
@@ -2371,11 +2374,10 @@ full esniconfig value in Alternative B, and mark Alternative A with esniconfig="
 to indicate that fallback from B to A is allowed.<a href="#section-8.1-3" class="pilcrow">¶</a></p>
 <p id="section-8.1-4">Other clients and services implementing SVCB or HTTPSSVC with esniconfig
 are encouraged to take a similar approach.<a href="#section-8.1-4" class="pilcrow">¶</a></p>
-<p id="section-8.1-5">When falling back from Alt-Svc to HTTPSSVC after attempting ESNI, the client
-MUST follow the usual HTTPSSVC connection procedure, preferring non-empty
-esniconfig if available as specified in <a href="#esniconfig" class="xref">Section 8</a>.  If the client does
-not support HTTPSSVC, it MUST fail the connection to avoid enabling a
-downgrade attack.<a href="#section-8.1-5" class="pilcrow">¶</a></p>
+<p id="section-8.1-5">When falling back from Alt-Svc to HTTPSSVC, ESNI is always unlocked, and the
+client MUST follow the usual HTTPSSVC connection procedure as specified in
+<a href="#esniconfig" class="xref">Section 8</a>.  If the client does not support HTTPSSVC, it MUST fail the
+connection to avoid enabling a downgrade attack.<a href="#section-8.1-5" class="pilcrow">¶</a></p>
 <div id="non-authoritative">
 <section id="section-8.1.1">
           <h4 id="name-non-authoritative-servers">
@@ -2390,16 +2392,14 @@ idempotency of the request method, they MAY retry the request, either
 at another alternative server, or at the origin.<a href="#section-8.1.1-2.1" class="pilcrow">¶</a>
 </li>
 </ul>
-<p id="section-8.1.1-3">If the entry contains an "esniconfig" SvcParamKey, removing the cached entry
-also removes the requirement to fall back only to other ESNI connections.
-Therefore, the client MAY try other Alt-Svc Field Values that do not include
-esniconfig, and SHOULD fall back to basic connection establishment if it does
-not support HTTPSSVC.<a href="#section-8.1.1-3" class="pilcrow">¶</a></p>
+<p id="section-8.1.1-3">Removing the cached entry also unlocks ESNI if it was locked.  Therefore,
+the client MAY try other Alt-Svc Field Values
+that do not include esniconfig, and SHOULD fall back to basic connection
+establishment if it does not support HTTPSSVC.<a href="#section-8.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-8.1.1-4">If the client receives a TLS ServerHello containing a valid ESNI reply
 (including the expected nonce value), but the server is not authoritative
 for the origin (e.g. no certificate matches the origin's name), the client
-MUST follow the same Alt-Svc-related procedures as it would on receipt of an
-HTTP 421 response.<a href="#section-8.1.1-4" class="pilcrow">¶</a></p>
+MUST similarly unlock ESNI.<a href="#section-8.1.1-4" class="pilcrow">¶</a></p>
 <p id="section-8.1.1-5">To facilitate correct client behavior, HTTPS hosting providers that support
 ESNI MUST reply with a correct ESNI response when receiving a TLS
 ClientHello that contains ESNI, even if the decrypted SNI specifies a domain
@@ -2421,11 +2421,13 @@ for which the server is not authoritative.<a href="#section-8.1.1-5" class="pilc
 <p id="section-8.2.1-1">Origins MAY use esniconfig in Alt-Svc, HTTPSSVC, both, or neither.  Depending
 on the origin configuration, some compliant clients might not be able to use
 ESNI, or might use ESNI sporadically.  For example, if the origin publishes
-esniconfig in HTTPSSVC but not in Alt-Svc, a compliant client could use ESNI
-for fresh connections (requiring an HTTPSSVC query) but not for reconnections
-(using the Alt-Svc cache).<a href="#section-8.2.1-1" class="pilcrow">¶</a></p>
+HTTPSSVC RRs with esniconfig, and sends Alt-Svc Field Values without
+esniconfig, a compliant client would use ESNI for fresh connections
+(requiring an HTTPSSVC query) but not for reconnections (using the Alt-Svc
+cache).<a href="#section-8.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-8.2.1-2">Including nonempty esniconfig in both Alt-Svc and HTTPSSVC will ensure that
-ESNI protection extends to the greatest number of clients.<a href="#section-8.2.1-2" class="pilcrow">¶</a></p>
+ESNI protection is consistent for the greatest number of clients, and also
+protect against downgrade attacks (see <a href="#downgrade" class="xref">Section 10.1</a>)<a href="#section-8.2.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="max-age-and-ttl">
@@ -2529,7 +2531,7 @@ and using SVCB and HTTPSSVC records.<a href="#section-10-1" class="pilcrow">¶</
 network, or flushed on network changes, to prevent a local adversary in one
 network from implanting a forged DNS record that allows them to
 track users or hinder their connections after they leave that network.<a href="#section-10-2" class="pilcrow">¶</a></p>
-<div id="downgrade-attacks-on-esni">
+<div id="downgrade">
 <section id="section-10.1">
         <h3 id="name-downgrade-attacks-on-esni">
 <a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-downgrade-attacks-on-esni" class="section-name selfRef">Downgrade attacks on ESNI</a>
@@ -2538,20 +2540,30 @@ track users or hinder their connections after they leave that network.<a href="#
 with TLS connections that use ESNI, in order to trigger a fallback to a
 non-ESNI connection.  A connection between a compliant client and origin is
 resistant to network downgrade attacks if the origin meets all of the
-following conditions:
-- The origin does not use esniconfig="" (empty esniconfig).
-- An HTTPSSVC query for the origin always resolves to a ServiceForm RRSet.
-- All ServiceForm RRs contain esniconfig.
-- Any Alt-Svc field values provided to the client specify esniconfig.<a href="#section-10.1-1" class="pilcrow">¶</a></p>
-<p id="section-10.1-2">These conditions are all under the control of the origin.<a href="#section-10.1-2" class="pilcrow">¶</a></p>
-<p id="section-10.1-3">A DNS downgrade attack consists of a DNS intermediary that produces incorrect
+following conditions:<a href="#section-10.1-1" class="pilcrow">¶</a></p>
+<ul>
+<li id="section-10.1-2.1">The origin does not use esniconfig="" (empty esniconfig).<a href="#section-10.1-2.1" class="pilcrow">¶</a>
+</li>
+<li id="section-10.1-2.2">An HTTPSSVC query for the origin always resolves to a ServiceForm RRSet.<a href="#section-10.1-2.2" class="pilcrow">¶</a>
+</li>
+<li id="section-10.1-2.3">All ServiceForm RRs contain esniconfig.<a href="#section-10.1-2.3" class="pilcrow">¶</a>
+</li>
+<li id="section-10.1-2.4">Any Alt-Svc field values provided to the client specify esniconfig.<a href="#section-10.1-2.4" class="pilcrow">¶</a>
+</li>
+</ul>
+<p id="section-10.1-3">These conditions are all under the control of the origin.<a href="#section-10.1-3" class="pilcrow">¶</a></p>
+<p id="section-10.1-4">A DNS downgrade attack consists of a DNS intermediary that produces incorrect
 resolution results, in order to cause its clients not to activate ESNI.
 This specification is resistant to DNS downgrade attacks if either of
-the following conditions is met:
-- All zones in the HTTPSSVC resolution chain are DNSSEC-signed, and the
-  client enforces DNSSEC validation.
-- The origin provides esniconfig in Alt-Svc, and the client supports
-  esniconfig in Alt-Svc and has cached this Alt-Svc Field Value.<a href="#section-10.1-3" class="pilcrow">¶</a></p>
+the following conditions is met:<a href="#section-10.1-4" class="pilcrow">¶</a></p>
+<ul>
+<li id="section-10.1-5.1">All zones in the HTTPSSVC resolution chain are DNSSEC-signed, and the
+client enforces DNSSEC validation.<a href="#section-10.1-5.1" class="pilcrow">¶</a>
+</li>
+<li id="section-10.1-5.2">The origin provides esniconfig in Alt-Svc, and the client supports
+esniconfig in Alt-Svc and has this Alt-Svc Field Value in its cache.<a href="#section-10.1-5.2" class="pilcrow">¶</a>
+</li>
+</ul>
 </section>
 </div>
 </section>
