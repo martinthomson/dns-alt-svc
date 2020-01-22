@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/106",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/106/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/106/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/106/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/106",
+    "id": 553086996,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzY1NDc2Mjky",
+    "number": 106,
+    "title": "Fully specify HTTPSSVC/Alt-Svc/ESNI interaction",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-01-21T19:41:06Z",
+    "updated_at": "2020-01-22T21:22:47Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/106",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/106",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/106.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/106.patch"
+    },
+    "body": "Addresses #105"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/105",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/105/labels{/name}",
@@ -41,9 +95,9 @@
 
     ],
     "milestone": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": "2020-01-16T21:40:43Z",
-    "updated_at": "2020-01-16T22:30:09Z",
+    "updated_at": "2020-01-22T07:30:37Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "The draft originally said (prior to #66) said the Alt-Svc cache overrides HTTPSSVC. This had problems (issue #58 and #60), so #66 downgraded it to a MAY. It seems this still has problems.\r\n\r\n**HTTPSSVC vs Alt-Svc**\r\n\r\nConsider a server which uses both QUIC and ESNI. It configures both in HTTPSSVC. It also cares about HTTPSSVC-less clients (older client or legacy DNS resolver), so it configures QUIC in Alt-Svc. Is it required to configure ESNI in Alt-Svc, or can it leave things alone (with the understanding that ESNI will be limited to clients that support HTTPSSVC)?\r\n\r\nThe spec currently says a client (that would otherwise support HTTPSSVC) MAY skip an HTTPSSVC lookup given an Alt-Svc cache entry. That means, for ESNI to work, the server MUST configure it in both. This is not obvious and should be written down. More importantly, it has deployment consequences.\r\n\r\nHTTPSSVC records apply to the *current* HTTP request. If the client has no cached DNS record, it still queries DNS and gets HTTPSSVC. That means HTTPSSVC TTLs may be set more-or-less freely depending on the site's performance vs. flexibility needs. Let's say it's O(1 hour).\r\n\r\nAlt-Svc headers apply to *subsequent* HTTP requests. If the client has no Alt-Svc entry cached, it will send the HTTP request without Alt-Svc. That means Alt-Svc TTLs must cover the time to the next HTTP request for Alt-Svc to be used at all. For reference, I see google.com currently uses 30 days.\r\n\r\n**Commitments**\r\n\r\nFor the duration of the HTTPSSVC or Alt-Svc lifetime, the server operator has made a commitment to the client. ESNI is a soft commitment that the server understands this ESNI key and a hard commitment that the server is colocated with the public name. The first lower-bounds key lifetime and rotation on the server. There is a recovery mechanism, but it is expensive, so this is a soft commitment. The second is roughly a commitment to use a particular hosting provider. ESNI's retry mechanism requires the public name, so this is a hard commitment. Breaking this will knock out your site.\r\n\r\n(Note Alt-Svc without ESNI was *not* a hosting provider commitment. A provider-specific Alt-Svc may fail if the site changes providers, but the client could still connect without Alt-Svc. ESNI must take this fallback away to prevent network downgrade.)\r\n\r\nHTTPSSVC and Alt-Svc commitment timescales are qualitatively different. Saying ESNI servers must advertise in both, as implied by the spec today, means servers must incur a long-lived hosting provider commitment to deploy ESNI at all. (Or send no Alt-Svc headers and lose QUIC on non-HTTPSSVC clients.) It also means ESNI keys must be long-lived, which makes them more sensitive.\r\n\r\n**Proposed fix**\r\n\r\nGiven the above, I don't see how allowing Alt-Svc to override HTTPSSVC is tenable. That suggests changing the spec so a client that makes HTTPSSVC queries makes them even if Alt-Svc is available. If it gets an HTTPSSVC record, it ignores Alt-Svc and uses those instead. Otherwise, it may freely use Alt-Svc.\r\n\r\nThis is fussy because Alt-Svc itself allows replacing the origin hostname with an alternate name. Clients would likely want to query the alternate's A/AAAA records, the origin's A/AAAA records, and the origin/s HTTPSSVC records in parallel. However, the alternate may leak ESNI, so the alternate connection must wait for whether HTTPSSVC aborts it before proceeding past that query.\r\n\r\nThat adds *even more* complexity to the prospect of actually implementing remote Alt-Svc. Personally, I think all these name indirections are seeming more and more like a mistake and questionably worthwhile.\r\n\r\n**Whither ESNI in Alt-Svc?**\r\n\r\nWith the above, it is no longer strictly necessary to allocate a way to spell ESNI in Alt-Svc. I don't know whether we still want to. This issue means ESNI in Alt-Svc is very different from ESNI in HTTPSSVC. At minimum, we must clearly call out the implications of the longer lifetime in the spec. We could decide this is not worth the trouble. On the other hand, it's likely a number of clients won't make HTTPSSVC queries for some time, and perhaps those clients getting ESNI for the subset of servers willing to make a longer-term public name commitment is worthwhile.\r\n\r\n**Parting thought**\r\n\r\nI think a lesson here is we cannot completely abstract ESNI from its delivery mechanism. Pulling ESNI into HTTPSSVC is reasonable so we only have one record to query, but HTTPSSVC's decisions still have implications for ESNI. (@chris-wood, I dunno if you watch this repo, so CC'ing you in here explicitly.)"
@@ -1701,7 +1755,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/77.patch"
     },
     "body": "Fixes #75 and addresses comments in #40\r\n\r\n@puneetsood FYI"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/76",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1755,10 +1812,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/76.patch"
     },
     "body": "Shortening the TTL doesn't actually solve the problem,\r\nbecause some caches ignore small TTL values.  Regardless of TTL,\r\nservers have to be able to deal with occasional use of expired\r\nrecords.  Shortening TTL is also bad for efficiency, so we\r\nshouldn't encourage it.\r\n\r\nFixes #74"
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/75",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3518,7 +3572,10 @@
     "closed_at": "2019-09-23T21:19:28Z",
     "author_association": "COLLABORATOR",
     "body": "Concrete changes to make based on todays' discussion with Mike, Erik, Tommy, Chris, Ben, and Tim:\r\n\r\n- Have one draft defining two rrtypes, making it easier to keep it all in DNSOP.\r\n- Define a separate HTTPSSVC RRTYPE in the draft\r\n\r\n- Add a separate draft that adds an optional A/AAAA stapling parameter (and altsvc parameter).\r\n    - Having this be a generic \"rrdata\" parameter is cute, but might add more problems.\r\n\r\n- Keep using expert review for the key type registry.  (No changes needed.)\r\n- Clarify that recursives should be able to treat key types as opaque.\r\n\r\n- Remove the \"esnikeysref\".  (But perhaps move it back to an issue.)   Helpful for separating operational management, but pull this out for now.\r\n    - Having an authoritative feature for copying this into place might be cute down-the-road but not needed here.\r\n\r\n- Remove general parameter type specifications.\r\n\r\n- Ben: remove the \"can ignore\" optimization.  (That Ben added in)\r\n\r\n- Bike shed: what to name the records.   Keep with them for now, and get consensus later on what to rename them with.\r\n  - SVCB            (later to ???)\r\n  - HTTPSSVC   (later to HTTPS or SVCHTTPS ?)\r\n\r\n- For delimiters between parameters and their encoding:\r\n  - Just leave delimiter as space.  \r\n  - Copy over or reference string quoting from TXT record RFC (or some similar but more recent RFC)\r\n"
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/46",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3566,10 +3623,7 @@
     "closed_at": "2019-09-23T21:19:45Z",
     "author_association": "COLLABORATOR",
     "body": "One suggestion in DNSOP was to make the SvcRecordType implicit.\r\nFor example, remove the field and distinguish between the two forms by\r\nwhether the SvcRecordValue is empty or not."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/45",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5189,7 +5243,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/17.patch"
     },
     "body": "Finish removing the Alt-Svc \"sni=\" parameter (other than from the comparisons appendix discussion)."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/16",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5243,10 +5300,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/16.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/15",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
