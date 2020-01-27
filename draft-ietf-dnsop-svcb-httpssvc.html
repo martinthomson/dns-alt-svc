@@ -846,7 +846,7 @@ table.left {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Schwartz, et al.</td>
-<td class="center">Expires 27 July 2020</td>
+<td class="center">Expires 30 July 2020</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -859,12 +859,12 @@ table.left {
 <dd class="internet-draft">draft-ietf-dnsop-svcb-httpssvc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2020-01-24" class="published">24 January 2020</time>
+<time datetime="2020-01-27" class="published">27 January 2020</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2020-07-27">27 July 2020</time></dd>
+<dd class="expires"><time datetime="2020-07-30">30 July 2020</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -931,7 +931,7 @@ as they are easy to replace.  Other names might include "B",
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 27 July 2020.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 30 July 2020.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1029,7 +1029,10 @@ as they are easy to replace.  Other names might include "B",
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-client-behavior" class="xref">Client behavior</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
 <ul class="toc ulEmpty">
 <li class="toc ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-clients-using-a-proxy" class="xref">Clients using a Proxy</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-handling-resolution-failure" class="xref">Handling resolution failures</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
+</li>
+<li class="toc ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-clients-using-a-proxy" class="xref">Clients using a Proxy</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
 </ul>
 </li>
@@ -1789,33 +1792,55 @@ comply with this specification or have any awareness of SVCB.<a href="#section-3
 such as <span>[<a href="#HappyEyeballsV2" class="xref">HappyEyeballsV2</a>]</span>.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <p id="section-3-5">Some important optimizations are discussed in <a href="#optimizations" class="xref">Section 5</a>
 to avoid additional latency in comparison to ordinary AAAA/A lookups.<a href="#section-3-5" class="pilcrow">¶</a></p>
-<div id="clients-using-a-proxy">
+<div id="handling-resolution-failures">
 <section id="section-3.1">
-        <h3 id="name-clients-using-a-proxy">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-clients-using-a-proxy" class="section-name selfRef">Clients using a Proxy</a>
+        <h3 id="name-handling-resolution-failure">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-handling-resolution-failure" class="section-name selfRef">Handling resolution failures</a>
         </h3>
-<p id="section-3.1-1">Clients using a domain-oriented transport proxy like HTTP CONNECT
+<p id="section-3.1-1">If an SVCB query results in a SERVFAIL error, transport error, or timeout,
+and DNS exchanges between the client and the recursive resolver are
+cryptographically protected (e.g. using TLS <span>[<a href="#RFC7858" class="xref">RFC7858</a>]</span> or HTTPS
+<span>[<a href="#RFC8484" class="xref">RFC8484</a>]</span>), the client MUST NOT fall back to non-SVCB connection
+establishment.  This ensures that an active attacker cannot mount a
+downgrade attack by denying the user access to the SVCB information.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">A SERVFAIL error can occur if the domain is DNSSEC-signed, the recursive
+resolver is DNSSEC-validating, and the attacker is between the recursive
+resolver and the authoritative DNS server.  A transport error or timeout can
+occur if an active attacker between the client and the recursive resolver is
+selectively dropping SVCB queries or responses, based on their size or
+other observable patterns.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.1-3">Similarly, if the client enforces DNSSEC validation on A/AAAA responses,
+it MUST NOT fall back to non-SVCB connection establishment if the SVCB
+response fails to validate.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="clients-using-a-proxy">
+<section id="section-3.2">
+        <h3 id="name-clients-using-a-proxy">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-clients-using-a-proxy" class="section-name selfRef">Clients using a Proxy</a>
+        </h3>
+<p id="section-3.2-1">Clients using a domain-oriented transport proxy like HTTP CONNECT
 (<span>[<a href="#RFC7231" class="xref">RFC7231</a>]</span> Section 4.3.6) or SOCKS5 (<span>[<a href="#RFC1928" class="xref">RFC1928</a>]</span>) SHOULD disable
 SVCB support if performing SVCB queries would violate the
-client's privacy intent.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
-<p id="section-3.1-2">If the client can safely perform SVCB queries (e.g. via the
+client's privacy intent.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-2">If the client can safely perform SVCB queries (e.g. via the
 proxy or an affiliated resolver), the client SHOULD follow
 the standard SVCB resolution process, selecting the highest priority
 option that is compatible with the client and the proxy.  The client
 SHOULD provide the final SvcDomainName and port (if present) to the
-proxy as the destination host and port.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
-<p id="section-3.1-3">Providing the proxy with the final SvcDomainName has several benefits:<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+proxy as the destination host and port.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2-3">Providing the proxy with the final SvcDomainName has several benefits:<a href="#section-3.2-3" class="pilcrow">¶</a></p>
 <ul>
-<li id="section-3.1-4.1">It allows the client to use the SvcFieldValue, if present, which is
+<li id="section-3.2-4.1">It allows the client to use the SvcFieldValue, if present, which is
 only usable with a specific SvcDomainName.  The SvcFieldValue may
 include information that enhances performance (e.g. alpn) and privacy
-(e.g. esniconfig).<a href="#section-3.1-4.1" class="pilcrow">¶</a>
+(e.g. esniconfig).<a href="#section-3.2-4.1" class="pilcrow">¶</a>
 </li>
-<li id="section-3.1-4.2">It allows the origin to delegate the apex domain.<a href="#section-3.1-4.2" class="pilcrow">¶</a>
+<li id="section-3.2-4.2">It allows the origin to delegate the apex domain.<a href="#section-3.2-4.2" class="pilcrow">¶</a>
 </li>
-<li id="section-3.1-4.3">It allows the proxy to select between IPv4 and IPv6 addresses for the
+<li id="section-3.2-4.3">It allows the proxy to select between IPv4 and IPv6 addresses for the
 server according to its configuration, and receive addresses based on
-its network geolocation.<a href="#section-3.1-4.3" class="pilcrow">¶</a>
+its network geolocation.<a href="#section-3.2-4.3" class="pilcrow">¶</a>
 </li>
 </ul>
 </section>
@@ -2224,22 +2249,11 @@ Temporary Redirect" redirect to the "https" URL.
 Because HTTPSSVC is received over an often insecure channel (DNS),
 clients MUST NOT place any more trust in this signal than if they
 had received a 307 redirect over cleartext HTTP.<a href="#section-7.3-5" class="pilcrow">¶</a></p>
-<p id="section-7.3-6">If the HTTPSSVC query results in a SERVFAIL error, and the connection
-between the client and the recursive resolver is cryptographically protected
-(e.g. using TLS <span>[<a href="#RFC7858" class="xref">RFC7858</a>]</span> or HTTPS <span>[<a href="#RFC8484" class="xref">RFC8484</a>]</span>), the client SHOULD
-abandon the connection attempt and display an error message.  A SERVFAIL
-error can occur if the domain is DNSSEC-signed, the recursive resolver is
-DNSSEC-validating, and an active attacker between the recursive resolver
-and the authoritative DNS server is attempting to prevent the upgrade to
-HTTPS.<a href="#section-7.3-6" class="pilcrow">¶</a></p>
-<p id="section-7.3-7">Similarly, if the client enforces DNSSEC validation on A/AAAA responses,
-it SHOULD abandon the connection attempt if the HTTPSSVC response fails
-to validate.<a href="#section-7.3-7" class="pilcrow">¶</a></p>
-<p id="section-7.3-8">Finally, when making an "https" scheme request to an origin with an HTTPSSVC
+<p id="section-7.3-6">When making an "https" scheme request to an origin with an HTTPSSVC
 record, either directly or via the above redirect, the client SHOULD terminate the
 connection if there are any errors with the underlying secure transport, such as
 errors in certificate validation. This aligns with Section 8.4 and Section 12.1
-of <span>[<a href="#HSTS" class="xref">HSTS</a>]</span>.<a href="#section-7.3-8" class="pilcrow">¶</a></p>
+of <span>[<a href="#HSTS" class="xref">HSTS</a>]</span>.<a href="#section-7.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
