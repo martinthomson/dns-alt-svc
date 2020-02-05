@@ -145,7 +145,7 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2020-01-21T19:41:06Z",
-    "updated_at": "2020-01-24T19:59:39Z",
+    "updated_at": "2020-02-04T21:10:27Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -245,9 +245,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 3,
     "created_at": "2020-01-16T18:41:00Z",
-    "updated_at": "2020-01-27T21:08:45Z",
+    "updated_at": "2020-02-03T23:37:06Z",
     "closed_at": "2020-01-27T21:08:45Z",
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -671,7 +671,7 @@
     "milestone": null,
     "comments": 13,
     "created_at": "2019-12-19T20:23:31Z",
-    "updated_at": "2020-01-24T19:41:07Z",
+    "updated_at": "2020-02-05T17:55:33Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -771,9 +771,9 @@
 
     ],
     "milestone": null,
-    "comments": 6,
+    "comments": 9,
     "created_at": "2019-12-17T17:45:58Z",
-    "updated_at": "2020-01-15T19:00:27Z",
+    "updated_at": "2020-02-03T17:26:58Z",
     "closed_at": null,
     "author_association": "CONTRIBUTOR",
     "body": "It seems the only parameters which allow this is ipv4hint and ipv6hint, which is not necessary because the value serialization supports multiple addresses (https://github.com/MikeBishop/dns-alt-svc/pull/94).\r\n\r\nWhy do we need this? I think we should only allow one value per parameter.\r\n\r\nThis means duplicate values can be rejected generically in the parser. Right now the spec says individual parameters silently ignore all but the first value. Silently ignoring things isn't great. Other protocols like Roughtime further require keys be sorted, which makes it easy for the parser to reject duplicates generically.\r\n\r\nThis also avoids questions when designing a new parameter as to whether to use multiple parameter values or to encode multiple structures in the value. We should have one way to do things, so let's use the latter."
