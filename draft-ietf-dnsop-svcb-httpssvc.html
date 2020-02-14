@@ -1068,7 +1068,7 @@ as they are easy to replace.  Other names might include "B",
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-initial-svcparamkeys" class="xref">Initial SvcParamKeys</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
 <ul class="toc ulEmpty">
 <li class="toc ulEmpty" id="section-toc.1-1.6.2.1">
-                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-alpn" class="xref">"alpn"</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-transport-and-no-default-tr" class="xref">"transport" and "no-default-transport"</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.6.2.2">
                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-port" class="xref">"port"</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
@@ -1088,7 +1088,7 @@ as they are easy to replace.  Other names might include "B",
                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-owner-names-for-httpssvc-re" class="xref">Owner names for HTTPSSVC records</a><a href="#section-toc.1-1.7.2.1.1" class="pilcrow">¶</a></p>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.7.2.2">
-                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-differences-from-alt-svc" class="xref">Differences from Alt-Svc</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-relationship-to-alt-svc" class="xref">Relationship to Alt-Svc</a><a href="#section-toc.1-1.7.2.2.1" class="pilcrow">¶</a></p>
 <ul class="toc ulEmpty">
 <li class="toc ulEmpty" id="section-toc.1-1.7.2.2.2.1">
                     <p id="section-toc.1-1.7.2.2.2.1.1"><a href="#section-7.2.1" class="xref">7.2.1</a>.  <a href="#name-untrusted-channel" class="xref">Untrusted channel</a><a href="#section-toc.1-1.7.2.2.2.1.1" class="pilcrow">¶</a></p>
@@ -1138,7 +1138,18 @@ as they are easy to replace.  Other names might include "B",
 </ul>
 </li>
 <li class="toc ulEmpty" id="section-toc.1-1.11.2.2">
-                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-registry-updates" class="xref">Registry updates</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="xref">11.2</a>.  <a href="#name-new-registry-for-https-tran" class="xref">New registry for HTTPS Transport Protocol</a><a href="#section-toc.1-1.11.2.2.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty">
+<li class="toc ulEmpty" id="section-toc.1-1.11.2.2.2.1">
+                    <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#section-11.2.1" class="xref">11.2.1</a>.  <a href="#name-procedure-2" class="xref">Procedure</a><a href="#section-toc.1-1.11.2.2.2.1.1" class="pilcrow">¶</a></p>
+</li>
+<li class="toc ulEmpty" id="section-toc.1-1.11.2.2.2.2">
+                    <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#section-11.2.2" class="xref">11.2.2</a>.  <a href="#name-initial-contents-2" class="xref">Initial contents</a><a href="#section-toc.1-1.11.2.2.2.2.1" class="pilcrow">¶</a></p>
+</li>
+</ul>
+</li>
+<li class="toc ulEmpty" id="section-toc.1-1.11.2.3">
+                <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="xref">11.3</a>.  <a href="#name-registry-updates" class="xref">Registry updates</a><a href="#section-toc.1-1.11.2.3.1" class="pilcrow">¶</a></p>
 </li>
 </ul>
 </li>
@@ -1272,13 +1283,12 @@ simple.example. 300 IN A    192.0.2.1
 <p id="section-1.1-3">The domain owner could add records like<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 <div class="artwork art-text alignLeft" id="section-1.1-4">
 <pre>
-simple.example. 7200 IN HTTPSSVC 1 . alpn=h3 ...
-                        HTTPSSVC 2 . alpn=h2 ...
+simple.example. 7200 IN HTTPSSVC 1 . transport=quic ...
 </pre><a href="#section-1.1-4" class="pilcrow">¶</a>
 </div>
-<p id="section-1.1-5">The presence of these records indicates to clients that simple.example
-supports HTTPS, and the key=value pairs indicate that it prefers HTTP/3
-but also supports HTTP/2.  The records can also include other information
+<p id="section-1.1-5">The presence of this record indicates to clients that simple.example
+supports HTTPS, and the key=value pairs indicate that it supports QUIC
+in addition to HTTPS over TLS.  The records can also include other information
 (e.g. non-standard ports, ESNI configuration).<a href="#section-1.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1326,8 +1336,8 @@ configuration.  This can be expressed in the following form:<a href="#section-1.
 <div class="artwork art-text alignLeft" id="section-1.3-2">
 <pre>
 $ORIGIN svc.example. ; A hosting provider.
-pool  7200 IN HTTPSSVC 1 h3pool alpn=h3 esniconfig="123..."
-              HTTPSSVC 2 . alpn=h2 esniconfig="abc..."
+pool  7200 IN HTTPSSVC 1 h3pool transport=quic esniconfig="123..."
+              HTTPSSVC 2 .      esniconfig="abc..."
 pool   300 IN A        192.0.2.2
               AAAA     2001:db8::2
 h3pool 300 IN A        192.0.2.3
@@ -1551,7 +1561,9 @@ multiple values.<a href="#section-2.1-4" class="pilcrow">¶</a></p>
 <a href="#section-2.1.1" class="section-number selfRef">2.1.1. </a><a href="#name-presentation-format" class="section-name selfRef">Presentation format</a>
           </h4>
 <p id="section-2.1.1-1">The presentation format for SvcFieldValue is a whitespace-separated
-list of the key=value pairs.  Each pair is presented in the following form:<a href="#section-2.1.1-1" class="pilcrow">¶</a></p>
+list of elements representing a key-value pair, with an absent value
+or "=" indicating an empty value.  Each element is presented in the
+following form:<a href="#section-2.1.1-1" class="pilcrow">¶</a></p>
 <div class="artwork art-text alignLeft" id="section-2.1.1-2">
 <pre>
 ; basic-visible is VCHAR minus DQUOTE, ";", and "\"
@@ -1561,6 +1573,7 @@ contiguous    = *(basic-visible / escaped-char)
 quoted-string = DQUOTE *(contiguous / WSP) DQUOTE
 value         = quoted-string / contiguous
 pair          = display-key "=" value
+element       = display-key / pair
 </pre><a href="#section-2.1.1-2" class="pilcrow">¶</a>
 </div>
 <p id="section-2.1.1-3">The value format is intended to match the definition of &lt;character-string&gt;
@@ -1639,13 +1652,14 @@ hostnames based on the origin host.<a href="#section-2.3-4" class="pilcrow">¶</
 <div class="artwork art-text alignLeft" id="section-2.3-6">
 <pre>
 _8443._foo.api.example.com. 7200 IN SVCB 0 svc4.example.net.
-svc4.example.net.  7200  IN SVCB 3 ( svc4.example.net. alpn="bar"
-                                   port="8004" esniconfig="..." )
+svc4.example.net.  7200  IN SVCB 3 svc4.example.net. (
+    transport="bar" port="8004" esniconfig="..." )
 </pre><a href="#section-2.3-6" class="pilcrow">¶</a>
 </div>
 <p id="section-2.3-7">would indicate that "foo://api.example.com:8443" is aliased
-to use ALPN protocol "bar" service endpoints offered at "svc4.example.net"
-on port 8004.<a href="#section-2.3-7" class="pilcrow">¶</a></p>
+to the service endpoints offered at "svc4.example.net" on port 8004,
+which support the transport protocol "bar" in addition to the default
+transport for "foo://".<a href="#section-2.3-7" class="pilcrow">¶</a></p>
 <p id="section-2.3-8">(Parentheses are used to ignore a line break (<span>[<a href="#RFC1035" class="xref">RFC1035</a>]</span> Section 5.1).)<a href="#section-2.3-8" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1735,8 +1749,7 @@ is the effective SvcDomainName:<a href="#section-2.6.1-2" class="pilcrow">¶</a>
 <pre>
 www.example.com.  7200  IN HTTPSSVC svc.example.net.
 svc.example.net.  7200  IN CNAME    svc2.example.net.
-svc2.example.net. 7200  IN HTTPSSVC 1 . ( alpn=h2
-                                    port=8002 esniconfig="..." )
+svc2.example.net. 7200  IN HTTPSSVC 1 . port=8002 esniconfig="..."
 svc2.example.net. 300   IN A        192.0.2.2
 svc2.example.net. 300   IN AAAA     2001:db8::2
 </pre><a href="#section-2.6.1-3" class="pilcrow">¶</a>
@@ -1839,8 +1852,8 @@ proxy as the destination host and port.<a href="#section-3.2-2" class="pilcrow">
 <ul>
 <li id="section-3.2-4.1">It allows the client to use the SvcFieldValue, if present, which is
 only usable with a specific SvcDomainName.  The SvcFieldValue may
-include information that enhances performance (e.g. alpn) and privacy
-(e.g. esniconfig).<a href="#section-3.2-4.1" class="pilcrow">¶</a>
+include information that enhances performance (e.g. "transport") and
+privacy (e.g. "esniconfig").<a href="#section-3.2-4.1" class="pilcrow">¶</a>
 </li>
 <li id="section-3.2-4.2">It allows the origin to delegate the apex domain.<a href="#section-3.2-4.2" class="pilcrow">¶</a>
 </li>
@@ -2017,29 +2030,38 @@ responses to the address queries that were issued in parallel.<a href="#section-
       </h2>
 <p id="section-6-1">A few initial SvcParamKeys are defined here.  These keys are useful for
 HTTPS, and most are applicable to other protocols as well.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<div id="alpn">
+<div id="transport-and-no-default-transport">
 <section id="section-6.1">
-        <h3 id="name-alpn">
-<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-alpn" class="section-name selfRef">"alpn"</a>
+        <h3 id="name-transport-and-no-default-tr">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-transport-and-no-default-tr" class="section-name selfRef">"transport" and "no-default-transport"</a>
         </h3>
-<p id="section-6.1-1">The "alpn" SvcParamKey defines the Application Layer Protocol
-(ALPN, as defined in {{!RFC7301}) supported by a TLS-based alternative
-service.  Its value SHOULD be an entry in the IANA registry "TLS
-Application-Layer Protocol Negotiation (ALPN) Protocol IDs".<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.1-2">The presentation format and wire format of SvcParamValue
-is its registered "Identification Sequence".  This key SHALL NOT
-appear more than once in a SvcFieldValue.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
-<p id="section-6.1-3">Clients MUST include this value in the ProtocolNameList in their
-ClientHello's <code>application_layer_protocol_negotiation</code> extension.
-Clients SHOULD also include any other values that they support and
-could negotiate on that connection with equivalent or better security
-properties.  For example, when using a SvcFieldValue with an "alpn" of
-"h2", the client MAY also include "http/1.1" in the ProtocolNameList.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
-<p id="section-6.1-4">Clients MUST ignore SVCB RRs where the "alpn" SvcParamValue
-is unknown or not supported for use with the current scheme.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
-<p id="section-6.1-5">The value of the "alpn" SvcParamKey can have effects beyond the content
-of the TLS handshake and stream.  For example, an "alpn" value of "h3"
-(<span>[<a href="#HTTP3" class="xref">HTTP3</a>]</span> Section 11.1) indicates the client must use QUIC, not TLS.<a href="#section-6.1-5" class="pilcrow">¶</a></p>
+<p id="section-6.1-1">The "transport" and "no-default-transport" SvcParamKeys together
+indicate the set of transport protocols supported by this service endpoint.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-2">Each scheme that is mapped to SVCB defines a set or registry of allowed
+transport values, and a "default set" of supported values, which SHOULD NOT
+be empty.  To determine the set of transport protocols supported by an
+endpoint (the "transport set"), the client collects the set of
+"transport" values, and then adds the default set unless the
+"no-default-transport" SvcParamKey is present.  The presence of a value in
+the transport set indicates that this service endpoint, described by
+SvcDomainName and the other parameters (e.g. "port") offers service with
+that transport.<a href="#section-6.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.1-3">Clients SHOULD NOT attempt connection to a service endpoint whose
+transport set does not contain any compatible transport protocols.  To ensure
+consistency of behavior, clients MAY reject the entire SVCB RRSet and fall
+back to basic connection establishment if all of the RRs indicate
+"no-default-transport", even if connection could have succeeded using a
+non-default transport.<a href="#section-6.1-3" class="pilcrow">¶</a></p>
+<p id="section-6.1-4">For "transport", the presentation and wire format are the same,
+in the expectation that values will typically be ASCII strings, but any
+sequence of octets is a permissible value.  This key MAY appear multiple times
+with different values.<a href="#section-6.1-4" class="pilcrow">¶</a></p>
+<p id="section-6.1-5">For "no-default-transport", the presentation and wire format values MUST be
+empty, and clients MUST reject the RR if the SvcParamValue has nonzero length.
+This key may appear at most once
+in an RR.  For compatibility with clients that require default transports,
+zone operators SHOULD ensure that at least one RR in each RRSet supports the
+default transports.<a href="#section-6.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="port">
@@ -2050,8 +2072,10 @@ of the TLS handshake and stream.  For example, an "alpn" value of "h3"
 <p id="section-6.2-1">The "port" SvcParamKey defines the TCP or UDP port
 that should be used to contact this alternative service.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.2-2">The presentation format of the SvcParamValue is a numeric value
-between 0 and 65535 inclusive.  The wire format of the SvcParamValue
-is the corresponding 2 octet numeric value in network byte order.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+between 0 and 65535 inclusive.  Any other values (e.g. the empty value)
+are syntax errors.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
+<p id="section-6.2-3">The wire format of the SvcParamValue
+is the corresponding 2 octet numeric value in network byte order.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="svcparamkeys-esniconfig">
@@ -2091,7 +2115,8 @@ AAAA response addresses may negatively impact load balancing or other
 geo-aware features and thereby degrade client performance.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 <p id="section-6.4-2">The wire format for each parameter is a sequence of IP addresses in network
 byte order.  Like an A or AAAA RRSet, the list of addresses represents an
-unordered collection, and clients SHOULD pick addresses to use in a random order.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
+unordered collection, and clients SHOULD pick addresses to use in a random order.
+An empty list of addresses is invalid.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
 <p id="section-6.4-3">These parameters MAY be repeated multiple times within a record.
 When receiving such a record, clients SHOULD combine the sets of addresses.<a href="#section-6.4-3" class="pilcrow">¶</a></p>
 <p id="section-6.4-4">When selecting between IPv4 and IPv6 addresses to use, clients may use an
@@ -2130,19 +2155,18 @@ or "http" schemes.<a href="#section-7-2" class="pilcrow">¶</a></p>
 identical to SVCB, and both share the SvcParamKey registry.  SVCB
 semantics apply equally to HTTPSSVC unless specified otherwise.
 All the SvcParamKeys defined in <a href="#keys" class="xref">Section 6</a> are permitted for use in
-HTTPSSVC, and the "alpn" SvcParamKey is REQUIRED.  Its value MUST
-be an ALPN that is suitable for use with HTTPS.  For example, the
-value MAY be "http/1.1", "h2", or "h3", but MUST NOT be "h2c" or
-"ftp".<a href="#section-7-3" class="pilcrow">¶</a></p>
-<p id="section-7-4">The presence of an HTTPSSVC record for an origin also indicates
+HTTPSSVC.<a href="#section-7-3" class="pilcrow">¶</a></p>
+<p id="section-7-4">The allowed transport protocols are the protocols in the HTTPS Transport
+Registry (<a href="#transportregistry" class="xref">Section 11.2</a>).  The only default transport value is "tls".<a href="#section-7-4" class="pilcrow">¶</a></p>
+<p id="section-7-5">The presence of an HTTPSSVC record for an origin also indicates
 that all HTTP resources are available over HTTPS, as
 discussed in <a href="#hsts" class="xref">Section 7.4</a>.  This allows HTTPSSVC RRs to apply to
 pre-existing "http" scheme URLs, while ensuring that the client uses a
-secure and authenticated HTTPS connection.<a href="#section-7-4" class="pilcrow">¶</a></p>
-<p id="section-7-5">The HTTPSSVC RR parallels the concepts
+secure and authenticated HTTPS connection.<a href="#section-7-5" class="pilcrow">¶</a></p>
+<p id="section-7-6">The HTTPSSVC RR parallels the concepts
 introduced in the HTTP Alternative Services proposed standard
 <span>[<a href="#AltSvc" class="xref">AltSvc</a>]</span>.  Clients and servers that implement HTTPSSVC are NOT
-REQUIRED to implement Alt-Svc.<a href="#section-7-5" class="pilcrow">¶</a></p>
+REQUIRED to implement Alt-Svc.<a href="#section-7-6" class="pilcrow">¶</a></p>
 <div id="httpsnames">
 <section id="section-7.1">
         <h3 id="name-owner-names-for-httpssvc-re">
@@ -2172,10 +2196,10 @@ For example, clients MUST continue to validate TLS certificate
 hostnames based on the origin host.<a href="#section-7.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="differences-from-alt-svc">
+<div id="relationship-to-alt-svc">
 <section id="section-7.2">
-        <h3 id="name-differences-from-alt-svc">
-<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-differences-from-alt-svc" class="section-name selfRef">Differences from Alt-Svc</a>
+        <h3 id="name-relationship-to-alt-svc">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-relationship-to-alt-svc" class="section-name selfRef">Relationship to Alt-Svc</a>
         </h3>
 <p id="section-7.2-1">Publishing a ServiceForm HTTPSSVC record in DNS is intended
 to be similar to transmitting an Alt-Svc field value over
@@ -2427,26 +2451,26 @@ be populated with the registrations below:<a href="#section-11.1.2-1" class="pil
             <tbody>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">0</td>
-                <td class="text-left" rowspan="1" colspan="1">key0</td>
-                <td class="text-left" rowspan="1" colspan="1">Reserved</td>
+                <td class="text-left" rowspan="1" colspan="1">(no name)</td>
+                <td class="text-left" rowspan="1" colspan="1">Reserved for internal use</td>
                 <td class="text-left" rowspan="1" colspan="1">(This document)</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">1</td>
-                <td class="text-left" rowspan="1" colspan="1">alpn</td>
-                <td class="text-left" rowspan="1" colspan="1">ALPN for alternative service</td>
+                <td class="text-left" rowspan="1" colspan="1">transport</td>
+                <td class="text-left" rowspan="1" colspan="1">Additional transport protocol</td>
                 <td class="text-left" rowspan="1" colspan="1">(This document)</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">2</td>
-                <td class="text-left" rowspan="1" colspan="1">port</td>
-                <td class="text-left" rowspan="1" colspan="1">Port for alternative service</td>
+                <td class="text-left" rowspan="1" colspan="1">no-default-transport</td>
+                <td class="text-left" rowspan="1" colspan="1">No support for default transport</td>
                 <td class="text-left" rowspan="1" colspan="1">(This document)</td>
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">3</td>
-                <td class="text-left" rowspan="1" colspan="1">esniconfig</td>
-                <td class="text-left" rowspan="1" colspan="1">Encrypted SNI configuration</td>
+                <td class="text-left" rowspan="1" colspan="1">port</td>
+                <td class="text-left" rowspan="1" colspan="1">Port for alternative service</td>
                 <td class="text-left" rowspan="1" colspan="1">(This document)</td>
               </tr>
               <tr>
@@ -2457,8 +2481,8 @@ be populated with the registrations below:<a href="#section-11.1.2-1" class="pil
               </tr>
               <tr>
                 <td class="text-left" rowspan="1" colspan="1">5</td>
-                <td class="text-left" rowspan="1" colspan="1">key5</td>
-                <td class="text-left" rowspan="1" colspan="1">Reserved</td>
+                <td class="text-left" rowspan="1" colspan="1">esniconfig</td>
+                <td class="text-left" rowspan="1" colspan="1">Encrypted SNI configuration</td>
                 <td class="text-left" rowspan="1" colspan="1">(This document)</td>
               </tr>
               <tr>
@@ -2486,15 +2510,77 @@ be populated with the registrations below:<a href="#section-11.1.2-1" class="pil
 </div>
 </section>
 </div>
-<div id="registry-updates">
+<div id="transportregistry">
 <section id="section-11.2">
-        <h3 id="name-registry-updates">
-<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-registry-updates" class="section-name selfRef">Registry updates</a>
+        <h3 id="name-new-registry-for-https-tran">
+<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-new-registry-for-https-tran" class="section-name selfRef">New registry for HTTPS Transport Protocol</a>
         </h3>
-<p id="section-11.2-1">Per <span>[<a href="#RFC6895" class="xref">RFC6895</a>]</span>, please add the following entry to the data type
-range of the Resource Record (RR) TYPEs registry:<a href="#section-11.2-1" class="pilcrow">¶</a></p>
+<p id="section-11.2-1">The "HTTPS Transport Registry" defines the set of secured transport protocols
+that can be used with HTTPS.<a href="#section-11.2-1" class="pilcrow">¶</a></p>
+<div id="procedure-1">
+<section id="section-11.2.1">
+          <h4 id="name-procedure-2">
+<a href="#section-11.2.1" class="section-number selfRef">11.2.1. </a><a href="#name-procedure-2" class="section-name selfRef">Procedure</a>
+          </h4>
+<p id="section-11.2.1-1">A registration MUST include the following fields:<a href="#section-11.2.1-1" class="pilcrow">¶</a></p>
+<ul>
+<li id="section-11.2.1-2.1">Protocol: Typical short name for the transport protocol.<a href="#section-11.2.1-2.1" class="pilcrow">¶</a>
+</li>
+<li id="section-11.2.1-2.2">Identification Sequence: The precise set of octet values that identifies the protocol.<a href="#section-11.2.1-2.2" class="pilcrow">¶</a>
+</li>
+<li id="section-11.2.1-2.3">Reference: Pointer to text specifying use of this transport with HTTPS.<a href="#section-11.2.1-2.3" class="pilcrow">¶</a>
+</li>
+</ul>
+<p id="section-11.2.1-3">Values to be added to this name space require Expert Review (see
+<span>[<a href="#RFC5226" class="xref">RFC5226</a>]</span>, Section 4.1).  Identification Sequences MUST NOT collide with
+values in the "TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs"
+registry, and MUST contain only octets from the ranges 0x61-7a (a-z) and
+0x30-0x39 (0-9).<a href="#section-11.2.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="initial-contents-1">
+<section id="section-11.2.2">
+          <h4 id="name-initial-contents-2">
+<a href="#section-11.2.2" class="section-number selfRef">11.2.2. </a><a href="#name-initial-contents-2" class="section-name selfRef">Initial contents</a>
+          </h4>
+<p id="section-11.2.2-1">The "HTTPS Transport Registry" shall initially
+be populated with the registrations below:<a href="#section-11.2.2-1" class="pilcrow">¶</a></p>
 <table class="center" id="table-2">
-          <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
+            <caption><a href="#table-2" class="selfRef">Table 2</a></caption>
+<thead>
+              <tr>
+                <th class="text-left" rowspan="1" colspan="1">Protocol</th>
+                <th class="text-left" rowspan="1" colspan="1">Identification Sequence</th>
+                <th class="text-left" rowspan="1" colspan="1">Reference</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">TLS</td>
+                <td class="text-left" rowspan="1" colspan="1">0x74 0x6C 0x73 ("tls")</td>
+                <td class="text-left" rowspan="1" colspan="1">RFC 2818</td>
+              </tr>
+              <tr>
+                <td class="text-left" rowspan="1" colspan="1">QUIC</td>
+                <td class="text-left" rowspan="1" colspan="1">0x71 0x75 0x61 0x62 ("quic")</td>
+                <td class="text-left" rowspan="1" colspan="1">TBD</td>
+              </tr>
+            </tbody>
+          </table>
+<p id="section-11.2.2-3">ACTION: create and include a reference to this registry.<a href="#section-11.2.2-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="registry-updates">
+<section id="section-11.3">
+        <h3 id="name-registry-updates">
+<a href="#section-11.3" class="section-number selfRef">11.3. </a><a href="#name-registry-updates" class="section-name selfRef">Registry updates</a>
+        </h3>
+<p id="section-11.3-1">Per <span>[<a href="#RFC6895" class="xref">RFC6895</a>]</span>, please add the following entry to the data type
+range of the Resource Record (RR) TYPEs registry:<a href="#section-11.3-1" class="pilcrow">¶</a></p>
+<table class="center" id="table-3">
+          <caption><a href="#table-3" class="selfRef">Table 3</a></caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">TYPE</th>
@@ -2515,10 +2601,10 @@ range of the Resource Record (RR) TYPEs registry:<a href="#section-11.2-1" class
             </tr>
           </tbody>
         </table>
-<p id="section-11.2-3">Per <span>[<a href="#Attrleaf" class="xref">Attrleaf</a>]</span>, please add the following entry to the DNS Underscore
-Global Scoped Entry Registry:<a href="#section-11.2-3" class="pilcrow">¶</a></p>
-<table class="center" id="table-3">
-          <caption><a href="#table-3" class="selfRef">Table 3</a></caption>
+<p id="section-11.3-3">Per <span>[<a href="#Attrleaf" class="xref">Attrleaf</a>]</span>, please add the following entry to the DNS Underscore
+Global Scoped Entry Registry:<a href="#section-11.3-3" class="pilcrow">¶</a></p>
+<table class="center" id="table-4">
+          <caption><a href="#table-4" class="selfRef">Table 4</a></caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">RR TYPE</th>
