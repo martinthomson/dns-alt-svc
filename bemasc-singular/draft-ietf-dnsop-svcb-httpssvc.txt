@@ -546,8 +546,8 @@ Internet-Draft        SVCB and HTTPSSVC RRs for DNS        February 2020
    Unrecognized keys are represented in presentation format as
    "keyNNNNN" where NNNNN is the numeric value of the key type without
    leading zeros.  In presentation format, values of unrecognized keys
-   SHOULD be represented in wire format, using decimal escape codes
-   (e.g. \255) when necessary.
+   SHALL be represented in wire format, using decimal escape codes (e.g.
+   \255) when necessary.
 
    Elements in presentation format MAY appear in any order.
 
