@@ -1,6 +1,114 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/110",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/110/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/110/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/110/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/110",
+    "id": 567921933,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mzc3NDUyMDc0",
+    "number": 110,
+    "title": "Add reference to the GitHub",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-19T23:38:13Z",
+    "updated_at": "2020-02-19T23:38:13Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/110",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/110",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/110.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/110.patch"
+    },
+    "body": "Warren Kumari suggests on dnsop:\r\n=======================\r\n\r\nCould I suggest adding something like:\r\n[ RFC Editor - please remove before publication. This document is being\r\ncollaborated on in Github at:\r\nhttps://github.com/MikeBishop/dns-alt-svc.  The most\r\nrecent version of the document, open issues, etc should all be\r\navailable here.  The authors (gratefully) accept pull requests.]\r\n\r\nto the abstract - that way, people reading the draft know where submit PRs, etc."
+  },
+  {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/109",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/109/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/109/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/109/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/109",
+    "id": 567211665,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0Mzc2ODc5OTYw",
+    "number": 109,
+    "title": "Only allow each SvcParamKey to appear once",
+    "user": {
+      "login": "bemasc",
+      "id": 191945,
+      "node_id": "MDQ6VXNlcjE5MTk0NQ==",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/191945?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/bemasc",
+      "html_url": "https://github.com/bemasc",
+      "followers_url": "https://api.github.com/users/bemasc/followers",
+      "following_url": "https://api.github.com/users/bemasc/following{/other_user}",
+      "gists_url": "https://api.github.com/users/bemasc/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/bemasc/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/bemasc/subscriptions",
+      "organizations_url": "https://api.github.com/users/bemasc/orgs",
+      "repos_url": "https://api.github.com/users/bemasc/repos",
+      "events_url": "https://api.github.com/users/bemasc/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/bemasc/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-18T23:01:39Z",
+    "updated_at": "2020-02-18T23:03:31Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/pulls/109",
+      "html_url": "https://github.com/MikeBishop/dns-alt-svc/pull/109",
+      "diff_url": "https://github.com/MikeBishop/dns-alt-svc/pull/109.diff",
+      "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/109.patch"
+    },
+    "body": "This includes some adjustments to make repeated keys\r\nunnecessary.\r\n\r\nIncorporates #94 by @davidben\r\nAddresses #95"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/108",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/108/labels{/name}",
@@ -1645,7 +1753,10 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "I believe that either this draft or a revision of rfc7838 should clarify the client behaviour or provide stronger guidance for the scenarios:\r\n- Fallback to origin from alternates\r\n-- Both with and without downgrade considerations\r\n- Multiple same priority alternates\r\n-- After random shuffle do I use one? all?\r\n-- Should client fail to origin or same priority?\r\n- Multiple differing priority alternates\r\n-- Fail down the tree or straight to origin?\r\n\r\n \r\n\r\nrfc7838 was not explicit here either, which has (probably) led to the fail-back having low implementation. Defined/predictable client failover behaviour is a big win.\r\n\r\nHappy to help with words if you think there's a place for this..."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/80",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1749,10 +1860,7 @@
     "closed_at": "2019-11-14T18:17:48Z",
     "author_association": "COLLABORATOR",
     "body": "We should clarify the behavior for how alpn=h2 and alpn=http/1.1 interact with ALPN negotiation over TLS with an origin, including in cases where only one is specified in the DNS but where only the other can get negotiated via TLA.\r\n\r\nOne option would be to call this out and recommend that \"h2\" can negotiate to http/1.1 and/or h2 if only one is specified in HTTPSSVC records."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/78",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3418,7 +3526,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/51.patch"
     },
     "body": "Minor typo fixes and edits.  Add proxy behavior.  Add a/aaaa param clarifications."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/50",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3578,10 +3689,7 @@
     "closed_at": "2019-09-23T21:18:15Z",
     "author_association": "COLLABORATOR",
     "body": "Define a way to include/inline a list of A and AAAA values to optimize for when SvcDomainName has not yet been resolved.  \r\n\r\nThe current proposal is to create a separate draft for this purpose defining an \"ips\" SvcParamKey that can be used as a hint while waiting on SvcDomainName.\r\n\r\nThis is likely needed to retain parity with optimizations in the ESNI draft."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/48",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5129,7 +5237,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/21.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/20",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5237,10 +5348,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/19.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/18",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
