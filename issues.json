@@ -1,6 +1,54 @@
 [
 
   {
+    "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/111",
+    "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
+    "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/111/labels{/name}",
+    "comments_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/111/comments",
+    "events_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/111/events",
+    "html_url": "https://github.com/MikeBishop/dns-alt-svc/issues/111",
+    "id": 569079590,
+    "node_id": "MDU6SXNzdWU1NjkwNzk1OTA=",
+    "number": 111,
+    "title": "Define default port when unspecified for _port records",
+    "user": {
+      "login": "enygren",
+      "id": 6840678,
+      "node_id": "MDQ6VXNlcjY4NDA2Nzg=",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6840678?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/enygren",
+      "html_url": "https://github.com/enygren",
+      "followers_url": "https://api.github.com/users/enygren/followers",
+      "following_url": "https://api.github.com/users/enygren/following{/other_user}",
+      "gists_url": "https://api.github.com/users/enygren/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/enygren/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/enygren/subscriptions",
+      "organizations_url": "https://api.github.com/users/enygren/orgs",
+      "repos_url": "https://api.github.com/users/enygren/repos",
+      "events_url": "https://api.github.com/users/enygren/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/enygren/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2020-02-21T17:13:38Z",
+    "updated_at": "2020-02-21T17:13:38Z",
+    "closed_at": null,
+    "author_association": "COLLABORATOR",
+    "body": "We should reconsider the default port for:\r\n\r\n   _8443._foo.api.example.com. 7200 IN HTTPS 0 svc4.example.net.\r\n   svc4.example.net.  7200  IN HTTPS 3 . transport=\"tls\"\r\n\r\nie, where no port is specified.  In particular, should the port be 8443 (specified for the scheme) or 443 (default for https+transport).\r\nUsing the port from the scheme (8443) when no port is specified may be less confusing.\r\n"
+  },
+  {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/110",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
     "labels_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/110/labels{/name}",
@@ -95,9 +143,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2020-02-18T23:01:39Z",
-    "updated_at": "2020-02-18T23:03:31Z",
+    "updated_at": "2020-02-21T17:52:59Z",
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "pull_request": {
@@ -1705,7 +1753,10 @@
     "closed_at": null,
     "author_association": "COLLABORATOR",
     "body": "Some of the CamelCase names could be improved.  For example, SvcFieldPriority is now used in AliasForm, so maybe it should just be SvcPriority or SvcIndex."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/81",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -1753,10 +1804,7 @@
     "closed_at": null,
     "author_association": "NONE",
     "body": "I believe that either this draft or a revision of rfc7838 should clarify the client behaviour or provide stronger guidance for the scenarios:\r\n- Fallback to origin from alternates\r\n-- Both with and without downgrade considerations\r\n- Multiple same priority alternates\r\n-- After random shuffle do I use one? all?\r\n-- Should client fail to origin or same priority?\r\n- Multiple differing priority alternates\r\n-- Fail down the tree or straight to origin?\r\n\r\n \r\n\r\nrfc7838 was not explicit here either, which has (probably) led to the fail-back having low implementation. Defined/predictable client failover behaviour is a big win.\r\n\r\nHappy to help with words if you think there's a place for this..."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/80",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3434,7 +3482,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/52.patch"
     },
     "body": ""
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/51",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -3526,10 +3577,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/51.patch"
     },
     "body": "Minor typo fixes and edits.  Add proxy behavior.  Add a/aaaa param clarifications."
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/50",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5183,7 +5231,10 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/22.patch"
     },
     "body": "Mention the HTTPS bootstrapping in the intro.\r\nRemind the importance of using the origin name for validating\r\nthe TLS server cert."
-  },
+  }
+
+,
+
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/21",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
@@ -5237,10 +5288,7 @@
       "patch_url": "https://github.com/MikeBishop/dns-alt-svc/pull/21.patch"
     },
     "body": ""
-  }
-
-,
-
+  },
   {
     "url": "https://api.github.com/repos/MikeBishop/dns-alt-svc/issues/20",
     "repository_url": "https://api.github.com/repos/MikeBishop/dns-alt-svc",
